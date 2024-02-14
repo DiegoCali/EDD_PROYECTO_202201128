@@ -5,6 +5,6 @@ module EDD_PROYECT_202201128
   public :: say_hello
 contains
   subroutine say_hello
-    print *, "Hello, EDD_PROYECT_202201128!"
+    print *, "//----------Bienvenido a Pixel Print Studio----------\\"
   end subroutine say_hello
 end module EDD_PROYECT_202201128
