@@ -19,20 +19,21 @@ contains
         type(node), pointer :: temp
         allocate(temp) 
         temp%size = size
-        if (.NOT. associated(this%head)) then
+        temp%next => null()
+        if (.NOT.associated(this%head)) then
             this%head => temp
-            temp%next => null()
         else
             temp%next => this%head
-            this%head => temp%next
+            this%head => temp
         end if
-        print *, "Added to stack: ", size
+        print *, "Pushed: ", size
     end subroutine push
     subroutine pop(this)
         class(stack), intent(inout) :: this
         type(node), pointer :: temp
         temp => this%head
         this%head => this%head%next
+        print *, "Poped: ", temp%size
         deallocate(temp)
     end subroutine pop
     subroutine self_print(this)
@@ -41,7 +42,7 @@ contains
         current => this%head
         do while (associated(current))
             print *, current%size
-            current = current%next
+            current => current%next
         end do
     end subroutine self_print
 end module image_pile
