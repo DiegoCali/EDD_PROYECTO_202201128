@@ -15,4 +15,5 @@ library = false
 implicit-typing = false
 implicit-external = false
 source-form = "free"
-
+[dependencies]
+json-fortran = {git = "https://github.com/jacobwilliams/json-fortran"}
