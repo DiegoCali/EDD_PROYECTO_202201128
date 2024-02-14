@@ -1,5 +1,5 @@
 program check
-    use image_pile
+    use image_stack
     implicit none
     type(stack) :: new_stack
 
