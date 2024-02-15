@@ -48,7 +48,7 @@ contains
         type(client), pointer :: current        
         current => this%head
         do while (associated(current))
-            print *, current%name
+            write (*,"(a6, a)",advance="no") current%name, ":"
             call current%images%self_print
             current => current%next
         end do

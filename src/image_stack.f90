@@ -26,14 +26,14 @@ contains
             temp%next => this%head
             this%head => temp
         end if
-        print *, "Pushed: ", size
+        !print *, "Pushed: ", size
     end subroutine push
     subroutine pop(this)
         class(stack), intent(inout) :: this
         type(image), pointer :: temp
         temp => this%head
         this%head => this%head%next
-        print *, "Poped: ", temp%size
+        !print *, "Poped: ", temp%size
         deallocate(temp)
     end subroutine pop
     subroutine self_print(this)
@@ -41,8 +41,9 @@ contains
         type(image), pointer :: current
         current => this%head
         do while (associated(current))
-            print *, current%size
+            write (*,"(a2)",advance="no") current%size
             current => current%next
         end do
+        print *, ""
     end subroutine self_print
 end module image_stack
