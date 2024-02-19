@@ -34,7 +34,6 @@ contains
             end do
             temp%next => new_client
         end if
-        print *, "Client enqueued: ", name
     end subroutine enqueue
     subroutine dequeue(this)
         class(queue), intent(inout) :: this
