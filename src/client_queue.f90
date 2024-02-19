@@ -3,7 +3,7 @@ module client_queue
     implicit none
     private
     type, public :: client
-        character(len=5) :: name
+        character(:), allocatable :: name
         type(stack) :: images
         type(client), pointer :: next
     end type client
@@ -17,7 +17,7 @@ module client_queue
 contains
     subroutine enqueue(this, name, client_image_stack)
         class(queue), intent(inout) :: this
-        character(len=5), intent(in) :: name
+        character(len=*), intent(in) :: name
         type(stack), intent(in) :: client_image_stack
         type(client), pointer :: new_client
         type(client), pointer :: temp
@@ -48,7 +48,7 @@ contains
         type(client), pointer :: current        
         current => this%head
         do while (associated(current))
-            write (*,"(a6, a)",advance="no") current%name, ":"
+            write (*,"(a15, a)",advance="no") current%name, ":"
             call current%images%self_print
             current => current%next
         end do

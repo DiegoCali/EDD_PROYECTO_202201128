@@ -21,9 +21,9 @@ program client_queue_test
     call stack_3%push("G")
 
     ! Preparing clients
-    call new_queue%enqueue("Diego", stack_1)
-    call new_queue%enqueue("Carly", stack_2)
-    call new_queue%enqueue("Frida", stack_3)
+    call new_queue%enqueue("Different", stack_1)
+    call new_queue%enqueue("Lenght", stack_2)
+    call new_queue%enqueue("Names Of People", stack_3)
 
     ! Showing queue
     call new_queue%self_print()
