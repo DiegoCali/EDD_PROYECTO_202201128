@@ -9,7 +9,7 @@ program json_childs
     type(json_core)           :: jsonc  
     type(queue), pointer      :: client_queue
     type(stack), pointer      :: images_stack
-    character(:), allocatable :: nombre 
+    character(:), allocatable :: nombre, p_imgs_str, g_imgs_str 
 
     integer                   :: i, j, p_imgs, g_imgs, size    
     logical                   :: found
@@ -31,7 +31,8 @@ program json_childs
         call jsonc%get_child(personPointer, 'img_g', attributePointer, found = found)
 
         if (found) then                     
-            call jsonc%get(attributePointer, g_imgs)
+            call jsonc%get(attributePointer, g_imgs_str)
+            read (g_imgs_str, *) g_imgs
             do j = 1, g_imgs
                 call images_stack%push("G")
             end do
@@ -40,7 +41,8 @@ program json_childs
         call jsonc%get_child(personPointer, 'img_p', attributePointer, found = found)
 
         if (found) then                     
-            call jsonc%get(attributePointer, p_imgs)
+            call jsonc%get(attributePointer, p_imgs_str)
+            read (p_imgs_str, *) p_imgs
             do j = 1, p_imgs
                 call images_stack%push("p")
             end do
