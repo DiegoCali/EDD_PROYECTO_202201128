@@ -38,13 +38,16 @@ contains
             temp%next => new_client
         end if
     end subroutine enqueue
-    subroutine dequeue(this)
+    function dequeue(this) result(temp)
         class(queue), intent(inout) :: this
         type(client), pointer :: temp
-        temp => this%head
-        this%head => temp%next
-        deallocate(temp)
-    end subroutine dequeue
+        if (associated(this%head)) then        
+            temp => this%head
+            this%head => temp%next
+        else 
+            temp => null()
+        end if
+    end function dequeue
     subroutine self_print(this)
         class(queue), intent(inout) :: this
         type(client), pointer :: current        

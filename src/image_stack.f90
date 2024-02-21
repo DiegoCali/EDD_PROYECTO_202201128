@@ -44,9 +44,13 @@ contains
     function pop(this) result(temp)
         class(stack), intent(inout) :: this
         type(image), pointer :: temp
-        temp => this%head
-        this%head => this%head%next
-        !print *, "Poped: ", temp%size
+        if (associated(this%head)) then
+            temp => this%head
+            this%head => this%head%next
+            !print *, "Poped: ", temp%size
+        else
+            temp => null()
+        end if
     end function pop
     subroutine self_print(this)
         class(stack), intent(inout) :: this
