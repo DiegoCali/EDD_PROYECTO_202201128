@@ -1,8 +1,13 @@
 program main
   use EDD_PROYECT_202201128, only: say_hello
+  use randomizer
   implicit none
   logical          :: running
   integer          :: option
+  type(rand)       :: randit
+
+  randit%names = (/"Diego", "Carly", "Anaya", "Clint", "Ethan"/)
+  randit%last_names = (/"Smith", "Brown", "Clark", "White", "Moore"/)
   running = .TRUE.
   call say_hello()
   do while(running)
@@ -24,7 +29,9 @@ program main
       case (4)
         print *, "Nothing yet"
       case (5)
-        print *, "Nothing yet"
+        print *, "----------------------------------------"
+        print *, "  Diego Felipe Cali Morales: 202201128"
+        print *, "----------------------------------------"
       case (6)
         running = .FALSE.
     end select

@@ -34,7 +34,7 @@ program json_childs
             call jsonc%get(attributePointer, g_imgs_str)
             read (g_imgs_str, *) g_imgs
             do j = 1, g_imgs
-                call images_stack%push("G")
+                call images_stack%push(2)
             end do
         end if
 
@@ -44,7 +44,7 @@ program json_childs
             call jsonc%get(attributePointer, p_imgs_str)
             read (p_imgs_str, *) p_imgs
             do j = 1, p_imgs
-                call images_stack%push("p")
+                call images_stack%push(1)
             end do
         end if
 

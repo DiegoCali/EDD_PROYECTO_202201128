@@ -8,17 +8,17 @@ program client_queue_test
     type(stack) :: stack_3
 
     ! Preparing stacks
-    call stack_1%push("G")
-    call stack_1%push("p")
-    call stack_1%push("G")
+    call stack_1%push(2)
+    call stack_1%push(1)
+    call stack_1%push(2)
     
-    call stack_2%push("p")
-    call stack_2%push("p")
-    call stack_2%push("G")
+    call stack_2%push(1)
+    call stack_2%push(1)
+    call stack_2%push(2)
 
-    call stack_3%push("p")
-    call stack_3%push("G")
-    call stack_3%push("G")
+    call stack_3%push(1)
+    call stack_3%push(2)
+    call stack_3%push(2)
 
     ! Preparing clients
     call new_queue%enqueue("Different", stack_1)
