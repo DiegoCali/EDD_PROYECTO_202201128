@@ -3,11 +3,11 @@ module image_stack
     private
     type, public :: image
         integer :: size
-        character(len=:), allocatable :: belongs_to
+        integer :: client_id
         type(image), pointer :: next
     end type image
     type, public :: stack
-        type(image), pointer :: head => null()
+        type(image), pointer :: head => null()        
     contains
         procedure :: push
         procedure :: pop
@@ -26,7 +26,7 @@ contains
             this%head => temp
         else
             temp%next => this%head
-            this%head => temp
+            this%head => temp            
         end if
         !print *, "Pushed: ", size
     end subroutine push

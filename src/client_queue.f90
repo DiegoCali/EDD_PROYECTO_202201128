@@ -1,11 +1,14 @@
 module client_queue
     use image_stack
+    use window_list
     implicit none
     private
     type, public :: client
         character(:), allocatable :: name
+        integer :: id
         type(stack) :: images
         type(client), pointer :: next
+        type(window), pointer :: attendant
     end type client
     type, public :: queue
         type(client), pointer :: head => null()
