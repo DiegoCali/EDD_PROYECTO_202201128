@@ -8,6 +8,7 @@ module client_queue
         integer :: id
         type(stack) :: images
         type(client), pointer :: next
+        type(client), pointer :: prev
         type(window), pointer :: attendant
     end type client
     type, public :: queue

@@ -35,6 +35,7 @@ contains
         current => this%head
         do while (associated(current))
             if (.NOT. current%attending) then
+                current%attending = .TRUE.
                 stop
             end if
             current => current%next
