@@ -27,9 +27,44 @@ contains
             this%tail => client_node
         end if
     end  subroutine add
+    function find_client(this, client_id) result(temp)
+        class(wait_list), intent(inout) :: this
+        integer, intent(in) :: client_id
+        type(client), pointer :: temp
+        temp => null()
+        if (.NOT. associated(this%head)) then
+            stop 
+        end if
+        temp => this%head
+        if (temp%id == client_id) then
+            stop
+        end if
+        temp => this%head%next
+        do while (temp%name /= this%head%name)
+            if (temp%id == client_id) then
+                stop
+            end if
+            temp => temp%next
+        end do
+    end function find_client
     function check(this) result(temp)
         class(wait_list), intent(inout) :: this
         type(client), pointer :: temp
+        temp => null()
+        if (.NOT. associated(this%head)) then
+            return
+        end if
+        temp => this%head
+        if (temp%finished) then
+            return
+        end if
+        temp => this%head%next
+        do while (temp%name /= this%head%name)
+            if (temp%finished) then
+                return
+            end if
+            temp => temp%next
+        end do
         ! Nothing yet        
     end function check
 end module waiting_list

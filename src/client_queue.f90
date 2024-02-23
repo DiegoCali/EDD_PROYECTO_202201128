@@ -1,6 +1,5 @@
 module client_queue
     use image_stack
-    use window_list
     implicit none
     private
     type, public :: client
@@ -9,16 +8,28 @@ module client_queue
         type(stack) :: images
         type(client), pointer :: next
         type(client), pointer :: prev
-        type(window), pointer :: attendant
+        logical :: waiting
+        logical :: being_attended
+        logical :: finished
+    contains
+        procedure :: own_images
     end type client
     type, public :: queue
         type(client), pointer :: head => null()
+        integer :: num_clients
     contains
         procedure :: enqueue
         procedure :: dequeue
         procedure :: self_print
+        procedure :: check
+        procedure :: start
     end type queue
 contains
+    subroutine start(this, num_clients)
+        class(queue), intent(inout) :: this
+        integer, intent(in) :: num_clients
+        this%num_clients = num_clients
+    end subroutine
     subroutine enqueue(this, name, client_image_stack)
         class(queue), intent(inout) :: this
         character(len=*), intent(in) :: name
@@ -26,9 +37,15 @@ contains
         type(client), pointer :: new_client
         type(client), pointer :: temp
         allocate(new_client)
-        new_client%name = name
-        new_client%images = client_image_stack
-        new_client%next => null()        
+        new_client%id = this%num_clients
+        new_client%name = name                      ! initialize client name
+        new_client%images = client_image_stack      ! set image stack
+        call new_client%own_images()                ! make all images in stack have client id
+        new_client%being_attended = .FALSE.              ! boolean to check if has a window
+        new_client%waiting = .FALSE.                ! boolean to check if has been attended by a window
+        new_client%finished = .FALSE.               ! boolean to check if process finished
+        new_client%next => null()                   ! next client in his list
+        new_client%prev => null()                   ! prev client in double linked list 
         if (.NOT.associated(this%head)) then
             this%head => new_client            
         else 
@@ -38,6 +55,7 @@ contains
             end do
             temp%next => new_client
         end if
+        this%num_clients = this%num_clients + 1
     end subroutine enqueue
     function dequeue(this) result(temp)
         class(queue), intent(inout) :: this
@@ -49,14 +67,49 @@ contains
             temp => null()
         end if
     end function dequeue
+    function check(this) result(temp)
+        class(queue), intent(inout) :: this
+        type(client), pointer :: temp
+        logical :: running
+        running = .TRUE.
+        if (associated(this%head)) then
+            temp => this%head
+        else 
+            temp => null()
+            return
+        end if
+        do while (associated(temp).AND.running)
+            if (.NOT.temp%being_attended) then
+                temp%being_attended = .TRUE.
+                temp => this%dequeue()
+                running = .FALSE.
+            else 
+                temp => temp%next
+            end if 
+        end do
+    end function check
     subroutine self_print(this)
         class(queue), intent(inout) :: this
         type(client), pointer :: current        
-        current => this%head
+        if (associated(this%head)) then
+            current => this%head
+        else 
+            print *, "Empty client queue"
+            return
+        end if        
         do while (associated(current))
             write (*,"(a15, a)",advance="no") current%name, ":"
             call current%images%self_print
             current => current%next
         end do
     end subroutine self_print
+    subroutine own_images(this)
+        class(client), intent(inout) :: this
+        class(image), pointer :: current
+        current => this%images%head
+        do while (associated(current))
+            current%client_id = this%id
+            current => current%next
+        end do
+    end subroutine own_images
 end module client_queue

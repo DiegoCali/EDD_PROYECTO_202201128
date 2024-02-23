@@ -7,12 +7,13 @@ module image_stack
         type(image), pointer :: next
     end type image
     type, public :: stack
-        type(image), pointer :: head => null()        
+        type(image), pointer :: head => null()     
+        logical :: empty   
     contains
         procedure :: push
         procedure :: pop
-        procedure :: self_print
         procedure :: push_node
+        procedure :: self_print
     end type stack
 contains
     subroutine push(this, size)
@@ -28,6 +29,7 @@ contains
             temp%next => this%head
             this%head => temp            
         end if
+        this%empty = .FALSE.
         !print *, "Pushed: ", size
     end subroutine push
     subroutine push_node(this,  node)
@@ -40,6 +42,7 @@ contains
             node%next => this%head
             this%head => node
         end if
+        this%empty = .FALSE.
     end subroutine push_node
     function pop(this) result(temp)
         class(stack), intent(inout) :: this
@@ -50,6 +53,7 @@ contains
             !print *, "Poped: ", temp%size
         else
             temp => null()
+            this%empty = .TRUE.
         end if
     end function pop
     subroutine self_print(this)
