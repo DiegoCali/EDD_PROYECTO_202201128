@@ -51,9 +51,11 @@ contains
             temp => this%head
             this%head => this%head%next
             !print *, "Poped: ", temp%size
+            if (.NOT. associated(this%head)) then
+                this%empty = .TRUE.
+            end if 
         else
             temp => null()
-            this%empty = .TRUE.
         end if
     end function pop
     subroutine self_print(this)

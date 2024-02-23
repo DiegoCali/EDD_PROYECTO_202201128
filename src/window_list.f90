@@ -77,7 +77,9 @@ contains
         current => this%head
         do while (associated(current))
             if (current%attending)then
-                call current%images%push_node(current%client%images%pop())
+                if (.NOT.current%client%images%empty) then
+                    call current%images%push_node(current%client%images%pop())
+                end if
             end if
             current => current%next
         end do
