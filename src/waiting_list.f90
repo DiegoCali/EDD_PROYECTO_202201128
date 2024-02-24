@@ -7,6 +7,7 @@ module waiting_list
     contains
         procedure :: add
         procedure :: check
+        procedure :: print
     end type wait_list
 contains
     subroutine add(this, client_node)
@@ -33,16 +34,16 @@ contains
         type(client), pointer :: temp
         temp => null()
         if (.NOT. associated(this%head)) then
-            stop 
+            return
         end if
         temp => this%head
         if (temp%id == client_id) then
-            stop
+            return
         end if
         temp => this%head%next
         do while (temp%name /= this%head%name)
             if (temp%id == client_id) then
-                stop
+                return
             end if
             temp => temp%next
         end do
@@ -67,4 +68,21 @@ contains
         end do
         ! Nothing yet        
     end function check
+    subroutine print(this)
+        class(wait_list), intent(inout) :: this
+        type(client), pointer :: current    
+        if (associated(this%head)) then
+            current => this%head
+            print *, current%name
+            current => current%next
+        else 
+            print *, "Waiting list is empty"
+        end if
+        if (associated(current)) then
+            do while (current%name /= this%head%name)
+                print *, current%name
+                current => current%next
+            end do
+        end if
+    end subroutine print
 end module waiting_list

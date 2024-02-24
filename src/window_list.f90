@@ -1,6 +1,7 @@
 module window_list
     use image_stack
     use client_queue
+    use waiting_list
     implicit none
     type :: window
         integer :: id
@@ -11,6 +12,7 @@ module window_list
     end type window
     type :: windows 
         type(window), pointer :: head => null()
+        type(wait_list), pointer :: waiting_queue => null()
     contains
         procedure :: create
         procedure :: search_free_window
@@ -52,9 +54,9 @@ contains
     end function search_free_window
     subroutine print_attending(this)
         class(windows), intent(inout) :: this
-        class(window), pointer :: current
+        type(window), pointer :: current
         current => this%head
-        do while(associated(current))               
+        do while(associated(current))            
             if (current%attending) then
                 print *, "Window:", current%id, "Is attending:", current%client%name
             end if
@@ -73,12 +75,15 @@ contains
     end subroutine self_print
     subroutine get_images(this)
         class(windows), intent(inout) :: this
-        class(window), pointer :: current
+        type(window), pointer :: current
         current => this%head
-        do while (associated(current))
+        do while (associated(current))            
             if (current%attending)then
                 if (.NOT.current%client%images%empty) then
                     call current%images%push_node(current%client%images%pop())
+                else 
+                    current%attending = .FALSE.
+                    call this%waiting_queue%add(current%client)
                 end if
             end if
             current => current%next

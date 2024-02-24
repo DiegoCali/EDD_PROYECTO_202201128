@@ -8,6 +8,9 @@ module client_queue
         type(stack) :: images
         type(client), pointer :: next
         type(client), pointer :: prev
+        integer :: steps
+        integer :: g_images
+        integer :: p_images
         logical :: waiting
         logical :: being_attended
         logical :: finished
@@ -41,7 +44,10 @@ contains
         new_client%name = name                      ! initialize client name
         new_client%images = client_image_stack      ! set image stack
         call new_client%own_images()                ! make all images in stack have client id
-        new_client%being_attended = .FALSE.              ! boolean to check if has a window
+        new_client%steps = 0                        ! to calculate the number of steps in the future
+        new_client%g_images = 0                     ! to save the quatity of "imagenes grandes"
+        new_client%p_images = 0                     ! to save the quantity of "imagenes pequenias"
+        new_client%being_attended = .FALSE.         ! boolean to check if has a window
         new_client%waiting = .FALSE.                ! boolean to check if has been attended by a window
         new_client%finished = .FALSE.               ! boolean to check if process finished
         new_client%next => null()                   ! next client in his list
@@ -94,7 +100,7 @@ contains
         if (associated(this%head)) then
             current => this%head
         else 
-            print *, "Empty client queue"
+            print *, "No more clients in queue"
             return
         end if        
         do while (associated(current))
