@@ -6,8 +6,22 @@ module printer_queue
     contains
         procedure :: push_node
         procedure :: pop 
+        procedure :: show_self
     end type printer
 contains
+    subroutine execute_step(this)
+        class(printer), intent(inout) :: this
+        type(image), pointer :: temp
+        if (associated(this%head)) then
+            temp => this%head
+            temp%size = temp%size - 1
+            if (temp%size == 0) then
+                if (associated(this%head%next)) then
+                    this%head => this%head%next
+                end if
+            end if
+        end if
+    end subroutine execute_step
     subroutine push_node(this,  node)
         class(printer), intent(inout) :: this
         type(image), pointer, intent(in) ::  node 
@@ -17,7 +31,7 @@ contains
             this%head => node
         else
             temp => this%head
-            do while (associated(temp))
+            do while (associated(temp%next))
                 temp => temp%next
             end do
             temp%next => node
@@ -39,4 +53,14 @@ contains
             temp => null()
         end if
     end function pop 
+    subroutine show_self(this)
+        class(printer), intent(inout) :: this
+        type(image), pointer :: current
+        current => this%head
+        do while (associated(current))
+            write (*,"(i2)",advance="no") current%size
+            current => current%next
+        end do
+        print *, ""
+    end subroutine show_self
 end module printer_queue

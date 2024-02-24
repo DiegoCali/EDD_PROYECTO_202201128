@@ -48,7 +48,6 @@ contains
         new_client%g_images = 0                     ! to save the quatity of "imagenes grandes"
         new_client%p_images = 0                     ! to save the quantity of "imagenes pequenias"
         new_client%being_attended = .FALSE.         ! boolean to check if has a window
-        new_client%waiting = .FALSE.                ! boolean to check if has been attended by a window
         new_client%finished = .FALSE.               ! boolean to check if process finished
         new_client%next => null()                   ! next client in his list
         new_client%prev => null()                   ! prev client in double linked list 

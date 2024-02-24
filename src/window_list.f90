@@ -2,6 +2,7 @@ module window_list
     use image_stack
     use client_queue
     use waiting_list
+    use printer_queue
     implicit none
     type :: window
         integer :: id
@@ -13,6 +14,8 @@ module window_list
     type :: windows 
         type(window), pointer :: head => null()
         type(wait_list), pointer :: waiting_queue => null()
+        type(printer), pointer :: big_printer => null()
+        type(printer), pointer :: small_printer => null()
     contains
         procedure :: create
         procedure :: search_free_window
@@ -20,6 +23,7 @@ module window_list
         procedure :: get_images
         procedure :: self_print
         procedure :: opened_windows
+        procedure :: send_images
     end type windows
 contains
     subroutine create(this, id)
@@ -83,6 +87,8 @@ contains
                     call current%images%push_node(current%client%images%pop())
                 else 
                     current%attending = .FALSE.
+                    current%client%being_attended = .FALSE.
+                    call this%send_images(current)
                     call this%waiting_queue%add(current%client)
                 end if
             end if
@@ -102,4 +108,19 @@ contains
             current => current%next
         end do
     end function opened_windows
+    subroutine send_images(this, window_sending)
+        class(windows), intent(inout) :: this
+        type(window), pointer :: window_sending
+        type(stack), pointer :: stack_to_send
+        type(image), pointer :: temp
+        stack_to_send => window_sending%images
+        do while (associated(stack_to_send%head))
+            temp => stack_to_send%pop()
+            if (temp%size == 2) then
+                call this%big_printer%push_node(temp)
+            else 
+                call this%small_printer%push_node(temp)
+            end if
+        end do
+    end subroutine send_images
 end module window_list

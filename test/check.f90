@@ -12,12 +12,13 @@ program lists_interaction
     type(stack)             :: second_images 
     type(windows)           :: windows_list
     type(wait_list), target :: clients_waiting
-    type(printer)           :: g_printer
-    type(printer)           :: p_printer
+    type(printer), target   :: g_printer
+    type(printer), target   :: p_printer
     type(window), pointer   :: temp_window
     print *, "----------VARIABLES INITIALIZIATION----------"
-    call client_queue%start(0)
-    call windows_list%create(1)
+    ! Obligated initialization: *
+    call client_queue%start(0)   ! *                 
+    call windows_list%create(1)  ! * made with a cycle
     call windows_list%create(2)
     call first_images%push(2)
     call first_images%push(2)
@@ -28,7 +29,9 @@ program lists_interaction
     call client_queue%enqueue("Diego", first_images)
     call client_queue%enqueue("Pablo", second_images)
     call client_queue%self_print()
-    windows_list%waiting_queue => clients_waiting
+    windows_list%waiting_queue => clients_waiting ! linking the window list and waiting list  *
+    windows_list%big_printer => g_printer         ! linking the window list and big printer   *
+    windows_list%small_printer => p_printer       ! linking the window list and small printer * 
     print *, "------------STEP 1-------------"
     call windows_list%get_images()
     if (associated(client_queue%head)) then
@@ -44,6 +47,10 @@ program lists_interaction
     call clients_waiting%print()
     print *, "window info:"
     call windows_list%self_print()
+    print *, "big printer:"
+    call g_printer%show_self()
+    print *, "small printer:"
+    call p_printer%show_self()
     print *, "------------STEP 2-------------"
     call windows_list%get_images()
     if (associated(client_queue%head)) then
@@ -59,6 +66,10 @@ program lists_interaction
     call clients_waiting%print()
     print *, "window info:"
     call windows_list%self_print()
+    print *, "big printer:"
+    call g_printer%show_self()
+    print *, "small printer:"
+    call p_printer%show_self()
     print *, "------------STEP 3-------------"
     call windows_list%get_images()
     if (associated(client_queue%head)) then
@@ -74,6 +85,10 @@ program lists_interaction
     call clients_waiting%print()
     print *, "window info:"
     call windows_list%self_print()
+    print *, "big printer:"
+    call g_printer%show_self()
+    print *, "small printer:"
+    call p_printer%show_self()
     print *, "------------STEP 4-------------"
     call windows_list%get_images()
     if (associated(client_queue%head)) then
@@ -89,6 +104,10 @@ program lists_interaction
     call clients_waiting%print()
     print *, "window info:"
     call windows_list%self_print()
+    print *, "big printer:"
+    call g_printer%show_self()
+    print *, "small printer:"
+    call p_printer%show_self()
     print *, "------------STEP 5-------------"
     call windows_list%get_images()
     if (associated(client_queue%head)) then
@@ -104,4 +123,8 @@ program lists_interaction
     call clients_waiting%print()
     print *, "window info:"
     call windows_list%self_print()
+    print *, "big printer:"
+    call g_printer%show_self()
+    print *, "small printer:"
+    call p_printer%show_self()
 end program lists_interaction
