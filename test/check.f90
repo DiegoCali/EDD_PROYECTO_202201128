@@ -79,6 +79,7 @@ program lists_interaction
         end if
         step = step + 1
     end do
+    ! this part goes to "Visualizar estructuras"
     write(unit, *) "digraph G{"
     call client_queue%graph(unit)
     call windows_list%graph_self(unit)
