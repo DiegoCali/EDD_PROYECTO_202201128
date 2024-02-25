@@ -154,7 +154,7 @@ contains
             write(unit, *) "No_one_waiting;"
         end if            
         write(unit, *) "};"
-        write(unit, *) 'label="Ventanillas";'
+        write(unit, *) 'label="Lista de espera";'
         write(unit, *) "color=green;"
         write(unit, *) "}"
     end subroutine self_graph

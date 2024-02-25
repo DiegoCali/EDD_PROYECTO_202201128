@@ -194,7 +194,7 @@ contains
             end if
             current => current%next
         end do
-        write(unit, *) 'label="Sala de espera";'
+        write(unit, *) 'label="Ventanillas";'
         write(unit, *) "color=blue;"
         write(unit, *) "}"
     end subroutine graph_self
