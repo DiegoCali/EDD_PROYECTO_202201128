@@ -81,6 +81,7 @@ contains
         if (associated(current)) then
             do while (current%name /= this%head%name)
                 print *, current%name
+                call current%images%self_print()
                 current => current%next
             end do
         end if

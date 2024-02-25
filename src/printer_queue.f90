@@ -7,6 +7,7 @@ module printer_queue
         procedure :: push_node
         procedure :: pop 
         procedure :: show_self
+        procedure :: execute_step
     end type printer
 contains
     subroutine execute_step(this)
@@ -14,11 +15,12 @@ contains
         type(image), pointer :: temp
         if (associated(this%head)) then
             temp => this%head
-            temp%size = temp%size - 1
             if (temp%size == 0) then
                 if (associated(this%head%next)) then
                     this%head => this%head%next
                 end if
+            else 
+                temp%size = temp%size - 1
             end if
         end if
     end subroutine execute_step

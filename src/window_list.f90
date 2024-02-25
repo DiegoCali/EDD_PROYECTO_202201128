@@ -62,7 +62,8 @@ contains
         current => this%head
         do while(associated(current))            
             if (current%attending) then
-                print *, "Window:", current%id, "Is attending:", current%client%name
+                write(*, '(A8,i1,A14)', advance='no') "Window:", current%id, "Is attending:"
+                print *, current%client%name
             end if
             current => current%next
         end do        

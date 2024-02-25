@@ -15,8 +15,13 @@ program lists_interaction
     type(printer), target   :: g_printer
     type(printer), target   :: p_printer
     type(window), pointer   :: temp_window
+    integer                 :: step
+    character(len=1)        :: response
+    logical                 :: running
     print *, "----------VARIABLES INITIALIZIATION----------"
     ! Obligated initialization: *
+    running = .TRUE.             ! *
+    step = 0
     call client_queue%start(0)   ! *                 
     call windows_list%create(1)  ! * made with a cycle
     call windows_list%create(2)
@@ -32,99 +37,36 @@ program lists_interaction
     windows_list%waiting_queue => clients_waiting ! linking the window list and waiting list  *
     windows_list%big_printer => g_printer         ! linking the window list and big printer   *
     windows_list%small_printer => p_printer       ! linking the window list and small printer * 
-    print *, "------------STEP 1-------------"
-    call windows_list%get_images()
-    if (associated(client_queue%head)) then
-        if (windows_list%opened_windows()) then
-            temp_window => windows_list%search_free_window()    
-            temp_window%client => client_queue%check()
+    do while (running)
+        print *, "execute another step? [y/n]"
+        read *, response
+        if (response == 'y') then
+            write(*, '(A20,i1,A15)') "//-------------STEP:", step, "-------------\\"
+            call g_printer%execute_step()
+            call p_printer%execute_step()
+            call windows_list%get_images()
+            if (associated(client_queue%head)) then
+                if (windows_list%opened_windows()) then
+                    temp_window => windows_list%search_free_window()    
+                    temp_window%client => client_queue%check()
+                end if
+            end if
+            print *, "---------WINDOW STATUS----------"
+            call windows_list%print_attending()
+            print *, "----------CLIENT QUEUE----------"
+            call client_queue%self_print()
+            print *, "----------WAITING LIST----------"
+            call clients_waiting%print()
+            print *, "----------WINDOW INFO:----------"
+            call windows_list%self_print()
+            print *, "----------BIG PRINTER:----------"
+            call g_printer%show_self()
+            print *, "---------SMALL PRINTER----------"
+            call p_printer%show_self()
+            print *, "--------------END---------------"
+        else 
+            running = .FAlSE.
         end if
-    end if
-    call windows_list%print_attending()
-    print *, "client queue:"
-    call client_queue%self_print()
-    print *, "waiting list:"
-    call clients_waiting%print()
-    print *, "window info:"
-    call windows_list%self_print()
-    print *, "big printer:"
-    call g_printer%show_self()
-    print *, "small printer:"
-    call p_printer%show_self()
-    print *, "------------STEP 2-------------"
-    call windows_list%get_images()
-    if (associated(client_queue%head)) then
-        if (windows_list%opened_windows()) then
-            temp_window => windows_list%search_free_window()    
-            temp_window%client => client_queue%check()
-        end if
-    end if
-    call windows_list%print_attending()
-    print *, "client queue:"
-    call client_queue%self_print()
-    print *, "waiting list:"
-    call clients_waiting%print()
-    print *, "window info:"
-    call windows_list%self_print()
-    print *, "big printer:"
-    call g_printer%show_self()
-    print *, "small printer:"
-    call p_printer%show_self()
-    print *, "------------STEP 3-------------"
-    call windows_list%get_images()
-    if (associated(client_queue%head)) then
-        if (windows_list%opened_windows()) then
-            temp_window => windows_list%search_free_window()    
-            temp_window%client => client_queue%check()
-        end if
-    end if
-    call windows_list%print_attending()
-    print *, "client queue:"
-    call client_queue%self_print()
-    print *, "waiting list:"
-    call clients_waiting%print()
-    print *, "window info:"
-    call windows_list%self_print()
-    print *, "big printer:"
-    call g_printer%show_self()
-    print *, "small printer:"
-    call p_printer%show_self()
-    print *, "------------STEP 4-------------"
-    call windows_list%get_images()
-    if (associated(client_queue%head)) then
-        if (windows_list%opened_windows()) then
-            temp_window => windows_list%search_free_window()    
-            temp_window%client => client_queue%check()
-        end if
-    end if
-    call windows_list%print_attending()
-    print *, "client queue:"
-    call client_queue%self_print()
-    print *, "waiting list:"
-    call clients_waiting%print()
-    print *, "window info:"
-    call windows_list%self_print()
-    print *, "big printer:"
-    call g_printer%show_self()
-    print *, "small printer:"
-    call p_printer%show_self()
-    print *, "------------STEP 5-------------"
-    call windows_list%get_images()
-    if (associated(client_queue%head)) then
-        if (windows_list%opened_windows()) then
-            temp_window => windows_list%search_free_window()    
-            temp_window%client => client_queue%check()
-        end if
-    end if
-    call windows_list%print_attending()
-    print *, "client queue:"
-    call client_queue%self_print()
-    print *, "waiting list:"
-    call clients_waiting%print()
-    print *, "window info:"
-    call windows_list%self_print()
-    print *, "big printer:"
-    call g_printer%show_self()
-    print *, "small printer:"
-    call p_printer%show_self()
+        step = step + 1
+    end do
 end program lists_interaction
