@@ -27,9 +27,6 @@ contains
                 searched_client => clients%find_client(temp%client_id)
                 client_stack => searched_client%images
                 call client_stack%push_node(temp)
-                !if (associated(this%head%next)) then
-                !    this%head => this%head%next
-                !end if
             else 
                 temp%size = temp%size - 1
             end if
