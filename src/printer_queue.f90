@@ -1,8 +1,11 @@
 module printer_queue
     use image_stack
+    use waiting_list
+    use client_queue
     implicit none
     type printer
         type(image), pointer :: head => null()
+        type(wait_list), pointer :: waiting_clients => null()
     contains
         procedure :: push_node
         procedure :: pop 
@@ -13,12 +16,20 @@ contains
     subroutine execute_step(this)
         class(printer), intent(inout) :: this
         type(image), pointer :: temp
+        type(client), pointer :: searched_client
+        type(wait_list), pointer :: clients 
+        type(stack), pointer :: client_stack
+        clients => this%waiting_clients
         if (associated(this%head)) then
             temp => this%head
             if (temp%size == 0) then
-                if (associated(this%head%next)) then
-                    this%head => this%head%next
-                end if
+                temp => this%pop()
+                searched_client => clients%find_client(temp%client_id)
+                client_stack => searched_client%images
+                call client_stack%push_node(temp)
+                !if (associated(this%head%next)) then
+                !    this%head => this%head%next
+                !end if
             else 
                 temp%size = temp%size - 1
             end if

@@ -8,6 +8,7 @@ module waiting_list
         procedure :: add
         procedure :: check
         procedure :: print
+        procedure :: find_client
     end type wait_list
 contains
     subroutine add(this, client_node)
@@ -73,14 +74,15 @@ contains
         type(client), pointer :: current    
         if (associated(this%head)) then
             current => this%head
-            print *, current%name
+            write(*, '(a15, a2)', advance='no') current%name, ": "
+            call current%images%self_print()
             current => current%next
         else 
             print *, "Waiting list is empty"
         end if
         if (associated(current)) then
             do while (current%name /= this%head%name)
-                print *, current%name
+                write(*, '(a15, a2)', advance='no') current%name, ": "
                 call current%images%self_print()
                 current => current%next
             end do

@@ -104,7 +104,7 @@ contains
         end if        
         do while (associated(current))
             write (*,"(a15, a)",advance="no") current%name, ":"
-            call current%images%self_print
+            call current%images%self_print()
             current => current%next
         end do
     end subroutine self_print

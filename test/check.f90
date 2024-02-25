@@ -37,11 +37,13 @@ program lists_interaction
     windows_list%waiting_queue => clients_waiting ! linking the window list and waiting list  *
     windows_list%big_printer => g_printer         ! linking the window list and big printer   *
     windows_list%small_printer => p_printer       ! linking the window list and small printer * 
+    g_printer%waiting_clients => clients_waiting  ! linking big printer and waiting clients   *
+    p_printer%waiting_clients => clients_waiting  ! linking small printer and waiting clients *
     do while (running)
         print *, "execute another step? [y/n]"
         read *, response
         if (response == 'y') then
-            write(*, '(A20,i1,A15)') "//-------------STEP:", step, "-------------\\"
+            write(*, '(a20,i2,a15)') "//-------------STEP:", step, "-------------\\"
             call g_printer%execute_step()
             call p_printer%execute_step()
             call windows_list%get_images()
