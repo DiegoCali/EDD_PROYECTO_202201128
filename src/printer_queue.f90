@@ -11,6 +11,7 @@ module printer_queue
         procedure :: pop 
         procedure :: show_self
         procedure :: execute_step
+        procedure :: make_graph
     end type printer
 contains
     subroutine execute_step(this)
@@ -73,4 +74,40 @@ contains
         end do
         print *, ""
     end subroutine show_self
+    subroutine make_graph(this, unit, printer_name)
+        class(printer), intent(inout) :: this
+        integer, intent(in) :: unit
+        character(len=1), intent(in) :: printer_name
+        character(len=5) :: curr_id, next_id
+        character(len=4) :: format_str
+        class(image), pointer :: current_img
+        current_img => this%head
+        write(unit, *) "subgraph cluster_3{"
+        write(unit, *) "node [style=filled, shape=box];"
+        write(unit, *) printer_name // "_impresora;"
+        if (associated(this%head)) then
+            if (current_img%id < 10) then
+                format_str = "(I1)"
+            else 
+                format_str = "(I2)"
+            end if
+            write(curr_id, format_str) current_img%id
+            write(unit, *) printer_name // "_impresora -> img_" // curr_id // ";"
+            do while (associated(current_img))
+                if (associated(current_img%next)) then 
+                    if (current_img%next%id < 10) then
+                        format_str = "(I1)"
+                    else 
+                        format_str = "(I2)"
+                    end if
+                    write(next_id, format_str) current_img%next%id
+                    write(unit, *) "img_" // curr_id // " -> img_" // next_id // ";"
+                end if
+                current_img => current_img%next
+            end do 
+        end if 
+        write(unit, *) 'label="Impresoras";'
+        write(unit, *) "color=purple;"
+        write(unit, *) "}"
+    end subroutine make_graph
 end module printer_queue

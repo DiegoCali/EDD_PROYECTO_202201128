@@ -23,7 +23,7 @@ program lists_interaction
     print *, "----------VARIABLES INITIALIZIATION----------"
     ! Obligated initialization: *
     running = .TRUE.             ! *
-    step = 0
+    step = 0                     ! * to have a record of the steps
     open(unit,file='graph.dot', status='replace')
     call client_queue%start(0)   ! *                 
     call windows_list%create(1)  ! * made with a cycle
@@ -84,6 +84,8 @@ program lists_interaction
     call client_queue%graph(unit)
     call windows_list%graph_self(unit)
     call clients_waiting%self_graph(unit)
+    call p_printer%make_graph(unit, 'p')
+    call g_printer%make_graph(unit, 'G')
     write(unit, *) "}"
     close(unit)
     call execute_command_line('dot -Tsvg graph.dot > output.svg')
