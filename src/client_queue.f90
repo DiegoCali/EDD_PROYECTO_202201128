@@ -26,6 +26,7 @@ module client_queue
         procedure :: self_print
         procedure :: check
         procedure :: start
+        procedure :: graph
     end type queue
 contains
     subroutine start(this, num_clients)
@@ -117,4 +118,22 @@ contains
             current => current%next
         end do
     end subroutine own_images
+    subroutine graph(this, unit)
+        class(queue), intent(inout) :: this
+        integer, intent(in) :: unit
+        type(client), pointer :: current
+        current => this%head
+        write(unit, *) "subgraph cluster_0{"
+        write(unit, *) "node [style=filled, shape=box];"
+        write(unit, *) "rankdir=LR;"
+        do while (associated(current))
+            if (associated(current%next)) then
+                write(unit,'(I3,A,I3,A)')  current%id, " -> ", current%next%id, " ;"
+            end if    
+            current => current%next
+        end do
+        write(unit, *) 'label="Cola de Clientes";'
+        write(unit, *) "color=blue;"
+        write(unit, *) "}"
+    end subroutine
 end module client_queue

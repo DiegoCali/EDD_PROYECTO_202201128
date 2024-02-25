@@ -1,0 +1,9 @@
+ digraph G{
+ subgraph cluster_0{
+ node [style=filled, shape=box];
+ rankdir=LR;
+  0 ->   1 ;
+ label="Cola de Clientes";
+ color=blue;
+ }
+ }

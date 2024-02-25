@@ -42,7 +42,7 @@ contains
             return
         end if
         temp => this%head%next
-        do while (temp%name /= this%head%name)
+        do while (temp%id /= this%head%id)
             if (temp%id == client_id) then
                 return
             end if
@@ -61,7 +61,7 @@ contains
             return
         end if
         temp => this%head%next
-        do while (temp%name /= this%head%name)
+        do while (temp%id /= this%head%id)
             if (temp%finished) then
                 return
             end if

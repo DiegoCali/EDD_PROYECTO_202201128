@@ -16,12 +16,14 @@ program lists_interaction
     type(printer), target   :: p_printer
     type(window), pointer   :: temp_window
     integer                 :: step
+    integer                 :: unit
     character(len=1)        :: response
     logical                 :: running
     print *, "----------VARIABLES INITIALIZIATION----------"
     ! Obligated initialization: *
     running = .TRUE.             ! *
     step = 0
+    open(unit,file='graph.dot', status='replace')
     call client_queue%start(0)   ! *                 
     call windows_list%create(1)  ! * made with a cycle
     call windows_list%create(2)
@@ -71,4 +73,9 @@ program lists_interaction
         end if
         step = step + 1
     end do
+    write(unit, *) "digraph G{"
+    call client_queue%graph(unit)
+    write(unit, *) "}"
+    call execute_command_line('dot -Tsvg graph.dot > output.svg')
+    call execute_command_line('eog output.svg')
 end program lists_interaction
