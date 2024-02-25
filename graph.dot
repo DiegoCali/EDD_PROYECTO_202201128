@@ -3,12 +3,28 @@
  node [style=filled, shape=box];
  No_clients;
  label="Cola de Clientes";
- color=blue;
+ color=red;
  }
  subgraph cluster_1{
  node [style=filled, shape=box];
  ventanilla_2     -> ventanilla_1    ;
  label="Ventanillas";
  color=blue;
+ }
+ subgraph cluster_2{
+ node [style=filled, shape=box];
+ rank=same{
+ client_0    [label="Diego"];
+ client_0     -> client_1    ;
+ client_0     -> client_2    ;
+ client_1    [label="Pablo"];
+ client_1     -> client_2    ;
+ client_1     -> client_0    ;
+ client_2    [label="Mark"];
+ client_2     -> client_0    ;
+ client_2     -> client_1    ;
+ };
+ label="Ventanillas";
+ color=green;
  }
  }

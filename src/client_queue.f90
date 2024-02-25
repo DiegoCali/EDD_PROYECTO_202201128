@@ -152,7 +152,7 @@ contains
             current => current%next
         end do
         write(unit, *) 'label="Cola de Clientes";'
-        write(unit, *) "color=blue;"
+        write(unit, *) "color=red;"
         write(unit, *) "}"
     end subroutine
 end module client_queue

@@ -10,6 +10,7 @@ program lists_interaction
     type(queue)             :: client_queue
     type(stack)             :: first_images
     type(stack)             :: second_images 
+    type(stack)             :: third_images
     type(windows)           :: windows_list
     type(wait_list), target :: clients_waiting
     type(printer), target   :: g_printer
@@ -33,8 +34,13 @@ program lists_interaction
     call second_images%push(2)
     call second_images%push(1)
     call second_images%push(1)
+    call third_images%push(1)
+    call third_images%push(2)
+    call third_images%push(2)
+    call third_images%push(2)
     call client_queue%enqueue("Diego", first_images)
     call client_queue%enqueue("Pablo", second_images)
+    call client_queue%enqueue("Mark", third_images)
     call client_queue%self_print()
     windows_list%waiting_queue => clients_waiting ! linking the window list and waiting list  *
     windows_list%big_printer => g_printer         ! linking the window list and big printer   *
@@ -76,6 +82,7 @@ program lists_interaction
     write(unit, *) "digraph G{"
     call client_queue%graph(unit)
     call windows_list%graph_self(unit)
+    call clients_waiting%self_graph(unit)
     write(unit, *) "}"
     close(unit)
     call execute_command_line('dot -Tsvg graph.dot > output.svg')
