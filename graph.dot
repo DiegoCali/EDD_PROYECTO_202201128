@@ -1,9 +1,14 @@
  digraph G{
  subgraph cluster_0{
  node [style=filled, shape=box];
- rankdir=LR;
-  0 ->   1 ;
+ No_clients;
  label="Cola de Clientes";
+ color=blue;
+ }
+ subgraph cluster_1{
+ node [style=filled, shape=box];
+ ventanilla_2     -> ventanilla_1    ;
+ label="Ventanillas";
  color=blue;
  }
  }

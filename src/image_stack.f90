@@ -1,8 +1,10 @@
 module image_stack
     implicit none
+    integer :: global_id = 0
     private
     type, public :: image
         integer :: size
+        integer :: id
         integer :: client_id
         type(image), pointer :: next
     end type image
@@ -22,6 +24,7 @@ contains
         type(image), pointer :: temp
         allocate(temp) 
         temp%size = size
+        temp%id = global_id
         temp%next => null()
         if (.NOT.associated(this%head)) then
             this%head => temp
@@ -30,6 +33,7 @@ contains
             this%head => temp            
         end if
         this%empty = .FALSE.
+        global_id = global_id + 1
         !print *, "Pushed: ", size
     end subroutine push
     subroutine push_node(this,  node)

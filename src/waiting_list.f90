@@ -9,6 +9,7 @@ module waiting_list
         procedure :: check
         procedure :: print
         procedure :: find_client
+        procedure :: self_graph
     end type wait_list
 contains
     subroutine add(this, client_node)
@@ -81,11 +82,15 @@ contains
             print *, "Waiting list is empty"
         end if
         if (associated(current)) then
-            do while (current%name /= this%head%name)
+            do while (current%id /= this%head%id)
                 write(*, '(a15, a2)', advance='no') current%name, ": "
                 call current%images%self_print()
                 current => current%next
             end do
         end if
     end subroutine print
+    subroutine self_graph(this, unit)
+        class(wait_list), intent(inout) :: this
+        integer, intent(in) :: unit
+    end subroutine self_graph
 end module waiting_list

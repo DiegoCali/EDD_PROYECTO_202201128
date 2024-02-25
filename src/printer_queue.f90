@@ -1,7 +1,7 @@
 module printer_queue
     use image_stack
-    use waiting_list
     use client_queue
+    use waiting_list
     implicit none
     type printer
         type(image), pointer :: head => null()

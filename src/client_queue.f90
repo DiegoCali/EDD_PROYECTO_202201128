@@ -121,14 +121,33 @@ contains
     subroutine graph(this, unit)
         class(queue), intent(inout) :: this
         integer, intent(in) :: unit
+        character(len=5) :: next_id
+        character(len=5) :: curr_id 
+        character(len=4) :: format_str
         type(client), pointer :: current
         current => this%head
         write(unit, *) "subgraph cluster_0{"
         write(unit, *) "node [style=filled, shape=box];"
-        write(unit, *) "rankdir=LR;"
+        if (.NOT.associated(this%head))then
+            write(unit, *) "No_clients;"
+        end if
         do while (associated(current))
+            if (current%id < 10) then
+                format_str = "(I1)"
+            else 
+                format_str = "(I2)"
+            end if
+            write(curr_id, format_str) current%id
+            write(unit, *) "client_" // curr_id // '[label ="' // current%name // '"];'
             if (associated(current%next)) then
-                write(unit,'(I3,A,I3,A)')  current%id, " -> ", current%next%id, " ;"
+                if (current%next%id < 10) then
+                    format_str = "(I1)"
+                else 
+                    format_str = "(I2)"
+                end if
+                write(next_id, format_str) current%next%id
+                write(unit, *) "rank=same{"
+                write(unit, *)  "client_" // curr_id // " -> client_" // next_id // "};"
             end if    
             current => current%next
         end do

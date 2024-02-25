@@ -1,6 +1,6 @@
 module window_list
-    use image_stack
     use client_queue
+    use image_stack
     use waiting_list
     use printer_queue
     implicit none
@@ -24,6 +24,7 @@ module window_list
         procedure :: self_print
         procedure :: opened_windows
         procedure :: send_images
+        procedure :: graph_self
     end type windows
 contains
     subroutine create(this, id)
@@ -124,4 +125,77 @@ contains
             end if
         end do
     end subroutine send_images
+    subroutine graph_self(this, unit)
+        class(windows), intent(inout) :: this
+        integer, intent(in) :: unit
+        character(len=5) :: curr_id, next_id
+        character(len=4) :: format_str
+        type(window), pointer :: current
+        type(image), pointer :: temp_img
+        current => this%head
+        write(unit, *) "subgraph cluster_1{"
+        write(unit, *) "node [style=filled, shape=box];"
+        do while (associated(current))
+            ! to connect with client if needed
+            if (current%id < 10) then
+                format_str = "(I1)"
+            else 
+                format_str = "(I2)"
+            end if
+            write(next_id, format_str) current%id
+            ! If has images proceds to make the conections
+            if (current%attending) then
+                if (current%client%id < 10) then
+                    format_str = "(I1)"
+                else 
+                    format_str = "(I2)"
+                end if
+                write(curr_id, format_str) current%client%id
+                write(unit, *) "client_" // curr_id // '[label="' // current%client%name // '"];'
+                write(unit, *) "rank=same{"
+                write(unit, *) "client_" // curr_id // " -> ventanilla_" // next_id
+                if (associated(current%images%head)) then
+                    write(unit, "(A)", advance="no") "-> "
+                    temp_img => current%images%head
+                    do while(associated(temp_img))
+                        if (temp_img%id < 10) then
+                            format_str = "(I1)"
+                        else 
+                            format_str = "(I2)"
+                        end if
+                        write(curr_id, format_str) temp_img%id
+                        write(unit, *) "img_" // curr_id
+                        if (associated(temp_img%next)) then
+                            write(unit, '(A)', advance="no") " -> "
+                        else 
+                            write(unit, *) "};"
+                        end if
+                        temp_img => temp_img%next
+                    end do
+                else 
+                    write(unit, *) "};"
+                end if
+            end if
+            ! Connects to the following window 
+            if (current%id < 10) then
+                format_str = "(I1)"
+            else 
+                format_str = "(I2)"
+            end if
+            write(curr_id, format_str) current%id
+            if (associated(current%next)) then
+                if (current%next%id < 10) then
+                    format_str = "(I1)"
+                else 
+                    format_str = "(I2)"
+                end if
+                write(next_id, format_str) current%next%id
+                write(unit, *) "ventanilla_" // curr_id // " -> " // "ventanilla_" // next_id // ";"
+            end if
+            current => current%next
+        end do
+        write(unit, *) 'label="Ventanillas";'
+        write(unit, *) "color=blue;"
+        write(unit, *) "}"
+    end subroutine graph_self
 end module window_list

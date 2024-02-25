@@ -75,7 +75,9 @@ program lists_interaction
     end do
     write(unit, *) "digraph G{"
     call client_queue%graph(unit)
+    call windows_list%graph_self(unit)
     write(unit, *) "}"
+    close(unit)
     call execute_command_line('dot -Tsvg graph.dot > output.svg')
-    call execute_command_line('eog output.svg')
+    !call execute_command_line('eog output.svg')
 end program lists_interaction
