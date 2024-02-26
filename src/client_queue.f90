@@ -152,5 +152,5 @@ contains
         write(unit, *) 'label="Cola de Clientes";'
         write(unit, *) "color=red;"
         write(unit, *) "}"
-    end subroutine
+    end subroutine graph
 end module client_queue

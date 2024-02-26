@@ -4,6 +4,7 @@ program lists_interaction
     use printer_queue
     use window_list
     use waiting_list
+    use attended_clients
     implicit none
     type(client)            :: first_client
     type(client)            :: second_client
@@ -12,6 +13,7 @@ program lists_interaction
     type(stack)             :: second_images 
     type(stack)             :: third_images
     type(windows)           :: windows_list
+    type(attended_list)     :: clients_att
     type(wait_list), target :: clients_waiting
     type(printer), target   :: g_printer
     type(printer), target   :: p_printer
@@ -65,7 +67,8 @@ program lists_interaction
             if (associated(clients_waiting%head)) then
             	temp_client => clients_waiting%check()
             	if (associated(temp_client)) then
-            		print *, "Termino de procesar el cliente: ", temp_client%name
+            		temp_client%steps = step - temp_client%steps
+            		call clients_att%push_node(temp_client)
             	end if
             end if
             print *, "---------WINDOW STATUS----------"
@@ -86,6 +89,8 @@ program lists_interaction
         end if
         step = step + 1
     end do
+    call clients_att%consult()
+    call clients_att%search_most_step()
     ! this part goes to "Visualizar estructuras"
     write(unit, *) "digraph G{"
     call client_queue%graph(unit)
@@ -93,6 +98,7 @@ program lists_interaction
     call clients_waiting%self_graph(unit)
     call p_printer%make_graph(unit, 'p')
     call g_printer%make_graph(unit, 'G')
+    call clients_att%graph_attended(unit)
     write(unit, *) "}"
     close(unit)
     call execute_command_line('dot -Tsvg graph.dot > output.svg')
