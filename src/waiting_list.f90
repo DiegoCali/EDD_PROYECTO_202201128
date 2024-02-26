@@ -59,15 +59,25 @@ contains
         end if
         temp => this%head
         if (temp%finished) then
+            if (temp%next%id /= this%head%id) then 
+		temp%prev%next => temp%next
+		temp%next%prev => temp%prev
+		this%head => temp%next
+	    else
+	    	this%head => null()    
+	    end if
             return
         end if
         temp => this%head%next
         do while (temp%id /= this%head%id)
             if (temp%finished) then
+                temp%prev%next => temp%next
+	        temp%next%prev => temp%prev
                 return
             end if
             temp => temp%next
         end do
+        temp => null()
         ! Nothing yet        
     end function check
     subroutine print(this)
@@ -77,6 +87,7 @@ contains
             current => this%head
             write(*, '(a15, a2)', advance='no') current%name, ": "
             call current%images%self_print()
+            write(*, *) current%finished
             current => current%next
         else 
             print *, "Waiting list is empty"
@@ -85,6 +96,7 @@ contains
             do while (current%id /= this%head%id)
                 write(*, '(a15, a2)', advance='no') current%name, ": "
                 call current%images%self_print()
+                write(*, *) current%finished
                 current => current%next
             end do
         end if

@@ -8,12 +8,8 @@ module client_queue
         type(stack) :: images
         type(client), pointer :: next
         type(client), pointer :: prev
-        integer :: steps
-        integer :: g_images
-        integer :: p_images
-        logical :: waiting
-        logical :: being_attended
-        logical :: finished
+        integer :: steps, g_images, p_images, rdy_images
+        logical :: being_attended, finished
     contains
         procedure :: own_images
     end type client
@@ -34,10 +30,11 @@ contains
         integer, intent(in) :: num_clients
         this%num_clients = num_clients
     end subroutine
-    subroutine enqueue(this, name, client_image_stack)
+    subroutine enqueue(this, name, client_image_stack, init_step, img_g, img_p)
         class(queue), intent(inout) :: this
         character(len=*), intent(in) :: name
         type(stack), intent(in) :: client_image_stack
+        integer, intent(in) :: init_step, img_g, img_p
         type(client), pointer :: new_client
         type(client), pointer :: temp
         allocate(new_client)
@@ -45,9 +42,10 @@ contains
         new_client%name = name                      ! initialize client name
         new_client%images = client_image_stack      ! set image stack
         call new_client%own_images()                ! make all images in stack have client id
-        new_client%steps = 0                        ! to calculate the number of steps in the future
-        new_client%g_images = 0                     ! to save the quatity of "imagenes grandes"
-        new_client%p_images = 0                     ! to save the quantity of "imagenes pequenias"
+        new_client%steps = init_step                ! to calculate the number of steps in the future
+        new_client%g_images = img_g                 ! to save the quatity of "imagenes grandes"
+        new_client%p_images = img_p                 ! to save the quantity of "imagenes pequenias"
+        new_client%rdy_images = 0		    ! to check if finished
         new_client%being_attended = .FALSE.         ! boolean to check if has a window
         new_client%finished = .FALSE.               ! boolean to check if process finished
         new_client%next => null()                   ! next client in his list

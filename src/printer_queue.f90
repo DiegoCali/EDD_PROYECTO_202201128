@@ -26,6 +26,10 @@ contains
             if (temp%size == 0) then
                 temp => this%pop()
                 searched_client => clients%find_client(temp%client_id)
+                searched_client%rdy_images = searched_client%rdy_images + 1
+                if (searched_client%rdy_images == (searched_client%g_images + searched_client%p_images)) then
+                	searched_client%finished = .TRUE.
+                end if
                 client_stack => searched_client%images
                 call client_stack%push_node(temp)
             else 

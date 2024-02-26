@@ -16,8 +16,9 @@ program lists_interaction
     type(printer), target   :: g_printer
     type(printer), target   :: p_printer
     type(window), pointer   :: temp_window
+    type(client), pointer   :: temp_client
     integer                 :: step
-    integer                 :: unit
+    integer                 :: unit = 99
     character(len=1)        :: response
     logical                 :: running
     print *, "----------VARIABLES INITIALIZIATION----------"
@@ -38,9 +39,9 @@ program lists_interaction
     call third_images%push(2)
     call third_images%push(2)
     call third_images%push(2)
-    call client_queue%enqueue("Diego", first_images)
-    call client_queue%enqueue("Pablo", second_images)
-    call client_queue%enqueue("Mark", third_images)
+    call client_queue%enqueue("Diego", first_images, 0, 2, 1)
+    call client_queue%enqueue("Pablo", second_images, 0, 1, 2)
+    call client_queue%enqueue("Mark", third_images, 0, 3, 1)
     call client_queue%self_print()
     windows_list%waiting_queue => clients_waiting ! linking the window list and waiting list  *
     windows_list%big_printer => g_printer         ! linking the window list and big printer   *
@@ -60,6 +61,12 @@ program lists_interaction
                     temp_window => windows_list%search_free_window()    
                     temp_window%client => client_queue%check()
                 end if
+            end if
+            if (associated(clients_waiting%head)) then
+            	temp_client => clients_waiting%check()
+            	if (associated(temp_client)) then
+            		print *, "Termino de procesar el cliente: ", temp_client%name
+            	end if
             end if
             print *, "---------WINDOW STATUS----------"
             call windows_list%print_attending()

@@ -52,7 +52,7 @@ program json_childs
 
         if (found) then                     
             call jsonc%get(attributePointer, nombre)                  
-            call client_queue%enqueue(nombre, images_stack)
+            call client_queue%enqueue(nombre, images_stack, 0, g_imgs, p_imgs)
         end if
 
     end do
