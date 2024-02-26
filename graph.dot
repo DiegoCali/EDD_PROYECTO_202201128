@@ -7,18 +7,7 @@
  }
  subgraph cluster_1{
  node [style=filled, shape=box];
- client_2    [label="Mark"];
- rank=same{
- client_2     -> ventanilla_2    
- };
  ventanilla_2     -> ventanilla_1    ;
- client_1    [label="Pablo"];
- rank=same{
- client_1     -> ventanilla_1    
-->  img_3    
- ->  img_4    
- ->  img_5    
- };
  label="Ventanillas";
  color=blue;
  }
@@ -26,8 +15,11 @@
  node [style=filled, shape=box];
  rank=same{
  client_0    [label="Diego"];
- client_0     -> client_0    ;
- client_0     -> client_0    [dir=back];
+ client_0     -> client_1    ;
+ client_1    [label="Pablo"];
+ client_1     -> client_2    ;
+ client_2    [label="Mark"];
+ client_2     -> client_0    ;
  };
  label="Lista de espera";
  color=green;
@@ -35,15 +27,19 @@
  subgraph cluster_3{
  node [style=filled, shape=box];
  p_impresora;
- p_impresora -> img_2    ;
+ p_impresora -> img_5    ;
+ img_5     -> img_6    ;
  label="Impresoras";
  color=purple;
  }
  subgraph cluster_3{
  node [style=filled, shape=box];
  G_impresora;
- G_impresora -> img_0    ;
- img_0     -> img_1    ;
+ G_impresora -> img_1    ;
+ img_1     -> img_3    ;
+ img_3     -> img_7    ;
+ img_7     -> img_8    ;
+ img_8     -> img_9    ;
  label="Impresoras";
  color=purple;
  }

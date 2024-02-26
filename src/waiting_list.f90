@@ -92,7 +92,7 @@ contains
     subroutine self_graph(this, unit)
         class(wait_list), intent(inout) :: this
         integer, intent(in) :: unit
-        character(len=5) :: curr_id, prev_id, next_id
+        character(len=5) :: curr_id, next_id
         character(len=4) :: format_str
         type(client), pointer :: current
         current => this%head
@@ -107,12 +107,6 @@ contains
             end if
             write(curr_id, format_str) current%id
             write(unit, *) "client_" // curr_id // '[label="' // current%name // '"];'
-            if (current%prev%id < 10) then
-                format_str = "(I1)"
-            else 
-                format_str = "(I2)"
-            end if
-            write(prev_id, format_str) current%prev%id
             if (current%next%id < 10) then
                 format_str = "(I1)"
             else 
@@ -120,11 +114,6 @@ contains
             end if
             write(next_id, format_str) current%next%id
             write(unit, *) "client_" // curr_id // " -> client_" // next_id // ";"
-            if (current%next%id /= this%head%id) then
-                write(unit, *) "client_" // curr_id // " -> client_" // prev_id // ";" 
-            else 
-                write(unit, *) "client_" // curr_id // " -> client_" // prev_id // "[dir=back];"
-            end if
             current => current%next
             do while (current%id /= this%head%id)
                 if (current%id < 10) then
@@ -134,12 +123,6 @@ contains
                 end if
                 write(curr_id, format_str) current%id
                 write(unit, *) "client_" // curr_id // '[label="' // current%name // '"];'
-                if (current%prev%id < 10) then
-                    format_str = "(I1)"
-                else 
-                    format_str = "(I2)"
-                end if
-                write(prev_id, format_str) current%prev%id
                 if (current%next%id < 10) then
                     format_str = "(I1)"
                 else 
@@ -147,7 +130,6 @@ contains
                 end if
                 write(next_id, format_str) current%next%id
                 write(unit, *) "client_" // curr_id // " -> client_" // next_id // ";"
-                write(unit, *) "client_" // curr_id // " -> client_" // prev_id // ";"
                 current => current%next
             end do
         else 

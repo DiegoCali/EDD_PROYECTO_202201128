@@ -95,6 +95,12 @@ contains
             write(unit, *) printer_name // "_impresora -> img_" // curr_id // ";"
             do while (associated(current_img))
                 if (associated(current_img%next)) then 
+                    if (current_img%id < 10) then
+                        format_str = "(I1)"
+                    else 
+                        format_str = "(I2)"
+                    end if
+                    write(curr_id, format_str) current_img%id
                     if (current_img%next%id < 10) then
                         format_str = "(I1)"
                     else 
