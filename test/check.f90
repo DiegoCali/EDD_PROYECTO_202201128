@@ -102,5 +102,5 @@ program lists_interaction
     write(unit, *) "}"
     close(unit)
     call execute_command_line('dot -Tsvg graph.dot > output.svg')
-    !call execute_command_line('eog output.svg')
+    call execute_command_line('eog output.svg')
 end program lists_interaction

@@ -91,6 +91,7 @@ contains
             current => current%next
         else 
             print *, "Waiting list is empty"
+            return
         end if
         if (associated(current)) then
             do while (current%id /= this%head%id)

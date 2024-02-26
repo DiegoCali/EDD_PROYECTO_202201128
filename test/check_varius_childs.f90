@@ -9,15 +9,19 @@ program json_childs
     type(json_core)           :: jsonc  
     type(queue), pointer      :: client_queue
     type(stack), pointer      :: images_stack
-    character(:), allocatable :: nombre, p_imgs_str, g_imgs_str 
+    character(:), allocatable :: nombre, p_imgs_str, g_imgs_str
+    character(len=100) 	      :: file_name
 
     integer                   :: i, j, p_imgs, g_imgs, size    
     logical                   :: found
 
     allocate(client_queue)      
-
+    
+    read (*, "(A)") file_name
+	
+    print *, file_name
     call json%initialize()    
-    call json%load(filename='test.json') 
+    call json%load(filename=trim(file_name)) 
 
     call json%info('',n_children=size)
 
@@ -56,7 +60,6 @@ program json_childs
         end if
 
     end do
-
-    call client_queue%self_print()
     call json%destroy() 
+    call client_queue%self_print()
 end program json_childs
