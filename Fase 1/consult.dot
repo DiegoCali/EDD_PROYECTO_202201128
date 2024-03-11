@@ -1,0 +1,10 @@
+ graph H{
+ node [style=filled, shape=box]
+ response [label="
+ID:   1
+Name: Juan Perez
+g_images:   1
+p_images:   2
+Steps:  22
+ "];
+ }

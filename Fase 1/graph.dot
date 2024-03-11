@@ -1,0 +1,282 @@
+ digraph G{
+ subgraph cluster_0{
+ node [style=filled, shape=box];
+ client_18   [label ="Clint White"];
+ rank=same{
+ client_18    -> client_19   };
+ client_19   [label ="Carly White"];
+ rank=same{
+ client_19    -> client_20   };
+ client_20   [label ="Carly Brown"];
+ rank=same{
+ client_20    -> client_21   };
+ client_21   [label ="Diego Smith"];
+ rank=same{
+ client_21    -> client_22   };
+ client_22   [label ="Carly Moore"];
+ rank=same{
+ client_22    -> client_23   };
+ client_23   [label ="Carly Moore"];
+ rank=same{
+ client_23    -> client_24   };
+ client_24   [label ="Carly Brown"];
+ rank=same{
+ client_24    -> client_25   };
+ client_25   [label ="Carly Moore"];
+ rank=same{
+ client_25    -> client_26   };
+ client_26   [label ="Diego Smith"];
+ rank=same{
+ client_26    -> client_27   };
+ client_27   [label ="Ethan White"];
+ rank=same{
+ client_27    -> client_28   };
+ client_28   [label ="Diego White"];
+ rank=same{
+ client_28    -> client_29   };
+ client_29   [label ="Carly Brown"];
+ rank=same{
+ client_29    -> client_30   };
+ client_30   [label ="Ethan White"];
+ rank=same{
+ client_30    -> client_31   };
+ client_31   [label ="Diego Smith"];
+ rank=same{
+ client_31    -> client_32   };
+ client_32   [label ="Ethan Clark"];
+ rank=same{
+ client_32    -> client_33   };
+ client_33   [label ="Diego Moore"];
+ rank=same{
+ client_33    -> client_34   };
+ client_34   [label ="Ethan White"];
+ rank=same{
+ client_34    -> client_35   };
+ client_35   [label ="Anaya White"];
+ rank=same{
+ client_35    -> client_36   };
+ client_36   [label ="Ethan White"];
+ rank=same{
+ client_36    -> client_37   };
+ client_37   [label ="Carly Brown"];
+ rank=same{
+ client_37    -> client_38   };
+ client_38   [label ="Anaya Clark"];
+ rank=same{
+ client_38    -> client_39   };
+ client_39   [label ="Carly Moore"];
+ rank=same{
+ client_39    -> client_40   };
+ client_40   [label ="Ethan Smith"];
+ rank=same{
+ client_40    -> client_41   };
+ client_41   [label ="Diego Clark"];
+ rank=same{
+ client_41    -> client_42   };
+ client_42   [label ="Diego Brown"];
+ rank=same{
+ client_42    -> client_43   };
+ client_43   [label ="Ethan Clark"];
+ rank=same{
+ client_43    -> client_44   };
+ client_44   [label ="Clint Moore"];
+ rank=same{
+ client_44    -> client_45   };
+ client_45   [label ="Ethan Clark"];
+ rank=same{
+ client_45    -> client_46   };
+ client_46   [label ="Carly Smith"];
+ rank=same{
+ client_46    -> client_47   };
+ client_47   [label ="Carly White"];
+ rank=same{
+ client_47    -> client_48   };
+ client_48   [label ="Diego Clark"];
+ rank=same{
+ client_48    -> client_49   };
+ client_49   [label ="Clint Moore"];
+ rank=same{
+ client_49    -> client_50   };
+ client_50   [label ="Anaya Smith"];
+ rank=same{
+ client_50    -> client_51   };
+ client_51   [label ="Carly White"];
+ rank=same{
+ client_51    -> client_52   };
+ client_52   [label ="Carly Clark"];
+ rank=same{
+ client_52    -> client_53   };
+ client_53   [label ="Anaya Clark"];
+ rank=same{
+ client_53    -> client_54   };
+ client_54   [label ="Diego White"];
+ rank=same{
+ client_54    -> client_55   };
+ client_55   [label ="Carly Brown"];
+ rank=same{
+ client_55    -> client_56   };
+ client_56   [label ="Ethan White"];
+ rank=same{
+ client_56    -> client_57   };
+ client_57   [label ="Ethan White"];
+ rank=same{
+ client_57    -> client_58   };
+ client_58   [label ="Diego Moore"];
+ rank=same{
+ client_58    -> client_59   };
+ client_59   [label ="Ethan Smith"];
+ rank=same{
+ client_59    -> client_60   };
+ client_60   [label ="Diego White"];
+ rank=same{
+ client_60    -> client_61   };
+ client_61   [label ="Clint Moore"];
+ rank=same{
+ client_61    -> client_62   };
+ client_62   [label ="Clint White"];
+ rank=same{
+ client_62    -> client_63   };
+ client_63   [label ="Carly Smith"];
+ rank=same{
+ client_63    -> client_64   };
+ client_64   [label ="Clint Clark"];
+ rank=same{
+ client_64    -> client_65   };
+ client_65   [label ="Ethan Brown"];
+ rank=same{
+ client_65    -> client_66   };
+ client_66   [label ="Ethan Smith"];
+ rank=same{
+ client_66    -> client_67   };
+ client_67   [label ="Diego Moore"];
+ rank=same{
+ client_67    -> client_68   };
+ client_68   [label ="Anaya White"];
+ rank=same{
+ client_68    -> client_69   };
+ client_69   [label ="Anaya Brown"];
+ rank=same{
+ client_69    -> client_70   };
+ client_70   [label ="Clint Moore"];
+ rank=same{
+ client_70    -> client_71   };
+ client_71   [label ="Diego White"];
+ label="Cola de Clientes";
+ color=red;
+ }
+ subgraph cluster_1{
+ node [style=filled, shape=box];
+ client_15   [label="Diego Moore"];
+ rank=same{
+ client_15    -> ventanilla_3    
+->  img_57   
+ ->  img_58   
+ ->  img_59   
+ ->  img_60   
+ };
+ ventanilla_3     -> ventanilla_2    ;
+ client_17   [label="Ethan White"];
+ rank=same{
+ client_17    -> ventanilla_2    
+ };
+ ventanilla_2     -> ventanilla_1    ;
+ client_16   [label="Anaya Moore"];
+ rank=same{
+ client_16    -> ventanilla_1    
+->  img_62   
+ ->  img_63   
+ };
+ label="Ventanillas";
+ color=blue;
+ }
+ subgraph cluster_2{
+ node [style=filled, shape=box];
+ rank=same{
+ client_6    [label="Diego Fernandez"];
+ client_6     -> client_8    ;
+ client_8    [label="Elena Gonzalez"];
+ client_8     -> client_7    ;
+ client_7    [label="Sofia Ramirez"];
+ client_7     -> client_9    ;
+ client_9    [label="Antonio Jimenez"];
+ client_9     -> client_11   ;
+ client_11   [label="Carly Moore"];
+ client_11    -> client_10   ;
+ client_10   [label="Ethan Moore"];
+ client_10    -> client_12   ;
+ client_12   [label="Carly Smith"];
+ client_12    -> client_13   ;
+ client_13   [label="Carly Clark"];
+ client_13    -> client_14   ;
+ client_14   [label="Ethan Clark"];
+ client_14    -> client_6    ;
+ };
+ label="Lista de espera";
+ color=green;
+ }
+ subgraph cluster_3{
+ node [style=filled, shape=box];
+ p_impresora;
+ p_impresora -> img_23   ;
+ img_23    -> img_29   ;
+ img_29    -> img_26   ;
+ img_26    -> img_27   ;
+ img_27    -> img_31   ;
+ img_31    -> img_32   ;
+ img_32    -> img_33   ;
+ img_33    -> img_41   ;
+ img_41    -> img_42   ;
+ img_42    -> img_43   ;
+ img_43    -> img_37   ;
+ img_37    -> img_38   ;
+ img_38    -> img_39   ;
+ img_39    -> img_45   ;
+ img_45    -> img_46   ;
+ img_46    -> img_47   ;
+ img_47    -> img_51   ;
+ img_51    -> img_54   ;
+ img_54    -> img_55   ;
+ img_55    -> img_56   ;
+ label="Impresoras";
+ color=purple;
+ }
+ subgraph cluster_3{
+ node [style=filled, shape=box];
+ G_impresora;
+ G_impresora -> img_20   ;
+ img_20    -> img_21   ;
+ img_21    -> img_22   ;
+ img_22    -> img_28   ;
+ img_28    -> img_24   ;
+ img_24    -> img_25   ;
+ img_25    -> img_30   ;
+ img_30    -> img_40   ;
+ img_40    -> img_34   ;
+ img_34    -> img_35   ;
+ img_35    -> img_36   ;
+ img_36    -> img_44   ;
+ img_44    -> img_48   ;
+ img_48    -> img_49   ;
+ img_49    -> img_50   ;
+ img_50    -> img_52   ;
+ img_52    -> img_53   ;
+ label="Impresoras";
+ color=purple;
+ }
+ subgraph cluster_4{
+ node [style=filled, shape=box];
+ client_0    [label ="Juan Perez"];
+ client_0     -> client_2    ;
+ client_2    [label ="Carlos Lopez"];
+ client_2     -> client_1    ;
+ client_1    [label ="Maria Garcia"];
+ client_1     -> client_3    ;
+ client_3    [label ="Laura Rodriguez"];
+ client_3     -> client_5    ;
+ client_5    [label ="Ana Martinez"];
+ client_5     -> client_4    ;
+ client_4    [label ="Pedro Sanchez"];
+ label="Clientes Atendidos";
+ color=red;
+ }
+ }
