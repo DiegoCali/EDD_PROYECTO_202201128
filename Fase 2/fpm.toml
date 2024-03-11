@@ -1,0 +1,18 @@
+name = "default"
+version = "0.1.0"
+license = "license"
+author = "Diego Cali"
+maintainer = "diegocali123@gmail.com"
+copyright = "Copyright 2024, Diego Cali"
+[build]
+auto-executables = true
+auto-tests = true
+auto-examples = true
+module-naming = false
+[install]
+library = false
+[fortran]
+implicit-typing = false
+implicit-external = false
+source-form = "free"
+
