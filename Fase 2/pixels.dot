@@ -1,0 +1,58 @@
+digraph Layer1 {
+Node [shape=box];
+root [label="ROOT", style=filled];
+row_0[label="ROW", style=filled];
+row_0 -> row_1
+row_1[label="ROW", style=filled];
+row_1 -> row_2
+row_2[label="ROW", style=filled];
+row_2 -> row_3
+row_3[label="ROW", style=filled];
+row_3 -> row_4
+row_4[label="ROW", style=filled];
+row_4 -> row_5
+row_5[label="ROW", style=filled];
+row_5 -> row_6
+row_6[label="ROW", style=filled];
+col_0[label="COLUMN", style=filled];
+col_0 -> col_1
+col_1[label="COLUMN", style=filled];
+col_1 -> col_2
+col_2[label="COLUMN", style=filled];
+col_2 -> col_3
+col_3[label="COLUMN", style=filled];
+col_3 -> col_4
+col_4[label="COLUMN", style=filled];
+col_4 -> col_5
+col_5[label="COLUMN", style=filled];
+{ rank=same; root; col_0; col_1; col_2; col_3; col_4; col_5}
+root -> row_0
+root -> col_0
+col_1 -> node_0
+col_3 -> node_2
+col_4 -> node_3
+col_5 -> node_1
+row_2 -> node_1[constraint=false]
+node_1
+[label="X", style=filled, color=black];
+node_1 -> col_5[constraint=false]
+node_1 -> row_2[constraint=false]
+{ rank=same; row_2; node_1}
+row_3 -> node_0[constraint=false]
+node_0
+[label="X", style=filled, color=black];
+node_0 -> col_1[constraint=false]
+node_0 -> node_2[constraint=false]
+node_0 -> row_3[constraint=false]
+node_2
+[label="X", style=filled, color=black];
+node_2 -> col_3[constraint=false]
+node_2 -> node_0[constraint=false]
+{ rank=same; row_3; node_0; node_2}
+row_6 -> node_3[constraint=false]
+node_3
+[label="X", style=filled, color=black];
+node_3 -> col_4[constraint=false]
+node_3 -> row_6[constraint=false]
+{ rank=same; row_6; node_3}
+}

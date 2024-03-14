@@ -1,6 +1,25 @@
 program main
-  use default, only: say_hello
   implicit none
+  integer :: option
+  logical :: running = .true.
 
-  call say_hello()
+  do while (running)
+    print *, "----------Welcome to Pixel Print Studio----------"
+    print *, "Select an option:"
+    print *, "1. Log in"
+    print *, "2. Sign in"
+    print *, "3. Exit"
+    print *, "-------------------------------------------------"
+    read *, option
+    select case (option)
+      case (1)
+        ! call log_in()
+      case (2)
+        ! call sign_in()
+      case (3)
+        running = .false.
+      case default
+        print *, "Invalid option"
+    end select
+  end do  
 end program main
