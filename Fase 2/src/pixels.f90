@@ -5,6 +5,7 @@ module pixels
         integer :: id  
         integer :: x, y
         logical :: on = .FALSE.
+        character(len=7) :: color
         type(pixel), pointer :: up => null()
         type(pixel), pointer :: down => null()        
         type(pixel), pointer :: right => null()
@@ -30,18 +31,19 @@ module pixels
         procedure :: graph_pixels
     end type pixel_matrix
 contains
-    subroutine insert(this, x, y, value)
+    subroutine insert(this, x, y, value, color)
         class(pixel_matrix), intent(inout) :: this
         integer, intent(in) :: x, y
         logical, intent(in) :: value
+        character(len=7), intent(in) :: color
         type(pixel), pointer :: new_pixel
         type(pixel), pointer :: row 
         type(pixel), pointer :: column    
         allocate(new_pixel)
-        new_pixel = pixel(id, x, y, value)
+        new_pixel = pixel(id, x, y, value, color)
         if (.NOT. associated(this%root)) then
             allocate(this%root)
-            this%root = pixel(id, -1, -1, .FALSE.)
+            this%root = pixel(id, -1, -1, .FALSE., color)
         end if
         row => this%search_row(y)
         column => this%search_column(x)        
@@ -105,8 +107,10 @@ contains
         class(pixel_matrix), intent(inout) :: this
         integer, intent(in) :: y
         type(pixel), pointer :: new_row_header
+        character(len=7) :: color
+        color = "#000000"
         allocate(new_row_header)
-        new_row_header = pixel(id, -1, y, .FALSE.)        
+        new_row_header = pixel(id, -1, y, .FALSE., color)        
         call this%insert_in_row(new_row_header, this%root)
     end function insert_row_header
     subroutine insert_in_row(this,  new_node, row_header)
@@ -134,8 +138,10 @@ contains
         class(pixel_matrix), intent(inout) :: this
         integer, intent(in) :: x
         type(pixel), pointer :: new_column_header
+        character(len=7) :: color
+        color = "#000000"
         allocate(new_column_header)
-        new_column_header = pixel(id, x, -1, .FALSE.)    
+        new_column_header = pixel(id, x, -1, .FALSE., color)    
         call this%insert_in_column(new_column_header, this%root)
     end function insert_column_header   
     subroutine insert_in_column(this,  new_node, column_header)
@@ -268,7 +274,7 @@ contains
                         write(unit, '(A, I0, A, I0)') 'col_', actual%x, ' -> node_', actual%down%id
                     end if
                 else 
-                    write(unit, '(A, I0)') 'node_', actual%id, '[label="X", style=filled, color=black];'  
+                    write(unit, '(A, I0, A, A, A)') 'node_', actual%id, '[label="X", style=filled, color="', actual%color, '"];'
                     if (associated(actual%up)) then
                         if (actual%up%y == -1) then
                             write(unit, '(A, I0, A, I0, A)') 'node_', actual%id, ' -> col_', actual%up%x, '[constraint=false]'
