@@ -6,12 +6,15 @@ program main
   do while (running)
     print *, "----------Welcome to Pixel Print Studio----------"
     print *, "Select an option:"
+    print *, "0. Admin"
     print *, "1. Log in"
     print *, "2. Sign in"
     print *, "3. Exit"
     print *, "-------------------------------------------------"
     read *, option
     select case (option)
+      case (0)
+        ! call admin()
       case (1)
         ! call log_in()
       case (2)

@@ -1,0 +1,68 @@
+program jtest
+    use json_module
+    use json_kinds, only: ck
+    use pixels
+    use layers
+    implicit none
+    type(json_file)                        :: json 
+    type(json_value), pointer              :: list_pointer, img, img_att, mat_p, pixel_p, pixel_att
+    type(json_core)                        :: core
+    character(len=100)                     :: filename
+    integer                                :: i, j, size, id_layer, matrix_size, x, y
+    logical                                :: found 
+    character(kind=CK, len=:), allocatable :: color
+    type(layer), pointer                   :: p_layer
+    type(pixel_matrix), pointer            :: p_matrix
+    !read(*, '(A)') filename
+    filename = 'files/layers.json'
+    call json%initialize()
+    call json%load(filename=trim(filename))
+
+    call json%info('', n_children=size)
+
+    call json%get_core(core)
+    call json%get('', list_pointer, found=found)
+
+    do i = 1, size
+        call core%get_child(list_pointer, i, img, found=found) 
+        call core%get_child(img, 'id_capa', img_att, found=found)
+        if (found) then
+            call core%get(img_att, id_layer)
+        end if
+        call core%get_child(img, 'pixeles', img_att, found=found)
+        if (found) then
+            call core%info(img_att, n_children=matrix_size)
+            mat_p => img_att
+            if (found) then
+                allocate(p_matrix)
+                do j = 1, matrix_size
+                    call core%get_child(mat_p, j, pixel_p, found=found)
+                    call core%get_child(pixel_p, 'columna', pixel_att, found=found)
+                    if (found) then
+                        call core%get(pixel_att, x)
+                    end if
+                    call core%get_child(pixel_p, 'fila', pixel_att, found=found)
+                    if (found) then
+                        call core%get(pixel_att, y)
+                    end if
+                    call core%get_child(pixel_p, 'color', pixel_att, found=found)
+                    if (found) then
+                        call core%get(pixel_att, color)
+                    end if
+                    call p_matrix%insert(x, y, .TRUE., color)
+                end do
+            end if
+        end if
+        allocate(p_layer)
+        if (id_layer == 0) then
+            open(1, file='pixels.dot', status='replace')
+            write(1,'(A)') 'digraph Mario {'
+            call p_matrix%graph_pixels(1)
+            write(1,'(A)') '}'
+            print *, 'File made successfully!'
+            close(1)
+            call execute_command_line('dot -Tsvg pixels.dot > out_pixel.svg')
+        end if
+        p_layer = layer(id_layer, p_matrix)
+    end do
+end program jtest

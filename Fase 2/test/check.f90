@@ -16,6 +16,7 @@ program check
 	write(1,'(A)') 'digraph Layer1 {'
 	call matrix%graph_pixels(1)
 	write(1,'(A)') '}'
+	close(1)
 	print *, 'File made successfully!'
 	call execute_command_line('dot -Tsvg pixels.dot > out_pixel.svg')
 end program check

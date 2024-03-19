@@ -267,7 +267,7 @@ contains
                     write(unit, '(A)') 'root -> col_0'
                 else if (actual%x == -1) then
                     if (associated(actual%right)) then
-                        write(unit, '(A, I0, A, I0, A)') 'row_', actual%y, ' -> node_', actual%right%id, '[constraint=false]'
+                        write(unit, '(A, I0, A, I0, A)') 'row_', actual%y, ' -> node_', actual%right%id, ''
                     end if
                 else if (actual%y == -1) then
                     if (associated(actual%down)) then
@@ -277,22 +277,22 @@ contains
                     write(unit, '(A, I0, A, A, A)') 'node_', actual%id, '[label="X", style=filled, color="', actual%color, '"];'
                     if (associated(actual%up)) then
                         if (actual%up%y == -1) then
-                            write(unit, '(A, I0, A, I0, A)') 'node_', actual%id, ' -> col_', actual%up%x, '[constraint=false]'
+                            write(unit, '(A, I0, A, I0, A)') 'node_', actual%id, ' -> col_', actual%up%x, ''
                         else
-                            write(unit, '(A, I0, A, I0, A)') 'node_', actual%id, ' -> node_', actual%up%id, '[constraint=false]'
+                            write(unit, '(A, I0, A, I0, A)') 'node_', actual%id, ' -> node_', actual%up%id, ''
                         end if                        
                     end if
                     if (associated(actual%down)) then
-                        write(unit, '(A, I0, A, I0, A)') 'node_', actual%id, ' -> node_', actual%down%id, '[constraint=false]'
+                        write(unit, '(A, I0, A, I0, A)') 'node_', actual%id, ' -> node_', actual%down%id, ''
                     end if
                     if (associated(actual%right)) then
-                        write(unit, '(A, I0, A, I0, A)') 'node_', actual%id, ' -> node_', actual%right%id, '[constraint=false]'
+                        write(unit, '(A, I0, A, I0, A)') 'node_', actual%id, ' -> node_', actual%right%id, ''
                     end if
                     if (associated(actual%left)) then
                         if (actual%left%x == -1) then
-                            write(unit, '(A, I0, A, I0, A)') 'node_', actual%id, ' -> row_', actual%left%y, '[constraint=false]'
+                            write(unit, '(A, I0, A, I0, A)') 'node_', actual%id, ' -> row_', actual%left%y, ''
                         else
-                            write(unit, '(A, I0, A, I0, A)') 'node_', actual%id, ' -> node_', actual%left%id, '[constraint=false]'
+                            write(unit, '(A, I0, A, I0, A)') 'node_', actual%id, ' -> node_', actual%left%id, ''
                         end if
                     end if
                 end if                
