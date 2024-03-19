@@ -13,6 +13,7 @@ program jtest
     character(kind=CK, len=:), allocatable :: color
     type(layer), pointer                   :: p_layer
     type(pixel_matrix), pointer            :: p_matrix
+    type(layers_tree)                      :: img_layers_tree
     !read(*, '(A)') filename
     filename = 'files/layers.json'
     call json%initialize()
@@ -54,15 +55,10 @@ program jtest
             end if
         end if
         allocate(p_layer)
-        if (id_layer == 0) then
-            open(1, file='pixels.dot', status='replace')
-            write(1,'(A)') 'digraph Mario {'
-            call p_matrix%graph_pixels(1)
-            write(1,'(A)') '}'
-            print *, 'File made successfully!'
-            close(1)
-            call execute_command_line('dot -Tsvg pixels.dot > out_pixel.svg')
-        end if
-        p_layer = layer(id_layer, p_matrix)
+        p_layer = layer(id_layer, matrix_size, p_matrix)
+        call img_layers_tree%add(p_layer)
     end do
+    call img_layers_tree%gen_dot(img_layers_tree%root)
+    close(2)
+    call execute_command_line('dot -Tsvg layers_tree.dot > layers_tree.svg')
 end program jtest
