@@ -13,11 +13,13 @@ module layers
     contains
         procedure :: add
         procedure :: add_recursive
+        procedure :: add_copied_val
         procedure :: preorder
         procedure :: inorder
         procedure :: postorder
         procedure :: gen_dot
         procedure :: gen_dot_recursive
+        procedure :: search
     end type layers_tree
 contains 
     subroutine add(this,  new_layer)
@@ -33,7 +35,7 @@ contains
         class(layers_tree), intent(inout) :: this
         type(layer), pointer, intent(in) :: new_layer
         type(layer), intent(inout) :: tmp
-        if ( new_layer%pixels_count < tmp%pixels_count ) then
+        if ( new_layer%id < tmp%id ) then
             if (associated(tmp%left)) then
                 call this%add_recursive(new_layer, tmp%left)
             else
@@ -47,6 +49,44 @@ contains
             end if            
         end if
     end subroutine add_recursive
+    subroutine add_copied_val(this,  new_layer)
+        class(layers_tree), intent(inout) :: this
+        type(layer), pointer, intent(in) :: new_layer
+        type(layer), pointer :: copied_layer
+        if (.NOT. associated(new_layer)) then
+            print *, 'Error: new_layer is not associated'
+            return
+        end if
+        allocate(copied_layer)
+        copied_layer%id = new_layer%id
+        copied_layer%pixels_count = new_layer%pixels_count
+        copied_layer%layer_pixels = new_layer%layer_pixels
+        if (associated(this%root)) then
+            call this%add_recursive(copied_layer, this%root)
+        else
+            this%root => copied_layer
+        end if        
+    end subroutine add_copied_val
+    function search(this, id_searched) result(tmp)
+        class(layers_tree), intent(inout) :: this
+        integer, intent(in) :: id_searched
+        type(layer), pointer :: tmp
+        type(layer), pointer :: current
+        current => this%root
+        do while (associated(current))
+            if ( id_searched < current%id) then
+                current => current%left
+            end if
+            if ( id_searched > current%id ) then
+                current => current%right
+            end if
+            if (current%id == id_searched) then
+                tmp => current
+                return
+            end if
+        end do
+        tmp => null()  
+    end function search
     subroutine preorder(this, tmp)
         class(layers_tree), intent(inout) :: this        
         type(layer), pointer, intent(in) :: tmp
@@ -80,30 +120,30 @@ contains
         write(*, '(1I3)', advance='no') tmp%id  
         ! print *, ''
     end subroutine postorder
-    subroutine gen_dot(this, tmp)
+    subroutine gen_dot(this, tmp, unit)
         class(layers_tree), intent(inout) :: this        
         type(layer), pointer, intent(in) :: tmp
-
-        open(2, file='layers_tree.dot', status='replace')
-        write(2, '(A)') 'digraph G {'
-        call this%gen_dot_recursive(tmp)
-        write(2, '(A)') '}'
+        integer, intent(in) :: unit
+        write(unit, '(A)') 'digraph layers_tree {'
+        call this%gen_dot_recursive(tmp, unit)
+        write(unit, '(A)') '}'
         
     end subroutine gen_dot
-    subroutine gen_dot_recursive(this, tmp)
+    subroutine gen_dot_recursive(this, tmp, unit)
         class(layers_tree), intent(inout) :: this        
         type(layer), pointer, intent(in) :: tmp
+        integer, intent(in) :: unit
         if (.NOT. associated(tmp)) then
             return
         end if
-        write(2, '(A, I0, A, I0, A)') 'node_',tmp%id, ' [label="Capa ', tmp%id, '"];'
+        write(unit, '(A, I0, A, I0, A)') 'node_',tmp%id, ' [label="Capa ', tmp%id, '"];'
         if (associated(tmp%left)) then
-            write(2, '(A, I0, A, I0, A)') 'node_',tmp%id, ' -> node_',tmp%left%id, ';'
+            write(unit, '(A, I0, A, I0, A)') 'node_',tmp%id, ' -> node_',tmp%left%id, ';'
         end if
         if (associated(tmp%right)) then
-            write(2, '(A, I0, A, I0, A)') 'node_',tmp%id, ' -> node_',tmp%right%id, ';'
+            write(unit, '(A, I0, A, I0, A)') 'node_',tmp%id, ' -> node_',tmp%right%id, ';'
         end if
-        call this%gen_dot_recursive(tmp%left)
-        call this%gen_dot_recursive(tmp%right)        
+        call this%gen_dot_recursive(tmp%left, unit)
+        call this%gen_dot_recursive(tmp%right, unit)        
     end subroutine gen_dot_recursive
 end module layers
