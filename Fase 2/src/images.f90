@@ -5,6 +5,8 @@ module images
         integer :: id
         integer :: height
         type(layers_tree) :: layers
+        type(image), pointer :: left => null()
+        type(image), pointer :: right => null()
     end type image
     type :: image_avl
         type(image), pointer :: root => null()
@@ -16,48 +18,84 @@ module images
         procedure :: drl
         procedure :: drr
         procedure :: get_max
+        procedure :: get_height
+        procedure :: get_dot
+        procedure :: get_dot_rec
     end type image_avl
 contains
     subroutine add_img(this,  new_image)
         class(image_avl), intent(inout) :: this
-        type(image), intent(in) :: new_image
-    
-        
+        type(image), pointer, intent(in) :: new_image
+        if ( associated(this%root) ) then
+            call this%add_img_rec(new_image, this%root)
+        else
+            this%root => new_image
+        end if
     end subroutine add_img
     subroutine add_img_rec(this,  new_image, tmp)
         class(image_avl), intent(inout) :: this
-        type(image), intent(in) :: new_image
+        type(image), pointer, intent(in) :: new_image
         type(image), pointer :: tmp
-    
-        
+        integer :: r, l, m
+        if ( .NOT. associated(tmp) ) then
+            tmp => new_image
+        else if (new_image%id < tmp%id) then
+            call this%add_img_rec(new_image, tmp%left)
+            if ( (this%get_height(tmp%left) - this%get_height(tmp%right)) == 2 ) then
+                if ( new_image%id < tmp%left%id ) then
+                    tmp => this%srl(tmp)
+                else
+                    tmp => this%drl(tmp)
+                end if
+            end if
+        else 
+            call this%add_img_rec(new_image, tmp%right)
+            if ( (this%get_height(tmp%right) - this%get_height(tmp%left)) == 2 ) then
+                if ( new_image%id > tmp%right%id ) then
+                    tmp => this%srr(tmp)
+                else
+                    tmp => this%drr(tmp)
+                end if
+            end if
+        end if
+        r = this%get_height(tmp%right)
+        l = this%get_height(tmp%left)
+        m = this%get_max(r, l)
+        tmp%height = m + 1        
     end subroutine add_img_rec
     function srl(this, t1) result(t2)
-        class(image_avl), intent(inout) :: this
+        class(image_avl), intent(in) :: this
         type(image), pointer, intent(in) :: t1
         type(image), pointer :: t2
-    
-        
+        t2 => t1%left
+        t1%left => t2%right
+        t2%right => t1
+        t1%height = this%get_max(this%get_height(t1%left), this%get_height(t1%right)) + 1
+        t2%height = this%get_max(this%get_height(t2%left), t1%height) + 1
     end function srl
     function srr(this, t1) result(t2)
-        class(image_avl), intent(inout) :: this
+        class(image_avl), intent(in) :: this
         type(image), pointer, intent(in) :: t1
         type(image), pointer :: t2
-    
-        
+        t2 => t1%right
+        t1%right => t2%left
+        t2%left => t1
+        t1%height = this%get_max(this%get_height(t1%left), this%get_height(t1%right)) + 1
+        t2%height = this%get_max(this%get_height(t2%right), t1%height) + 1
     end function srr
     function drl(this, tmp) result(res)
         class(image_avl), intent(in) :: this
         type(image), intent(in), pointer :: tmp
         type(image), pointer :: res
-           
-        
+        tmp%left => this%srr(tmp%left)
+        res => this%srl(tmp)        
     end function drl
     function drr(this, tmp) result(res)
         class(image_avl), intent(in) :: this
         type(image), intent(in), pointer :: tmp
         type(image), pointer :: res
-           
-        
+        tmp%right => this%srl(tmp%right)
+        res => this%srr(tmp)        
     end function drr
     function get_max(this, val1, val2) result(res)
         class(image_avl), intent(in) :: this
@@ -65,4 +103,39 @@ contains
         integer :: res
         res = merge(val1, val2, val1 > val2)   
     end function get_max
+    function get_height(this, tmp) result(res)
+        class(image_avl), intent(in) :: this
+        type(image), intent(in), pointer :: tmp
+        integer :: res 
+        if ( .NOT. associated(tmp) ) then
+            res = -1
+        else
+            res = tmp%height
+        end if   
+    end function get_height
+    subroutine get_dot(this, tmp, unit)
+        class(image_avl), intent(in) :: this
+        type(image), pointer, intent(in) ::  tmp
+        integer, intent(in) ::  unit
+        write(unit, '(A)') 'digraph image_avl {'
+        call this%get_dot_rec(tmp, unit)
+        write(unit, '(A)') '}'
+    end subroutine get_dot
+    subroutine get_dot_rec(this, tmp, unit)
+        class(image_avl), intent(in) :: this
+        type(image), pointer, intent(in) ::  tmp
+        integer, intent(in) ::  unit
+        if ( .NOT. associated(tmp) ) then
+            return
+        end if
+        write(unit, '(A, I0, A, I0, A)') 'node_', tmp%id, '[label="img_', tmp%id, '"];'        
+        if ( associated(tmp%left) ) then
+            write(unit, '(A, I0, A, I0, A)') 'node_', tmp%id, ' -> node_', tmp%left%id, ';'
+        end if
+        if ( associated(tmp%right) ) then
+            write(unit, '(A, I0, A, I0, A)') 'node_', tmp%id, ' -> node_', tmp%right%id, ';'
+        end if
+        call this%get_dot_rec(tmp%left, unit)
+        call this%get_dot_rec(tmp%right, unit)
+    end subroutine get_dot_rec
 end module images

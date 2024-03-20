@@ -16,6 +16,7 @@ program jtest
     type(pixel_matrix), pointer            :: p_matrix
     type(layers_tree)                      :: img_layers_tree
     type(image), pointer                   :: img_p
+    type(image_avl)                        :: imgs_avl
     !read(*, '(A)') filename
     filename = 'files/layers.json'
     call json%initialize()
@@ -84,7 +85,7 @@ program jtest
             end do
         end if
         print *, 'Finished image: ', img_p%id
-        call img_p%layers%inorder(img_p%layers%root)
-        print *, ''
+        call imgs_avl%add_img(img_p)
     end do
+    call json%destroy()
 end program jtest
