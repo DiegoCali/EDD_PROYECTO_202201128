@@ -37,10 +37,10 @@ program client_test
         call clients_db%add_client(client(name_str, dpi, pass_str))
     end do
 
-    open(1, file="clients.dot", status="replace")
+    open(1, file="outputs/clients.dot", status="replace")
     write(1, "(A)") "digraph clients {"
     call clients_db%clients_dot(clients_db%root, 1)
     write(1, "(A)") "}"
     close(1)
-    call execute_command_line("dot -Tsvg clients.dot > clients.svg")
+    call execute_command_line("dot -Tsvg outputs/clients.dot > outputs/clients.svg")
 end program client_test
