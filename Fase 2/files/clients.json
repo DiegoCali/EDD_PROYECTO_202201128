@@ -1,0 +1,107 @@
+[
+    {
+        "dpi": "2897315340401",
+        "nombre_cliente": "Diego Felipe",
+        "password": "123456"
+    },
+    {
+        "dpi": "9021315340402",
+        "nombre_cliente": "Pablo Ricardo",
+        "password": "password"
+    },
+    {
+        "dpi": "2738429463521",
+        "nombre_cliente": "Juan Carlos",
+        "password": "bodoque"
+    },
+    {
+        "dpi": "1234567891011",
+        "nombre_cliente": "Maria Jose",
+        "password": "MM123456%"
+    },
+    {
+        "dpi": "7384273546172",
+        "nombre_cliente": "Luisa Maria",
+        "password": "contrasenia"
+    },
+    {
+        "dpi": "5748293847263",
+        "nombre_cliente": "Carlos Andres",
+        "password": "edd12342"
+    },
+    {
+        "dpi": "8394726345213",
+        "nombre_cliente": "Andres Felipe",
+        "password": "passW678"
+    },
+    {
+        "dpi": "3849273647532",
+        "nombre_cliente": "Maria Fernanda",
+        "password": "mafer5671"
+    },
+    {
+        "dpi": "3726483746542",
+        "nombre_cliente": "Jose Carlos",
+        "password": "josecarlos312"
+    },
+    {
+        "dpi": "8273647162534",
+        "nombre_cliente": "Luisa Maria",
+        "password": "luisa123"
+    },
+    {
+        "dpi": "6473847563523",
+        "nombre_cliente": "Gilberto Jose",
+        "password": "carlos123"
+    },
+    {
+        "dpi": "4738263740293",
+        "nombre_cliente": "Fernando Andres",
+        "password": "fernando123"
+    },
+    {
+        "dpi": "7384947635261",
+        "nombre_cliente": "Uriel Bartolo",
+        "password": "urielB123"
+    },
+    {
+        "dpi": "5102937846234",
+        "nombre_cliente": "Carolina Lucidna",
+        "password": "carolinaLucy123"
+    },
+    {
+        "dpi": "8374625098761",
+        "nombre_cliente": "Andrew Garfield",
+        "password": "andrewG123"
+    },
+    {
+        "dpi": "3689765423615",
+        "nombre_cliente": "Sofia Vergara",
+        "password": "sofiaV123"
+    },
+    {
+        "dpi": "2039874637482",
+        "nombre_cliente": "Jorge Luis",
+        "password": "jorgeL123"
+    },
+    {
+        "dpi": "7856545654219",
+        "nombre_cliente": "Juanito Perez",
+        "password": "juanitoP123"
+    },
+    {
+        "dpi": "1212134234212",
+        "nombre_cliente": "Maria Jose",
+        "password": "mariaJ"
+    },
+    {
+        "dpi": "6765676532342",
+        "nombre_cliente": "Jesus Maria",
+        "password": "Jcpoiqw123"
+    },
+    {
+        "dpi": "1231231231231",
+        "nombre_cliente": "Oscar Maria",
+        "password": "oscarM123"
+    }
+]

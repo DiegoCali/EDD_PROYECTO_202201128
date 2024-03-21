@@ -1,5 +1,6 @@
 module clients
     implicit none
+    integer :: g_id = 1
     type :: client 
         character(:), allocatable :: name
         integer*8 :: dpi 
@@ -9,6 +10,7 @@ module clients
         type(BtreeNode), pointer :: ptr => null()
     end type nodeptr
     type :: BtreeNode
+        integer :: id
         type(client) :: clients(0:5)
         integer :: num = 0
         type(nodeptr) :: links(0:5)
@@ -19,6 +21,7 @@ module clients
         procedure :: add_client
         procedure :: create_node
         procedure :: traversal
+        procedure :: clients_dot
     end type Btree_clients
 contains
     subroutine add_client(this,  new_client)
@@ -27,6 +30,8 @@ contains
         type(client) :: i
         type(BtreeNode), pointer :: child 
         allocate(child)
+        child%id = g_id
+        g_id = g_id + 1
         if ( set_value(new_client, i, this%root, child) ) then
             this%root => this%create_node(i, child)
         end if    
@@ -40,6 +45,8 @@ contains
         integer :: pos
         logical :: retval
         allocate(new_node)
+        new_node%id = g_id
+        g_id = g_id + 1
         if ( .NOT. associated(node) ) then            
             pclient = new_client
             child => null()
@@ -80,6 +87,8 @@ contains
         allocate(retval)
         retval%clients(1) = new_client
         retval%num = 1
+        retval%id = g_id
+        g_id = g_id + 1
         retval%links(0)%ptr => this%root
         retval%links(1)%ptr => child
         do i = 2, 4
@@ -144,6 +153,7 @@ contains
         if ( associated(node) ) then
             write(*,'(A)', advance='no') "["
             i = 0
+            write(*,'(I2, A)', advance='no') node%id, " "
             do while (i < node%num)
                 write(*,'(A, A)', advance='no') node%clients(i+1)%name, ' '
                 i = i + 1
@@ -154,4 +164,27 @@ contains
             write(*,'(A)', advance='no') "]"
         end if    
     end subroutine traversal
+    subroutine clients_dot(this, node,  unit)
+        class(Btree_clients), intent(inout) :: this
+        type(BtreeNode), pointer, intent(in) :: node
+        integer, intent(in) :: unit
+        integer :: i
+        if ( associated(node) ) then
+            i = 0
+            write(unit, '(A, I0, A)', advance='no') 'node_', node%id, ' [label=<<TABLE><TR>'
+            do while(i < node%num)
+                write(unit,'(A, A, A)', advance='no') '<TD>', node%clients(i+1)%name, '</TD>'
+                i = i + 1
+            end do
+            write(unit, '(A)') '</TR></TABLE>>, shape="record"];'
+            do i = 0, node%num
+                call this%clients_dot(node%links(i)%ptr, unit)
+                if ( associated(node%links(i)%ptr) ) then
+                    write(unit, '(A, I0)', advance='no') 'node_', node%id
+                    write(unit, '(A, I0)', advance='no') ' -> node_', node%links(i)%ptr%id
+                    write(unit, '(A)') ' ;'
+                end if
+            end do
+        end if   
+    end subroutine clients_dot
 end module clients
