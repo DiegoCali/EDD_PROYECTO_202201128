@@ -16,7 +16,7 @@ program main
       case (0)
         call admin()
       case (1)
-        ! call log_in()
+        call log_in()
       case (2)
         call sign_in()
       case (3)
@@ -75,6 +75,7 @@ contains
           print *, "Invalid option"
       end select
     end do    
+    print *, "Goodbye!"
   end subroutine admin
   subroutine sign_in()
     implicit none
@@ -94,4 +95,53 @@ contains
     write (*,'(A, I13)') "Your DPI is: ", dpi_num
     print *, "-------------------------------------------------"
   end subroutine sign_in
+  subroutine log_in()
+    implicit none
+    character(20) :: dpi_id
+    character(20) :: password
+    integer*8 :: dpi_num
+    integer :: response
+    logical :: access = .false.
+    do while (.NOT. access)
+      print *, "---------------------Log in----------------------"
+      print *, "Enter your DPI (Or type r to return):"
+      read (*, '(A)') dpi_id  
+      if (trim(dpi_id) == "r") then
+        return
+      end if
+      read (dpi_id, '(I13)') dpi_num
+      print *, "Enter your password:"
+      read (*, '(A)') password
+      if ( trim(password) == "diego213" ) then
+        write (*,'(A, I13)') "Welcome to Pixel Print Studio, ", dpi_num  
+        access = .true.
+      else
+        print *, "Invalid DPI or password"
+      end if
+      print *, "-------------------------------------------------"    
+    end do
+    do while(.TRUE.)
+      print *, "-------------------Main Menu---------------------"
+      print *, "Select an option:"
+      print *, "0. Navigate and manage images"
+      print *, "1. Masive charge of images"
+      print *, "2. Visual Reports"
+      print *, "3. Exit"
+      print *, "-------------------------------------------------"
+      read (*, *) response
+      select case (response)
+        case (0)
+          ! call navigate_and_manage_images()
+        case (1)
+          ! call open_images_file()
+        case (2)
+          ! call visual_reports()
+        case (3)
+          print *, "Returning to the main menu..."
+          return
+        case default
+          print *, "Invalid option"
+      end select      
+    end do
+  end subroutine log_in
 end program main
