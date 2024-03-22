@@ -70,7 +70,9 @@ contains
                 end if
             else
                 aux => this%min_child(temp%right)
-                temp = aux
+                temp%id = aux%id
+                temp%layers_count = aux%layers_count
+                temp%layers = aux%layers
                 temp%right => this%delete_img_rec(temp%right, aux%id)
             end if
         end if
@@ -78,7 +80,6 @@ contains
             new_sub_tree => temp
             return
         end if
-        temp%height = this%get_max(this%get_height(temp%left), this%get_height(temp%right)) + 1
         if ( (this%get_height(temp%left) - this%get_height(temp%right)) == 2 ) then
             if ( this%get_height(temp%left%left) - this%get_height(temp%left%right) == 1 ) then
                 temp => this%srl(temp)
@@ -92,16 +93,17 @@ contains
                 temp => this%drr(temp)
             end if
         end if
+        temp%height = this%get_max(this%get_height(temp%left), this%get_height(temp%right)) + 1
         new_sub_tree => temp
     end function delete_img_rec
     recursive function min_child(this, temp) result(minimal)
         class(image_avl), intent(inout) :: this
-        type(image), pointer, intent(inout) :: temp
+        type(image), pointer, intent(in) :: temp
         type(image), pointer :: minimal
-        do while ( associated(temp%left) )
-            temp => temp%left
-        end do    
         minimal => temp
+        do while ( associated(minimal%left) )
+            minimal => minimal%left
+        end do    
     end function min_child
     subroutine add_layer(this, new_layer)
         class(image), intent(inout) :: this
