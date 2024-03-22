@@ -4,6 +4,7 @@ program jtest
     use pixels
     use layers
     use images
+    use albums
     implicit none
     type(json_file)                        :: json 
     type(json_value), pointer              :: list_pointer, img, img_att, mat_p, pixel_p, pixel_att
@@ -15,8 +16,10 @@ program jtest
     type(layer), pointer                   :: p_layer
     type(pixel_matrix), pointer            :: p_matrix
     type(layers_tree)                      :: img_layers_tree
-    type(image), pointer                   :: img_p
+    type(layers_tree), pointer             :: searched_image_layers
+    type(image), pointer                   :: img_p, searched_image
     type(image_avl)                        :: imgs_avl
+    type(album_list)                       :: albums_list    
     !read(*, '(A)') filename
     filename = 'files/layers.json'
     call json%initialize()
@@ -81,11 +84,33 @@ program jtest
             do j = 1, vector_size
                 call core%get_child(img_att, j, img, found=found)
                 call core%get(img, id_layer)
-                call img_p%layers%add_copied_val(img_layers_tree%search(id_layer))
+                call img_p%add_layer(img_layers_tree%search(id_layer))
             end do
         end if
-        print *, 'Finished image: ', img_p%id
         call imgs_avl%add_img(img_p)
     end do
     call json%destroy()
+    call albums_list%new_album('Album 1')
+    searched_image => imgs_avl%search_img(imgs_avl%root, 3)
+    call albums_list%add_image_to_album(0, searched_image)
+    searched_image => imgs_avl%search_img(imgs_avl%root, 6)
+    call albums_list%add_image_to_album(0, searched_image)
+    call albums_list%new_album('Album 2')
+    searched_image => imgs_avl%search_img(imgs_avl%root, 1)
+    call albums_list%add_image_to_album(1, searched_image)
+    searched_image => imgs_avl%search_img(imgs_avl%root, 2)
+    call albums_list%add_image_to_album(1, searched_image)
+    call albums_list%show_albums()
+    call albums_list%show_album_images(0)
+    call albums_list%show_album_images(1)
+    print *, '----------Removing image 3 from album 1----------'
+    call albums_list%remove_image_from_album(0, 3)
+    call albums_list%show_albums()
+    call albums_list%show_album_images(0)
+    call albums_list%show_album_images(1)
+    print *, '----------Removing album 0 from album list-------'
+    call albums_list%remove_album(0)
+    call albums_list%show_albums()
+    call albums_list%show_album_images(0)
+    call albums_list%show_album_images(1)
 end program jtest

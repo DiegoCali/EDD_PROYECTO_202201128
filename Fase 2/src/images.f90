@@ -4,15 +4,19 @@ module images
     type :: image
         integer :: id
         integer :: height
+        integer :: layers_count = 0
         type(layers_tree) :: layers
         type(image), pointer :: left => null()
         type(image), pointer :: right => null()
+    contains
+        procedure :: add_layer
     end type image
     type :: image_avl
         type(image), pointer :: root => null()
     contains
         procedure :: add_img
         procedure :: add_img_rec
+        procedure :: search_img
         procedure :: srl
         procedure :: srr
         procedure :: drl
@@ -23,6 +27,12 @@ module images
         procedure :: get_dot_rec
     end type image_avl
 contains
+    subroutine add_layer(this, new_layer)
+        class(image), intent(inout) :: this
+        type(layer), pointer, intent(in) :: new_layer
+        call this%layers%add_copied_val(new_layer)
+        this%layers_count = this%layers_count + 1
+    end subroutine add_layer
     subroutine add_img(this,  new_image)
         class(image_avl), intent(inout) :: this
         type(image), pointer, intent(in) :: new_image
@@ -63,6 +73,23 @@ contains
         m = this%get_max(r, l)
         tmp%height = m + 1        
     end subroutine add_img_rec
+    recursive function search_img(this, temp, img_ig) result(img_pointer)
+        class(image_avl), intent(in) :: this
+        integer, intent(in) :: img_ig
+        type(image), pointer, intent(in) :: temp
+        type(image), pointer :: img_pointer
+        if ( .not. associated(temp) ) then
+            img_pointer => null()
+            return
+        end if
+        if ( img_ig == temp%id ) then
+            img_pointer => temp
+        else if ( img_ig < temp%id ) then
+            img_pointer => this%search_img(temp%left, img_ig)
+        else
+            img_pointer => this%search_img(temp%right, img_ig)
+        end if
+    end function search_img
     function srl(this, t1) result(t2)
         class(image_avl), intent(in) :: this
         type(image), pointer, intent(in) :: t1
