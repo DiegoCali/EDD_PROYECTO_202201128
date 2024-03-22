@@ -22,11 +22,87 @@ module images
         procedure :: drl
         procedure :: drr
         procedure :: get_max
+        procedure :: min_child
         procedure :: get_height
         procedure :: get_dot
         procedure :: get_dot_rec
+        procedure :: delete_img
+        procedure :: delete_img_rec
     end type image_avl
 contains
+    subroutine delete_img(this, img_id)
+        class(image_avl), intent(inout) :: this
+        integer, intent(in) :: img_id
+        if ( associated(this%root) ) then
+            this%root => this%delete_img_rec(this%root, img_id)
+        else 
+            print *, 'Trer is empty!'
+        end if
+    end subroutine delete_img
+    recursive function delete_img_rec(this, temp, img_id) result(new_sub_tree)
+        class(image_avl), intent(inout) :: this
+        type(image), pointer, intent(inout) :: temp
+        integer, intent(in) :: img_id
+        type(image), pointer :: aux
+        type(image), pointer :: new_sub_tree        
+        if ( .not. associated(temp) ) then
+            new_sub_tree => null()
+            return
+        end if
+
+        if ( img_id < temp%id ) then
+            temp%left => this%delete_img_rec(temp%left, img_id)
+        else if ( img_id > temp%id ) then
+            temp%right => this%delete_img_rec(temp%right, img_id)
+        else 
+            if ( .not.associated(temp%left) .or. .not.associated(temp%right) ) then
+                aux => null()
+                if ( associated(temp%left) ) then
+                    aux => temp%left
+                else 
+                    aux => temp%right
+                end if
+                if ( .not.associated(aux) ) then
+                    aux => temp
+                    temp => null()
+                else
+                    temp => aux
+                end if
+            else
+                aux => this%min_child(temp%right)
+                temp = aux
+                temp%right => this%delete_img_rec(temp%right, aux%id)
+            end if
+        end if
+        if ( .not.associated(temp) ) then
+            new_sub_tree => temp
+            return
+        end if
+        temp%height = this%get_max(this%get_height(temp%left), this%get_height(temp%right)) + 1
+        if ( (this%get_height(temp%left) - this%get_height(temp%right)) == 2 ) then
+            if ( this%get_height(temp%left%left) - this%get_height(temp%left%right) == 1 ) then
+                temp => this%srl(temp)
+            else
+                temp => this%drl(temp)
+            end if
+        else if ( (this%get_height(temp%right) - this%get_height(temp%left)) == 2 ) then
+            if ( this%get_height(temp%right%right) - this%get_height(temp%right%left) == 1 ) then
+                temp => this%srr(temp)
+            else
+                temp => this%drr(temp)
+            end if
+        end if
+        new_sub_tree => temp
+    end function delete_img_rec
+    recursive function min_child(this, temp) result(minimal)
+        class(image_avl), intent(inout) :: this
+        type(image), pointer, intent(inout) :: temp
+        type(image), pointer :: minimal
+        do while ( associated(temp%left) )
+            temp => temp%left
+        end do    
+        minimal => temp
+    end function min_child
     subroutine add_layer(this, new_layer)
         class(image), intent(inout) :: this
         type(layer), pointer, intent(in) :: new_layer
