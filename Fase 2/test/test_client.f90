@@ -3,6 +3,7 @@ program client_test
     use json_module
     implicit none 
     type(Btree_clients) :: clients_db
+    type(client), pointer :: client_p, new_client
     type(json_file) :: json
     type(json_value), pointer :: list_p, preson_p, attr_p
     type(json_core) :: jsonc 
@@ -24,7 +25,7 @@ program client_test
         call jsonc%get_child(preson_p, "dpi", attr_p, found=found)
         if (found) then
             call jsonc%get(attr_p, dpi_str)
-            read(dpi_str, *) dpi
+            read(dpi_str, '(I13)') dpi
         end if
         call jsonc%get_child(preson_p, "nombre_cliente", attr_p, found=found)
         if (found) then
@@ -37,6 +38,11 @@ program client_test
         call clients_db%add_client(client(name_str, dpi, pass_str))
     end do
 
+    client_p => clients_db%search_client(clients_db%root, 2897315340401_8)
+    if ( associated(client_p) ) then
+        print *, 'Found client:', client_p%name
+    end if
+    call clients_db%delete_client(1231231231231_8)
     open(1, file="outputs/clients.dot", status="replace")
     write(1, "(A)") "digraph clients {"
     call clients_db%clients_dot(clients_db%root, 1)

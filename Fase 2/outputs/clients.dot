@@ -1,9 +1,7 @@
 digraph clients {
 node_81 [label=<<TABLE><TR><TD>Fernando Andres</TD></TR></TABLE>>, shape="record"];
 node_16 [label=<<TABLE><TR><TD>Maria Jose</TD><TD>Diego Felipe</TD></TR></TABLE>>, shape="record"];
-node_3 [label=<<TABLE><TR><TD>Maria Jose</TD><TD>Oscar Maria</TD></TR></TABLE>>, shape="record"];
-node_16 -> node_3 ;
-node_79 [label=<<TABLE><TR><TD>Jorge Luis</TD><TD>Juan Carlos</TD></TR></TABLE>>, shape="record"];
+node_79 [label=<<TABLE><TR><TD>Maria Jose</TD><TD>Jorge Luis</TD><TD>Juan Carlos</TD></TR></TABLE>>, shape="record"];
 node_16 -> node_79 ;
 node_14 [label=<<TABLE><TR><TD>Sofia Vergara</TD><TD>Jose Carlos</TD><TD>Maria Fernanda</TD></TR></TABLE>>, shape="record"];
 node_16 -> node_14 ;

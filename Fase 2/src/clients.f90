@@ -5,7 +5,7 @@ module clients
     integer :: g_id = 1
     type :: client 
         character(:), allocatable :: name
-        integer*8 :: dpi 
+        integer(kind=8) :: dpi 
         character(:), allocatable :: password
         type(image_avl) :: all_images
         type(album_list) :: list_albums
@@ -18,11 +18,16 @@ module clients
         type(client) :: clients(0:5)
         integer :: num = 0
         type(nodeptr) :: links(0:5)
+    contains 
+        procedure :: find
     end type BtreeNode
     type :: Btree_clients
         type(BtreeNode), pointer :: root => null()
     contains
         procedure :: add_client
+        procedure :: search_client
+        procedure :: delete_client
+        procedure :: delete_client_rec
         procedure :: create_node
         procedure :: traversal
         procedure :: clients_dot
@@ -191,4 +196,104 @@ contains
             end do
         end if   
     end subroutine clients_dot
+    recursive function search_client(this, node, client_id) result(fclient)
+        class(Btree_clients), intent(inout) :: this
+        type(BtreeNode), pointer, intent(in) :: node
+        type(client), pointer :: fclient
+        integer(kind=8), intent(in) :: client_id
+        integer :: i
+        fclient => null()
+        if ( associated(node) ) then
+            i = 0
+            do while( i < node%num)
+                if ( node%clients(i+1)%dpi == client_id ) then
+                    fclient => node%clients(i+1)
+                    return
+                end if
+                i = i + 1
+            end do
+            do i = 0, node%num
+                fclient => this%search_client(node%links(i)%ptr, client_id)
+                if ( associated(fclient) ) then
+                    return
+                end if
+            end do
+        end if        
+    end function search_client
+    subroutine delete_client(this, client_id)
+        class(Btree_clients), intent(inout) :: this
+        integer(kind=8), intent(in) :: client_id 
+        if ( .not. associated(this%root) ) then
+            print *, "No clients to delete"
+            return
+        end if
+        call this%delete_client_rec(this%root, this%root, client_id)        
+    end subroutine delete_client
+    subroutine delete_client_rec(this, father, temp, client_id)
+        class(Btree_clients), intent(inout) :: this
+        type(BtreeNode), pointer, intent(inout) :: temp
+        type(BtreeNode), pointer, intent(inout) :: father
+        type(client), pointer :: aux 
+        integer(kind=8), intent(in) :: client_id   
+        integer :: i, pos 
+        logical :: use_father
+        if ( .not.associated(temp) ) then
+            return
+        end if
+        if (this%root%id == father%id) then
+            use_father = .false.
+        else
+            use_father = .true.
+        end if
+        if ( temp%find(client_id) ) then
+            pos = 0
+            do while ( temp%clients(pos+1)%dpi /= client_id )
+                pos = pos + 1
+            end do
+            pos = pos + 1
+            do i = pos, temp%num
+                if ( i == temp%num ) then
+                    temp%clients(i) = temp%clients(0)
+                else
+                    temp%clients(i) = temp%clients(i+1)
+                end if
+            end do
+            temp%num = temp%num - 1
+            if ( temp%num < 2 ) then
+                if (associated(temp%links(pos)%ptr) ) then
+                    temp%num = temp%num + 1
+                    temp%clients(temp%num) = temp%links(pos)%ptr%clients(1) 
+                    call this%delete_client_rec(temp, temp%links(pos)%ptr, temp%links(pos)%ptr%clients(1)%dpi)
+                else if (use_father) then
+                    ! Only node ascends and father first node goes down
+                    allocate(aux)
+                    aux = father%clients(1)
+                    father%clients(1) = temp%clients(1)
+                    deallocate(temp)
+                    call insert_node(aux, 0, father%links(1)%ptr, father%links(1)%ptr%links(0)%ptr)
+                else
+                    print *, "Deleting root node"
+                end if
+            end if
+        else
+            do i = 0, temp%num
+                call this%delete_client_rec(temp, temp%links(i)%ptr, client_id)
+            end do
+        end if
+    end subroutine delete_client_rec 
+    function find(this,  client_id) result(retval)
+        class(BtreeNode), intent(in) :: this
+        integer(kind=8), intent(in) :: client_id
+        logical :: retval
+        integer :: i
+        retval = .false.
+        i = 0
+        do while (i < this%num)
+            if ( this%clients(i+1)%dpi == client_id ) then
+                retval = .true.
+                return
+            end if
+            i = i + 1
+        end do        
+    end function find
 end module clients
