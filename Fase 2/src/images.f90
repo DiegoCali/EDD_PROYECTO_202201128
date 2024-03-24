@@ -28,6 +28,9 @@ module images
         procedure :: get_dot_rec
         procedure :: delete_img
         procedure :: delete_img_rec
+        procedure :: print_images
+        procedure :: gen_tree_subtree
+        procedure :: gen_img_traversal
     end type image_avl
 contains
     subroutine delete_img(this, img_id)
@@ -243,4 +246,66 @@ contains
         call this%get_dot_rec(tmp%left, unit)
         call this%get_dot_rec(tmp%right, unit)
     end subroutine get_dot_rec
+    subroutine print_images(this, temp)
+        class(image_avl), intent(in) :: this
+        type(image), pointer, intent(in) :: temp
+        if ( .not. associated(temp) ) then
+            return
+        end if
+        call this%print_images(temp%left)
+        write(*, '(I0, A, I0, A)') temp%id, '. img (', temp%layers_count, ')'
+        call this%print_images(temp%right)
+    end subroutine print_images
+    subroutine gen_tree_subtree(this, id_img, unit)
+        class(image_avl), intent(inout) :: this
+        type(image), pointer :: current 
+        type(layer), pointer :: current_layer
+        integer, intent(in) :: id_img
+        integer, intent(in) :: unit
+        logical :: found = .false.
+        current => this%root
+        if ( .not. associated(current) ) then
+            print *, 'Coud not generate tree... unable to find image with id: ', id_img
+            return
+        end if
+        write(unit, '(A)') 'digraph image_tree_and_subtree {'
+        write(unit, '(A, I0, A, I0, A)') 'img_node_', current%id, '[label="img_', current%id, '"];'
+        do while (associated(current) .and. .not. found)
+            if ( associated(current%left) ) then
+                write(unit, '(A, I0, A, I0, A)') 'img_node_', current%left%id, '[label="img_', current%left%id, '"];'
+                write(unit, '(A, I0, A, I0, A)') 'img_node_', current%id, ' -> img_node_', current%left%id, ';'
+            end if
+            if ( associated(current%right) ) then
+                write(unit, '(A, I0, A, I0, A)') 'img_node_', current%right%id, '[label="img_', current%right%id, '"];'
+                write(unit, '(A, I0, A, I0, A)') 'img_node_', current%id, ' -> img_node_', current%right%id, ';'
+            end if
+            if ( current%id == id_img ) then
+                found = .true.                
+            end if
+            if ( id_img < current%id ) then
+                current => current%left
+            else
+                current => current%right
+            end if
+        end do
+        current_layer => current%layers%root
+        write(unit, '(A, I0, A, I0, A)') 'img_node_', id_img, ' -> layer_', current_layer%id, ';'
+        do while ( associated(current_layer) )
+            write(unit, '(A, I0, A, I0, A)') 'layer_', current_layer%id, '[label="layer_', current_layer%id, '"];'
+            if ( associated(current_layer%left) ) then
+                write(unit, '(A, I0, A, I0, A)') 'layer_', current_layer%id, ' -> layer_', current_layer%left%id, ';'
+            end if
+            if ( associated(current_layer%right) ) then
+                write(unit, '(A, I0, A, I0, A)') 'layer_', current_layer%id, ' -> layer_', current_layer%right%id, ';'
+            end if
+            current_layer => current_layer%right
+        end do
+        write(unit, '(A)') '}'
+    end subroutine gen_tree_subtree
+    subroutine gen_img_traversal(this, unit, id_img)
+        class(image_avl), intent(inout) :: this
+        integer, intent(in) :: unit
+        integer, intent(in) :: id_img
+        
+    end subroutine gen_img_traversal
 end module images

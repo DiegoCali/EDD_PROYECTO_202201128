@@ -105,9 +105,8 @@ contains
             return
         end if
         call this%inorder(tmp%left)
-        write(*, '(1I3)', advance='no') tmp%id
+        write(*, '(I0, A, I0, A)') tmp%id, '. layer (', tmp%pixels_count, ')'
         call this%inorder(tmp%right)   
-        ! print *, ''
     end subroutine inorder
     subroutine postorder(this, tmp)
         class(layers_tree), intent(inout) :: this        
