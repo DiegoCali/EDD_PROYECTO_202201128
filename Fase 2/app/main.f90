@@ -69,23 +69,23 @@ contains
       select case (op)
         case (0)
           print *, "Generating 'clients.dot' file..."
-          open(1, file='clients.dot', status='replace')
+          open(1, file='outputs/clients.dot', status='replace')
           write(1, '(A)') "digraph clients {"
           call global_clients%clients_dot(global_clients%root, 1)
           write(1, "(A)") "}"
           close(1)
           print *, "File 'clients.dot' generated!, generating 'clients.svg' file..." 
-          call execute_command_line("dot -Tsvg clients.dot -o clients.svg")
+          call execute_command_line("dot -Tsvg outputs/clients.dot -o outputs/clients.svg")
           print *, "File 'clients.svg' generated!"
         case (1)
-          ! call clients_operations()
+          call clients_operations()
         case (2)
-          print *, "Be sure to charge the file 'clients.json' in the files folder"
+          print *, "Be sure to charge the file 'clients.json' in the 'files' folder"
           print *, "Charging..."
           call file_handler%initialize_admin()
           print *, "Charged successfully!"
         case (3)
-          ! call reports()
+          ! call admin_reports()
         case (4)
           run = .false.
           print *, "Returning to the main menu..."
@@ -122,6 +122,7 @@ contains
     integer*8 :: dpi_num
     integer :: response
     logical :: access = .false.
+    type(client), pointer :: temp
     do while (.NOT. access)
       print *, "---------------------Log in----------------------"
       print *, "Enter your DPI (Or type r to return):"
@@ -132,11 +133,17 @@ contains
       read (dpi_id, '(I13)') dpi_num
       print *, "Enter your password:"
       read (*, '(A)') password
-      if ( trim(password) == "diego213" ) then
-        write (*,'(A, I13)') "Welcome to Pixel Print Studio, ", dpi_num  
-        access = .true.
-      else
-        print *, "Invalid DPI or password"
+      temp => global_clients%search_client(global_clients%root, dpi_num)
+      if ( associated(temp) ) then
+        if ( trim(password) == temp%password ) then
+          write (*,'(A, I13, A, A)') "Welcome to Pixel Print Studio, ", dpi_num, ": ", temp%name
+          access = .true.
+          actual_client => temp
+        else
+          print *, "Invalid password"
+        end if
+      else 
+        print *, "Invalid DPI or password, could not find the user in the database..."
       end if
       print *, "-------------------------------------------------"    
     end do
@@ -151,9 +158,14 @@ contains
       read (*, *) response
       select case (response)
         case (0)
-          ! call navigate_and_manage_images()
+          call images_operations()
         case (1)
-          ! call open_images_file()
+          print *, "Be sure to charge the files 'layers.json', 'images.json' and 'albums.json' in the 'files' folder"
+          print *, "Setting client..."
+          call file_handler%set_user(actual_client)
+          print *, "Charging files..."
+          call file_handler%initialize_user()
+          print *, "Charged successfully!"
         case (2)
           ! call visual_reports()
         case (3)
@@ -163,6 +175,193 @@ contains
           print *, "Invalid option"
       end select      
     end do
-    print *, "See ya!"
+    print *, "-------------------------------------------------"
   end subroutine log_in
+  subroutine images_operations()
+    implicit none
+    integer :: op
+    logical :: run = .true.
+    do while (run)
+      print *, "-----------------Images operations----------------"
+      print *, "Select an option:"
+      print *, "0. Insert new image"
+      print *, "1. Navigate all images"
+      print *, "2. Navigate by album"
+      print *, "3. Exit"
+      print *, "-------------------------------------------------"
+      read *, op
+      select case (op)
+        case (0)
+          call insert_image()
+        case (1)
+          call navigate_images()
+        case (2)
+          ! call navigate_albums()
+        case (3)
+          run = .false.
+          print *, "Returning to the main menu..."
+        case default
+          print *, "Invalid option"
+      end select
+    end do
+    print *, "-------------------------------------------------"
+  end subroutine images_operations
+  subroutine navigate_images()
+    implicit none
+    integer :: image_id, op, layer_id
+    type(layer), pointer :: temp_layer
+    type(image), pointer :: temp_img
+    logical :: run = .true.
+    do while (run)
+      print *, "-----------------Navigate images-----------------"
+      print *, "Please select any of the following images:"
+      call actual_client%all_images%print_images(actual_client%all_images%root)
+      print *, "Enter the id of the image:"
+      read (*, *) image_id
+      temp_img => actual_client%all_images%search_img(actual_client%all_images%root, image_id)
+      if ( associated(temp_img) ) then
+        print *, "Image found!"
+        print *, "-------------------------------------------------"
+        print *, "Select an option:"
+        print *, "0. Generate image"
+        print *, "1. Generate layer matrix"
+        print *, "2. Exit"
+        read (*, *) op
+        select case (op)
+          case (0)
+            open(1, file='outputs/image.dot', status='replace')
+            write(1, '(A)') "digraph image {"
+            call temp_img%layers%traverse_matrix()
+            call temp_img%layers%global_matrix%global_m_dot(1)
+            write(1, "(A)") "}"
+            close(1)
+            print *, "File 'image.dot' generated!, generating 'image.svg' file..."
+            call execute_command_line("dot -Tsvg outputs/image.dot -o outputs/image.svg")
+            print *, "File 'image.svg' generated!"
+          case (1)
+            print *, "Select layer to graph:"
+            call temp_img%layers%inorder(temp_img%layers%root)
+            read (*, *) layer_id
+            temp_layer => temp_img%layers%search(layer_id)  
+            if ( associated(temp_layer) ) then
+              print *, "Generating 'single_layer.dot' file..."
+              open(1, file='outputs/single_layer.dot', status='replace')
+              call temp_layer%layer_pixels%graph_pixels(1)
+              close(1)
+              print *, "File 'single_layer.dot' generated!, generating 'single_layer.svg' file..."
+              call execute_command_line("dot -Tsvg outputs/single_layer.dot -o outputs/single_layer.svg")
+              print *, "File 'single_layer.svg' generated!"
+            else
+              print *, "Layer not found..."
+            end if            
+          case (2)
+            print *, "Returning to the images menu..."
+            run = .false.
+        end select
+        print *, "-------------------------------------------------"
+      else
+        print *, "Image not found... try again!"
+      end if
+    end do
+    print *, "-------------------------------------------------"
+  end subroutine navigate_images
+  subroutine insert_image()
+    implicit none
+    integer :: id_img, id_layer
+    type(image), pointer :: temp_img
+    type(layer), pointer :: temp_layer
+    type(client), pointer :: temp
+    character(1) :: response
+    logical :: finished_layers = .false.
+    print *, "-----------------Insert image-------------------"
+    call actual_client%all_images%print_images(actual_client%all_images%root)
+    print *, "Enter an id for the new image [Do not repeat id's]:"
+    read (*, *) id_img
+    allocate(temp_img)
+    temp_img%id = id_img
+    do while (.not. finished_layers)
+      call actual_client%all_layers%inorder(actual_client%all_layers%root)
+      print *, "Enter the id of the layer [Do not repeat id's, type -1 to terminate]:"
+      read (*, *) id_layer
+      if (id_layer == -1) then
+        finished_layers = .true.
+      else
+        temp_layer => actual_client%all_layers%search(id_layer)
+        call temp_img%layers%add_copied_val(temp_layer)
+      end if
+    end do
+    call actual_client%all_images%add_img(temp_img)
+    print *, "Image added successfully!"
+    print *, "Do you wish to generate the image? [y/n]"
+    read (*, '(A)') response
+    if (response == "y") then
+      open(1, file='outputs/image.dot', status='replace')
+      write(1, '(A)') "digraph image {"
+      call temp_img%layers%traverse_matrix()
+      call temp_img%layers%global_matrix%global_m_dot(1)
+      write(1, "(A)") "}"
+      close(1)
+      print *, "File 'image.dot' generated!, generating 'image.svg' file..."
+      call execute_command_line("dot -Tsvg outputs/image.dot -o outputs/image.svg")
+      print *, "File 'image.svg' generated!"
+    end if
+    print *, "-------------------------------------------------"
+  end subroutine insert_image
+  subroutine clients_operations()
+    implicit none
+    integer :: op
+    character(20) :: username, password, dpi_str
+    type(client), pointer :: temp
+    integer*8 :: dpi_num
+    logical :: run = .true.
+    do while (run)
+      print *, "-----------------Users operations----------------"
+      print *, "Select an option:"
+      print *, "0. Insert user"
+      print *, "1. Remove user"
+      print *, "2. Modify user"
+      print *, "3. Exit"
+      print *, "-------------------------------------------------"
+      read *, op
+      select case (op)
+        case (0)
+          print *, "Enter the username:"
+          read (*, '(A)') username
+          print *, "Enter the password:"
+          read (*, '(A)') password
+          print *, "Enter the DPI:"
+          read (*, '(A)') dpi_str
+          read (dpi_str, '(I13)') dpi_num
+          call global_clients%add_client(client(trim(username), dpi_num, trim(password)))
+        case (1)
+          print *, "Enter the DPI of the user to remove:"
+          read (*, '(A)') dpi_str
+          read (dpi_str, '(I13)') dpi_num
+          call global_clients%delete_client(dpi_num)
+          print *, "User removed successfully!"
+        case (2)
+          print *, "Enter the DPI of the user to modify:"
+          read (*, '(A)') dpi_str
+          read (dpi_str, '(I13)') dpi_num
+          print *, "Enter the new username:"
+          read (*, '(A)') username
+          print *, "Enter the new password:"
+          read (*, '(A)') password
+          temp => global_clients%search_client(global_clients%root, dpi_num)
+          if ( associated(temp) ) then
+            temp%name = trim(username)
+            temp%password = trim(password)
+            print *, "User modified successfully!"
+          else
+            print *, "User not found..."
+          end if
+        case (3)
+          run = .false.
+          print *, "Returning to the admin menu..."
+        case default
+          print *, "Invalid option"
+      end select
+    end do
+    print *, "-------------------------------------------------"
+  end subroutine clients_operations
 end program main
