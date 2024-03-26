@@ -36,10 +36,11 @@ contains
   subroutine admin()
     implicit none
     integer :: op
-    logical :: run = .true.
-    logical :: access = .false.
+    logical :: run
+    logical :: access
     character(20) :: password
-
+    access = .false.
+    run = .true.
     do while (.not. access)
       print *, "------------------Admin log in-------------------"
       print *, "Enter your password:"
@@ -121,7 +122,8 @@ contains
     character(20) :: password
     integer*8 :: dpi_num
     integer :: response
-    logical :: access = .false.
+    logical :: access
+    access = .false.
     type(client), pointer :: temp
     do while (.NOT. access)
       print *, "---------------------Log in----------------------"
@@ -167,7 +169,7 @@ contains
           call file_handler%initialize_user()
           print *, "Charged successfully!"
         case (2)
-          ! call visual_reports()
+          call visual_reports()
         case (3)
           print *, "Returning to the main menu..."
           return
@@ -177,10 +179,68 @@ contains
     end do
     print *, "-------------------------------------------------"
   end subroutine log_in
+  subroutine visual_reports()
+    implicit none
+    integer :: op, img_id
+    logical :: run
+    run = .true.
+    do while (run)
+      print *, "-------------------------------------------------"
+      print *, "Select an option:"
+      print *, "0. Graph of image avl"
+      print *, "1. Graph layer bst"
+      print *, "2. Graph albums"
+      print *, "3. Graph image and layer tree"
+      print *, "4. Exit"
+      read (*, *) op
+      select case (op)
+        case (0)
+          print *, "Generating images avl..."
+          open(1, file='outputs/image_avl.dot', status='replace')
+          call actual_client%all_images%get_dot(actual_client%all_images%root, 1)
+          close(1)
+          print *, "File 'image_avl.dot' generated!, generating 'image_avl.svg' file..."
+          call execute_command_line("dot -Tsvg outputs/image_avl.dot -o outputs/image_avl.svg")
+          print *, "File 'image_avl.svg' generated!"
+        case (1)
+          print *, "Generating layers bst..."
+          open(1, file='outputs/layers_bst.dot', status='replace')
+          call actual_client%all_layers%gen_dot(actual_client%all_layers%root, 1)
+          close(1)
+          print *, "File 'layers_bst.dot' generated!, generating 'layers_bst.svg' file..."
+          call execute_command_line("dot -Tsvg outputs/layers_bst.dot -o outputs/layers_bst.svg")
+          print *, "File 'layers_bst.svg' generated!"
+        case (2)
+          print *, "Generating albums graph..."
+          open(1, file='outputs/albums_list.dot', status='replace')
+          call actual_client%list_albums%gen_album_graph(1)
+          close(1)
+          print *, "File 'albums_list.dot' generated!, generating 'albums_list.svg' file..."
+          call execute_command_line("dot -Tsvg outputs/albums_list.dot -o outputs/albums_list.svg")
+          print *, "File 'albums_list.svg' generated!"
+        case (3)
+          print *, "Select a concrete image:"
+          call actual_client%all_images%print_images(actual_client%all_images%root)
+          read (*, *) img_id
+          print *, "Generating image and layer tree..."
+          open(1, file='outputs/image_layer_tree.dot', status='replace')
+          call actual_client%all_images%gen_tree_subtree(img_id, 1)
+          close(1)
+          print *, "File 'image_layer_tree.dot' generated!, generating 'image_layer_tree.svg' file..."
+          call execute_command_line("dot -Tsvg outputs/image_layer_tree.dot -o outputs/image_layer_tree.svg")
+          print *, "File 'image_layer_tree.svg' generated!"
+        case (4)
+          run = .false.
+          print *, "Returning to main menu..."
+      end select
+    end do
+    print *, "-------------------------------------------------"
+  end subroutine visual_reports
   subroutine images_operations()
     implicit none
     integer :: op
-    logical :: run = .true.
+    logical :: run
+    run = .true.
     do while (run)
       print *, "-----------------Images operations----------------"
       print *, "Select an option:"
@@ -238,7 +298,8 @@ contains
     integer :: album_id, op
     type(album), pointer :: temp_album
     character(1) :: response
-    logical :: run = .true.
+    logical :: run
+    run = .true.
     do while (run)
       print *, "-----------------Navigate albums-----------------"
       print *, "Please select any of the following albums:"
@@ -264,7 +325,8 @@ contains
     integer :: image_id, op, layer_id
     type(layer), pointer :: temp_layer
     type(image), pointer :: temp_img
-    logical :: run = .true.
+    logical :: run 
+    run = .true.
     do while (run)
       print *, "-----------------Navigate images-----------------"
       print *, "Please select any of the following images:"
@@ -327,7 +389,8 @@ contains
     type(layer), pointer :: temp_layer
     type(client), pointer :: temp
     character(1) :: response
-    logical :: finished_layers = .false.
+    logical :: finished_layers 
+    finished_layers = .false.
     print *, "-----------------Insert image-------------------"
     call actual_client%all_images%print_images(actual_client%all_images%root)
     print *, "Enter an id for the new image [Do not repeat id's]:"
@@ -368,7 +431,8 @@ contains
     character(20) :: username, password, dpi_str
     type(client), pointer :: temp
     integer*8 :: dpi_num
-    logical :: run = .true.
+    logical :: run 
+    run = .true.
     do while (run)
       print *, "-----------------Users operations----------------"
       print *, "Select an option:"

@@ -34,8 +34,46 @@ module albums
             procedure :: remove_image_from_album
             procedure :: show_albums
             procedure :: show_album_images
+            procedure :: gen_album_graph
     end type album_list
 contains
+    subroutine gen_album_graph(this, unit)
+        class(album_list), intent(in) :: this
+        integer, intent(in) :: unit
+        type(album), pointer :: current
+        type(img_node), pointer :: current_img
+        integer :: i
+        current => this%head
+        write (unit, '(A)') 'digraph albums_graph {'
+        do while (associated(current))
+            write (unit, '(A, I0, A, A, A)') 'album_', current%id, ' [label="', current%name, '", shape=box];'
+            current_img => current%head
+            if ( associated(current_img) ) then
+                write (unit, '(A, I0, A, I0, A)') 'album_', current%id, ' -> img_', current_img%id, ';'
+            end if
+            do while (associated(current_img))
+                write (unit, '(A, I0, A, I0, A)') 'img_', current_img%id, ' [label="img ', current_img%id, '", shape=circle];'
+                if (associated(current_img%next)) then
+                    write (unit, '(A, I0, A, I0, A)') 'img_', current_img%id, ' -> img_', current_img%next%id, ';'
+                end if
+                current_img => current_img%next
+            end do
+            current => current%next
+        end do
+        write (unit, '(A)') '{ rank=same;'
+        current => this%head
+        do while (associated(current))
+            if (associated(current%next)) then
+                write (unit, '(A, I0, A, I0, A)') 'album_', current%id, ' -> album_', current%next%id, ';'
+            end if
+            if (associated(current%prev)) then
+                write (unit, '(A, I0, A, I0, A)') 'album_', current%id, ' -> album_', current%prev%id, ';'
+            end if
+            current => current%next
+        end do
+        write (unit, '(A)') '}'
+        write (unit, '(A)') '}'
+    end subroutine gen_album_graph
     subroutine show_album_images(this, id_album)
         class(album_list), intent(in) :: this
         integer, intent(in) :: id_album

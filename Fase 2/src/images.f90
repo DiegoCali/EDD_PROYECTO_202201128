@@ -262,7 +262,7 @@ contains
         type(layer), pointer :: current_layer
         integer, intent(in) :: id_img
         integer, intent(in) :: unit
-        logical :: found = .false.
+        logical :: found
         current => this%root
         if ( .not. associated(current) ) then
             print *, 'Coud not generate tree... unable to find image with id: ', id_img
@@ -270,12 +270,16 @@ contains
         end if
         write(unit, '(A)') 'digraph image_tree_and_subtree {'
         write(unit, '(A, I0, A, I0, A)') 'img_node_', current%id, '[label="img_', current%id, '"];'
+        found = .false.
         do while (associated(current) .and. .not. found)
+            print *, "Visiting: ", current%id
             if ( associated(current%left) ) then
+                print *, "left child: ", current%left%id
                 write(unit, '(A, I0, A, I0, A)') 'img_node_', current%left%id, '[label="img_', current%left%id, '"];'
                 write(unit, '(A, I0, A, I0, A)') 'img_node_', current%id, ' -> img_node_', current%left%id, ';'
             end if
             if ( associated(current%right) ) then
+                print *, "right child: ", current%right%id
                 write(unit, '(A, I0, A, I0, A)') 'img_node_', current%right%id, '[label="img_', current%right%id, '"];'
                 write(unit, '(A, I0, A, I0, A)') 'img_node_', current%id, ' -> img_node_', current%right%id, ';'
             end if
@@ -283,25 +287,31 @@ contains
                 found = .true.                
             end if
             if ( id_img < current%id ) then
+                print *, 'moving to left'
                 current => current%left
-            else
+            else if ( id_img > current%id) then
+                print *, 'moving to right'
                 current => current%right
             end if
         end do
         current_layer => current%layers%root
         write(unit, '(A, I0, A, I0, A)') 'img_node_', id_img, ' -> layer_', current_layer%id, ';'
-        do while ( associated(current_layer) )
-            write(unit, '(A, I0, A, I0, A)') 'layer_', current_layer%id, '[label="layer_', current_layer%id, '"];'
-            if ( associated(current_layer%left) ) then
-                write(unit, '(A, I0, A, I0, A)') 'layer_', current_layer%id, ' -> layer_', current_layer%left%id, ';'
-            end if
-            if ( associated(current_layer%right) ) then
-                write(unit, '(A, I0, A, I0, A)') 'layer_', current_layer%id, ' -> layer_', current_layer%right%id, ';'
-            end if
-            current_layer => current_layer%right
-        end do
+        call gen_layer_subtree(current_layer, unit)
         write(unit, '(A)') '}'
     end subroutine gen_tree_subtree
+    recursive subroutine gen_layer_subtree(current_layer, unit)
+        type(layer), pointer, intent(in) :: current_layer
+        integer, intent(in) :: unit
+        write(unit, '(A, I0, A, I0, A)') 'layer_', current_layer%id, '[label="layer_', current_layer%id, '"];'
+        if ( associated(current_layer%left) ) then
+            write(unit, '(A, I0, A, I0, A)') 'layer_', current_layer%id, ' -> layer_', current_layer%left%id, ';'
+            call gen_layer_subtree(current_layer%left, unit)
+        end if
+        if ( associated(current_layer%right) ) then
+            write(unit, '(A, I0, A, I0, A)') 'layer_', current_layer%id, ' -> layer_', current_layer%right%id, ';'
+            call gen_layer_subtree(current_layer%right, unit)
+        end if
+    end subroutine gen_layer_subtree
     subroutine gen_img_traversal(this, unit, id_img)
         class(image_avl), intent(inout) :: this
         integer, intent(in) :: unit

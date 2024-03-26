@@ -1,0 +1,26 @@
+digraph albums_graph {
+album_0 [label="Album 1", shape=box];
+album_0 -> img_1;
+img_1 [label="img 1", shape=circle];
+img_1 -> img_3;
+img_3 [label="img 3", shape=circle];
+img_3 -> img_5;
+img_5 [label="img 5", shape=circle];
+album_1 [label="Album 2", shape=box];
+album_1 -> img_2;
+img_2 [label="img 2", shape=circle];
+album_2 [label="Album 3", shape=box];
+album_3 [label="Album 4", shape=box];
+album_3 -> img_4;
+img_4 [label="img 4", shape=circle];
+img_4 -> img_6;
+img_6 [label="img 6", shape=circle];
+{ rank=same;
+album_0 -> album_1;
+album_1 -> album_2;
+album_1 -> album_0;
+album_2 -> album_3;
+album_2 -> album_1;
+album_3 -> album_2;
+}
+}
