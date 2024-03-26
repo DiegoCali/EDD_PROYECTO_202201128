@@ -185,19 +185,22 @@ contains
       print *, "-----------------Images operations----------------"
       print *, "Select an option:"
       print *, "0. Insert new image"
-      print *, "1. Navigate all images"
-      print *, "2. Navigate by album"
-      print *, "3. Exit"
+      print *, "1. Delete image"
+      print *, "2. Navigate all images"
+      print *, "3. Navigate by album"
+      print *, "4. Exit"
       print *, "-------------------------------------------------"
       read *, op
       select case (op)
         case (0)
           call insert_image()
         case (1)
-          call navigate_images()
+          call delete_image()
         case (2)
-          ! call navigate_albums()
+          call navigate_images()
         case (3)
+          call navigate_albums()
+        case (4)
           run = .false.
           print *, "Returning to the main menu..."
         case default
@@ -206,6 +209,56 @@ contains
     end do
     print *, "-------------------------------------------------"
   end subroutine images_operations
+  subroutine delete_image()
+    implicit none
+    integer :: image_id
+    type(image), pointer :: temp_img
+    character(1) :: response
+    print *, "-----------------Delete image-------------------"
+    call actual_client%all_images%print_images(actual_client%all_images%root)
+    print *, "Enter the id of the image to delete:"
+    read (*, *) image_id
+    temp_img => actual_client%all_images%search_img(actual_client%all_images%root, image_id)
+    if ( associated(temp_img) ) then
+      print *, "Image found!"
+      print *, "Do you wish to delete the image? [y/n]"
+      read (*, '(A)') response
+      if (response == "y") then
+        call actual_client%all_images%delete_img(image_id)
+        print *, "Image deleted successfully!"
+      end if
+    else
+      print *, "Image not found..."
+    end if
+    print *, "-------------------------------------------------"
+  end subroutine delete_image
+  subroutine navigate_albums()  
+    use albums, only: album
+    implicit none
+    integer :: album_id, op
+    type(album), pointer :: temp_album
+    character(1) :: response
+    logical :: run = .true.
+    do while (run)
+      print *, "-----------------Navigate albums-----------------"
+      print *, "Please select any of the following albums:"
+      call actual_client%list_albums%show_albums()
+      print *, "Enter the id of the album:"
+      read (*, *) album_id
+      temp_album => actual_client%list_albums%get_album(album_id)
+      if ( associated(temp_album) ) then
+        call temp_album%show_images()
+        print *, "Do you wish to exit? [y/n]"
+        read (*, '(A)') response
+        if (response == "y") then
+          run = .false.
+        end if
+      else
+        print *, "Album not found... try again!"
+      end if
+    end do
+    print *, "-------------------------------------------------"
+  end subroutine navigate_albums
   subroutine navigate_images()
     implicit none
     integer :: image_id, op, layer_id
@@ -246,7 +299,9 @@ contains
             if ( associated(temp_layer) ) then
               print *, "Generating 'single_layer.dot' file..."
               open(1, file='outputs/single_layer.dot', status='replace')
+              write(1, '(A)') "digraph single_layer {"
               call temp_layer%layer_pixels%graph_pixels(1)
+              write(1, "(A)") "}"
               close(1)
               print *, "File 'single_layer.dot' generated!, generating 'single_layer.svg' file..."
               call execute_command_line("dot -Tsvg outputs/single_layer.dot -o outputs/single_layer.svg")
