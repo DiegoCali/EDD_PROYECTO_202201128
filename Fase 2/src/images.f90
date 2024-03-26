@@ -306,6 +306,15 @@ contains
         class(image_avl), intent(inout) :: this
         integer, intent(in) :: unit
         integer, intent(in) :: id_img
-        
+        type(image), pointer :: found_img
+        found_img => this%search_img(this%root, id_img)
+        if ( .not. associated(found_img) ) then
+            print *, 'Image with id: ', id_img, ' not found!'
+            return
+        end if
+        write(unit, '(A)') 'graph img_traversal {'
+        call found_img%layers%traverse_matrix()
+        call found_img%layers%global_matrix%global_m_dot(unit)
+        write(unit, '(A)') '}'
     end subroutine gen_img_traversal
 end module images

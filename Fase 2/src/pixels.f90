@@ -27,8 +27,10 @@ module pixels
         procedure :: insert_in_column
         procedure :: print_headers
         procedure :: get_value
+        procedure :: gen_matrix
         procedure :: get_node
         procedure :: graph_pixels
+        procedure :: global_m_dot
     end type pixel_matrix
 contains
     subroutine insert(this, x, y, value, color)
@@ -213,7 +215,8 @@ contains
                 end do
             end if
             row => row%down
-        end do        
+        end do   
+        node => null()     
     end function get_node
     subroutine self_print(this)
         class(pixel_matrix), intent(inout) :: this
@@ -313,4 +316,45 @@ contains
             actual => temp%down
         end do
     end subroutine graph_pixels
+    subroutine gen_matrix(this, g_matrix)
+        class(pixel_matrix), intent(inout) :: this
+        type(pixel_matrix), intent(inout) :: g_matrix
+        type(pixel), pointer :: actual
+        type(pixel), pointer :: temp
+        actual => this%root
+        if ( .not. associated(actual) ) then
+            print *, "No pixels to generate matrix"
+            return
+        end if
+        do while ( associated(actual) )
+            temp => actual
+            do while ( associated(actual) )
+                if (actual%x /= -1 .and. actual%y /= -1) then 
+                    call g_matrix%insert(actual%x, actual%y, .TRUE., actual%color)
+                end if
+                actual => actual%right
+            end do
+            actual => temp%down
+        end do
+    end subroutine gen_matrix 
+    subroutine global_m_dot(this, unit)
+        class(pixel_matrix), intent(inout) :: this
+        type(pixel), pointer :: actual
+        integer, intent(in) :: unit
+        integer :: i, j
+        write(unit, '(A)') 'table [shape=none,label=<<TABLE BORDER="0" CELLSPACING="0">'
+        do i = 0, this%height
+            write(unit, '(A)') '<TR>'
+            do j = 0, this%width
+                actual => this%get_node(j, i)
+                write(unit, '(A)', advance='no') '<TD'
+                if (associated(actual)) then
+                    write(unit, '(A)', advance='no') ' BGCOLOR="', actual%color, '"'
+                end if
+                write(unit, '(A)') '></TD>'
+            end do
+            write(unit, '(A)') '</TR>'
+        end do
+        write(unit, '(A)') '</TABLE>>];'
+    end subroutine global_m_dot
 end module pixels

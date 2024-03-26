@@ -10,6 +10,7 @@ module layers
     end type layer
     type :: layers_tree
         type(layer), pointer :: root => null()
+        type(pixel_matrix) :: global_matrix
     contains
         procedure :: add
         procedure :: add_recursive
@@ -20,8 +21,32 @@ module layers
         procedure :: gen_dot
         procedure :: gen_dot_recursive
         procedure :: search
+        procedure :: traverse_matrix
+        procedure :: traverse_matrix_recursive
     end type layers_tree
 contains 
+    subroutine traverse_matrix_recursive(this, tmp)
+        class(layers_tree), intent(inout) :: this
+        type(layer), pointer, intent(in) :: tmp
+        if (.NOT. associated(tmp)) then
+            return
+        end if
+        if (associated(tmp%left)) then
+            call this%traverse_matrix_recursive(tmp%left)
+        end if
+        call tmp%layer_pixels%gen_matrix(this%global_matrix)
+        if (associated(tmp%right)) then
+            call this%traverse_matrix_recursive(tmp%right)
+        end if
+    end subroutine traverse_matrix_recursive
+    subroutine traverse_matrix(this)
+        class(layers_tree), intent(inout) :: this
+        if (.NOT. associated(this%root)) then
+            print *, 'No layers to traverse'
+            return
+        end if
+        call this%traverse_matrix_recursive(this%root)
+    end subroutine traverse_matrix
     subroutine add(this,  new_layer)
         class(layers_tree), intent(inout) :: this
         type(layer), pointer, intent(in) :: new_layer

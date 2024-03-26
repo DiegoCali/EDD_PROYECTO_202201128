@@ -1,6 +1,7 @@
 module clients
     use images, only: image_avl
     use albums, only: album_list
+    use layers, only: layers_tree
     implicit none
     integer :: g_id = 1
     type :: client 
@@ -9,6 +10,7 @@ module clients
         character(:), allocatable :: password
         type(image_avl) :: all_images
         type(album_list) :: list_albums
+        type(layers_tree) :: all_layers
     end type client
     type :: nodeptr
         type(BtreeNode), pointer :: ptr => null()

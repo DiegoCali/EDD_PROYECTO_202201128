@@ -90,10 +90,10 @@ program jtest
         call imgs_avl%add_img(img_p)
     end do
     call json%destroy()
-    open(1, file='outputs/imgs_avl_subtree.dot', status='replace')
-    call imgs_avl%gen_tree_subtree(6, 1)
+    open(1, file='outputs/transversal_img.dot', status='replace')
+    call imgs_avl%gen_img_traversal(1, 6)
     close(1)
-    call execute_command_line('dot -Tsvg outputs/imgs_avl_subtree.dot -o outputs/imgs_avl_subtree.svg')
+    call execute_command_line('dot -Tpng outputs/transversal_img.dot -o outputs/transversal_img.png')
     ! open(1, file='outputs/imgs_avl.dot', status='replace')
     ! call imgs_avl%get_dot(imgs_avl%root, 1)
     !  close(1)

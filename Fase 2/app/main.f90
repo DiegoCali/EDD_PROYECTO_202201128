@@ -1,8 +1,14 @@
 program main
+  use filehandler
+  use clients
   implicit none
+  type(Btree_clients), target :: global_clients
+  type(client), pointer :: actual_client
+  type(fhandler) :: file_handler
   integer :: option
   logical :: running = .true.
 
+  file_handler%clients_db => global_clients
   do while (running)
     print *, "----------Welcome to Pixel Print Studio----------"
     print *, "Select an option:"
@@ -25,6 +31,7 @@ program main
         print *, "Invalid option"
     end select
   end do  
+  print *, "Goodbye!"
 contains
   subroutine admin()
     implicit none
@@ -61,11 +68,22 @@ contains
       read *, op
       select case (op)
         case (0)
-          ! call clients%generate_dot_file()
+          print *, "Generating 'clients.dot' file..."
+          open(1, file='clients.dot', status='replace')
+          write(1, '(A)') "digraph clients {"
+          call global_clients%clients_dot(global_clients%root, 1)
+          write(1, "(A)") "}"
+          close(1)
+          print *, "File 'clients.dot' generated!, generating 'clients.svg' file..." 
+          call execute_command_line("dot -Tsvg clients.dot -o clients.svg")
+          print *, "File 'clients.svg' generated!"
         case (1)
           ! call clients_operations()
         case (2)
-          ! call open_clients_file()
+          print *, "Be sure to charge the file 'clients.json' in the files folder"
+          print *, "Charging..."
+          call file_handler%initialize_admin()
+          print *, "Charged successfully!"
         case (3)
           ! call reports()
         case (4)
@@ -75,7 +93,7 @@ contains
           print *, "Invalid option"
       end select
     end do    
-    print *, "Goodbye!"
+    print *, "See ya!"
   end subroutine admin
   subroutine sign_in()
     implicit none
@@ -93,6 +111,8 @@ contains
     read (dpi_id, '(I13)') dpi_num
     write (*,'(A, A)') "Welcome to Pixel Print Studio, ", trim(username)
     write (*,'(A, I13)') "Your DPI is: ", dpi_num
+    call global_clients%add_client(client(trim(username), dpi_num, trim(password)))
+    print *, "User added successfully!"
     print *, "-------------------------------------------------"
   end subroutine sign_in
   subroutine log_in()
@@ -143,5 +163,6 @@ contains
           print *, "Invalid option"
       end select      
     end do
+    print *, "See ya!"
   end subroutine log_in
 end program main
