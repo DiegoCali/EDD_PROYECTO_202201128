@@ -60,8 +60,11 @@ contains
             end if            
             call this%insert_in_column(new_pixel, row)
             call this%insert_in_row(new_pixel, column)
-        end if 
-        id = id + 1      
+            id = id + 1    
+        else 
+            new_pixel => this%get_node(x, y)
+            new_pixel%color = color
+        end if   
     end subroutine insert    
     function search_row(this,  y) result(actual)
         class(pixel_matrix), intent(inout) :: this
