@@ -11,6 +11,7 @@ module layers
     type :: layers_tree
         type(layer), pointer :: root => null()
         type(pixel_matrix) :: global_matrix
+        integer :: total = 0
     contains
         procedure :: add
         procedure :: add_recursive
@@ -101,6 +102,7 @@ contains
         else
             this%root => new_layer
         end if 
+        this%total = this%total + 1
     end subroutine add
     subroutine add_recursive(this,  new_layer, tmp)
         class(layers_tree), intent(inout) :: this

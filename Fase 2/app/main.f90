@@ -86,7 +86,7 @@ contains
           call file_handler%initialize_admin()
           print *, "Charged successfully!"
         case (3)
-          ! call admin_reports()
+          call admin_reports()
         case (4)
           run = .false.
           print *, "Returning to the main menu..."
@@ -96,6 +96,49 @@ contains
     end do    
     print *, "See ya!"
   end subroutine admin
+  subroutine admin_reports()
+    implicit none 
+    integer :: op
+    logical :: run
+    character(20) :: dpi_str
+    integer*8 :: dpi_num
+    type(client), pointer :: temp
+    run = .true.
+    do while (run)
+      print *, "-----------------Admin reports-------------------"
+      print *, "Select an option:"
+      print *, "0. Show client info"
+      print *, "1. List clients (Level traversal)"
+      print *, "2. Exit"
+      print *, "-------------------------------------------------"
+      read (*, *) op
+      select case (op)
+        case (0)
+          print *, "Enter the DPI of the client:"
+          read (*, '(A)') dpi_str
+          read (dpi_str, '(I13)') dpi_num
+          temp => global_clients%search_client(global_clients%root, dpi_num)
+          if ( associated(temp) ) then
+            print *, "Client found!"
+            write (*, '(A, A)') "Name: ", temp%name
+            write (*, '(A, I13)') "DPI: ", temp%dpi
+            write (*, '(A, A)') "Password: ", temp%password
+            call temp%list_albums%show_albums()
+            write (*, '(A, I0)') "Total images: ", temp%all_images%total
+            write (*, '(A, I0)') "Total layers: ", temp%all_layers%total
+          else
+            print *, "Client not found..."
+          end if
+        case (1)
+          ! call global_clients%level_traversal(global_clients%root)
+        case (2)
+          run = .false.
+          print *, "Returning to the admin menu..."
+        case default
+          print *, "Invalid option"
+      end select
+    end do
+  end subroutine admin_reports
   subroutine sign_in()
     implicit none
     character(20) :: username
@@ -326,6 +369,7 @@ contains
     type(layer), pointer :: temp_layer
     type(image), pointer :: temp_img
     logical :: run 
+    character(1) :: response
     run = .true.
     do while (run)
       print *, "-----------------Navigate images-----------------"
@@ -344,15 +388,22 @@ contains
         read (*, *) op
         select case (op)
           case (0)
-            open(1, file='outputs/image.dot', status='replace')
-            write(1, '(A)') "digraph image {"
-            call temp_img%layers%traverse_matrix()
-            call temp_img%layers%global_matrix%global_m_dot(1)
-            write(1, "(A)") "}"
-            close(1)
-            print *, "File 'image.dot' generated!, generating 'image.svg' file..."
-            call execute_command_line("dot -Tsvg outputs/image.dot -o outputs/image.svg")
-            print *, "File 'image.svg' generated!"
+            print *, 'Do you whish to generate the image limited? [y/n]'
+            read (*, '(A)') response
+            if ( response=='y' ) then
+              ! call generate_limited()
+            else
+              print *, "Generating 'image.dot' file by amplitude transversal..."
+              open(1, file='outputs/image.dot', status='replace')
+              write(1, '(A)') "digraph image {"
+              call temp_img%layers%traverse_matrix()
+              call temp_img%layers%global_matrix%global_m_dot(1)
+              write(1, "(A)") "}"
+              close(1)
+              print *, "File 'image.dot' generated!, generating 'image.svg' file..."
+              call execute_command_line("dot -Tsvg outputs/image.dot -o outputs/image.svg")
+              print *, "File 'image.svg' generated!"
+            end if
           case (1)
             print *, "Select layer to graph:"
             call temp_img%layers%inorder(temp_img%layers%root)

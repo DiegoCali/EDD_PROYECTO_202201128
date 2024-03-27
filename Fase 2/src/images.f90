@@ -13,6 +13,7 @@ module images
     end type image
     type :: image_avl
         type(image), pointer :: root => null()
+        integer :: total = 0
     contains
         procedure :: add_img
         procedure :: add_img_rec
@@ -98,6 +99,7 @@ contains
         end if
         temp%height = this%get_max(this%get_height(temp%left), this%get_height(temp%right)) + 1
         new_sub_tree => temp
+        this%total = this%total - 1
     end function delete_img_rec
     recursive function min_child(this, temp) result(minimal)
         class(image_avl), intent(inout) :: this
@@ -122,6 +124,7 @@ contains
         else
             this%root => new_image
         end if
+        this%total = this%total + 1
     end subroutine add_img
     subroutine add_img_rec(this,  new_image, tmp)
         class(image_avl), intent(inout) :: this
