@@ -33,8 +33,76 @@ module clients
         procedure :: create_node
         procedure :: traversal
         procedure :: clients_dot
+        procedure :: amplitude_traversal
     end type Btree_clients
+    type :: q_node 
+        type(BtreeNode), pointer :: value => null()
+        type(q_node), pointer :: next => null()
+    end type q_node
+    type :: client_queue
+        type(q_node), pointer :: head => null()
+    contains
+        procedure :: enqueue
+        procedure :: dequeue
+        procedure :: is_empty
+    end type client_queue
 contains
+    subroutine amplitude_traversal(this)
+        class(Btree_clients), intent(inout) :: this
+        type(client_queue) :: queue
+        type(BtreeNode), pointer :: temp
+        integer :: i
+        call queue%enqueue(this%root)
+        do while ( .not. queue%is_empty() )
+            temp => queue%dequeue()
+            if ( associated(temp) ) then
+                write(*,'(A)', advance='no') "["
+                do i = 1, temp%num
+                    write(*,'(A, A)', advance='no') temp%clients(i)%name, ', '
+                end do
+                write(*,'(A)', advance='no') "]"
+                do i = 0, temp%num
+                    call queue%enqueue(temp%links(i)%ptr)
+                end do
+            end if
+        end do    
+        print *, ""
+    end subroutine amplitude_traversal
+    function is_empty(this) result(retval)
+        class(client_queue), intent(in) :: this
+        logical :: retval
+        retval = .not. associated(this%head)        
+    end function is_empty
+    function dequeue(this) result(tree_node)
+        class(client_queue), intent(inout) :: this
+        type(BtreeNode), pointer :: tree_node
+        type(q_node), pointer :: temp
+        if ( .not. associated(this%head) ) then
+            tree_node => null()
+        else
+            tree_node => this%head%value
+            temp => this%head
+            this%head => this%head%next
+        end if
+    end function dequeue
+    subroutine enqueue(this, tree_node)
+        class(client_queue), intent(inout) :: this 
+        type(BtreeNode), pointer, intent(in) :: tree_node
+        type(q_node), pointer :: new_node
+        type(q_node), pointer :: temp
+        allocate(new_node)
+        new_node%value => tree_node
+        new_node%next => null()
+        if ( .not. associated(this%head) ) then
+            this%head => new_node
+        else
+            temp => this%head
+            do while ( associated(temp%next) )
+                temp => temp%next
+            end do
+            temp%next => new_node
+        end if    
+    end subroutine enqueue
     subroutine add_client(this,  new_client)
         class(Btree_clients), intent(inout) :: this
         type(client), intent(in) :: new_client

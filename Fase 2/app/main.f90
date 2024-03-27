@@ -108,7 +108,7 @@ contains
       print *, "-----------------Admin reports-------------------"
       print *, "Select an option:"
       print *, "0. Show client info"
-      print *, "1. List clients (Level traversal)"
+      print *, "1. List clients (Amplitude traversal)"
       print *, "2. Exit"
       print *, "-------------------------------------------------"
       read (*, *) op
@@ -130,7 +130,7 @@ contains
             print *, "Client not found..."
           end if
         case (1)
-          ! call global_clients%level_traversal(global_clients%root)
+          call global_clients%amplitude_traversal()
         case (2)
           run = .false.
           print *, "Returning to the admin menu..."
