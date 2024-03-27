@@ -123,8 +123,8 @@ contains
     integer*8 :: dpi_num
     integer :: response
     logical :: access
-    access = .false.
     type(client), pointer :: temp
+    access = .false.
     do while (.NOT. access)
       print *, "---------------------Log in----------------------"
       print *, "Enter your DPI (Or type r to return):"

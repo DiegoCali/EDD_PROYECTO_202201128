@@ -22,30 +22,76 @@ module layers
         procedure :: gen_dot_recursive
         procedure :: search
         procedure :: traverse_matrix
-        procedure :: traverse_matrix_recursive
     end type layers_tree
+    type node_layer
+        type(layer), pointer :: value
+        type(node_layer), pointer :: next => null()
+    end type node_layer
+    type queue
+        type(node_layer), pointer :: head => null()
+    contains 
+        procedure :: enqueue
+        procedure :: dequeue
+        procedure :: is_empty
+    end type queue
 contains 
-    subroutine traverse_matrix_recursive(this, tmp)
-        class(layers_tree), intent(inout) :: this
-        type(layer), pointer, intent(in) :: tmp
-        if (.NOT. associated(tmp)) then
-            return
+    subroutine enqueue(this, layer_val)
+        class(queue), intent(inout) :: this
+        type(layer), pointer, intent(in) :: layer_val
+        type(node_layer), pointer :: temp, new_node
+        allocate(new_node)
+        new_node%value => layer_val
+        new_node%next => null()
+        if (associated(this%head)) then
+            temp => this%head
+            do while (associated(temp%next))
+                temp => temp%next
+            end do
+            temp%next => new_node
+        else
+            this%head => new_node
         end if
-        if (associated(tmp%left)) then
-            call this%traverse_matrix_recursive(tmp%left)
+    end subroutine enqueue
+    function dequeue(this) result(layer_val)
+        class(queue), intent(inout) :: this
+        type(layer), pointer :: layer_val
+        type(node_layer), pointer :: temp
+        if (associated(this%head)) then
+            layer_val => this%head%value
+            temp => this%head
+            this%head => this%head%next
+        else
+            layer_val => null()
         end if
-        call tmp%layer_pixels%gen_matrix(this%global_matrix)
-        if (associated(tmp%right)) then
-            call this%traverse_matrix_recursive(tmp%right)
-        end if
-    end subroutine traverse_matrix_recursive
+    end function dequeue
+    function is_empty(this) result(res)
+        class(queue), intent(in) :: this
+        logical :: res
+        res = .not.associated(this%head)
+    end function is_empty
     subroutine traverse_matrix(this)
         class(layers_tree), intent(inout) :: this
+        type(queue) :: q
+        type(layer), pointer :: tmp
         if (.NOT. associated(this%root)) then
             print *, 'No layers to traverse'
             return
         end if
-        call this%traverse_matrix_recursive(this%root)
+        call q%enqueue(this%root)
+        do while (.NOT. q%is_empty())
+            tmp => q%dequeue()
+            if (associated(tmp)) then
+                write(*, '(A, I0)', advance='no') ' Layer_', tmp%id
+                call tmp%layer_pixels%gen_matrix(this%global_matrix)
+                if (associated(tmp%left)) then
+                    call q%enqueue(tmp%left)
+                end if
+                if (associated(tmp%right)) then
+                    call q%enqueue(tmp%right)
+                end if
+            end if
+        end do
+        print *, ''
     end subroutine traverse_matrix
     subroutine add(this,  new_layer)
         class(layers_tree), intent(inout) :: this

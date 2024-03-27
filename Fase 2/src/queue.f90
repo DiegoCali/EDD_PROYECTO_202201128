@@ -10,6 +10,7 @@ module queue_mod
     contains 
         procedure :: enqueue
         procedure :: dequeue
+        procedure :: is_empty
     end type queue
 contains
     subroutine enqueue(this, layer_val)
@@ -43,4 +44,9 @@ contains
             layer_val => null()
         end if
     end function dequeue
+    function is_empty(this) result(res)
+        class(queue), intent(in) :: this
+        logical :: res
+        res = .not.associated(this%head)
+    end function is_empty
 end module queue_mod
