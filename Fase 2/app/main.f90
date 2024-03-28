@@ -198,7 +198,8 @@ contains
       print *, "0. Navigate and manage images"
       print *, "1. Masive charge of images"
       print *, "2. Visual Reports"
-      print *, "3. Exit"
+      print *, "3. Reports"
+      print *, "4. Log out"
       print *, "-------------------------------------------------"
       read (*, *) response
       select case (response)
@@ -214,6 +215,8 @@ contains
         case (2)
           call visual_reports()
         case (3)
+          call user_reports()
+        case (4)
           print *, "Returning to the main menu..."
           return
         case default
@@ -222,6 +225,48 @@ contains
     end do
     print *, "-------------------------------------------------"
   end subroutine log_in
+  subroutine user_reports()
+    implicit none
+    integer :: op, order
+    logical :: run
+    run = .true.
+    do while (run)
+      print *, "-----------------User reports-------------------"
+      print *, "Select an option:"
+      print *, "0. Top 5 images with more layers"
+      print *, "1. Leaf layers"
+      print *, "2. Layers tree depth"
+      print *, "3. List layers"
+      print *, "4. Exit"
+      print *, "-------------------------------------------------"
+      read (*, *) op
+      select case (op)
+        case (0)
+          call actual_client%all_images%print_images(actual_client%all_images%root)
+        case (1)
+          call actual_client%all_layers%leaf_layers()
+        case (2)
+          call actual_client%all_layers%max_depth()
+        case (3)
+          print *, "Choose order:"
+          print *, "0. Preorder"
+          print *, "1. Inorder"
+          print *, "2. Postorder"
+          read (*, *) order
+          if (order < 0 .or. order > 2) then
+            print *, "Invalid option"
+          else 
+            call actual_client%all_layers%list_layers(order)
+          end if
+        case (4)
+          run = .false.
+          print *, "Returning to the main menu..."
+        case default
+          print *, "Invalid option"
+      end select
+    end do
+    print *, "-------------------------------------------------"
+  end subroutine user_reports
   subroutine visual_reports()
     implicit none
     integer :: op, img_id
@@ -365,7 +410,7 @@ contains
   end subroutine navigate_albums
   subroutine navigate_images()
     implicit none
-    integer :: image_id, op, layer_id
+    integer :: image_id, op, layer_id, limit, order
     type(layer), pointer :: temp_layer
     type(image), pointer :: temp_img
     logical :: run 
@@ -377,6 +422,9 @@ contains
       call actual_client%all_images%print_images(actual_client%all_images%root)
       print *, "Enter the id of the image:"
       read (*, *) image_id
+      if (image_id == -1) then
+        run = .false.
+      end if
       temp_img => actual_client%all_images%search_img(actual_client%all_images%root, image_id)
       if ( associated(temp_img) ) then
         print *, "Image found!"
@@ -391,7 +439,29 @@ contains
             print *, 'Do you whish to generate the image limited? [y/n]'
             read (*, '(A)') response
             if ( response=='y' ) then
-              ! call generate_limited()
+              print *, "Select the limit:"
+              read (*, *) limit
+              print *, "Select order:"
+              print *, "0. Preorder"
+              print *, "1. Inorder"
+              print *, "2. Postorder"
+              read (*, *) order
+              if (order > -1 .and. order < 3) then
+                if ( limit <= temp_img%layers_count .and. limit > 0 ) then
+                  print *, "Generating 'image_limited.dot' file by amplitude transversal..."
+                  open(1, file='outputs/image_limited.dot', status='replace')
+                  write(1, '(A)') "digraph image_limited {"
+                  call temp_img%layers%traverse_limited(order, limit, 1)
+                  call temp_img%layers%global_matrix%global_m_dot(1)
+                  write(1, "(A)") "}"
+                  close(1)
+                  print *, "File 'image_limited.dot' generated!, generating 'image_limited.svg' file..."
+                  call execute_command_line("dot -Tsvg outputs/image_limited.dot -o outputs/image_limited.svg")
+                  print *, "File 'image_limited.svg' generated!"
+                else
+                  print *, "Invalid limit..."
+                end if
+              end if
             else
               print *, "Generating 'image.dot' file by amplitude transversal..."
               open(1, file='outputs/image.dot', status='replace')

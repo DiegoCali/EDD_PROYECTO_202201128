@@ -23,6 +23,16 @@ module layers
         procedure :: gen_dot_recursive
         procedure :: search
         procedure :: traverse_matrix
+        procedure :: max_depth
+        procedure :: max_depth_rec
+        procedure :: leaf_layers
+        procedure :: leaf_layers_rec
+        procedure :: list_layers
+        procedure :: inorder_print
+        procedure :: traverse_limited 
+        procedure :: gen_preorder
+        procedure :: gen_inorder
+        procedure :: gen_postorder
     end type layers_tree
     type node_layer
         type(layer), pointer :: value
@@ -36,6 +46,83 @@ module layers
         procedure :: is_empty
     end type queue
 contains 
+    subroutine gen_inorder(this, tmp, limit, unit)
+        class(layers_tree), intent(inout) :: this
+        type(layer), pointer, intent(in) :: tmp
+        integer, intent(inout) :: limit
+        integer, intent(in) :: unit
+        if (.NOT. associated(tmp)) then
+            return
+        end if
+        call this%gen_inorder(tmp%left, limit, unit)
+        if (limit == 0) then
+            write(unit, '(A)', advance='no') '"];'
+            limit = limit - 1
+            return
+        else if (limit < 0) then
+            return
+        end if
+        write(unit, '(A, I0)') ' layer_', tmp%id
+        call tmp%layer_pixels%gen_matrix(this%global_matrix)
+        limit = limit - 1
+        call this%gen_inorder(tmp%right, limit, unit)
+    end subroutine gen_inorder
+    subroutine gen_postorder(this, tmp, limit, unit)
+        class(layers_tree), intent(inout) :: this
+        type(layer), pointer, intent(in) :: tmp
+        integer, intent(inout) :: limit
+        integer, intent(in) :: unit
+        if (.NOT. associated(tmp)) then
+            return
+        end if
+        call this%gen_postorder(tmp%left, limit, unit)
+        call this%gen_postorder(tmp%right, limit, unit)
+        if (limit == 0) then
+            write(unit, '(A)', advance='no') '"];'
+            limit = limit - 1
+            return
+        else if (limit < 0) then
+            return
+        end if
+        write(unit, '(A, I0)') ' layer_', tmp%id
+        call tmp%layer_pixels%gen_matrix(this%global_matrix)
+        limit = limit - 1
+    end subroutine gen_postorder
+    subroutine gen_preorder(this, tmp, limit, unit)
+        class(layers_tree), intent(inout) :: this
+        type(layer), pointer, intent(in) :: tmp
+        integer, intent(inout) :: limit
+        integer, intent(in) :: unit
+        if (.NOT. associated(tmp)) then
+            return
+        end if
+        if (limit == 0) then
+            write(unit, '(A)', advance='no') '"];'
+            limit = limit - 1
+        else if (limit < 0) then
+            return
+        end if
+        write(unit, '(A, I0)') ' layer_', tmp%id
+        call tmp%layer_pixels%gen_matrix(this%global_matrix)
+        limit = limit - 1
+        call this%gen_preorder(tmp%left, limit, unit)
+        call this%gen_preorder(tmp%right, limit, unit)
+    end subroutine gen_preorder
+    subroutine traverse_limited(this, order, limit, unit)
+        class(layers_tree), intent(inout) :: this
+        integer, intent(inout) :: limit
+        integer, intent(in) :: unit, order
+        write(unit, '(A)', advance='no') 'text_box [shape=box, label="'
+        if (order == 0) then
+            call this%gen_preorder(this%root, limit, unit)
+        else if (order == 1) then
+            call this%gen_inorder(this%root, limit, unit)
+        else if (order == 2) then
+            call this%gen_postorder(this%root, limit, unit)
+        else
+            print *, 'Invalid option'
+        end if
+    end subroutine traverse_limited
     subroutine enqueue(this, layer_val)
         class(queue), intent(inout) :: this
         type(layer), pointer, intent(in) :: layer_val
@@ -199,7 +286,6 @@ contains
         write(unit, '(A)') 'digraph layers_tree {'
         call this%gen_dot_recursive(tmp, unit)
         write(unit, '(A)') '}'
-        
     end subroutine gen_dot
     subroutine gen_dot_recursive(this, tmp, unit)
         class(layers_tree), intent(inout) :: this        
@@ -218,4 +304,77 @@ contains
         call this%gen_dot_recursive(tmp%left, unit)
         call this%gen_dot_recursive(tmp%right, unit)        
     end subroutine gen_dot_recursive
+    subroutine max_depth(this)
+        class(layers_tree), intent(inout) :: this
+        integer :: depth
+        depth = 0
+        if (.NOT. associated(this%root)) then
+            print *, 'No layers to traverse'
+            return
+        end if  
+        depth = this%max_depth_rec(this%root)
+        write(*, '(A, I0)') 'Max depth of layers tree: ', depth
+    end subroutine max_depth
+    recursive function max_depth_rec(this, root) result(depth)
+        class(layers_tree), intent(inout) :: this
+        type(layer), pointer, intent(in) :: root
+        integer :: depth, left_depth, right_depth
+        depth = 0
+        if ( .not. associated(root) ) then
+            return
+        else 
+            left_depth = this%max_depth_rec(root%left)
+            right_depth = this%max_depth_rec(root%right)
+            if (left_depth > right_depth) then
+                depth = left_depth + 1
+            else
+                depth = right_depth + 1
+            end if
+        end if        
+    end function max_depth_rec
+    subroutine leaf_layers(this)
+        class(layers_tree), intent(inout) :: this
+        type(layer), pointer :: tmp
+        if (.NOT. associated(this%root)) then
+            print *, 'No layers to traverse'
+            return
+        end if
+        call this%leaf_layers_rec(this%root)       
+    end subroutine leaf_layers
+    subroutine leaf_layers_rec(this, tmp)
+        class(layers_tree), intent(inout) :: this
+        type(layer), pointer, intent(in) :: tmp
+        if (.NOT. associated(tmp)) then
+            return
+        end if
+        if (.NOT. associated(tmp%left) .AND. .NOT. associated(tmp%right)) then
+            write(*, '(I0, A, I0, A)') tmp%id, '. layer (', tmp%pixels_count, ')'
+        end if
+        call this%leaf_layers_rec(tmp%left)
+        call this%leaf_layers_rec(tmp%right)
+    end subroutine leaf_layers_rec
+    subroutine list_layers(this, option)
+        class(layers_tree), intent(inout) :: this
+        integer, intent(in) :: option
+        if (option == 0) then
+            call this%preorder(this%root)
+        else if (option == 1) then
+            call this%inorder_print(this%root)
+        else if (option == 2) then
+            call this%postorder(this%root)
+        else
+            print *, 'Invalid option'
+        end if       
+        print *, '' 
+    end subroutine list_layers
+    subroutine inorder_print(this, tmp)
+        class(layers_tree), intent(inout) :: this        
+        type(layer), pointer, intent(in) :: tmp
+        if (.NOT. associated(tmp)) then
+            return
+        end if
+        call this%inorder_print(tmp%left)
+        write(*, '(1I3)', advance='no') tmp%id  
+        call this%inorder_print(tmp%right)   
+    end subroutine inorder_print
 end module layers
