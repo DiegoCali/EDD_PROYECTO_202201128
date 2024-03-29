@@ -1,9 +1,0 @@
-<map id="albums::album" name="albums::album">
-<area shape="rect" id="node1" title="Type to store the album." alt="" coords="21,595,139,621"/>
-<area shape="rect" id="node2" href="$structalbums_1_1img__node.html" title="Type to store the image node." alt="" coords="9,489,151,516"/>
-<area shape="rect" id="node3" href="$structimages_1_1image.html" title="Type that represents a node in the AVL tree." alt="" coords="21,399,139,425"/>
-<area shape="rect" id="node4" href="$structlayers_1_1layers__tree.html" title="Type to represent a binary tree of layers." alt="" coords="9,308,151,335"/>
-<area shape="rect" id="node5" href="$structpixels_1_1pixel__matrix.html" title="Type to represent a matrix of pixels." alt="" coords="5,127,155,153"/>
-<area shape="rect" id="node7" href="$structlayers_1_1layer.html" title="Type to represent a pixel matrix" alt="" coords="178,217,281,244"/>
-<area shape="rect" id="node6" href="$structpixels_1_1pixel.html" title="Type to represent a pixel." alt="" coords="31,21,129,48"/>
-</map>

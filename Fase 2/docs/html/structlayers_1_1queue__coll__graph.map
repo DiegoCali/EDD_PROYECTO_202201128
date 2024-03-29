@@ -1,7 +1,0 @@
-<map id="layers::queue" name="layers::queue">
-<area shape="rect" id="node1" title="Type to represent a queue of layers." alt="" coords="25,397,135,424"/>
-<area shape="rect" id="node2" href="$structlayers_1_1node__layer.html" title="Type to represent a node of a linked list of layers." alt="" coords="9,308,151,335"/>
-<area shape="rect" id="node3" href="$structlayers_1_1layer.html" title="Type to represent a pixel matrix" alt="" coords="29,217,131,244"/>
-<area shape="rect" id="node4" href="$structpixels_1_1pixel__matrix.html" title="Type to represent a matrix of pixels." alt="" coords="5,127,155,153"/>
-<area shape="rect" id="node5" href="$structpixels_1_1pixel.html" title="Type to represent a pixel." alt="" coords="31,21,129,48"/>
-</map>

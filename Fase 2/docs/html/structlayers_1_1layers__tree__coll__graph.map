@@ -1,6 +1,0 @@
-<map id="layers::layers_tree" name="layers::layers_tree">
-<area shape="rect" id="node1" title="Type to represent a binary tree of layers." alt="" coords="9,308,151,335"/>
-<area shape="rect" id="node2" href="$structpixels_1_1pixel__matrix.html" title="Type to represent a matrix of pixels." alt="" coords="5,127,155,153"/>
-<area shape="rect" id="node4" href="$structlayers_1_1layer.html" title="Type to represent a pixel matrix" alt="" coords="178,217,281,244"/>
-<area shape="rect" id="node3" href="$structpixels_1_1pixel.html" title="Type to represent a pixel." alt="" coords="31,21,129,48"/>
-</map>
