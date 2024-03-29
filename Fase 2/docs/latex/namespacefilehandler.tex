@@ -1,0 +1,162 @@
+\doxysection{filehandler Module Reference}
+\label{namespacefilehandler}\index{filehandler@{filehandler}}
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+type \textbf{ fhandler}
+\begin{DoxyCompactList}\small\item\em Type that handles the reading of the json files and the initialization of the data structures. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \textbf{ initialize\+\_\+admin} (this)
+\begin{DoxyCompactList}\small\item\em Initializes the data structures for the admin user. \end{DoxyCompactList}\item 
+subroutine \textbf{ initialize\+\_\+user} (this)
+\begin{DoxyCompactList}\small\item\em Initializes the data structures for the user. \end{DoxyCompactList}\item 
+subroutine \textbf{ set\+\_\+user} (this, user)
+\begin{DoxyCompactList}\small\item\em Sets the user data structures to the fhandler object. \end{DoxyCompactList}\item 
+subroutine \textbf{ read\+\_\+imgs} (this)
+\begin{DoxyCompactList}\small\item\em Reads the images from the json file. \end{DoxyCompactList}\item 
+subroutine \textbf{ read\+\_\+layers} (this)
+\begin{DoxyCompactList}\small\item\em Reads the layers from the json file. \end{DoxyCompactList}\item 
+subroutine \textbf{ read\+\_\+clients} (this)
+\begin{DoxyCompactList}\small\item\em Reads the clients from the json file. \end{DoxyCompactList}\item 
+subroutine \textbf{ read\+\_\+albums} (this)
+\begin{DoxyCompactList}\small\item\em Reads the albums from the json file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\label{namespacefilehandler_a27434e699b7056d4c3235732f4dd0aa8}} 
+\index{filehandler@{filehandler}!initialize\_admin@{initialize\_admin}}
+\index{initialize\_admin@{initialize\_admin}!filehandler@{filehandler}}
+\doxysubsubsection{initialize\_admin()}
+{\footnotesize\ttfamily subroutine filehandler\+::initialize\+\_\+admin (\begin{DoxyParamCaption}\item[{class(\textbf{ fhandler}), intent(inout)}]{this }\end{DoxyParamCaption})}
+
+
+
+Initializes the data structures for the admin user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The fhandler object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 34 of file filehandler.\+f90.
+
+\mbox{\label{namespacefilehandler_a6899f2689f4b38bc581db29a11d0702a}} 
+\index{filehandler@{filehandler}!initialize\_user@{initialize\_user}}
+\index{initialize\_user@{initialize\_user}!filehandler@{filehandler}}
+\doxysubsubsection{initialize\_user()}
+{\footnotesize\ttfamily subroutine filehandler\+::initialize\+\_\+user (\begin{DoxyParamCaption}\item[{class(\textbf{ fhandler}), intent(inout)}]{this }\end{DoxyParamCaption})}
+
+
+
+Initializes the data structures for the user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The fhandler object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 40 of file filehandler.\+f90.
+
+\mbox{\label{namespacefilehandler_af6d4cbb12554de149defd96a4837f439}} 
+\index{filehandler@{filehandler}!read\_albums@{read\_albums}}
+\index{read\_albums@{read\_albums}!filehandler@{filehandler}}
+\doxysubsubsection{read\_albums()}
+{\footnotesize\ttfamily subroutine filehandler\+::read\+\_\+albums (\begin{DoxyParamCaption}\item[{class(\textbf{ fhandler}), intent(inout)}]{this }\end{DoxyParamCaption})}
+
+
+
+Reads the albums from the json file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The fhandler object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 189 of file filehandler.\+f90.
+
+\mbox{\label{namespacefilehandler_aad617fd79a78c7d80bc12cf71dde1980}} 
+\index{filehandler@{filehandler}!read\_clients@{read\_clients}}
+\index{read\_clients@{read\_clients}!filehandler@{filehandler}}
+\doxysubsubsection{read\_clients()}
+{\footnotesize\ttfamily subroutine filehandler\+::read\+\_\+clients (\begin{DoxyParamCaption}\item[{class(\textbf{ fhandler}), intent(inout)}]{this }\end{DoxyParamCaption})}
+
+
+
+Reads the clients from the json file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The fhandler object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 153 of file filehandler.\+f90.
+
+\mbox{\label{namespacefilehandler_acaa4be4251cf47b01d3e86b005e3456f}} 
+\index{filehandler@{filehandler}!read\_imgs@{read\_imgs}}
+\index{read\_imgs@{read\_imgs}!filehandler@{filehandler}}
+\doxysubsubsection{read\_imgs()}
+{\footnotesize\ttfamily subroutine filehandler\+::read\+\_\+imgs (\begin{DoxyParamCaption}\item[{class(\textbf{ fhandler}), intent(inout)}]{this }\end{DoxyParamCaption})}
+
+
+
+Reads the images from the json file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The fhandler object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 59 of file filehandler.\+f90.
+
+\mbox{\label{namespacefilehandler_a41afeda60919f52232d8861bbaa5eac1}} 
+\index{filehandler@{filehandler}!read\_layers@{read\_layers}}
+\index{read\_layers@{read\_layers}!filehandler@{filehandler}}
+\doxysubsubsection{read\_layers()}
+{\footnotesize\ttfamily subroutine filehandler\+::read\+\_\+layers (\begin{DoxyParamCaption}\item[{class(\textbf{ fhandler}), intent(inout)}]{this }\end{DoxyParamCaption})}
+
+
+
+Reads the layers from the json file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The fhandler object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 100 of file filehandler.\+f90.
+
+\mbox{\label{namespacefilehandler_a61cb47821c19740f6d5f4eaf430bf197}} 
+\index{filehandler@{filehandler}!set\_user@{set\_user}}
+\index{set\_user@{set\_user}!filehandler@{filehandler}}
+\doxysubsubsection{set\_user()}
+{\footnotesize\ttfamily subroutine filehandler\+::set\+\_\+user (\begin{DoxyParamCaption}\item[{class(\textbf{ fhandler}), intent(inout)}]{this,  }\item[{type(\textbf{ client}), intent(in), pointer}]{user }\end{DoxyParamCaption})}
+
+
+
+Sets the user data structures to the fhandler object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The fhandler object \\
+\hline
+{\em user} & The user object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 50 of file filehandler.\+f90.
+

@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structfilehandler_1_1fhandler" xml:lang="en-US">
+<title>filehandler::fhandler Type Reference</title>
+<indexterm><primary>filehandler::fhandler</primary></indexterm>
+<para>
+
+<para>Type that handles the reading of the json files and the initialization of the data structures. </para>
+ 
+</para>
+Collaboration diagram for filehandler::fhandler:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="structfilehandler_1_1fhandler__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>procedure <link linkend="_structfilehandler_1_1fhandler_1ab7c3b56deec929db01ea88bfc64b7b40">initialize_admin</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structfilehandler_1_1fhandler_1aceb58221380ccfbd6f32fbc03085d30c">initialize_user</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structfilehandler_1_1fhandler_1ae1abb90521a8183b0cb1b65eb518d201">set_user</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structfilehandler_1_1fhandler_1addddb1cc6b524a3b874017f9130b39f6">read_imgs</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structfilehandler_1_1fhandler_1ad1dea0c0046ff406e7267e5f8b468f5e">read_layers</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structfilehandler_1_1fhandler_1a081d71b857ef69d500adb9cd815a4a4e">read_albums</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structfilehandler_1_1fhandler_1a42692d1ff1ea5a44cb32d2c6a2ce1dfb">read_clients</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>type(<link linkend="_structalbums_1_1album__list">album_list</link>), pointer <link linkend="_structfilehandler_1_1fhandler_1a8f589be0fa36b9ac0c53c82f04668308">albums_db</link> =&gt; null()</para>
+
+<para>Pointer to the albums database. </para>
+</listitem>
+            <listitem><para>type(<link linkend="_structimages_1_1image__avl">image_avl</link>), pointer <link linkend="_structfilehandler_1_1fhandler_1ad2ff2a7d4a8609382854c30f01037dc2">images_db</link> =&gt; null()</para>
+
+<para>Pointer to the images database. </para>
+</listitem>
+            <listitem><para>type(<link linkend="_structclients_1_1btree__clients">btree_clients</link>), pointer <link linkend="_structfilehandler_1_1fhandler_1aff6e16b2d5eb7ed30f85ac37ea39f756">clients_db</link> =&gt; null()</para>
+
+<para>Pointer to the clients database. </para>
+</listitem>
+            <listitem><para>type(<link linkend="_structlayers_1_1layers__tree">layers_tree</link>), pointer <link linkend="_structfilehandler_1_1fhandler_1a673c479e606ff608b1483f4a83954a9b">layers_db</link> =&gt; null()</para>
+
+<para>Pointer to the layers database. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Type that handles the reading of the json files and the initialization of the data structures. </para>
+<para>
+Definition at line 17 of file filehandler.f90.</para>
+</section>
+<section>
+<title>Member Function/Subroutine Documentation</title>
+<anchor xml:id="_structfilehandler_1_1fhandler_1ab7c3b56deec929db01ea88bfc64b7b40"/>    <section>
+    <title>initialize_admin()</title>
+<indexterm><primary>initialize_admin</primary><secondary>filehandler::fhandler</secondary></indexterm>
+<indexterm><primary>filehandler::fhandler</primary><secondary>initialize_admin</secondary></indexterm>
+<para><computeroutput>procedure filehandler::fhandler::initialize_admin</computeroutput></para><para>
+Definition at line 23 of file filehandler.f90.</para>
+    </section><anchor xml:id="_structfilehandler_1_1fhandler_1aceb58221380ccfbd6f32fbc03085d30c"/>    <section>
+    <title>initialize_user()</title>
+<indexterm><primary>initialize_user</primary><secondary>filehandler::fhandler</secondary></indexterm>
+<indexterm><primary>filehandler::fhandler</primary><secondary>initialize_user</secondary></indexterm>
+<para><computeroutput>procedure filehandler::fhandler::initialize_user</computeroutput></para><para>
+Definition at line 24 of file filehandler.f90.</para>
+    </section><anchor xml:id="_structfilehandler_1_1fhandler_1a081d71b857ef69d500adb9cd815a4a4e"/>    <section>
+    <title>read_albums()</title>
+<indexterm><primary>read_albums</primary><secondary>filehandler::fhandler</secondary></indexterm>
+<indexterm><primary>filehandler::fhandler</primary><secondary>read_albums</secondary></indexterm>
+<para><computeroutput>procedure filehandler::fhandler::read_albums</computeroutput></para><para>
+Definition at line 28 of file filehandler.f90.</para>
+    </section><anchor xml:id="_structfilehandler_1_1fhandler_1a42692d1ff1ea5a44cb32d2c6a2ce1dfb"/>    <section>
+    <title>read_clients()</title>
+<indexterm><primary>read_clients</primary><secondary>filehandler::fhandler</secondary></indexterm>
+<indexterm><primary>filehandler::fhandler</primary><secondary>read_clients</secondary></indexterm>
+<para><computeroutput>procedure filehandler::fhandler::read_clients</computeroutput></para><para>
+Definition at line 29 of file filehandler.f90.</para>
+    </section><anchor xml:id="_structfilehandler_1_1fhandler_1addddb1cc6b524a3b874017f9130b39f6"/>    <section>
+    <title>read_imgs()</title>
+<indexterm><primary>read_imgs</primary><secondary>filehandler::fhandler</secondary></indexterm>
+<indexterm><primary>filehandler::fhandler</primary><secondary>read_imgs</secondary></indexterm>
+<para><computeroutput>procedure filehandler::fhandler::read_imgs</computeroutput></para><para>
+Definition at line 26 of file filehandler.f90.</para>
+    </section><anchor xml:id="_structfilehandler_1_1fhandler_1ad1dea0c0046ff406e7267e5f8b468f5e"/>    <section>
+    <title>read_layers()</title>
+<indexterm><primary>read_layers</primary><secondary>filehandler::fhandler</secondary></indexterm>
+<indexterm><primary>filehandler::fhandler</primary><secondary>read_layers</secondary></indexterm>
+<para><computeroutput>procedure filehandler::fhandler::read_layers</computeroutput></para><para>
+Definition at line 27 of file filehandler.f90.</para>
+    </section><anchor xml:id="_structfilehandler_1_1fhandler_1ae1abb90521a8183b0cb1b65eb518d201"/>    <section>
+    <title>set_user()</title>
+<indexterm><primary>set_user</primary><secondary>filehandler::fhandler</secondary></indexterm>
+<indexterm><primary>filehandler::fhandler</primary><secondary>set_user</secondary></indexterm>
+<para><computeroutput>procedure filehandler::fhandler::set_user</computeroutput></para><para>
+Definition at line 25 of file filehandler.f90.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structfilehandler_1_1fhandler_1a8f589be0fa36b9ac0c53c82f04668308"/>    <section>
+    <title>albums_db</title>
+<indexterm><primary>albums_db</primary><secondary>filehandler::fhandler</secondary></indexterm>
+<indexterm><primary>filehandler::fhandler</primary><secondary>albums_db</secondary></indexterm>
+<para><computeroutput>type(<link linkend="_structalbums_1_1album__list">album_list</link>), pointer filehandler::fhandler::albums_db =&gt; null()</computeroutput></para><para>
+
+<para>Pointer to the albums database. </para>
+</para>
+<para>
+Definition at line 18 of file filehandler.f90.</para>
+    </section><anchor xml:id="_structfilehandler_1_1fhandler_1aff6e16b2d5eb7ed30f85ac37ea39f756"/>    <section>
+    <title>clients_db</title>
+<indexterm><primary>clients_db</primary><secondary>filehandler::fhandler</secondary></indexterm>
+<indexterm><primary>filehandler::fhandler</primary><secondary>clients_db</secondary></indexterm>
+<para><computeroutput>type(<link linkend="_structclients_1_1btree__clients">btree_clients</link>), pointer filehandler::fhandler::clients_db =&gt; null()</computeroutput></para><para>
+
+<para>Pointer to the clients database. </para>
+</para>
+<para>
+Definition at line 20 of file filehandler.f90.</para>
+    </section><anchor xml:id="_structfilehandler_1_1fhandler_1ad2ff2a7d4a8609382854c30f01037dc2"/>    <section>
+    <title>images_db</title>
+<indexterm><primary>images_db</primary><secondary>filehandler::fhandler</secondary></indexterm>
+<indexterm><primary>filehandler::fhandler</primary><secondary>images_db</secondary></indexterm>
+<para><computeroutput>type(<link linkend="_structimages_1_1image__avl">image_avl</link>), pointer filehandler::fhandler::images_db =&gt; null()</computeroutput></para><para>
+
+<para>Pointer to the images database. </para>
+</para>
+<para>
+Definition at line 19 of file filehandler.f90.</para>
+    </section><anchor xml:id="_structfilehandler_1_1fhandler_1a673c479e606ff608b1483f4a83954a9b"/>    <section>
+    <title>layers_db</title>
+<indexterm><primary>layers_db</primary><secondary>filehandler::fhandler</secondary></indexterm>
+<indexterm><primary>filehandler::fhandler</primary><secondary>layers_db</secondary></indexterm>
+<para><computeroutput>type(<link linkend="_structlayers_1_1layers__tree">layers_tree</link>), pointer filehandler::fhandler::layers_db =&gt; null()</computeroutput></para><para>
+
+<para>Pointer to the layers database. </para>
+</para>
+<para>
+Definition at line 21 of file filehandler.f90.</para>
+</section>
+<para>
+The documentation for this type was generated from the following file:</para>
+/home/diego/Documents/EDD/Fase 2 Documentation/src/<link linkend="_filehandler_8f90">filehandler.f90</link></section>
+</section>

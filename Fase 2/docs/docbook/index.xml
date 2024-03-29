@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<book xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_index" xml:lang="en-US">
+    <info>
+    <title>2nd Fase EDD</title>
+    </info>
+<chapter>
+    <title>Module Documentation</title>
+<xi:include href="namespacealbums.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<xi:include href="namespaceclients.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<xi:include href="namespacefilehandler.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<xi:include href="namespaceimages.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<xi:include href="namespacelayers.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<xi:include href="namespacepixels.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</chapter>
+<chapter>
+    <title>Data Type Documentation</title>
+    <xi:include href="structalbums_1_1album.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structalbums_1_1album__list.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structclients_1_1btree__clients.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structclients_1_1btreenode.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structclients_1_1client.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structclients_1_1client__queue.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structfilehandler_1_1fhandler.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structimages_1_1image.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structimages_1_1image__avl.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structalbums_1_1img__node.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structlayers_1_1layer.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structlayers_1_1layers__tree.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structlayers_1_1node__layer.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structclients_1_1nodeptr.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structpixels_1_1pixel.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structpixels_1_1pixel__matrix.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structclients_1_1q__node.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structlayers_1_1queue.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</chapter>
+<chapter>
+    <title>File Documentation</title>
+    <xi:include href="albums_8f90.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="clients_8f90.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="filehandler_8f90.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="images_8f90.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="layers_8f90.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="pixels_8f90.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</chapter>
+<index/>
+</book>

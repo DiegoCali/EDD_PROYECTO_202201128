@@ -1,0 +1,329 @@
+\doxysection{layers\+::layers\+\_\+tree Type Reference}
+\label{structlayers_1_1layers__tree}\index{layers::layers\_tree@{layers::layers\_tree}}
+
+
+Type to represent a binary tree of layers.  
+
+
+
+
+Collaboration diagram for layers\+::layers\+\_\+tree\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{structlayers_1_1layers__tree__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+procedure \textbf{ add}
+\item 
+procedure \textbf{ add\+\_\+recursive}
+\item 
+procedure \textbf{ add\+\_\+copied\+\_\+val}
+\item 
+procedure \textbf{ preorder}
+\item 
+procedure \textbf{ inorder}
+\item 
+procedure \textbf{ postorder}
+\item 
+procedure \textbf{ gen\+\_\+dot}
+\item 
+procedure \textbf{ gen\+\_\+dot\+\_\+recursive}
+\item 
+procedure \textbf{ search}
+\item 
+procedure \textbf{ traverse\+\_\+matrix}
+\item 
+procedure \textbf{ max\+\_\+depth}
+\item 
+procedure \textbf{ max\+\_\+depth\+\_\+rec}
+\item 
+procedure \textbf{ leaf\+\_\+layers}
+\item 
+procedure \textbf{ leaf\+\_\+layers\+\_\+rec}
+\item 
+procedure \textbf{ list\+\_\+layers}
+\item 
+procedure \textbf{ inorder\+\_\+print}
+\item 
+procedure \textbf{ traverse\+\_\+limited}
+\item 
+procedure \textbf{ gen\+\_\+preorder}
+\item 
+procedure \textbf{ gen\+\_\+inorder}
+\item 
+procedure \textbf{ gen\+\_\+postorder}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+type(\textbf{ layer}), pointer \textbf{ root} =$>$ null()
+\begin{DoxyCompactList}\small\item\em Pointer to the root layer. \end{DoxyCompactList}\item 
+type(\textbf{ pixel\+\_\+matrix}) \textbf{ global\+\_\+matrix}
+\begin{DoxyCompactList}\small\item\em Global matrix of pixels. \end{DoxyCompactList}\item 
+integer \textbf{ total} = 0
+\begin{DoxyCompactList}\small\item\em Total number of layers in the tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Type to represent a binary tree of layers. 
+
+Definition at line 20 of file layers.\+f90.
+
+
+
+\doxysubsection{Member Function/\+Subroutine Documentation}
+\mbox{\label{structlayers_1_1layers__tree_a521918cae3b42b488ab7ddc2dc27a60b}} 
+\index{layers::layers\_tree@{layers::layers\_tree}!add@{add}}
+\index{add@{add}!layers::layers\_tree@{layers::layers\_tree}}
+\doxysubsubsection{add()}
+{\footnotesize\ttfamily procedure layers\+::layers\+\_\+tree\+::add}
+
+
+
+Definition at line 25 of file layers.\+f90.
+
+\mbox{\label{structlayers_1_1layers__tree_a5ebaff3559c3913c24b0757a8b345291}} 
+\index{layers::layers\_tree@{layers::layers\_tree}!add\_copied\_val@{add\_copied\_val}}
+\index{add\_copied\_val@{add\_copied\_val}!layers::layers\_tree@{layers::layers\_tree}}
+\doxysubsubsection{add\_copied\_val()}
+{\footnotesize\ttfamily procedure layers\+::layers\+\_\+tree\+::add\+\_\+copied\+\_\+val}
+
+
+
+Definition at line 27 of file layers.\+f90.
+
+\mbox{\label{structlayers_1_1layers__tree_aa1813ff3df3e0b2c0ddf5ac7f56b6839}} 
+\index{layers::layers\_tree@{layers::layers\_tree}!add\_recursive@{add\_recursive}}
+\index{add\_recursive@{add\_recursive}!layers::layers\_tree@{layers::layers\_tree}}
+\doxysubsubsection{add\_recursive()}
+{\footnotesize\ttfamily procedure layers\+::layers\+\_\+tree\+::add\+\_\+recursive}
+
+
+
+Definition at line 26 of file layers.\+f90.
+
+\mbox{\label{structlayers_1_1layers__tree_a43699609d577fa893fdaa02b13246aee}} 
+\index{layers::layers\_tree@{layers::layers\_tree}!gen\_dot@{gen\_dot}}
+\index{gen\_dot@{gen\_dot}!layers::layers\_tree@{layers::layers\_tree}}
+\doxysubsubsection{gen\_dot()}
+{\footnotesize\ttfamily procedure layers\+::layers\+\_\+tree\+::gen\+\_\+dot}
+
+
+
+Definition at line 31 of file layers.\+f90.
+
+\mbox{\label{structlayers_1_1layers__tree_ae64209814ee6225282ca5513fecd8678}} 
+\index{layers::layers\_tree@{layers::layers\_tree}!gen\_dot\_recursive@{gen\_dot\_recursive}}
+\index{gen\_dot\_recursive@{gen\_dot\_recursive}!layers::layers\_tree@{layers::layers\_tree}}
+\doxysubsubsection{gen\_dot\_recursive()}
+{\footnotesize\ttfamily procedure layers\+::layers\+\_\+tree\+::gen\+\_\+dot\+\_\+recursive}
+
+
+
+Definition at line 32 of file layers.\+f90.
+
+\mbox{\label{structlayers_1_1layers__tree_a52bdf8e766976f2d892b070e83c54d8b}} 
+\index{layers::layers\_tree@{layers::layers\_tree}!gen\_inorder@{gen\_inorder}}
+\index{gen\_inorder@{gen\_inorder}!layers::layers\_tree@{layers::layers\_tree}}
+\doxysubsubsection{gen\_inorder()}
+{\footnotesize\ttfamily procedure layers\+::layers\+\_\+tree\+::gen\+\_\+inorder}
+
+
+
+Definition at line 43 of file layers.\+f90.
+
+\mbox{\label{structlayers_1_1layers__tree_ac3d517ba32f4e7fa91ef34908ae33289}} 
+\index{layers::layers\_tree@{layers::layers\_tree}!gen\_postorder@{gen\_postorder}}
+\index{gen\_postorder@{gen\_postorder}!layers::layers\_tree@{layers::layers\_tree}}
+\doxysubsubsection{gen\_postorder()}
+{\footnotesize\ttfamily procedure layers\+::layers\+\_\+tree\+::gen\+\_\+postorder}
+
+
+
+Definition at line 44 of file layers.\+f90.
+
+\mbox{\label{structlayers_1_1layers__tree_ab61656175725cf036227082049d333ed}} 
+\index{layers::layers\_tree@{layers::layers\_tree}!gen\_preorder@{gen\_preorder}}
+\index{gen\_preorder@{gen\_preorder}!layers::layers\_tree@{layers::layers\_tree}}
+\doxysubsubsection{gen\_preorder()}
+{\footnotesize\ttfamily procedure layers\+::layers\+\_\+tree\+::gen\+\_\+preorder}
+
+
+
+Definition at line 42 of file layers.\+f90.
+
+\mbox{\label{structlayers_1_1layers__tree_a1e0fc241433f1ef35f6e60bcceb40bbd}} 
+\index{layers::layers\_tree@{layers::layers\_tree}!inorder@{inorder}}
+\index{inorder@{inorder}!layers::layers\_tree@{layers::layers\_tree}}
+\doxysubsubsection{inorder()}
+{\footnotesize\ttfamily procedure layers\+::layers\+\_\+tree\+::inorder}
+
+
+
+Definition at line 29 of file layers.\+f90.
+
+\mbox{\label{structlayers_1_1layers__tree_a7085eb6e693fffd4dcd5cd29b5b708f3}} 
+\index{layers::layers\_tree@{layers::layers\_tree}!inorder\_print@{inorder\_print}}
+\index{inorder\_print@{inorder\_print}!layers::layers\_tree@{layers::layers\_tree}}
+\doxysubsubsection{inorder\_print()}
+{\footnotesize\ttfamily procedure layers\+::layers\+\_\+tree\+::inorder\+\_\+print}
+
+
+
+Definition at line 40 of file layers.\+f90.
+
+\mbox{\label{structlayers_1_1layers__tree_aa8a81036bd354c8064fad618d320c491}} 
+\index{layers::layers\_tree@{layers::layers\_tree}!leaf\_layers@{leaf\_layers}}
+\index{leaf\_layers@{leaf\_layers}!layers::layers\_tree@{layers::layers\_tree}}
+\doxysubsubsection{leaf\_layers()}
+{\footnotesize\ttfamily procedure layers\+::layers\+\_\+tree\+::leaf\+\_\+layers}
+
+
+
+Definition at line 37 of file layers.\+f90.
+
+\mbox{\label{structlayers_1_1layers__tree_a5c13b7d760e0895980ae7562d3db5218}} 
+\index{layers::layers\_tree@{layers::layers\_tree}!leaf\_layers\_rec@{leaf\_layers\_rec}}
+\index{leaf\_layers\_rec@{leaf\_layers\_rec}!layers::layers\_tree@{layers::layers\_tree}}
+\doxysubsubsection{leaf\_layers\_rec()}
+{\footnotesize\ttfamily procedure layers\+::layers\+\_\+tree\+::leaf\+\_\+layers\+\_\+rec}
+
+
+
+Definition at line 38 of file layers.\+f90.
+
+\mbox{\label{structlayers_1_1layers__tree_a3cc39b275a8bd7b234519fe9c6cf6516}} 
+\index{layers::layers\_tree@{layers::layers\_tree}!list\_layers@{list\_layers}}
+\index{list\_layers@{list\_layers}!layers::layers\_tree@{layers::layers\_tree}}
+\doxysubsubsection{list\_layers()}
+{\footnotesize\ttfamily procedure layers\+::layers\+\_\+tree\+::list\+\_\+layers}
+
+
+
+Definition at line 39 of file layers.\+f90.
+
+\mbox{\label{structlayers_1_1layers__tree_a49b55e4b60df8385e19f206d0f75e4bb}} 
+\index{layers::layers\_tree@{layers::layers\_tree}!max\_depth@{max\_depth}}
+\index{max\_depth@{max\_depth}!layers::layers\_tree@{layers::layers\_tree}}
+\doxysubsubsection{max\_depth()}
+{\footnotesize\ttfamily procedure layers\+::layers\+\_\+tree\+::max\+\_\+depth}
+
+
+
+Definition at line 35 of file layers.\+f90.
+
+\mbox{\label{structlayers_1_1layers__tree_a64ab53a4827196042fb80a2f5c72bdae}} 
+\index{layers::layers\_tree@{layers::layers\_tree}!max\_depth\_rec@{max\_depth\_rec}}
+\index{max\_depth\_rec@{max\_depth\_rec}!layers::layers\_tree@{layers::layers\_tree}}
+\doxysubsubsection{max\_depth\_rec()}
+{\footnotesize\ttfamily procedure layers\+::layers\+\_\+tree\+::max\+\_\+depth\+\_\+rec}
+
+
+
+Definition at line 36 of file layers.\+f90.
+
+\mbox{\label{structlayers_1_1layers__tree_aa64c06d1c36dac3a909127094acc1079}} 
+\index{layers::layers\_tree@{layers::layers\_tree}!postorder@{postorder}}
+\index{postorder@{postorder}!layers::layers\_tree@{layers::layers\_tree}}
+\doxysubsubsection{postorder()}
+{\footnotesize\ttfamily procedure layers\+::layers\+\_\+tree\+::postorder}
+
+
+
+Definition at line 30 of file layers.\+f90.
+
+\mbox{\label{structlayers_1_1layers__tree_a6a43547cba33178b3b9107518ad42233}} 
+\index{layers::layers\_tree@{layers::layers\_tree}!preorder@{preorder}}
+\index{preorder@{preorder}!layers::layers\_tree@{layers::layers\_tree}}
+\doxysubsubsection{preorder()}
+{\footnotesize\ttfamily procedure layers\+::layers\+\_\+tree\+::preorder}
+
+
+
+Definition at line 28 of file layers.\+f90.
+
+\mbox{\label{structlayers_1_1layers__tree_abbc73e990ec5c1e34ee32477ff7598e7}} 
+\index{layers::layers\_tree@{layers::layers\_tree}!search@{search}}
+\index{search@{search}!layers::layers\_tree@{layers::layers\_tree}}
+\doxysubsubsection{search()}
+{\footnotesize\ttfamily procedure layers\+::layers\+\_\+tree\+::search}
+
+
+
+Definition at line 33 of file layers.\+f90.
+
+\mbox{\label{structlayers_1_1layers__tree_a5264404f445d9c0b71547634b527fe08}} 
+\index{layers::layers\_tree@{layers::layers\_tree}!traverse\_limited@{traverse\_limited}}
+\index{traverse\_limited@{traverse\_limited}!layers::layers\_tree@{layers::layers\_tree}}
+\doxysubsubsection{traverse\_limited()}
+{\footnotesize\ttfamily procedure layers\+::layers\+\_\+tree\+::traverse\+\_\+limited}
+
+
+
+Definition at line 41 of file layers.\+f90.
+
+\mbox{\label{structlayers_1_1layers__tree_a795ddad8626dd52a52ac10bfe2a34ceb}} 
+\index{layers::layers\_tree@{layers::layers\_tree}!traverse\_matrix@{traverse\_matrix}}
+\index{traverse\_matrix@{traverse\_matrix}!layers::layers\_tree@{layers::layers\_tree}}
+\doxysubsubsection{traverse\_matrix()}
+{\footnotesize\ttfamily procedure layers\+::layers\+\_\+tree\+::traverse\+\_\+matrix}
+
+
+
+Definition at line 34 of file layers.\+f90.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{structlayers_1_1layers__tree_a4124bc66cc9f5c4cc9bbe04291ed1a39}} 
+\index{layers::layers\_tree@{layers::layers\_tree}!global\_matrix@{global\_matrix}}
+\index{global\_matrix@{global\_matrix}!layers::layers\_tree@{layers::layers\_tree}}
+\doxysubsubsection{global\_matrix}
+{\footnotesize\ttfamily type(\textbf{ pixel\+\_\+matrix}) layers\+::layers\+\_\+tree\+::global\+\_\+matrix}
+
+
+
+Global matrix of pixels. 
+
+
+
+Definition at line 22 of file layers.\+f90.
+
+\mbox{\label{structlayers_1_1layers__tree_aaeac3a628cd53c46ca30ba33a3776a4e}} 
+\index{layers::layers\_tree@{layers::layers\_tree}!root@{root}}
+\index{root@{root}!layers::layers\_tree@{layers::layers\_tree}}
+\doxysubsubsection{root}
+{\footnotesize\ttfamily type(\textbf{ layer}), pointer layers\+::layers\+\_\+tree\+::root =$>$ null()}
+
+
+
+Pointer to the root layer. 
+
+
+
+Definition at line 21 of file layers.\+f90.
+
+\mbox{\label{structlayers_1_1layers__tree_a48c811d9cee37963402171189983a409}} 
+\index{layers::layers\_tree@{layers::layers\_tree}!total@{total}}
+\index{total@{total}!layers::layers\_tree@{layers::layers\_tree}}
+\doxysubsubsection{total}
+{\footnotesize\ttfamily integer layers\+::layers\+\_\+tree\+::total = 0}
+
+
+
+Total number of layers in the tree. 
+
+
+
+Definition at line 23 of file layers.\+f90.
+
+
+
+The documentation for this type was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/diego/\+Documents/\+EDD/\+Fase 2 Documentation/src/\textbf{ layers.\+f90}\end{DoxyCompactItemize}

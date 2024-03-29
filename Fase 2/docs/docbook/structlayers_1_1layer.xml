@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structlayers_1_1layer" xml:lang="en-US">
+<title>layers::layer Type Reference</title>
+<indexterm><primary>layers::layer</primary></indexterm>
+<para>
+
+<para>Type to represent a pixel matrix 
+<literallayout>&#160;&#xa;</literallayout>
+ </para>
+ 
+</para>
+Collaboration diagram for layers::layer:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="structlayers_1_1layer__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>integer <link linkend="_structlayers_1_1layer_1adffa0187757687369a9dab37517171e8">id</link></para>
+
+<para>Layer id. </para>
+</listitem>
+            <listitem><para>integer <link linkend="_structlayers_1_1layer_1aeee2680548b1ffdd5e710f212cfe164e">pixels_count</link></para>
+
+<para>Number of pixels in the layer. </para>
+</listitem>
+            <listitem><para>type(<link linkend="_structpixels_1_1pixel__matrix">pixel_matrix</link>) <link linkend="_structlayers_1_1layer_1aae0bd808c0a4c7f9e80ceb1e1795614e">layer_pixels</link></para>
+
+<para>Matrix of pixels in the layer. </para>
+</listitem>
+            <listitem><para>type(<link linkend="_structlayers_1_1layer">layer</link>), pointer <link linkend="_structlayers_1_1layer_1ac50e123c359370a96283e2acb57723c5">left</link> =&gt; null()</para>
+
+<para>Pointer to the left child layer. </para>
+</listitem>
+            <listitem><para>type(<link linkend="_structlayers_1_1layer">layer</link>), pointer <link linkend="_structlayers_1_1layer_1a90ff0a9a948b8e9cb5f838198fb5fc2d">right</link> =&gt; null()</para>
+
+<para>Pointer to the right child layer. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Type to represent a pixel matrix 
+<literallayout>&#160;&#xa;</literallayout>
+ </para>
+<para>
+Definition at line 12 of file layers.f90.</para>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structlayers_1_1layer_1adffa0187757687369a9dab37517171e8"/>    <section>
+    <title>id</title>
+<indexterm><primary>id</primary><secondary>layers::layer</secondary></indexterm>
+<indexterm><primary>layers::layer</primary><secondary>id</secondary></indexterm>
+<para><computeroutput>integer layers::layer::id</computeroutput></para><para>
+
+<para>Layer id. </para>
+</para>
+<para>
+Definition at line 13 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layer_1aae0bd808c0a4c7f9e80ceb1e1795614e"/>    <section>
+    <title>layer_pixels</title>
+<indexterm><primary>layer_pixels</primary><secondary>layers::layer</secondary></indexterm>
+<indexterm><primary>layers::layer</primary><secondary>layer_pixels</secondary></indexterm>
+<para><computeroutput>type(<link linkend="_structpixels_1_1pixel__matrix">pixel_matrix</link>) layers::layer::layer_pixels</computeroutput></para><para>
+
+<para>Matrix of pixels in the layer. </para>
+</para>
+<para>
+Definition at line 15 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layer_1ac50e123c359370a96283e2acb57723c5"/>    <section>
+    <title>left</title>
+<indexterm><primary>left</primary><secondary>layers::layer</secondary></indexterm>
+<indexterm><primary>layers::layer</primary><secondary>left</secondary></indexterm>
+<para><computeroutput>type(<link linkend="_structlayers_1_1layer">layer</link>), pointer layers::layer::left =&gt; null()</computeroutput></para><para>
+
+<para>Pointer to the left child layer. </para>
+</para>
+<para>
+Definition at line 16 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layer_1aeee2680548b1ffdd5e710f212cfe164e"/>    <section>
+    <title>pixels_count</title>
+<indexterm><primary>pixels_count</primary><secondary>layers::layer</secondary></indexterm>
+<indexterm><primary>layers::layer</primary><secondary>pixels_count</secondary></indexterm>
+<para><computeroutput>integer layers::layer::pixels_count</computeroutput></para><para>
+
+<para>Number of pixels in the layer. </para>
+</para>
+<para>
+Definition at line 14 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layer_1a90ff0a9a948b8e9cb5f838198fb5fc2d"/>    <section>
+    <title>right</title>
+<indexterm><primary>right</primary><secondary>layers::layer</secondary></indexterm>
+<indexterm><primary>layers::layer</primary><secondary>right</secondary></indexterm>
+<para><computeroutput>type(<link linkend="_structlayers_1_1layer">layer</link>), pointer layers::layer::right =&gt; null()</computeroutput></para><para>
+
+<para>Pointer to the right child layer. </para>
+</para>
+<para>
+Definition at line 17 of file layers.f90.</para>
+</section>
+<para>
+The documentation for this type was generated from the following file:</para>
+/home/diego/Documents/EDD/Fase 2 Documentation/src/<link linkend="_layers_8f90">layers.f90</link></section>
+</section>

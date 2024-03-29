@@ -1,0 +1,757 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespacepixels" xml:lang="en-US">
+<title>pixels Module Reference</title>
+<indexterm><primary>pixels</primary></indexterm>
+<simplesect>
+    <title>Data Types    </title>
+        <itemizedlist>
+            <listitem><para>type <link linkend="_structpixels_1_1pixel">pixel</link></para>
+
+<para>Type to represent a pixel. </para>
+</listitem>
+            <listitem><para>type <link linkend="_structpixels_1_1pixel__matrix">pixel_matrix</link></para>
+
+<para>Type to represent a matrix of pixels. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions/Subroutines    </title>
+        <itemizedlist>
+            <listitem><para>subroutine <link linkend="_namespacepixels_1a74f39e3420ff80b0c56355095e74df2f">insert</link> (this, x, y, value, color)</para>
+
+<para>Insert a pixel in the matrix. </para>
+</listitem>
+            <listitem><para>type(<link linkend="_structpixels_1_1pixel">pixel</link>) function, pointer <link linkend="_namespacepixels_1a52ab6989eb577e05a4281c32732489be">search_row</link> (this, y)</para>
+
+<para>Search a row in the matrix. </para>
+</listitem>
+            <listitem><para>type(<link linkend="_structpixels_1_1pixel">pixel</link>) function, pointer <link linkend="_namespacepixels_1ae429525c4048e06e7d73f09e78b10391">search_column</link> (this, x)</para>
+
+<para>Search a column in the matrix. </para>
+</listitem>
+            <listitem><para>logical function <link linkend="_namespacepixels_1a3f750e1247d08e6b55a7874d3656e848">node_exists</link> (this, new_node)</para>
+
+<para>Check if a node exists in the matrix. </para>
+</listitem>
+            <listitem><para>type(<link linkend="_structpixels_1_1pixel">pixel</link>) function, pointer <link linkend="_namespacepixels_1a7665949f727685974ab44eeafc804d2c">insert_row_header</link> (this, y)</para>
+
+<para>Insert a row header in the matrix. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacepixels_1a52dcb902c4603ec587b6d0b28cbebd37">insert_in_row</link> (this, new_node, row_header)</para>
+
+<para>Insert a pixel in a row. </para>
+</listitem>
+            <listitem><para>type(<link linkend="_structpixels_1_1pixel">pixel</link>) function, pointer <link linkend="_namespacepixels_1a10004101e4297b0f94ea7f634facbd09">insert_column_header</link> (this, x)</para>
+
+<para>Insert a column header in the matrix. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacepixels_1a412e104221a36f27d42b5922e80078df">insert_in_column</link> (this, new_node, column_header)</para>
+
+<para>Insert a pixel in a column. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacepixels_1a3b7d14f7883ac37841a3172870b2f567">print_headers</link> (this)</para>
+
+<para>Print the headers of the matrix. </para>
+</listitem>
+            <listitem><para>logical function <link linkend="_namespacepixels_1ae50cf44b0c7491a38ab6bab213ff0535">get_value</link> (this, x, y)</para>
+
+<para>Get the value of a pixel. </para>
+</listitem>
+            <listitem><para>type(<link linkend="_structpixels_1_1pixel">pixel</link>) function, pointer <link linkend="_namespacepixels_1a42bbc0037b7fe3206474431081423f60">get_node</link> (this, x, y)</para>
+
+<para>Get the node in the matrix. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacepixels_1a0fbb8a29f7c13922a2c1c243d0177c91">self_print</link> (this)</para>
+
+<para>Print the matrix. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacepixels_1a4fc034ee1d1373128d963b8ebdb51634">graph_pixels</link> (this, unit)</para>
+
+<para>Generate a graph of the pixels. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacepixels_1a87b116cfc853c4b0f0bc95663f1e4970">gen_matrix</link> (this, g_matrix)</para>
+
+<para>Generate a matrix of pixels. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacepixels_1a6631c6ce3ba2c9ba478cf87d4b5ea51c">global_m_dot</link> (this, unit)</para>
+
+<para>Generate a graph of the pixels. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>integer <link linkend="_namespacepixels_1a5055dc19c18b6d25a11099b0e264e821">id</link> = 0</para>
+
+<para>Unique identifier for each pixel. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function/Subroutine Documentation</title>
+<anchor xml:id="_namespacepixels_1a87b116cfc853c4b0f0bc95663f1e4970"/>    <section>
+    <title>gen_matrix()</title>
+<indexterm><primary>gen_matrix</primary><secondary>pixels</secondary></indexterm>
+<indexterm><primary>pixels</primary><secondary>gen_matrix</secondary></indexterm>
+<para><computeroutput>subroutine pixels::gen_matrix (class(<link linkend="_structpixels_1_1pixel__matrix">pixel_matrix</link>), intent(inout) this, type(<link linkend="_structpixels_1_1pixel__matrix">pixel_matrix</link>), intent(inout) g_matrix)</computeroutput></para><para>
+
+<para>Generate a matrix of pixels. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>The matrix to be converted </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>g_matrix</entry>
+                                <entry>
+<para>The matrix to be generated </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line 385 of file pixels.f90.</para>
+    </section><anchor xml:id="_namespacepixels_1a42bbc0037b7fe3206474431081423f60"/>    <section>
+    <title>get_node()</title>
+<indexterm><primary>get_node</primary><secondary>pixels</secondary></indexterm>
+<indexterm><primary>pixels</primary><secondary>get_node</secondary></indexterm>
+<para><computeroutput>type(<link linkend="_structpixels_1_1pixel">pixel</link>) function, pointer pixels::get_node (class(<link linkend="_structpixels_1_1pixel__matrix">pixel_matrix</link>), intent(inout) this, integer, intent(in) x, integer, intent(in) y)</computeroutput></para><para>
+
+<para>Get the node in the matrix. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>The matrix where the node is located </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>x</entry>
+                                <entry>
+<para>The x coordinate of the node </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>y</entry>
+                                <entry>
+<para>The y coordinate of the node </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>The pointer to the node </para>
+</formalpara>
+</para>
+<para>
+Definition at line 257 of file pixels.f90.</para>
+    </section><anchor xml:id="_namespacepixels_1ae50cf44b0c7491a38ab6bab213ff0535"/>    <section>
+    <title>get_value()</title>
+<indexterm><primary>get_value</primary><secondary>pixels</secondary></indexterm>
+<indexterm><primary>pixels</primary><secondary>get_value</secondary></indexterm>
+<para><computeroutput>logical function pixels::get_value (class(<link linkend="_structpixels_1_1pixel__matrix">pixel_matrix</link>), intent(inout) this, integer, intent(in) x, integer, intent(in) y)</computeroutput></para><para>
+
+<para>Get the value of a pixel. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>The matrix where the pixel is located </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>x</entry>
+                                <entry>
+<para>The x coordinate of the pixel </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>y</entry>
+                                <entry>
+<para>The y coordinate of the pixel </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>The value of the pixel </para>
+
+<para>The value of the pixel </para>
+</formalpara>
+</para>
+<para>
+Definition at line 230 of file pixels.f90.</para>
+    </section><anchor xml:id="_namespacepixels_1a6631c6ce3ba2c9ba478cf87d4b5ea51c"/>    <section>
+    <title>global_m_dot()</title>
+<indexterm><primary>global_m_dot</primary><secondary>pixels</secondary></indexterm>
+<indexterm><primary>pixels</primary><secondary>global_m_dot</secondary></indexterm>
+<para><computeroutput>subroutine pixels::global_m_dot (class(<link linkend="_structpixels_1_1pixel__matrix">pixel_matrix</link>), intent(inout) this, integer, intent(in) unit)</computeroutput></para><para>
+
+<para>Generate a graph of the pixels. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>The matrix to be graphed </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>unit</entry>
+                                <entry>
+<para>The unit where the graph will be written </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line 409 of file pixels.f90.</para>
+    </section><anchor xml:id="_namespacepixels_1a4fc034ee1d1373128d963b8ebdb51634"/>    <section>
+    <title>graph_pixels()</title>
+<indexterm><primary>graph_pixels</primary><secondary>pixels</secondary></indexterm>
+<indexterm><primary>pixels</primary><secondary>graph_pixels</secondary></indexterm>
+<para><computeroutput>subroutine pixels::graph_pixels (class(<link linkend="_structpixels_1_1pixel__matrix">pixel_matrix</link>), intent(inout) this, integer, intent(in) unit)</computeroutput></para><para>
+
+<para>Generate a graph of the pixels. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>The matrix to be graphed </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>unit</entry>
+                                <entry>
+<para>The unit where the graph will be written </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line 303 of file pixels.f90.</para>
+    </section><anchor xml:id="_namespacepixels_1a74f39e3420ff80b0c56355095e74df2f"/>    <section>
+    <title>insert()</title>
+<indexterm><primary>insert</primary><secondary>pixels</secondary></indexterm>
+<indexterm><primary>pixels</primary><secondary>insert</secondary></indexterm>
+<para><computeroutput>subroutine pixels::insert (class(<link linkend="_structpixels_1_1pixel__matrix">pixel_matrix</link>), intent(inout) this, integer, intent(in) x, integer, intent(in) y, logical, intent(in) value, character(len=7), intent(in) color)</computeroutput></para><para>
+
+<para>Insert a pixel in the matrix. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>The matrix where the pixel will be inserted </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>x</entry>
+                                <entry>
+<para>The x coordinate of the pixel </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>y</entry>
+                                <entry>
+<para>The y coordinate of the pixel </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>value</entry>
+                                <entry>
+<para>The value of the pixel </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>color</entry>
+                                <entry>
+<para>The color of the pixel </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line 51 of file pixels.f90.</para>
+    </section><anchor xml:id="_namespacepixels_1a10004101e4297b0f94ea7f634facbd09"/>    <section>
+    <title>insert_column_header()</title>
+<indexterm><primary>insert_column_header</primary><secondary>pixels</secondary></indexterm>
+<indexterm><primary>pixels</primary><secondary>insert_column_header</secondary></indexterm>
+<para><computeroutput>type(<link linkend="_structpixels_1_1pixel">pixel</link>) function, pointer pixels::insert_column_header (class(<link linkend="_structpixels_1_1pixel__matrix">pixel_matrix</link>), intent(inout) this, integer, intent(in) x)</computeroutput></para><para>
+
+<para>Insert a column header in the matrix. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>The matrix where the column header will be inserted </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>x</entry>
+                                <entry>
+<para>The x coordinate of the column header </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>The pointer to the column header </para>
+</formalpara>
+</para>
+<para>
+Definition at line 181 of file pixels.f90.</para>
+    </section><anchor xml:id="_namespacepixels_1a412e104221a36f27d42b5922e80078df"/>    <section>
+    <title>insert_in_column()</title>
+<indexterm><primary>insert_in_column</primary><secondary>pixels</secondary></indexterm>
+<indexterm><primary>pixels</primary><secondary>insert_in_column</secondary></indexterm>
+<para><computeroutput>subroutine pixels::insert_in_column (class(<link linkend="_structpixels_1_1pixel__matrix">pixel_matrix</link>), intent(inout) this, type(<link linkend="_structpixels_1_1pixel">pixel</link>), intent(in), pointer new_node, type(<link linkend="_structpixels_1_1pixel">pixel</link>), intent(in), pointer column_header)</computeroutput></para><para>
+
+<para>Insert a pixel in a column. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>The matrix where the pixel will be inserted </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>new_node</entry>
+                                <entry>
+<para>The pixel to be inserted </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>column_header</entry>
+                                <entry>
+<para>The column header where the pixel will be inserted 
+<literallayout>&#160;&#xa;</literallayout>
+ </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line 195 of file pixels.f90.</para>
+    </section><anchor xml:id="_namespacepixels_1a52dcb902c4603ec587b6d0b28cbebd37"/>    <section>
+    <title>insert_in_row()</title>
+<indexterm><primary>insert_in_row</primary><secondary>pixels</secondary></indexterm>
+<indexterm><primary>pixels</primary><secondary>insert_in_row</secondary></indexterm>
+<para><computeroutput>subroutine pixels::insert_in_row (class(<link linkend="_structpixels_1_1pixel__matrix">pixel_matrix</link>), intent(inout) this, type(<link linkend="_structpixels_1_1pixel">pixel</link>), intent(in), pointer new_node, type(<link linkend="_structpixels_1_1pixel">pixel</link>), intent(in), pointer row_header)</computeroutput></para><para>
+
+<para>Insert a pixel in a row. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>The matrix where the pixel will be inserted </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>new_node</entry>
+                                <entry>
+<para>The pixel to be inserted </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>row_header</entry>
+                                <entry>
+<para>The row header where the pixel will be inserted </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line 156 of file pixels.f90.</para>
+    </section><anchor xml:id="_namespacepixels_1a7665949f727685974ab44eeafc804d2c"/>    <section>
+    <title>insert_row_header()</title>
+<indexterm><primary>insert_row_header</primary><secondary>pixels</secondary></indexterm>
+<indexterm><primary>pixels</primary><secondary>insert_row_header</secondary></indexterm>
+<para><computeroutput>type(<link linkend="_structpixels_1_1pixel">pixel</link>) function, pointer pixels::insert_row_header (class(<link linkend="_structpixels_1_1pixel__matrix">pixel_matrix</link>), intent(inout) this, integer, intent(in) y)</computeroutput></para><para>
+
+<para>Insert a row header in the matrix. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>The matrix where the row header will be inserted </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>y</entry>
+                                <entry>
+<para>The y coordinate of the row header </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>The pointer to the row header </para>
+</formalpara>
+</para>
+<para>
+Definition at line 142 of file pixels.f90.</para>
+    </section><anchor xml:id="_namespacepixels_1a3f750e1247d08e6b55a7874d3656e848"/>    <section>
+    <title>node_exists()</title>
+<indexterm><primary>node_exists</primary><secondary>pixels</secondary></indexterm>
+<indexterm><primary>pixels</primary><secondary>node_exists</secondary></indexterm>
+<para><computeroutput>logical function pixels::node_exists (class(<link linkend="_structpixels_1_1pixel__matrix">pixel_matrix</link>), intent(inout) this, type(<link linkend="_structpixels_1_1pixel">pixel</link>), intent(in), pointer new_node)</computeroutput></para><para>
+
+<para>Check if a node exists in the matrix. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>The matrix where the node will be searched </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>new_node</entry>
+                                <entry>
+<para>The node to be searched </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>True if the node exists, False otherwise </para>
+</formalpara>
+</para>
+<para>
+Definition at line 116 of file pixels.f90.</para>
+    </section><anchor xml:id="_namespacepixels_1a3b7d14f7883ac37841a3172870b2f567"/>    <section>
+    <title>print_headers()</title>
+<indexterm><primary>print_headers</primary><secondary>pixels</secondary></indexterm>
+<indexterm><primary>pixels</primary><secondary>print_headers</secondary></indexterm>
+<para><computeroutput>subroutine pixels::print_headers (class(<link linkend="_structpixels_1_1pixel__matrix">pixel_matrix</link>), intent(inout) this)</computeroutput></para><para>
+
+<para>Print the headers of the matrix. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>The matrix where the headers will be printed </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line 218 of file pixels.f90.</para>
+    </section><anchor xml:id="_namespacepixels_1ae429525c4048e06e7d73f09e78b10391"/>    <section>
+    <title>search_column()</title>
+<indexterm><primary>search_column</primary><secondary>pixels</secondary></indexterm>
+<indexterm><primary>pixels</primary><secondary>search_column</secondary></indexterm>
+<para><computeroutput>type(<link linkend="_structpixels_1_1pixel">pixel</link>) function, pointer pixels::search_column (class(<link linkend="_structpixels_1_1pixel__matrix">pixel_matrix</link>), intent(inout) this, integer, intent(in) x)</computeroutput></para><para>
+
+<para>Search a column in the matrix. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>The matrix where the column will be searched </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>x</entry>
+                                <entry>
+<para>The x coordinate of the column </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>The pointer to the column header </para>
+</formalpara>
+</para>
+<para>
+Definition at line 102 of file pixels.f90.</para>
+    </section><anchor xml:id="_namespacepixels_1a52ab6989eb577e05a4281c32732489be"/>    <section>
+    <title>search_row()</title>
+<indexterm><primary>search_row</primary><secondary>pixels</secondary></indexterm>
+<indexterm><primary>pixels</primary><secondary>search_row</secondary></indexterm>
+<para><computeroutput>type(<link linkend="_structpixels_1_1pixel">pixel</link>) function, pointer pixels::search_row (class(<link linkend="_structpixels_1_1pixel__matrix">pixel_matrix</link>), intent(inout) this, integer, intent(in) y)</computeroutput></para><para>
+
+<para>Search a row in the matrix. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>The matrix where the row will be searched </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>y</entry>
+                                <entry>
+<para>The y coordinate of the row </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>The pointer to the row header </para>
+</formalpara>
+</para>
+<para>
+Definition at line 88 of file pixels.f90.</para>
+    </section><anchor xml:id="_namespacepixels_1a0fbb8a29f7c13922a2c1c243d0177c91"/>    <section>
+    <title>self_print()</title>
+<indexterm><primary>self_print</primary><secondary>pixels</secondary></indexterm>
+<indexterm><primary>pixels</primary><secondary>self_print</secondary></indexterm>
+<para><computeroutput>subroutine pixels::self_print (class(<link linkend="_structpixels_1_1pixel__matrix">pixel_matrix</link>), intent(inout) this)</computeroutput></para><para>
+
+<para>Print the matrix. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>The matrix to be printed </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line 281 of file pixels.f90.</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_namespacepixels_1a5055dc19c18b6d25a11099b0e264e821"/>    <section>
+    <title>id</title>
+<indexterm><primary>id</primary><secondary>pixels</secondary></indexterm>
+<indexterm><primary>pixels</primary><secondary>id</secondary></indexterm>
+<para><computeroutput>integer pixels::id = 0</computeroutput></para><para>
+
+<para>Unique identifier for each pixel. </para>
+</para>
+<para>
+Definition at line 10 of file pixels.f90.</para>
+</section>
+</section>
+</section>

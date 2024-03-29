@@ -1,0 +1,201 @@
+\doxysection{albums\+::album Type Reference}
+\label{structalbums_1_1album}\index{albums::album@{albums::album}}
+
+
+Type to store the album.  
+
+
+
+
+Collaboration diagram for albums\+::album\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{structalbums_1_1album__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+procedure \textbf{ add\+\_\+image}
+\item 
+procedure \textbf{ remove\+\_\+image}
+\item 
+procedure \textbf{ get\+\_\+image}
+\item 
+procedure \textbf{ show\+\_\+images}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+integer \textbf{ id}
+\begin{DoxyCompactList}\small\item\em Album id. \end{DoxyCompactList}\item 
+character(\+:), allocatable \textbf{ name}
+\begin{DoxyCompactList}\small\item\em Album name. \end{DoxyCompactList}\item 
+type(\textbf{ album}), pointer \textbf{ next} =$>$ null()
+\begin{DoxyCompactList}\small\item\em Pointer to the next album. \end{DoxyCompactList}\item 
+type(\textbf{ album}), pointer \textbf{ prev} =$>$ null()
+\begin{DoxyCompactList}\small\item\em Pointer to the previous album. \end{DoxyCompactList}\item 
+type(\textbf{ img\+\_\+node}), pointer \textbf{ head} =$>$ null()
+\begin{DoxyCompactList}\small\item\em Pointer to the first image. \end{DoxyCompactList}\item 
+type(\textbf{ img\+\_\+node}), pointer \textbf{ tail} =$>$ null()
+\begin{DoxyCompactList}\small\item\em Pointer to the last image. \end{DoxyCompactList}\item 
+integer \textbf{ size} = 0
+\begin{DoxyCompactList}\small\item\em Number of images in the album. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Type to store the album. 
+
+Definition at line 18 of file albums.\+f90.
+
+
+
+\doxysubsection{Member Function/\+Subroutine Documentation}
+\mbox{\label{structalbums_1_1album_ac161c5cf5ed26fc70b986ab576e7fe82}} 
+\index{albums::album@{albums::album}!add\_image@{add\_image}}
+\index{add\_image@{add\_image}!albums::album@{albums::album}}
+\doxysubsubsection{add\_image()}
+{\footnotesize\ttfamily procedure albums\+::album\+::add\+\_\+image}
+
+
+
+Definition at line 27 of file albums.\+f90.
+
+\mbox{\label{structalbums_1_1album_a04d2f872e142a1c2b146919c75fe0ac4}} 
+\index{albums::album@{albums::album}!get\_image@{get\_image}}
+\index{get\_image@{get\_image}!albums::album@{albums::album}}
+\doxysubsubsection{get\_image()}
+{\footnotesize\ttfamily procedure albums\+::album\+::get\+\_\+image}
+
+
+
+Definition at line 29 of file albums.\+f90.
+
+\mbox{\label{structalbums_1_1album_acabf6b72abe30839972593b5ce119c05}} 
+\index{albums::album@{albums::album}!remove\_image@{remove\_image}}
+\index{remove\_image@{remove\_image}!albums::album@{albums::album}}
+\doxysubsubsection{remove\_image()}
+{\footnotesize\ttfamily procedure albums\+::album\+::remove\+\_\+image}
+
+
+
+Definition at line 28 of file albums.\+f90.
+
+\mbox{\label{structalbums_1_1album_a1bce2a27c545a0a8819ccf07d901abad}} 
+\index{albums::album@{albums::album}!show\_images@{show\_images}}
+\index{show\_images@{show\_images}!albums::album@{albums::album}}
+\doxysubsubsection{show\_images()}
+{\footnotesize\ttfamily procedure albums\+::album\+::show\+\_\+images}
+
+
+
+Definition at line 30 of file albums.\+f90.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{structalbums_1_1album_ac7f70aad2c082f684c13be137d4b4fd0}} 
+\index{albums::album@{albums::album}!head@{head}}
+\index{head@{head}!albums::album@{albums::album}}
+\doxysubsubsection{head}
+{\footnotesize\ttfamily type(\textbf{ img\+\_\+node}), pointer albums\+::album\+::head =$>$ null()}
+
+
+
+Pointer to the first image. 
+
+
+
+Definition at line 23 of file albums.\+f90.
+
+\mbox{\label{structalbums_1_1album_aac17c546bdf86d111ce070d320933fd1}} 
+\index{albums::album@{albums::album}!id@{id}}
+\index{id@{id}!albums::album@{albums::album}}
+\doxysubsubsection{id}
+{\footnotesize\ttfamily integer albums\+::album\+::id}
+
+
+
+Album id. 
+
+
+
+Definition at line 19 of file albums.\+f90.
+
+\mbox{\label{structalbums_1_1album_aa6aab3571a39623d4ec74d7802bc64ee}} 
+\index{albums::album@{albums::album}!name@{name}}
+\index{name@{name}!albums::album@{albums::album}}
+\doxysubsubsection{name}
+{\footnotesize\ttfamily character(\+:), allocatable albums\+::album\+::name}
+
+
+
+Album name. 
+
+
+
+Definition at line 20 of file albums.\+f90.
+
+\mbox{\label{structalbums_1_1album_a7b492db2bd4005016bfc57246eb584f8}} 
+\index{albums::album@{albums::album}!next@{next}}
+\index{next@{next}!albums::album@{albums::album}}
+\doxysubsubsection{next}
+{\footnotesize\ttfamily type(\textbf{ album}), pointer albums\+::album\+::next =$>$ null()}
+
+
+
+Pointer to the next album. 
+
+
+
+Definition at line 21 of file albums.\+f90.
+
+\mbox{\label{structalbums_1_1album_a440e2b4347d58073658fb9231bfba8bc}} 
+\index{albums::album@{albums::album}!prev@{prev}}
+\index{prev@{prev}!albums::album@{albums::album}}
+\doxysubsubsection{prev}
+{\footnotesize\ttfamily type(\textbf{ album}), pointer albums\+::album\+::prev =$>$ null()}
+
+
+
+Pointer to the previous album. 
+
+
+
+Definition at line 22 of file albums.\+f90.
+
+\mbox{\label{structalbums_1_1album_abc2131112ec1a3024365d1e1bf8c7d9c}} 
+\index{albums::album@{albums::album}!size@{size}}
+\index{size@{size}!albums::album@{albums::album}}
+\doxysubsubsection{size}
+{\footnotesize\ttfamily integer albums\+::album\+::size = 0}
+
+
+
+Number of images in the album. 
+
+
+
+Definition at line 25 of file albums.\+f90.
+
+\mbox{\label{structalbums_1_1album_a7f50da7cb7e68b4ba32d35f9755c8460}} 
+\index{albums::album@{albums::album}!tail@{tail}}
+\index{tail@{tail}!albums::album@{albums::album}}
+\doxysubsubsection{tail}
+{\footnotesize\ttfamily type(\textbf{ img\+\_\+node}), pointer albums\+::album\+::tail =$>$ null()}
+
+
+
+Pointer to the last image. 
+
+
+
+Definition at line 24 of file albums.\+f90.
+
+
+
+The documentation for this type was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/diego/\+Documents/\+EDD/\+Fase 2 Documentation/src/\textbf{ albums.\+f90}\end{DoxyCompactItemize}

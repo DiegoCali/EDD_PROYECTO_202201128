@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structclients_1_1q__node" xml:lang="en-US">
+<title>clients::q_node Type Reference</title>
+<indexterm><primary>clients::q_node</primary></indexterm>
+<para>
+
+<para>Type to represent a queue node. </para>
+ 
+</para>
+Collaboration diagram for clients::q_node:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="structclients_1_1q__node__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>type(<link linkend="_structclients_1_1btreenode">btreenode</link>), pointer <link linkend="_structclients_1_1q__node_1a9f60b4e794851483225f647631865554">value</link> =&gt; null()</para>
+
+<para>Value of the node. </para>
+</listitem>
+            <listitem><para>type(<link linkend="_structclients_1_1q__node">q_node</link>), pointer <link linkend="_structclients_1_1q__node_1aa999d79535ddcfd72b82a4644dcb8662">next</link> =&gt; null()</para>
+
+<para>Pointer to the next node. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Type to represent a queue node. </para>
+<para>
+Definition at line 50 of file clients.f90.</para>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structclients_1_1q__node_1aa999d79535ddcfd72b82a4644dcb8662"/>    <section>
+    <title>next</title>
+<indexterm><primary>next</primary><secondary>clients::q_node</secondary></indexterm>
+<indexterm><primary>clients::q_node</primary><secondary>next</secondary></indexterm>
+<para><computeroutput>type(<link linkend="_structclients_1_1q__node">q_node</link>), pointer clients::q_node::next =&gt; null()</computeroutput></para><para>
+
+<para>Pointer to the next node. </para>
+</para>
+<para>
+Definition at line 52 of file clients.f90.</para>
+    </section><anchor xml:id="_structclients_1_1q__node_1a9f60b4e794851483225f647631865554"/>    <section>
+    <title>value</title>
+<indexterm><primary>value</primary><secondary>clients::q_node</secondary></indexterm>
+<indexterm><primary>clients::q_node</primary><secondary>value</secondary></indexterm>
+<para><computeroutput>type(<link linkend="_structclients_1_1btreenode">btreenode</link>), pointer clients::q_node::value =&gt; null()</computeroutput></para><para>
+
+<para>Value of the node. </para>
+</para>
+<para>
+Definition at line 51 of file clients.f90.</para>
+</section>
+<para>
+The documentation for this type was generated from the following file:</para>
+/home/diego/Documents/EDD/Fase 2 Documentation/src/<link linkend="_clients_8f90">clients.f90</link></section>
+</section>

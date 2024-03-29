@@ -1,0 +1,70 @@
+\doxysection{/home/diego/\+Documents/\+EDD/\+Fase 2 Documentation/src/albums.f90 File Reference}
+\label{albums_8f90}\index{/home/diego/Documents/EDD/Fase 2 Documentation/src/albums.f90@{/home/diego/Documents/EDD/Fase 2 Documentation/src/albums.f90}}
+
+
+Module for albums and images management.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+type \textbf{ albums\+::img\+\_\+node}
+\begin{DoxyCompactList}\small\item\em Type to store the image node. \end{DoxyCompactList}\item 
+type \textbf{ albums\+::album}
+\begin{DoxyCompactList}\small\item\em Type to store the album. \end{DoxyCompactList}\item 
+type \textbf{ albums\+::album\+\_\+list}
+\begin{DoxyCompactList}\small\item\em Type to store the album list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+module \textbf{ albums}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \textbf{ albums\+::gen\+\_\+album\+\_\+graph} (this, unit)
+\begin{DoxyCompactList}\small\item\em Generates the graph of the albums. \end{DoxyCompactList}\item 
+subroutine \textbf{ albums\+::show\+\_\+album\+\_\+images} (this, id\+\_\+album)
+\begin{DoxyCompactList}\small\item\em Shows the images of an album. \end{DoxyCompactList}\item 
+subroutine \textbf{ albums\+::show\+\_\+albums} (this)
+\begin{DoxyCompactList}\small\item\em Shows the albums. \end{DoxyCompactList}\item 
+subroutine \textbf{ albums\+::remove\+\_\+image\+\_\+from\+\_\+album} (this, ralbum\+\_\+id, image\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Removes an image from an album. \end{DoxyCompactList}\item 
+subroutine \textbf{ albums\+::add\+\_\+image\+\_\+to\+\_\+album} (this, ialbum\+\_\+id, image\+\_\+node)
+\begin{DoxyCompactList}\small\item\em Adds an image to an album. \end{DoxyCompactList}\item 
+type(image) function, pointer \textbf{ albums\+::search\+\_\+in\+\_\+album} (this, salbum\+\_\+id, image\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Searches an image in an album. \end{DoxyCompactList}\item 
+type(album) function, pointer \textbf{ albums\+::get\+\_\+album} (this, id)
+\begin{DoxyCompactList}\small\item\em Gets an album. \end{DoxyCompactList}\item 
+subroutine \textbf{ albums\+::remove\+\_\+album} (this, id)
+\begin{DoxyCompactList}\small\item\em Removes an album. \end{DoxyCompactList}\item 
+subroutine \textbf{ albums\+::new\+\_\+album} (this, album\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Creates a new album. \end{DoxyCompactList}\item 
+subroutine \textbf{ albums\+::add\+\_\+image} (this, image\+\_\+node)
+\begin{DoxyCompactList}\small\item\em Adds an image to an album. \end{DoxyCompactList}\item 
+subroutine \textbf{ albums\+::remove\+\_\+image} (this, id)
+\begin{DoxyCompactList}\small\item\em Removes an image from an album. \end{DoxyCompactList}\item 
+type(image) function, pointer \textbf{ albums\+::get\+\_\+image} (this, id)
+\begin{DoxyCompactList}\small\item\em Gets an image. \end{DoxyCompactList}\item 
+subroutine \textbf{ albums\+::show\+\_\+images} (this)
+\begin{DoxyCompactList}\small\item\em Shows the images of an album. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+integer \textbf{ albums\+::album\+\_\+id} = 0
+\begin{DoxyCompactList}\small\item\em Global variable to store the album id. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Module for albums and images management. 
+
+\begin{DoxyAuthor}{Author}
+Diego Cali 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2024 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+This module contains the definition of the albums and images management 

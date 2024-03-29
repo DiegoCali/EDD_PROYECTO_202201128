@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structalbums_1_1img__node" xml:lang="en-US">
+<title>albums::img_node Type Reference</title>
+<indexterm><primary>albums::img_node</primary></indexterm>
+<para>
+
+<para>Type to store the image node. </para>
+ 
+</para>
+Collaboration diagram for albums::img_node:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="structalbums_1_1img__node__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>integer <link linkend="_structalbums_1_1img__node_1a6e24add6be94151e8d95dc791d3f55b0">id</link></para>
+
+<para>Image id. </para>
+</listitem>
+            <listitem><para>type(<link linkend="_structimages_1_1image">image</link>), pointer <link linkend="_structalbums_1_1img__node_1a6bed93a91493ee709f4888a9e952866c">img_pointer</link> =&gt; null()</para>
+
+<para>Pointer to the image. </para>
+</listitem>
+            <listitem><para>type(<link linkend="_structalbums_1_1img__node">img_node</link>), pointer <link linkend="_structalbums_1_1img__node_1a43187a4ab94c4f885c92b51f100fad43">next</link> =&gt; null()</para>
+
+<para>Pointer to the next image. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Type to store the image node. </para>
+<para>
+Definition at line 12 of file albums.f90.</para>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structalbums_1_1img__node_1a6e24add6be94151e8d95dc791d3f55b0"/>    <section>
+    <title>id</title>
+<indexterm><primary>id</primary><secondary>albums::img_node</secondary></indexterm>
+<indexterm><primary>albums::img_node</primary><secondary>id</secondary></indexterm>
+<para><computeroutput>integer albums::img_node::id</computeroutput></para><para>
+
+<para>Image id. </para>
+</para>
+<para>
+Definition at line 13 of file albums.f90.</para>
+    </section><anchor xml:id="_structalbums_1_1img__node_1a6bed93a91493ee709f4888a9e952866c"/>    <section>
+    <title>img_pointer</title>
+<indexterm><primary>img_pointer</primary><secondary>albums::img_node</secondary></indexterm>
+<indexterm><primary>albums::img_node</primary><secondary>img_pointer</secondary></indexterm>
+<para><computeroutput>type(<link linkend="_structimages_1_1image">image</link>), pointer albums::img_node::img_pointer =&gt; null()</computeroutput></para><para>
+
+<para>Pointer to the image. </para>
+</para>
+<para>
+Definition at line 14 of file albums.f90.</para>
+    </section><anchor xml:id="_structalbums_1_1img__node_1a43187a4ab94c4f885c92b51f100fad43"/>    <section>
+    <title>next</title>
+<indexterm><primary>next</primary><secondary>albums::img_node</secondary></indexterm>
+<indexterm><primary>albums::img_node</primary><secondary>next</secondary></indexterm>
+<para><computeroutput>type(<link linkend="_structalbums_1_1img__node">img_node</link>), pointer albums::img_node::next =&gt; null()</computeroutput></para><para>
+
+<para>Pointer to the next image. </para>
+</para>
+<para>
+Definition at line 15 of file albums.f90.</para>
+</section>
+<para>
+The documentation for this type was generated from the following file:</para>
+/home/diego/Documents/EDD/Fase 2 Documentation/src/<link linkend="_albums_8f90">albums.f90</link></section>
+</section>

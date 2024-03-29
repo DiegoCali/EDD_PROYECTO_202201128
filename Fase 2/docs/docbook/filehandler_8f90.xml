@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_filehandler_8f90" xml:lang="en-US">
+<title>/home/diego/Documents/EDD/Fase 2 Documentation/src/filehandler.f90 File Reference</title>
+<indexterm><primary>/home/diego/Documents/EDD/Fase 2 Documentation/src/filehandler.f90</primary></indexterm>
+<para>
+
+<para>Module that handles the reading of the json files and the initialization of the data structures. </para>
+ 
+</para>
+<simplesect>
+    <title>Data Types    </title>
+        <itemizedlist>
+            <listitem><para>type <link linkend="_structfilehandler_1_1fhandler">filehandler::fhandler</link></para>
+
+<para>Type that handles the reading of the json files and the initialization of the data structures. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Modules    </title>
+        <itemizedlist>
+            <listitem><para>module <link linkend="_namespacefilehandler">filehandler</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions/Subroutines    </title>
+        <itemizedlist>
+            <listitem><para>subroutine <link linkend="_namespacefilehandler_1a27434e699b7056d4c3235732f4dd0aa8">filehandler::initialize_admin</link> (this)</para>
+
+<para>Initializes the data structures for the admin user. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacefilehandler_1a6899f2689f4b38bc581db29a11d0702a">filehandler::initialize_user</link> (this)</para>
+
+<para>Initializes the data structures for the user. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacefilehandler_1a61cb47821c19740f6d5f4eaf430bf197">filehandler::set_user</link> (this, user)</para>
+
+<para>Sets the user data structures to the fhandler object. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacefilehandler_1acaa4be4251cf47b01d3e86b005e3456f">filehandler::read_imgs</link> (this)</para>
+
+<para>Reads the images from the json file. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacefilehandler_1a41afeda60919f52232d8861bbaa5eac1">filehandler::read_layers</link> (this)</para>
+
+<para>Reads the layers from the json file. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacefilehandler_1aad617fd79a78c7d80bc12cf71dde1980">filehandler::read_clients</link> (this)</para>
+
+<para>Reads the clients from the json file. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacefilehandler_1af6d4cbb12554de149defd96a4837f439">filehandler::read_albums</link> (this)</para>
+
+<para>Reads the albums from the json file. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Module that handles the reading of the json files and the initialization of the data structures. </para>
+
+<para><formalpara><title>Author</title>
+
+<para>Diego Cali </para>
+</formalpara>
+<formalpara><title>Date</title>
+
+<para>2024 </para>
+</formalpara>
+<formalpara><title>Version</title>
+
+<para>1.0</para>
+</formalpara>
+This module is in charge of reading the json files and initializing the data structures that will be used in the program </para>
+</section>
+</section>

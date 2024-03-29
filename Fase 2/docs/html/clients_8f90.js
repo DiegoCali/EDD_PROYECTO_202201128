@@ -1,0 +1,25 @@
+var clients_8f90 =
+[
+    [ "client", "structclients_1_1client.html", "structclients_1_1client" ],
+    [ "nodeptr", "structclients_1_1nodeptr.html", "structclients_1_1nodeptr" ],
+    [ "btreenode", "structclients_1_1btreenode.html", "structclients_1_1btreenode" ],
+    [ "btree_clients", "structclients_1_1btree__clients.html", "structclients_1_1btree__clients" ],
+    [ "q_node", "structclients_1_1q__node.html", "structclients_1_1q__node" ],
+    [ "client_queue", "structclients_1_1client__queue.html", "structclients_1_1client__queue" ],
+    [ "add_client", "clients_8f90.html#a055cd07c771b226546e795d13346acce", null ],
+    [ "amplitude_traversal", "clients_8f90.html#a9d6d1c448586304034f0c9dc5f953bb3", null ],
+    [ "clients_dot", "clients_8f90.html#aefc8bdbca2df7b11d0c6b79ec742e879", null ],
+    [ "create_node", "clients_8f90.html#a64af5f8d56807a670e2533474f998526", null ],
+    [ "delete_client", "clients_8f90.html#a7466da5b7337fb37c4caaed5d0840f52", null ],
+    [ "delete_client_rec", "clients_8f90.html#aaddc330226dc5edb325631eaf57434ed", null ],
+    [ "dequeue", "clients_8f90.html#a1a7fece66e992a6f845ac2b912c7f5cf", null ],
+    [ "enqueue", "clients_8f90.html#a1e9f4bdd12f3eba9cd93b6a4444e7d98", null ],
+    [ "find", "clients_8f90.html#a49266ea8ed56e42af7c1e0419a87c427", null ],
+    [ "insert_node", "clients_8f90.html#aa44cf096a2cb7660812a0d89d38ba962", null ],
+    [ "is_empty", "clients_8f90.html#aeb3cbc2579866895c57c1dcc4c896055", null ],
+    [ "search_client", "clients_8f90.html#a21366d81ec050b2e122842e7a3542510", null ],
+    [ "set_value", "clients_8f90.html#af25c1268d66c531c2dbeea18f0fdd870", null ],
+    [ "split_node", "clients_8f90.html#a987160082804c4f6978ef2a39b844eef", null ],
+    [ "traversal", "clients_8f90.html#ac2237e9b2930d1c37f46be5ba7fd088b", null ],
+    [ "g_id", "clients_8f90.html#aedc33217218a7a1642994c7c673660d5", null ]
+];

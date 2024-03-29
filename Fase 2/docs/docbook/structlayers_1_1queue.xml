@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structlayers_1_1queue" xml:lang="en-US">
+<title>layers::queue Type Reference</title>
+<indexterm><primary>layers::queue</primary></indexterm>
+<para>
+
+<para>Type to represent a queue of layers. </para>
+ 
+</para>
+Collaboration diagram for layers::queue:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="structlayers_1_1queue__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>procedure <link linkend="_structlayers_1_1queue_1a2cfe759e9fc83140d7420fa7aaa60efc">enqueue</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structlayers_1_1queue_1a6fb759e7ad65e732d2c05568c971dfa8">dequeue</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structlayers_1_1queue_1a3cb9f356b586926eda3fdbf5722ee852">is_empty</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>type(<link linkend="_structlayers_1_1node__layer">node_layer</link>), pointer <link linkend="_structlayers_1_1queue_1a170d5bfd614984edb55fe0a577be7b5d">head</link> =&gt; null()</para>
+
+<para>Pointer to the head of the queue. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Type to represent a queue of layers. </para>
+<para>
+Definition at line 52 of file layers.f90.</para>
+</section>
+<section>
+<title>Member Function/Subroutine Documentation</title>
+<anchor xml:id="_structlayers_1_1queue_1a6fb759e7ad65e732d2c05568c971dfa8"/>    <section>
+    <title>dequeue()</title>
+<indexterm><primary>dequeue</primary><secondary>layers::queue</secondary></indexterm>
+<indexterm><primary>layers::queue</primary><secondary>dequeue</secondary></indexterm>
+<para><computeroutput>procedure layers::queue::dequeue</computeroutput></para><para>
+Definition at line 56 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1queue_1a2cfe759e9fc83140d7420fa7aaa60efc"/>    <section>
+    <title>enqueue()</title>
+<indexterm><primary>enqueue</primary><secondary>layers::queue</secondary></indexterm>
+<indexterm><primary>layers::queue</primary><secondary>enqueue</secondary></indexterm>
+<para><computeroutput>procedure layers::queue::enqueue</computeroutput></para><para>
+Definition at line 55 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1queue_1a3cb9f356b586926eda3fdbf5722ee852"/>    <section>
+    <title>is_empty()</title>
+<indexterm><primary>is_empty</primary><secondary>layers::queue</secondary></indexterm>
+<indexterm><primary>layers::queue</primary><secondary>is_empty</secondary></indexterm>
+<para><computeroutput>procedure layers::queue::is_empty</computeroutput></para><para>
+Definition at line 57 of file layers.f90.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structlayers_1_1queue_1a170d5bfd614984edb55fe0a577be7b5d"/>    <section>
+    <title>head</title>
+<indexterm><primary>head</primary><secondary>layers::queue</secondary></indexterm>
+<indexterm><primary>layers::queue</primary><secondary>head</secondary></indexterm>
+<para><computeroutput>type(<link linkend="_structlayers_1_1node__layer">node_layer</link>), pointer layers::queue::head =&gt; null()</computeroutput></para><para>
+
+<para>Pointer to the head of the queue. </para>
+</para>
+<para>
+Definition at line 53 of file layers.f90.</para>
+</section>
+<para>
+The documentation for this type was generated from the following file:</para>
+/home/diego/Documents/EDD/Fase 2 Documentation/src/<link linkend="_layers_8f90">layers.f90</link></section>
+</section>

@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structpixels_1_1pixel__matrix" xml:lang="en-US">
+<title>pixels::pixel_matrix Type Reference</title>
+<indexterm><primary>pixels::pixel_matrix</primary></indexterm>
+<para>
+
+<para>Type to represent a matrix of pixels. </para>
+ 
+</para>
+Collaboration diagram for pixels::pixel_matrix:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="structpixels_1_1pixel__matrix__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>procedure <link linkend="_structpixels_1_1pixel__matrix_1a411650e9c0c34743a8a29a3e82479e99">insert</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structpixels_1_1pixel__matrix_1a603a03cd6fc8a57fcdc21a7f5705974b">self_print</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structpixels_1_1pixel__matrix_1a232aa8b81d99dbdb1117024fbb6a0a05">search_row</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structpixels_1_1pixel__matrix_1aae0b47845541d26a587543d15c45c408">search_column</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structpixels_1_1pixel__matrix_1a98557fc49a2f975a6f2b296bd34e8f60">node_exists</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structpixels_1_1pixel__matrix_1a3766a590758c4ca412369ec872b2fb26">insert_column_header</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structpixels_1_1pixel__matrix_1a1a4c0978928894318985129f0bfc3420">insert_row_header</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structpixels_1_1pixel__matrix_1a228daede7dfcfb6454142454cc8b4ba5">insert_in_row</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structpixels_1_1pixel__matrix_1aa2cd29c3ac4916bdd72879beb97a8a30">insert_in_column</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structpixels_1_1pixel__matrix_1a27997217755e82d2b7ad95d7d02e51c7">print_headers</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structpixels_1_1pixel__matrix_1a5b0109931744feb811b67516e836402e">get_value</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structpixels_1_1pixel__matrix_1a6d92708b3c34937a16456e8333d860e6">gen_matrix</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structpixels_1_1pixel__matrix_1a0e8d033602775dffea9b2e6f5945eb74">get_node</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structpixels_1_1pixel__matrix_1adaea34712426afe35757547d70dcdea8">graph_pixels</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structpixels_1_1pixel__matrix_1aea5733b94121c78220411126c9f06afd">global_m_dot</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>type(<link linkend="_structpixels_1_1pixel">pixel</link>), pointer <link linkend="_structpixels_1_1pixel__matrix_1a292ea834e9642cd1048aff394240660a">root</link> =&gt; null()</para>
+
+<para>Pointer to the root of the matrix. </para>
+</listitem>
+            <listitem><para>integer <link linkend="_structpixels_1_1pixel__matrix_1a4b0dcb3ce52c361c52b250bc00facdf0">width</link> = 0</para>
+
+<para>Width of the matrix. </para>
+</listitem>
+            <listitem><para>integer <link linkend="_structpixels_1_1pixel__matrix_1a35b455d9c686027bc15a1b54d56eadf0">height</link> = 0</para>
+
+<para>Height of the matrix. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Type to represent a matrix of pixels. </para>
+<para>
+Definition at line 23 of file pixels.f90.</para>
+</section>
+<section>
+<title>Member Function/Subroutine Documentation</title>
+<anchor xml:id="_structpixels_1_1pixel__matrix_1a6d92708b3c34937a16456e8333d860e6"/>    <section>
+    <title>gen_matrix()</title>
+<indexterm><primary>gen_matrix</primary><secondary>pixels::pixel_matrix</secondary></indexterm>
+<indexterm><primary>pixels::pixel_matrix</primary><secondary>gen_matrix</secondary></indexterm>
+<para><computeroutput>procedure pixels::pixel_matrix::gen_matrix</computeroutput></para><para>
+Definition at line 39 of file pixels.f90.</para>
+    </section><anchor xml:id="_structpixels_1_1pixel__matrix_1a0e8d033602775dffea9b2e6f5945eb74"/>    <section>
+    <title>get_node()</title>
+<indexterm><primary>get_node</primary><secondary>pixels::pixel_matrix</secondary></indexterm>
+<indexterm><primary>pixels::pixel_matrix</primary><secondary>get_node</secondary></indexterm>
+<para><computeroutput>procedure pixels::pixel_matrix::get_node</computeroutput></para><para>
+Definition at line 40 of file pixels.f90.</para>
+    </section><anchor xml:id="_structpixels_1_1pixel__matrix_1a5b0109931744feb811b67516e836402e"/>    <section>
+    <title>get_value()</title>
+<indexterm><primary>get_value</primary><secondary>pixels::pixel_matrix</secondary></indexterm>
+<indexterm><primary>pixels::pixel_matrix</primary><secondary>get_value</secondary></indexterm>
+<para><computeroutput>procedure pixels::pixel_matrix::get_value</computeroutput></para><para>
+Definition at line 38 of file pixels.f90.</para>
+    </section><anchor xml:id="_structpixels_1_1pixel__matrix_1aea5733b94121c78220411126c9f06afd"/>    <section>
+    <title>global_m_dot()</title>
+<indexterm><primary>global_m_dot</primary><secondary>pixels::pixel_matrix</secondary></indexterm>
+<indexterm><primary>pixels::pixel_matrix</primary><secondary>global_m_dot</secondary></indexterm>
+<para><computeroutput>procedure pixels::pixel_matrix::global_m_dot</computeroutput></para><para>
+Definition at line 42 of file pixels.f90.</para>
+    </section><anchor xml:id="_structpixels_1_1pixel__matrix_1adaea34712426afe35757547d70dcdea8"/>    <section>
+    <title>graph_pixels()</title>
+<indexterm><primary>graph_pixels</primary><secondary>pixels::pixel_matrix</secondary></indexterm>
+<indexterm><primary>pixels::pixel_matrix</primary><secondary>graph_pixels</secondary></indexterm>
+<para><computeroutput>procedure pixels::pixel_matrix::graph_pixels</computeroutput></para><para>
+Definition at line 41 of file pixels.f90.</para>
+    </section><anchor xml:id="_structpixels_1_1pixel__matrix_1a411650e9c0c34743a8a29a3e82479e99"/>    <section>
+    <title>insert()</title>
+<indexterm><primary>insert</primary><secondary>pixels::pixel_matrix</secondary></indexterm>
+<indexterm><primary>pixels::pixel_matrix</primary><secondary>insert</secondary></indexterm>
+<para><computeroutput>procedure pixels::pixel_matrix::insert</computeroutput></para><para>
+Definition at line 28 of file pixels.f90.</para>
+    </section><anchor xml:id="_structpixels_1_1pixel__matrix_1a3766a590758c4ca412369ec872b2fb26"/>    <section>
+    <title>insert_column_header()</title>
+<indexterm><primary>insert_column_header</primary><secondary>pixels::pixel_matrix</secondary></indexterm>
+<indexterm><primary>pixels::pixel_matrix</primary><secondary>insert_column_header</secondary></indexterm>
+<para><computeroutput>procedure pixels::pixel_matrix::insert_column_header</computeroutput></para><para>
+Definition at line 33 of file pixels.f90.</para>
+    </section><anchor xml:id="_structpixels_1_1pixel__matrix_1aa2cd29c3ac4916bdd72879beb97a8a30"/>    <section>
+    <title>insert_in_column()</title>
+<indexterm><primary>insert_in_column</primary><secondary>pixels::pixel_matrix</secondary></indexterm>
+<indexterm><primary>pixels::pixel_matrix</primary><secondary>insert_in_column</secondary></indexterm>
+<para><computeroutput>procedure pixels::pixel_matrix::insert_in_column</computeroutput></para><para>
+Definition at line 36 of file pixels.f90.</para>
+    </section><anchor xml:id="_structpixels_1_1pixel__matrix_1a228daede7dfcfb6454142454cc8b4ba5"/>    <section>
+    <title>insert_in_row()</title>
+<indexterm><primary>insert_in_row</primary><secondary>pixels::pixel_matrix</secondary></indexterm>
+<indexterm><primary>pixels::pixel_matrix</primary><secondary>insert_in_row</secondary></indexterm>
+<para><computeroutput>procedure pixels::pixel_matrix::insert_in_row</computeroutput></para><para>
+Definition at line 35 of file pixels.f90.</para>
+    </section><anchor xml:id="_structpixels_1_1pixel__matrix_1a1a4c0978928894318985129f0bfc3420"/>    <section>
+    <title>insert_row_header()</title>
+<indexterm><primary>insert_row_header</primary><secondary>pixels::pixel_matrix</secondary></indexterm>
+<indexterm><primary>pixels::pixel_matrix</primary><secondary>insert_row_header</secondary></indexterm>
+<para><computeroutput>procedure pixels::pixel_matrix::insert_row_header</computeroutput></para><para>
+Definition at line 34 of file pixels.f90.</para>
+    </section><anchor xml:id="_structpixels_1_1pixel__matrix_1a98557fc49a2f975a6f2b296bd34e8f60"/>    <section>
+    <title>node_exists()</title>
+<indexterm><primary>node_exists</primary><secondary>pixels::pixel_matrix</secondary></indexterm>
+<indexterm><primary>pixels::pixel_matrix</primary><secondary>node_exists</secondary></indexterm>
+<para><computeroutput>procedure pixels::pixel_matrix::node_exists</computeroutput></para><para>
+Definition at line 32 of file pixels.f90.</para>
+    </section><anchor xml:id="_structpixels_1_1pixel__matrix_1a27997217755e82d2b7ad95d7d02e51c7"/>    <section>
+    <title>print_headers()</title>
+<indexterm><primary>print_headers</primary><secondary>pixels::pixel_matrix</secondary></indexterm>
+<indexterm><primary>pixels::pixel_matrix</primary><secondary>print_headers</secondary></indexterm>
+<para><computeroutput>procedure pixels::pixel_matrix::print_headers</computeroutput></para><para>
+Definition at line 37 of file pixels.f90.</para>
+    </section><anchor xml:id="_structpixels_1_1pixel__matrix_1aae0b47845541d26a587543d15c45c408"/>    <section>
+    <title>search_column()</title>
+<indexterm><primary>search_column</primary><secondary>pixels::pixel_matrix</secondary></indexterm>
+<indexterm><primary>pixels::pixel_matrix</primary><secondary>search_column</secondary></indexterm>
+<para><computeroutput>procedure pixels::pixel_matrix::search_column</computeroutput></para><para>
+Definition at line 31 of file pixels.f90.</para>
+    </section><anchor xml:id="_structpixels_1_1pixel__matrix_1a232aa8b81d99dbdb1117024fbb6a0a05"/>    <section>
+    <title>search_row()</title>
+<indexterm><primary>search_row</primary><secondary>pixels::pixel_matrix</secondary></indexterm>
+<indexterm><primary>pixels::pixel_matrix</primary><secondary>search_row</secondary></indexterm>
+<para><computeroutput>procedure pixels::pixel_matrix::search_row</computeroutput></para><para>
+Definition at line 30 of file pixels.f90.</para>
+    </section><anchor xml:id="_structpixels_1_1pixel__matrix_1a603a03cd6fc8a57fcdc21a7f5705974b"/>    <section>
+    <title>self_print()</title>
+<indexterm><primary>self_print</primary><secondary>pixels::pixel_matrix</secondary></indexterm>
+<indexterm><primary>pixels::pixel_matrix</primary><secondary>self_print</secondary></indexterm>
+<para><computeroutput>procedure pixels::pixel_matrix::self_print</computeroutput></para><para>
+Definition at line 29 of file pixels.f90.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structpixels_1_1pixel__matrix_1a35b455d9c686027bc15a1b54d56eadf0"/>    <section>
+    <title>height</title>
+<indexterm><primary>height</primary><secondary>pixels::pixel_matrix</secondary></indexterm>
+<indexterm><primary>pixels::pixel_matrix</primary><secondary>height</secondary></indexterm>
+<para><computeroutput>integer pixels::pixel_matrix::height = 0</computeroutput></para><para>
+
+<para>Height of the matrix. </para>
+</para>
+<para>
+Definition at line 26 of file pixels.f90.</para>
+    </section><anchor xml:id="_structpixels_1_1pixel__matrix_1a292ea834e9642cd1048aff394240660a"/>    <section>
+    <title>root</title>
+<indexterm><primary>root</primary><secondary>pixels::pixel_matrix</secondary></indexterm>
+<indexterm><primary>pixels::pixel_matrix</primary><secondary>root</secondary></indexterm>
+<para><computeroutput>type(<link linkend="_structpixels_1_1pixel">pixel</link>), pointer pixels::pixel_matrix::root =&gt; null()</computeroutput></para><para>
+
+<para>Pointer to the root of the matrix. </para>
+</para>
+<para>
+Definition at line 24 of file pixels.f90.</para>
+    </section><anchor xml:id="_structpixels_1_1pixel__matrix_1a4b0dcb3ce52c361c52b250bc00facdf0"/>    <section>
+    <title>width</title>
+<indexterm><primary>width</primary><secondary>pixels::pixel_matrix</secondary></indexterm>
+<indexterm><primary>pixels::pixel_matrix</primary><secondary>width</secondary></indexterm>
+<para><computeroutput>integer pixels::pixel_matrix::width = 0</computeroutput></para><para>
+
+<para>Width of the matrix. </para>
+</para>
+<para>
+Definition at line 25 of file pixels.f90.</para>
+</section>
+<para>
+The documentation for this type was generated from the following file:</para>
+/home/diego/Documents/EDD/Fase 2 Documentation/src/<link linkend="_pixels_8f90">pixels.f90</link></section>
+</section>

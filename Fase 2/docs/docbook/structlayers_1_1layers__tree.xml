@@ -1,0 +1,248 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structlayers_1_1layers__tree" xml:lang="en-US">
+<title>layers::layers_tree Type Reference</title>
+<indexterm><primary>layers::layers_tree</primary></indexterm>
+<para>
+
+<para>Type to represent a binary tree of layers. </para>
+ 
+</para>
+Collaboration diagram for layers::layers_tree:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="structlayers_1_1layers__tree__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>procedure <link linkend="_structlayers_1_1layers__tree_1a521918cae3b42b488ab7ddc2dc27a60b">add</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structlayers_1_1layers__tree_1aa1813ff3df3e0b2c0ddf5ac7f56b6839">add_recursive</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structlayers_1_1layers__tree_1a5ebaff3559c3913c24b0757a8b345291">add_copied_val</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structlayers_1_1layers__tree_1a6a43547cba33178b3b9107518ad42233">preorder</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structlayers_1_1layers__tree_1a1e0fc241433f1ef35f6e60bcceb40bbd">inorder</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structlayers_1_1layers__tree_1aa64c06d1c36dac3a909127094acc1079">postorder</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structlayers_1_1layers__tree_1a43699609d577fa893fdaa02b13246aee">gen_dot</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structlayers_1_1layers__tree_1ae64209814ee6225282ca5513fecd8678">gen_dot_recursive</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structlayers_1_1layers__tree_1abbc73e990ec5c1e34ee32477ff7598e7">search</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structlayers_1_1layers__tree_1a795ddad8626dd52a52ac10bfe2a34ceb">traverse_matrix</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structlayers_1_1layers__tree_1a49b55e4b60df8385e19f206d0f75e4bb">max_depth</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structlayers_1_1layers__tree_1a64ab53a4827196042fb80a2f5c72bdae">max_depth_rec</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structlayers_1_1layers__tree_1aa8a81036bd354c8064fad618d320c491">leaf_layers</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structlayers_1_1layers__tree_1a5c13b7d760e0895980ae7562d3db5218">leaf_layers_rec</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structlayers_1_1layers__tree_1a3cc39b275a8bd7b234519fe9c6cf6516">list_layers</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structlayers_1_1layers__tree_1a7085eb6e693fffd4dcd5cd29b5b708f3">inorder_print</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structlayers_1_1layers__tree_1a5264404f445d9c0b71547634b527fe08">traverse_limited</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structlayers_1_1layers__tree_1ab61656175725cf036227082049d333ed">gen_preorder</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structlayers_1_1layers__tree_1a52bdf8e766976f2d892b070e83c54d8b">gen_inorder</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structlayers_1_1layers__tree_1ac3d517ba32f4e7fa91ef34908ae33289">gen_postorder</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>type(<link linkend="_structlayers_1_1layer">layer</link>), pointer <link linkend="_structlayers_1_1layers__tree_1aaeac3a628cd53c46ca30ba33a3776a4e">root</link> =&gt; null()</para>
+
+<para>Pointer to the root layer. </para>
+</listitem>
+            <listitem><para>type(<link linkend="_structpixels_1_1pixel__matrix">pixel_matrix</link>) <link linkend="_structlayers_1_1layers__tree_1a4124bc66cc9f5c4cc9bbe04291ed1a39">global_matrix</link></para>
+
+<para>Global matrix of pixels. </para>
+</listitem>
+            <listitem><para>integer <link linkend="_structlayers_1_1layers__tree_1a48c811d9cee37963402171189983a409">total</link> = 0</para>
+
+<para>Total number of layers in the tree. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Type to represent a binary tree of layers. </para>
+<para>
+Definition at line 20 of file layers.f90.</para>
+</section>
+<section>
+<title>Member Function/Subroutine Documentation</title>
+<anchor xml:id="_structlayers_1_1layers__tree_1a521918cae3b42b488ab7ddc2dc27a60b"/>    <section>
+    <title>add()</title>
+<indexterm><primary>add</primary><secondary>layers::layers_tree</secondary></indexterm>
+<indexterm><primary>layers::layers_tree</primary><secondary>add</secondary></indexterm>
+<para><computeroutput>procedure layers::layers_tree::add</computeroutput></para><para>
+Definition at line 25 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layers__tree_1a5ebaff3559c3913c24b0757a8b345291"/>    <section>
+    <title>add_copied_val()</title>
+<indexterm><primary>add_copied_val</primary><secondary>layers::layers_tree</secondary></indexterm>
+<indexterm><primary>layers::layers_tree</primary><secondary>add_copied_val</secondary></indexterm>
+<para><computeroutput>procedure layers::layers_tree::add_copied_val</computeroutput></para><para>
+Definition at line 27 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layers__tree_1aa1813ff3df3e0b2c0ddf5ac7f56b6839"/>    <section>
+    <title>add_recursive()</title>
+<indexterm><primary>add_recursive</primary><secondary>layers::layers_tree</secondary></indexterm>
+<indexterm><primary>layers::layers_tree</primary><secondary>add_recursive</secondary></indexterm>
+<para><computeroutput>procedure layers::layers_tree::add_recursive</computeroutput></para><para>
+Definition at line 26 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layers__tree_1a43699609d577fa893fdaa02b13246aee"/>    <section>
+    <title>gen_dot()</title>
+<indexterm><primary>gen_dot</primary><secondary>layers::layers_tree</secondary></indexterm>
+<indexterm><primary>layers::layers_tree</primary><secondary>gen_dot</secondary></indexterm>
+<para><computeroutput>procedure layers::layers_tree::gen_dot</computeroutput></para><para>
+Definition at line 31 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layers__tree_1ae64209814ee6225282ca5513fecd8678"/>    <section>
+    <title>gen_dot_recursive()</title>
+<indexterm><primary>gen_dot_recursive</primary><secondary>layers::layers_tree</secondary></indexterm>
+<indexterm><primary>layers::layers_tree</primary><secondary>gen_dot_recursive</secondary></indexterm>
+<para><computeroutput>procedure layers::layers_tree::gen_dot_recursive</computeroutput></para><para>
+Definition at line 32 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layers__tree_1a52bdf8e766976f2d892b070e83c54d8b"/>    <section>
+    <title>gen_inorder()</title>
+<indexterm><primary>gen_inorder</primary><secondary>layers::layers_tree</secondary></indexterm>
+<indexterm><primary>layers::layers_tree</primary><secondary>gen_inorder</secondary></indexterm>
+<para><computeroutput>procedure layers::layers_tree::gen_inorder</computeroutput></para><para>
+Definition at line 43 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layers__tree_1ac3d517ba32f4e7fa91ef34908ae33289"/>    <section>
+    <title>gen_postorder()</title>
+<indexterm><primary>gen_postorder</primary><secondary>layers::layers_tree</secondary></indexterm>
+<indexterm><primary>layers::layers_tree</primary><secondary>gen_postorder</secondary></indexterm>
+<para><computeroutput>procedure layers::layers_tree::gen_postorder</computeroutput></para><para>
+Definition at line 44 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layers__tree_1ab61656175725cf036227082049d333ed"/>    <section>
+    <title>gen_preorder()</title>
+<indexterm><primary>gen_preorder</primary><secondary>layers::layers_tree</secondary></indexterm>
+<indexterm><primary>layers::layers_tree</primary><secondary>gen_preorder</secondary></indexterm>
+<para><computeroutput>procedure layers::layers_tree::gen_preorder</computeroutput></para><para>
+Definition at line 42 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layers__tree_1a1e0fc241433f1ef35f6e60bcceb40bbd"/>    <section>
+    <title>inorder()</title>
+<indexterm><primary>inorder</primary><secondary>layers::layers_tree</secondary></indexterm>
+<indexterm><primary>layers::layers_tree</primary><secondary>inorder</secondary></indexterm>
+<para><computeroutput>procedure layers::layers_tree::inorder</computeroutput></para><para>
+Definition at line 29 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layers__tree_1a7085eb6e693fffd4dcd5cd29b5b708f3"/>    <section>
+    <title>inorder_print()</title>
+<indexterm><primary>inorder_print</primary><secondary>layers::layers_tree</secondary></indexterm>
+<indexterm><primary>layers::layers_tree</primary><secondary>inorder_print</secondary></indexterm>
+<para><computeroutput>procedure layers::layers_tree::inorder_print</computeroutput></para><para>
+Definition at line 40 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layers__tree_1aa8a81036bd354c8064fad618d320c491"/>    <section>
+    <title>leaf_layers()</title>
+<indexterm><primary>leaf_layers</primary><secondary>layers::layers_tree</secondary></indexterm>
+<indexterm><primary>layers::layers_tree</primary><secondary>leaf_layers</secondary></indexterm>
+<para><computeroutput>procedure layers::layers_tree::leaf_layers</computeroutput></para><para>
+Definition at line 37 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layers__tree_1a5c13b7d760e0895980ae7562d3db5218"/>    <section>
+    <title>leaf_layers_rec()</title>
+<indexterm><primary>leaf_layers_rec</primary><secondary>layers::layers_tree</secondary></indexterm>
+<indexterm><primary>layers::layers_tree</primary><secondary>leaf_layers_rec</secondary></indexterm>
+<para><computeroutput>procedure layers::layers_tree::leaf_layers_rec</computeroutput></para><para>
+Definition at line 38 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layers__tree_1a3cc39b275a8bd7b234519fe9c6cf6516"/>    <section>
+    <title>list_layers()</title>
+<indexterm><primary>list_layers</primary><secondary>layers::layers_tree</secondary></indexterm>
+<indexterm><primary>layers::layers_tree</primary><secondary>list_layers</secondary></indexterm>
+<para><computeroutput>procedure layers::layers_tree::list_layers</computeroutput></para><para>
+Definition at line 39 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layers__tree_1a49b55e4b60df8385e19f206d0f75e4bb"/>    <section>
+    <title>max_depth()</title>
+<indexterm><primary>max_depth</primary><secondary>layers::layers_tree</secondary></indexterm>
+<indexterm><primary>layers::layers_tree</primary><secondary>max_depth</secondary></indexterm>
+<para><computeroutput>procedure layers::layers_tree::max_depth</computeroutput></para><para>
+Definition at line 35 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layers__tree_1a64ab53a4827196042fb80a2f5c72bdae"/>    <section>
+    <title>max_depth_rec()</title>
+<indexterm><primary>max_depth_rec</primary><secondary>layers::layers_tree</secondary></indexterm>
+<indexterm><primary>layers::layers_tree</primary><secondary>max_depth_rec</secondary></indexterm>
+<para><computeroutput>procedure layers::layers_tree::max_depth_rec</computeroutput></para><para>
+Definition at line 36 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layers__tree_1aa64c06d1c36dac3a909127094acc1079"/>    <section>
+    <title>postorder()</title>
+<indexterm><primary>postorder</primary><secondary>layers::layers_tree</secondary></indexterm>
+<indexterm><primary>layers::layers_tree</primary><secondary>postorder</secondary></indexterm>
+<para><computeroutput>procedure layers::layers_tree::postorder</computeroutput></para><para>
+Definition at line 30 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layers__tree_1a6a43547cba33178b3b9107518ad42233"/>    <section>
+    <title>preorder()</title>
+<indexterm><primary>preorder</primary><secondary>layers::layers_tree</secondary></indexterm>
+<indexterm><primary>layers::layers_tree</primary><secondary>preorder</secondary></indexterm>
+<para><computeroutput>procedure layers::layers_tree::preorder</computeroutput></para><para>
+Definition at line 28 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layers__tree_1abbc73e990ec5c1e34ee32477ff7598e7"/>    <section>
+    <title>search()</title>
+<indexterm><primary>search</primary><secondary>layers::layers_tree</secondary></indexterm>
+<indexterm><primary>layers::layers_tree</primary><secondary>search</secondary></indexterm>
+<para><computeroutput>procedure layers::layers_tree::search</computeroutput></para><para>
+Definition at line 33 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layers__tree_1a5264404f445d9c0b71547634b527fe08"/>    <section>
+    <title>traverse_limited()</title>
+<indexterm><primary>traverse_limited</primary><secondary>layers::layers_tree</secondary></indexterm>
+<indexterm><primary>layers::layers_tree</primary><secondary>traverse_limited</secondary></indexterm>
+<para><computeroutput>procedure layers::layers_tree::traverse_limited</computeroutput></para><para>
+Definition at line 41 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layers__tree_1a795ddad8626dd52a52ac10bfe2a34ceb"/>    <section>
+    <title>traverse_matrix()</title>
+<indexterm><primary>traverse_matrix</primary><secondary>layers::layers_tree</secondary></indexterm>
+<indexterm><primary>layers::layers_tree</primary><secondary>traverse_matrix</secondary></indexterm>
+<para><computeroutput>procedure layers::layers_tree::traverse_matrix</computeroutput></para><para>
+Definition at line 34 of file layers.f90.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structlayers_1_1layers__tree_1a4124bc66cc9f5c4cc9bbe04291ed1a39"/>    <section>
+    <title>global_matrix</title>
+<indexterm><primary>global_matrix</primary><secondary>layers::layers_tree</secondary></indexterm>
+<indexterm><primary>layers::layers_tree</primary><secondary>global_matrix</secondary></indexterm>
+<para><computeroutput>type(<link linkend="_structpixels_1_1pixel__matrix">pixel_matrix</link>) layers::layers_tree::global_matrix</computeroutput></para><para>
+
+<para>Global matrix of pixels. </para>
+</para>
+<para>
+Definition at line 22 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layers__tree_1aaeac3a628cd53c46ca30ba33a3776a4e"/>    <section>
+    <title>root</title>
+<indexterm><primary>root</primary><secondary>layers::layers_tree</secondary></indexterm>
+<indexterm><primary>layers::layers_tree</primary><secondary>root</secondary></indexterm>
+<para><computeroutput>type(<link linkend="_structlayers_1_1layer">layer</link>), pointer layers::layers_tree::root =&gt; null()</computeroutput></para><para>
+
+<para>Pointer to the root layer. </para>
+</para>
+<para>
+Definition at line 21 of file layers.f90.</para>
+    </section><anchor xml:id="_structlayers_1_1layers__tree_1a48c811d9cee37963402171189983a409"/>    <section>
+    <title>total</title>
+<indexterm><primary>total</primary><secondary>layers::layers_tree</secondary></indexterm>
+<indexterm><primary>layers::layers_tree</primary><secondary>total</secondary></indexterm>
+<para><computeroutput>integer layers::layers_tree::total = 0</computeroutput></para><para>
+
+<para>Total number of layers in the tree. </para>
+</para>
+<para>
+Definition at line 23 of file layers.f90.</para>
+</section>
+<para>
+The documentation for this type was generated from the following file:</para>
+/home/diego/Documents/EDD/Fase 2 Documentation/src/<link linkend="_layers_8f90">layers.f90</link></section>
+</section>

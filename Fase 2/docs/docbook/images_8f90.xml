@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_images_8f90" xml:lang="en-US">
+<title>/home/diego/Documents/EDD/Fase 2 Documentation/src/images.f90 File Reference</title>
+<indexterm><primary>/home/diego/Documents/EDD/Fase 2 Documentation/src/images.f90</primary></indexterm>
+<para>
+
+<para>Module that contains the image and image_avl types and their methods. </para>
+ 
+</para>
+<simplesect>
+    <title>Data Types    </title>
+        <itemizedlist>
+            <listitem><para>type <link linkend="_structimages_1_1image">images::image</link></para>
+
+<para>Type that represents a node in the AVL tree. </para>
+</listitem>
+            <listitem><para>type <link linkend="_structimages_1_1image__avl">images::image_avl</link></para>
+
+<para>Type that represents an AVL tree of images. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Modules    </title>
+        <itemizedlist>
+            <listitem><para>module <link linkend="_namespaceimages">images</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions/Subroutines    </title>
+        <itemizedlist>
+            <listitem><para>subroutine <link linkend="_namespaceimages_1ae9fb4295d989ded20aed37781fada93f">images::delete_img</link> (this, img_id)</para>
+
+<para>Method that deletes an image from the tree. </para>
+</listitem>
+            <listitem><para>recursive type(image) function, pointer <link linkend="_namespaceimages_1af85af4efc7840b01027b0995187934bc">images::delete_img_rec</link> (this, temp, img_id)</para>
+
+<para>Recursive method that deletes an image from the tree. </para>
+</listitem>
+            <listitem><para>recursive type(image) function, pointer <link linkend="_namespaceimages_1af9f609fd32d44dc175c082f168666ceb">images::min_child</link> (this, temp)</para>
+
+<para>Method that returns the node with the minimum value in the tree. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespaceimages_1a9ce70395a3dc3e94ffb376cb8d25d644">images::add_layer</link> (this, new_layer)</para>
+
+<para>Method that adds a layer to the image. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespaceimages_1abaa3f06584461d0d3d3342d530ad8b89">images::add_img</link> (this, new_image)</para>
+
+<para>Method that adds an image to the tree. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespaceimages_1a818f67bb377d86228c1ab2d6726e017b">images::add_img_rec</link> (this, new_image, tmp)</para>
+
+<para>Recursive method that adds an image to the tree. </para>
+</listitem>
+            <listitem><para>recursive type(image) function, pointer <link linkend="_namespaceimages_1ab030121b96daea51001d91d9b97bda12">images::search_img</link> (this, temp, img_ig)</para>
+
+<para>Method that searches for an image in the tree. </para>
+</listitem>
+            <listitem><para>type(image) function, pointer <link linkend="_namespaceimages_1a6e491ced3d56dff011eacdce9d9b3b22">images::srl</link> (this, t1)</para>
+
+<para>Method that performs a single right rotation. </para>
+</listitem>
+            <listitem><para>type(image) function, pointer <link linkend="_namespaceimages_1a257bf0f51d93948c7d6ada09d46524bb">images::srr</link> (this, t1)</para>
+
+<para>Method that performs a single left rotation. </para>
+</listitem>
+            <listitem><para>type(image) function, pointer <link linkend="_namespaceimages_1a13829ee1fd288112adc0847a364c7a6c">images::drl</link> (this, tmp)</para>
+
+<para>Method that performs a double right rotation. </para>
+</listitem>
+            <listitem><para>type(image) function, pointer <link linkend="_namespaceimages_1aa5f7fae637a0b808d14ba76b537a0b45">images::drr</link> (this, tmp)</para>
+
+<para>Method that performs a double left rotation. </para>
+</listitem>
+            <listitem><para>integer function <link linkend="_namespaceimages_1a5f1f7db26934946493b5439cd3e0667f">images::get_max</link> (this, val1, val2)</para>
+
+<para>Method that returns the maximum value between two integers. </para>
+</listitem>
+            <listitem><para>integer function <link linkend="_namespaceimages_1ae11400158ed51b8630ab12fbc4aac028">images::get_height</link> (this, tmp)</para>
+
+<para>Method that returns the height of a node. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespaceimages_1a353bc3744d0b9fcc0651e3e9b17ecf6e">images::get_dot</link> (this, tmp, unit)</para>
+
+<para>Method that generates the dot representation of the tree. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespaceimages_1aed8e9e8d71902d89fef8d6823c7bfe5c">images::get_dot_rec</link> (this, tmp, unit)</para>
+
+<para>Recursive method that generates the dot representation of the tree. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespaceimages_1a65ee8ff468125e5a4865ee5511b5d652">images::print_images</link> (this, temp)</para>
+
+<para>Method that prints the images in the tree. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespaceimages_1ae4b61fd9a69b8d23f1fc0ec82b184f8b">images::gen_tree_subtree</link> (this, id_img, unit)</para>
+
+<para>Method that generates the dot representation of the tree and its subtree. </para>
+</listitem>
+            <listitem><para>recursive subroutine <link linkend="_namespaceimages_1af9b5634624df4d9490fc5a7ade1b1f82">images::gen_layer_subtree</link> (current_layer, unit)</para>
+
+<para>Recursive method that generates the dot representation of the layers subtree. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespaceimages_1af46773caf3cd61462dc79f3ec91dcb54">images::gen_img_traversal</link> (this, unit, id_img)</para>
+
+<para>Method that generates the dot representation of the image traversal. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Module that contains the image and image_avl types and their methods. </para>
+
+<para><formalpara><title>Author</title>
+
+<para>Diego Cali </para>
+</formalpara>
+<formalpara><title>Date</title>
+
+<para>2024 </para>
+</formalpara>
+<formalpara><title>Version</title>
+
+<para>1.0</para>
+</formalpara>
+This module contains the image and image_avl types and their methods </para>
+</section>
+</section>

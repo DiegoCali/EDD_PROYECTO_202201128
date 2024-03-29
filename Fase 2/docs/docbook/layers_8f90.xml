@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_layers_8f90" xml:lang="en-US">
+<title>/home/diego/Documents/EDD/Fase 2 Documentation/src/layers.f90 File Reference</title>
+<indexterm><primary>/home/diego/Documents/EDD/Fase 2 Documentation/src/layers.f90</primary></indexterm>
+<para>
+
+<para>Module to handle layers of a neural network. </para>
+ 
+</para>
+<simplesect>
+    <title>Data Types    </title>
+        <itemizedlist>
+            <listitem><para>type <link linkend="_structlayers_1_1layer">layers::layer</link></para>
+
+<para>Type to represent a pixel matrix 
+<literallayout>&#160;&#xa;</literallayout>
+ </para>
+</listitem>
+            <listitem><para>type <link linkend="_structlayers_1_1layers__tree">layers::layers_tree</link></para>
+
+<para>Type to represent a binary tree of layers. </para>
+</listitem>
+            <listitem><para>type <link linkend="_structlayers_1_1node__layer">layers::node_layer</link></para>
+
+<para>Type to represent a node of a linked list of layers. </para>
+</listitem>
+            <listitem><para>type <link linkend="_structlayers_1_1queue">layers::queue</link></para>
+
+<para>Type to represent a queue of layers. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Modules    </title>
+        <itemizedlist>
+            <listitem><para>module <link linkend="_namespacelayers">layers</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions/Subroutines    </title>
+        <itemizedlist>
+            <listitem><para>subroutine <link linkend="_namespacelayers_1a2f6a28f55f06d1b9e3185c8d66565c94">layers::gen_inorder</link> (this, tmp, limit, unit)</para>
+
+<para>Subroutine to generate the matrix of pixels of a layer. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacelayers_1a62fdd4967404ab3716c20c7d26b5c85a">layers::gen_postorder</link> (this, tmp, limit, unit)</para>
+
+<para>Subroutine to generate the matrix of pixels of a layer. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacelayers_1a0ed365f0b16095d163777f59de1df24e">layers::gen_preorder</link> (this, tmp, limit, unit)</para>
+
+<para>Subroutine to generate the matrix of pixels of a layer. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacelayers_1a04b07ea98c9c0ed5bc02aac48658da24">layers::traverse_limited</link> (this, order, limit, unit)</para>
+
+<para>Subroutine to traverse the layers tree in a limited way. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacelayers_1a4bc63980800360e09a9a70bdcfaa89d8">layers::enqueue</link> (this, layer_val)</para>
+
+<para>Subroutine to add a layer to the layers tree. </para>
+</listitem>
+            <listitem><para>type(layer) function, pointer <link linkend="_namespacelayers_1ad25129357b165705bdc177ced39efff4">layers::dequeue</link> (this)</para>
+
+<para>Subroutine to remove a layer from the queue. </para>
+</listitem>
+            <listitem><para>logical function <link linkend="_namespacelayers_1a86fec7533cdf35f649ae2d3398386907">layers::is_empty</link> (this)</para>
+
+<para>Function to check if the queue is empty. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacelayers_1a5e8ff04682cfccb6a7ef9d5f76e8fe21">layers::traverse_matrix</link> (this)</para>
+
+<para>Subroutine to traverse the layers tree. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacelayers_1a25ad57ef819385c8e57b4c5721381086">layers::add</link> (this, new_layer)</para>
+
+<para>Subroutine to add a layer to the layers tree. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacelayers_1ac64220c8e68adf04b346287ee3de0779">layers::add_recursive</link> (this, new_layer, tmp)</para>
+
+<para>Subroutine to add a layer to the layers tree recursively. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacelayers_1a16f1c46d15771cb49e0c83ef1d4f5c45">layers::add_copied_val</link> (this, new_layer)</para>
+
+<para>Subroutine to add a layer to the layers tree. </para>
+</listitem>
+            <listitem><para>type(layer) function, pointer <link linkend="_namespacelayers_1a20d88ea9094c055aff2beca2e47c8e8d">layers::search</link> (this, id_searched)</para>
+
+<para>Function to search a layer in the layers tree. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacelayers_1aaf614f9b9b7fe9bbf2b3d279c55476be">layers::preorder</link> (this, tmp)</para>
+
+<para>Subroutine to traverse the layers tree in preorder. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacelayers_1a52cbda60e34fee30e8cce5cb87b7ad65">layers::inorder</link> (this, tmp)</para>
+
+<para>Subroutine to traverse the layers tree in inorder. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacelayers_1a610f099d68d513f92fd43c602ed00fc1">layers::postorder</link> (this, tmp)</para>
+
+<para>Subroutine to traverse the layers tree in postorder. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacelayers_1afdc1ff48487b915767d34ece44dc8535">layers::gen_dot</link> (this, tmp, unit)</para>
+
+<para>Subroutine to generate the dot file of the layers tree. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacelayers_1a9d6ceae507c9805271b15d962bbdd56b">layers::gen_dot_recursive</link> (this, tmp, unit)</para>
+
+<para>Subroutine to generate the dot file of the layers tree recursively. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacelayers_1a414a6810bc1629cc5c9340c10ed841d7">layers::max_depth</link> (this)</para>
+
+<para>Subroutine to calculate the max depth of the layers tree. </para>
+</listitem>
+            <listitem><para>recursive integer function <link linkend="_namespacelayers_1a8fb9ba5d1bd2e6405b2546d0a23d202e">layers::max_depth_rec</link> (this, root)</para>
+
+<para>Function to calculate the max depth of the layers tree recursively. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacelayers_1a815df7ccd4cede1692c60ec1e4cb86eb">layers::leaf_layers</link> (this)</para>
+
+<para>Subroutine to traverse the leaf layers of the layers tree. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacelayers_1ac93277cfc9c8e94020013f78bfb5aad8">layers::leaf_layers_rec</link> (this, tmp)</para>
+
+<para>Subroutine to traverse the leaf layers of the layers tree recursively. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacelayers_1a1071675842783fc100b474fb4d4ac20c">layers::list_layers</link> (this, option)</para>
+
+<para>Subroutine to list the layers of the layers tree. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacelayers_1a979adcf17af1e6b9b660725b2a018db4">layers::inorder_print</link> (this, tmp)</para>
+
+<para>Subroutine to print the layers of the layers tree in inorder. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Module to handle layers of a neural network. </para>
+
+<para><formalpara><title>Author</title>
+
+<para>Diego Cali </para>
+</formalpara>
+<formalpara><title>Date</title>
+
+<para>2024 </para>
+</formalpara>
+<formalpara><title>Version</title>
+
+<para>1.0</para>
+</formalpara>
+This module contains the definition of the layers_tree type, which is a binary tree of layers. Each layer has an id, a number of pixels, a pixel_matrix and two pointers to other layers. The module also contains the definition of the pixel_matrix type, which is a matrix of pixels. The module also contains the definition of the node_layer type, which is a node of a linked list of layers. The module also contains the definition of the queue type, which is a queue of layers. The module contains the following subroutines and functions: </para>
+</section>
+</section>

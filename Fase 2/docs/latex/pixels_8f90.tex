@@ -1,0 +1,72 @@
+\doxysection{/home/diego/\+Documents/\+EDD/\+Fase 2 Documentation/src/pixels.f90 File Reference}
+\label{pixels_8f90}\index{/home/diego/Documents/EDD/Fase 2 Documentation/src/pixels.f90@{/home/diego/Documents/EDD/Fase 2 Documentation/src/pixels.f90}}
+
+
+Module to handle pixels in a matrix.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+type \textbf{ pixels\+::pixel}
+\begin{DoxyCompactList}\small\item\em Type to represent a pixel. \end{DoxyCompactList}\item 
+type \textbf{ pixels\+::pixel\+\_\+matrix}
+\begin{DoxyCompactList}\small\item\em Type to represent a matrix of pixels. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+module \textbf{ pixels}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \textbf{ pixels\+::insert} (this, x, y, value, color)
+\begin{DoxyCompactList}\small\item\em Insert a pixel in the matrix. \end{DoxyCompactList}\item 
+type(pixel) function, pointer \textbf{ pixels\+::search\+\_\+row} (this, y)
+\begin{DoxyCompactList}\small\item\em Search a row in the matrix. \end{DoxyCompactList}\item 
+type(pixel) function, pointer \textbf{ pixels\+::search\+\_\+column} (this, x)
+\begin{DoxyCompactList}\small\item\em Search a column in the matrix. \end{DoxyCompactList}\item 
+logical function \textbf{ pixels\+::node\+\_\+exists} (this, new\+\_\+node)
+\begin{DoxyCompactList}\small\item\em Check if a node exists in the matrix. \end{DoxyCompactList}\item 
+type(pixel) function, pointer \textbf{ pixels\+::insert\+\_\+row\+\_\+header} (this, y)
+\begin{DoxyCompactList}\small\item\em Insert a row header in the matrix. \end{DoxyCompactList}\item 
+subroutine \textbf{ pixels\+::insert\+\_\+in\+\_\+row} (this, new\+\_\+node, row\+\_\+header)
+\begin{DoxyCompactList}\small\item\em Insert a pixel in a row. \end{DoxyCompactList}\item 
+type(pixel) function, pointer \textbf{ pixels\+::insert\+\_\+column\+\_\+header} (this, x)
+\begin{DoxyCompactList}\small\item\em Insert a column header in the matrix. \end{DoxyCompactList}\item 
+subroutine \textbf{ pixels\+::insert\+\_\+in\+\_\+column} (this, new\+\_\+node, column\+\_\+header)
+\begin{DoxyCompactList}\small\item\em Insert a pixel in a column. \end{DoxyCompactList}\item 
+subroutine \textbf{ pixels\+::print\+\_\+headers} (this)
+\begin{DoxyCompactList}\small\item\em Print the headers of the matrix. \end{DoxyCompactList}\item 
+logical function \textbf{ pixels\+::get\+\_\+value} (this, x, y)
+\begin{DoxyCompactList}\small\item\em Get the value of a pixel. \end{DoxyCompactList}\item 
+type(pixel) function, pointer \textbf{ pixels\+::get\+\_\+node} (this, x, y)
+\begin{DoxyCompactList}\small\item\em Get the node in the matrix. \end{DoxyCompactList}\item 
+subroutine \textbf{ pixels\+::self\+\_\+print} (this)
+\begin{DoxyCompactList}\small\item\em Print the matrix. \end{DoxyCompactList}\item 
+subroutine \textbf{ pixels\+::graph\+\_\+pixels} (this, unit)
+\begin{DoxyCompactList}\small\item\em Generate a graph of the pixels. \end{DoxyCompactList}\item 
+subroutine \textbf{ pixels\+::gen\+\_\+matrix} (this, g\+\_\+matrix)
+\begin{DoxyCompactList}\small\item\em Generate a matrix of pixels. \end{DoxyCompactList}\item 
+subroutine \textbf{ pixels\+::global\+\_\+m\+\_\+dot} (this, unit)
+\begin{DoxyCompactList}\small\item\em Generate a graph of the pixels. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+integer \textbf{ pixels\+::id} = 0
+\begin{DoxyCompactList}\small\item\em Unique identifier for each pixel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Module to handle pixels in a matrix. 
+
+\begin{DoxyAuthor}{Author}
+Diego Cali 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2024 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+This module is used to handle pixels in a matrix. It is possible to insert, search, print and generate a graph of the pixels. 

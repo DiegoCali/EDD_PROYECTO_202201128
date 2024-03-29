@@ -1,0 +1,175 @@
+\doxysection{pixels\+::pixel Type Reference}
+\label{structpixels_1_1pixel}\index{pixels::pixel@{pixels::pixel}}
+
+
+Type to represent a pixel.  
+
+
+
+
+Collaboration diagram for pixels\+::pixel\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{structpixels_1_1pixel__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+integer \textbf{ id}
+\begin{DoxyCompactList}\small\item\em Unique identifier for the pixel. \end{DoxyCompactList}\item 
+integer \textbf{ x}
+\item 
+integer \textbf{ y}
+\begin{DoxyCompactList}\small\item\em Coordinates of the pixel. \end{DoxyCompactList}\item 
+logical \textbf{ on} = .FALSE.
+\begin{DoxyCompactList}\small\item\em Value of the pixel. \end{DoxyCompactList}\item 
+character(len=7) \textbf{ color}
+\begin{DoxyCompactList}\small\item\em Color of the pixel. \end{DoxyCompactList}\item 
+type(\textbf{ pixel}), pointer \textbf{ up} =$>$ null()
+\begin{DoxyCompactList}\small\item\em Pointer to the pixel above. \end{DoxyCompactList}\item 
+type(\textbf{ pixel}), pointer \textbf{ down} =$>$ null()
+\begin{DoxyCompactList}\small\item\em Pointer to the pixel below. \end{DoxyCompactList}\item 
+type(\textbf{ pixel}), pointer \textbf{ right} =$>$ null()
+\begin{DoxyCompactList}\small\item\em Pointer to the pixel on the right. \end{DoxyCompactList}\item 
+type(\textbf{ pixel}), pointer \textbf{ left} =$>$ null()
+\begin{DoxyCompactList}\small\item\em Pointer to the pixel on the left. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Type to represent a pixel. 
+
+Definition at line 12 of file pixels.\+f90.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{structpixels_1_1pixel_afb81453991d78b57cc51d6db3306fd57}} 
+\index{pixels::pixel@{pixels::pixel}!color@{color}}
+\index{color@{color}!pixels::pixel@{pixels::pixel}}
+\doxysubsubsection{color}
+{\footnotesize\ttfamily character(len=7) pixels\+::pixel\+::color}
+
+
+
+Color of the pixel. 
+
+
+
+Definition at line 16 of file pixels.\+f90.
+
+\mbox{\label{structpixels_1_1pixel_af21587a462c5a4187e42a4c27c9500be}} 
+\index{pixels::pixel@{pixels::pixel}!down@{down}}
+\index{down@{down}!pixels::pixel@{pixels::pixel}}
+\doxysubsubsection{down}
+{\footnotesize\ttfamily type(\textbf{ pixel}), pointer pixels\+::pixel\+::down =$>$ null()}
+
+
+
+Pointer to the pixel below. 
+
+
+
+Definition at line 18 of file pixels.\+f90.
+
+\mbox{\label{structpixels_1_1pixel_a31fa715f7aa845ca8e63658200d114aa}} 
+\index{pixels::pixel@{pixels::pixel}!id@{id}}
+\index{id@{id}!pixels::pixel@{pixels::pixel}}
+\doxysubsubsection{id}
+{\footnotesize\ttfamily integer pixels\+::pixel\+::id}
+
+
+
+Unique identifier for the pixel. 
+
+
+
+Definition at line 13 of file pixels.\+f90.
+
+\mbox{\label{structpixels_1_1pixel_a217b51f4a16b8d5cc39de5e1606999b1}} 
+\index{pixels::pixel@{pixels::pixel}!left@{left}}
+\index{left@{left}!pixels::pixel@{pixels::pixel}}
+\doxysubsubsection{left}
+{\footnotesize\ttfamily type(\textbf{ pixel}), pointer pixels\+::pixel\+::left =$>$ null()}
+
+
+
+Pointer to the pixel on the left. 
+
+
+
+Definition at line 20 of file pixels.\+f90.
+
+\mbox{\label{structpixels_1_1pixel_ad1de893a1b94b28f0960034d8b7f4135}} 
+\index{pixels::pixel@{pixels::pixel}!on@{on}}
+\index{on@{on}!pixels::pixel@{pixels::pixel}}
+\doxysubsubsection{on}
+{\footnotesize\ttfamily logical pixels\+::pixel\+::on = .FALSE.}
+
+
+
+Value of the pixel. 
+
+
+
+Definition at line 15 of file pixels.\+f90.
+
+\mbox{\label{structpixels_1_1pixel_a881eceecf7e0dfbaa4726c61ca03c006}} 
+\index{pixels::pixel@{pixels::pixel}!right@{right}}
+\index{right@{right}!pixels::pixel@{pixels::pixel}}
+\doxysubsubsection{right}
+{\footnotesize\ttfamily type(\textbf{ pixel}), pointer pixels\+::pixel\+::right =$>$ null()}
+
+
+
+Pointer to the pixel on the right. 
+
+
+
+Definition at line 19 of file pixels.\+f90.
+
+\mbox{\label{structpixels_1_1pixel_a6205ae081aac9fe2a116725165af84f3}} 
+\index{pixels::pixel@{pixels::pixel}!up@{up}}
+\index{up@{up}!pixels::pixel@{pixels::pixel}}
+\doxysubsubsection{up}
+{\footnotesize\ttfamily type(\textbf{ pixel}), pointer pixels\+::pixel\+::up =$>$ null()}
+
+
+
+Pointer to the pixel above. 
+
+
+
+Definition at line 17 of file pixels.\+f90.
+
+\mbox{\label{structpixels_1_1pixel_a57d27da7dd59522d4a5dd1b848b36370}} 
+\index{pixels::pixel@{pixels::pixel}!x@{x}}
+\index{x@{x}!pixels::pixel@{pixels::pixel}}
+\doxysubsubsection{x}
+{\footnotesize\ttfamily integer pixels\+::pixel\+::x}
+
+
+
+Definition at line 14 of file pixels.\+f90.
+
+\mbox{\label{structpixels_1_1pixel_a9dd8cc98ace3fc5bf5262de4fd9b226f}} 
+\index{pixels::pixel@{pixels::pixel}!y@{y}}
+\index{y@{y}!pixels::pixel@{pixels::pixel}}
+\doxysubsubsection{y}
+{\footnotesize\ttfamily integer pixels\+::pixel\+::y}
+
+
+
+Coordinates of the pixel. 
+
+
+
+Definition at line 14 of file pixels.\+f90.
+
+
+
+The documentation for this type was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/diego/\+Documents/\+EDD/\+Fase 2 Documentation/src/\textbf{ pixels.\+f90}\end{DoxyCompactItemize}

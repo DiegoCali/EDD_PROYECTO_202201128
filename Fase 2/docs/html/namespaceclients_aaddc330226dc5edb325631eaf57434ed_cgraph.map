@@ -1,0 +1,4 @@
+<map id="clients::delete_client_rec" name="clients::delete_client_rec">
+<area shape="rect" id="node1" title="Recursive subroutine to delete a client from the tree." alt="" coords="5,5,189,32"/>
+<area shape="rect" id="node2" href="$namespaceclients.html#aa44cf096a2cb7660812a0d89d38ba962" title="Subroutine to insert a node." alt="" coords="237,5,387,32"/>
+</map>

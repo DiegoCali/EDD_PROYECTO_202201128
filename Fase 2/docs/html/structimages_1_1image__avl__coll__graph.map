@@ -1,0 +1,8 @@
+<map id="images::image_avl" name="images::image_avl">
+<area shape="rect" id="node1" title="Type that represents an AVL tree of images." alt="" coords="7,489,153,516"/>
+<area shape="rect" id="node2" href="$structimages_1_1image.html" title="Type that represents a node in the AVL tree." alt="" coords="21,399,139,425"/>
+<area shape="rect" id="node3" href="$structlayers_1_1layers__tree.html" title="Type to represent a binary tree of layers." alt="" coords="9,308,151,335"/>
+<area shape="rect" id="node4" href="$structpixels_1_1pixel__matrix.html" title="Type to represent a matrix of pixels." alt="" coords="5,127,155,153"/>
+<area shape="rect" id="node6" href="$structlayers_1_1layer.html" title="Type to represent a pixel matrix" alt="" coords="178,217,281,244"/>
+<area shape="rect" id="node5" href="$structpixels_1_1pixel.html" title="Type to represent a pixel." alt="" coords="31,21,129,48"/>
+</map>

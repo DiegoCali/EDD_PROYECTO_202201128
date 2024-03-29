@@ -1,0 +1,511 @@
+\doxysection{images Module Reference}
+\label{namespaceimages}\index{images@{images}}
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+type \textbf{ image}
+\begin{DoxyCompactList}\small\item\em Type that represents a node in the AVL tree. \end{DoxyCompactList}\item 
+type \textbf{ image\+\_\+avl}
+\begin{DoxyCompactList}\small\item\em Type that represents an AVL tree of images. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \textbf{ delete\+\_\+img} (this, img\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Method that deletes an image from the tree. \end{DoxyCompactList}\item 
+recursive type(\textbf{ image}) function, pointer \textbf{ delete\+\_\+img\+\_\+rec} (this, temp, img\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Recursive method that deletes an image from the tree. \end{DoxyCompactList}\item 
+recursive type(\textbf{ image}) function, pointer \textbf{ min\+\_\+child} (this, temp)
+\begin{DoxyCompactList}\small\item\em Method that returns the node with the minimum value in the tree. \end{DoxyCompactList}\item 
+subroutine \textbf{ add\+\_\+layer} (this, new\+\_\+layer)
+\begin{DoxyCompactList}\small\item\em Method that adds a layer to the image. \end{DoxyCompactList}\item 
+subroutine \textbf{ add\+\_\+img} (this, new\+\_\+image)
+\begin{DoxyCompactList}\small\item\em Method that adds an image to the tree. \end{DoxyCompactList}\item 
+subroutine \textbf{ add\+\_\+img\+\_\+rec} (this, new\+\_\+image, tmp)
+\begin{DoxyCompactList}\small\item\em Recursive method that adds an image to the tree. \end{DoxyCompactList}\item 
+recursive type(\textbf{ image}) function, pointer \textbf{ search\+\_\+img} (this, temp, img\+\_\+ig)
+\begin{DoxyCompactList}\small\item\em Method that searches for an image in the tree. \end{DoxyCompactList}\item 
+type(\textbf{ image}) function, pointer \textbf{ srl} (this, t1)
+\begin{DoxyCompactList}\small\item\em Method that performs a single right rotation. \end{DoxyCompactList}\item 
+type(\textbf{ image}) function, pointer \textbf{ srr} (this, t1)
+\begin{DoxyCompactList}\small\item\em Method that performs a single left rotation. \end{DoxyCompactList}\item 
+type(\textbf{ image}) function, pointer \textbf{ drl} (this, tmp)
+\begin{DoxyCompactList}\small\item\em Method that performs a double right rotation. \end{DoxyCompactList}\item 
+type(\textbf{ image}) function, pointer \textbf{ drr} (this, tmp)
+\begin{DoxyCompactList}\small\item\em Method that performs a double left rotation. \end{DoxyCompactList}\item 
+integer function \textbf{ get\+\_\+max} (this, val1, val2)
+\begin{DoxyCompactList}\small\item\em Method that returns the maximum value between two integers. \end{DoxyCompactList}\item 
+integer function \textbf{ get\+\_\+height} (this, tmp)
+\begin{DoxyCompactList}\small\item\em Method that returns the height of a node. \end{DoxyCompactList}\item 
+subroutine \textbf{ get\+\_\+dot} (this, tmp, unit)
+\begin{DoxyCompactList}\small\item\em Method that generates the dot representation of the tree. \end{DoxyCompactList}\item 
+subroutine \textbf{ get\+\_\+dot\+\_\+rec} (this, tmp, unit)
+\begin{DoxyCompactList}\small\item\em Recursive method that generates the dot representation of the tree. \end{DoxyCompactList}\item 
+subroutine \textbf{ print\+\_\+images} (this, temp)
+\begin{DoxyCompactList}\small\item\em Method that prints the images in the tree. \end{DoxyCompactList}\item 
+subroutine \textbf{ gen\+\_\+tree\+\_\+subtree} (this, id\+\_\+img, unit)
+\begin{DoxyCompactList}\small\item\em Method that generates the dot representation of the tree and its subtree. \end{DoxyCompactList}\item 
+recursive subroutine \textbf{ gen\+\_\+layer\+\_\+subtree} (current\+\_\+layer, unit)
+\begin{DoxyCompactList}\small\item\em Recursive method that generates the dot representation of the layers subtree. \end{DoxyCompactList}\item 
+subroutine \textbf{ gen\+\_\+img\+\_\+traversal} (this, unit, id\+\_\+img)
+\begin{DoxyCompactList}\small\item\em Method that generates the dot representation of the image traversal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\label{namespaceimages_abaa3f06584461d0d3d3342d530ad8b89}} 
+\index{images@{images}!add\_img@{add\_img}}
+\index{add\_img@{add\_img}!images@{images}}
+\doxysubsubsection{add\_img()}
+{\footnotesize\ttfamily subroutine images\+::add\+\_\+img (\begin{DoxyParamCaption}\item[{class(\textbf{ image\+\_\+avl}), intent(inout)}]{this,  }\item[{type(\textbf{ image}), intent(in), pointer}]{new\+\_\+image }\end{DoxyParamCaption})}
+
+
+
+Method that adds an image to the tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The \doxyref{image\+\_\+avl}{p.}{structimages_1_1image__avl} object \\
+\hline
+{\em new\+\_\+image} & The image to add \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 145 of file images.\+f90.
+
+\mbox{\label{namespaceimages_a818f67bb377d86228c1ab2d6726e017b}} 
+\index{images@{images}!add\_img\_rec@{add\_img\_rec}}
+\index{add\_img\_rec@{add\_img\_rec}!images@{images}}
+\doxysubsubsection{add\_img\_rec()}
+{\footnotesize\ttfamily subroutine images\+::add\+\_\+img\+\_\+rec (\begin{DoxyParamCaption}\item[{class(\textbf{ image\+\_\+avl}), intent(inout)}]{this,  }\item[{type(\textbf{ image}), intent(in), pointer}]{new\+\_\+image,  }\item[{type(\textbf{ image}), pointer}]{tmp }\end{DoxyParamCaption})}
+
+
+
+Recursive method that adds an image to the tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The \doxyref{image\+\_\+avl}{p.}{structimages_1_1image__avl} object \\
+\hline
+{\em new\+\_\+image} & The image to add \\
+\hline
+{\em tmp} & The current node \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 159 of file images.\+f90.
+
+\mbox{\label{namespaceimages_a9ce70395a3dc3e94ffb376cb8d25d644}} 
+\index{images@{images}!add\_layer@{add\_layer}}
+\index{add\_layer@{add\_layer}!images@{images}}
+\doxysubsubsection{add\_layer()}
+{\footnotesize\ttfamily subroutine images\+::add\+\_\+layer (\begin{DoxyParamCaption}\item[{class(\textbf{ image}), intent(inout)}]{this,  }\item[{type(\textbf{ layer}), intent(in), pointer}]{new\+\_\+layer }\end{DoxyParamCaption})}
+
+
+
+Method that adds a layer to the image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The image object \\
+\hline
+{\em new\+\_\+layer} & The layer to add \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 136 of file images.\+f90.
+
+\mbox{\label{namespaceimages_ae9fb4295d989ded20aed37781fada93f}} 
+\index{images@{images}!delete\_img@{delete\_img}}
+\index{delete\_img@{delete\_img}!images@{images}}
+\doxysubsubsection{delete\_img()}
+{\footnotesize\ttfamily subroutine images\+::delete\+\_\+img (\begin{DoxyParamCaption}\item[{class(\textbf{ image\+\_\+avl}), intent(inout)}]{this,  }\item[{integer, intent(in)}]{img\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Method that deletes an image from the tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The \doxyref{image\+\_\+avl}{p.}{structimages_1_1image__avl} object \\
+\hline
+{\em img\+\_\+id} & The id of the image to delete \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 48 of file images.\+f90.
+
+\mbox{\label{namespaceimages_af85af4efc7840b01027b0995187934bc}} 
+\index{images@{images}!delete\_img\_rec@{delete\_img\_rec}}
+\index{delete\_img\_rec@{delete\_img\_rec}!images@{images}}
+\doxysubsubsection{delete\_img\_rec()}
+{\footnotesize\ttfamily recursive type(\textbf{ image}) function, pointer images\+::delete\+\_\+img\+\_\+rec (\begin{DoxyParamCaption}\item[{class(\textbf{ image\+\_\+avl}), intent(inout)}]{this,  }\item[{type(\textbf{ image}), intent(inout), pointer}]{temp,  }\item[{integer, intent(in)}]{img\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Recursive method that deletes an image from the tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The \doxyref{image\+\_\+avl}{p.}{structimages_1_1image__avl} object \\
+\hline
+{\em temp} & The current node \\
+\hline
+{\em img\+\_\+id} & The id of the image to delete \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The new subtree 
+\end{DoxyReturn}
+
+
+Definition at line 62 of file images.\+f90.
+
+\mbox{\label{namespaceimages_a13829ee1fd288112adc0847a364c7a6c}} 
+\index{images@{images}!drl@{drl}}
+\index{drl@{drl}!images@{images}}
+\doxysubsubsection{drl()}
+{\footnotesize\ttfamily type(\textbf{ image}) function, pointer images\+::drl (\begin{DoxyParamCaption}\item[{class(\textbf{ image\+\_\+avl}), intent(in)}]{this,  }\item[{type(\textbf{ image}), intent(in), pointer}]{tmp }\end{DoxyParamCaption})}
+
+
+
+Method that performs a double right rotation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The \doxyref{image\+\_\+avl}{p.}{structimages_1_1image__avl} object \\
+\hline
+{\em tmp} & The node to rotate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The new subtree 
+\end{DoxyReturn}
+
+
+Definition at line 244 of file images.\+f90.
+
+\mbox{\label{namespaceimages_aa5f7fae637a0b808d14ba76b537a0b45}} 
+\index{images@{images}!drr@{drr}}
+\index{drr@{drr}!images@{images}}
+\doxysubsubsection{drr()}
+{\footnotesize\ttfamily type(\textbf{ image}) function, pointer images\+::drr (\begin{DoxyParamCaption}\item[{class(\textbf{ image\+\_\+avl}), intent(in)}]{this,  }\item[{type(\textbf{ image}), intent(in), pointer}]{tmp }\end{DoxyParamCaption})}
+
+
+
+Method that performs a double left rotation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The \doxyref{image\+\_\+avl}{p.}{structimages_1_1image__avl} object \\
+\hline
+{\em tmp} & The node to rotate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The new subtree 
+\end{DoxyReturn}
+
+
+Definition at line 255 of file images.\+f90.
+
+\mbox{\label{namespaceimages_af46773caf3cd61462dc79f3ec91dcb54}} 
+\index{images@{images}!gen\_img\_traversal@{gen\_img\_traversal}}
+\index{gen\_img\_traversal@{gen\_img\_traversal}!images@{images}}
+\doxysubsubsection{gen\_img\_traversal()}
+{\footnotesize\ttfamily subroutine images\+::gen\+\_\+img\+\_\+traversal (\begin{DoxyParamCaption}\item[{class(\textbf{ image\+\_\+avl}), intent(inout)}]{this,  }\item[{integer, intent(in)}]{unit,  }\item[{integer, intent(in)}]{id\+\_\+img }\end{DoxyParamCaption})}
+
+
+
+Method that generates the dot representation of the image traversal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The \doxyref{image\+\_\+avl}{p.}{structimages_1_1image__avl} object \\
+\hline
+{\em unit} & The unit to write the dot representation \\
+\hline
+{\em id\+\_\+img} & The id of the image to generate the traversal \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 400 of file images.\+f90.
+
+\mbox{\label{namespaceimages_af9b5634624df4d9490fc5a7ade1b1f82}} 
+\index{images@{images}!gen\_layer\_subtree@{gen\_layer\_subtree}}
+\index{gen\_layer\_subtree@{gen\_layer\_subtree}!images@{images}}
+\doxysubsubsection{gen\_layer\_subtree()}
+{\footnotesize\ttfamily recursive subroutine images\+::gen\+\_\+layer\+\_\+subtree (\begin{DoxyParamCaption}\item[{type(\textbf{ layer}), intent(in), pointer}]{current\+\_\+layer,  }\item[{integer, intent(in)}]{unit }\end{DoxyParamCaption})}
+
+
+
+Recursive method that generates the dot representation of the layers subtree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+\_\+layer} & The current layer \\
+\hline
+{\em unit} & The unit to write the dot representation \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 383 of file images.\+f90.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceimages_af9b5634624df4d9490fc5a7ade1b1f82_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{namespaceimages_ae4b61fd9a69b8d23f1fc0ec82b184f8b}} 
+\index{images@{images}!gen\_tree\_subtree@{gen\_tree\_subtree}}
+\index{gen\_tree\_subtree@{gen\_tree\_subtree}!images@{images}}
+\doxysubsubsection{gen\_tree\_subtree()}
+{\footnotesize\ttfamily subroutine images\+::gen\+\_\+tree\+\_\+subtree (\begin{DoxyParamCaption}\item[{class(\textbf{ image\+\_\+avl}), intent(inout)}]{this,  }\item[{integer, intent(in)}]{id\+\_\+img,  }\item[{integer, intent(in)}]{unit }\end{DoxyParamCaption})}
+
+
+
+Method that generates the dot representation of the tree and its subtree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The \doxyref{image\+\_\+avl}{p.}{structimages_1_1image__avl} object \\
+\hline
+{\em id\+\_\+img} & The id of the image to generate the subtree \\
+\hline
+{\em unit} & The unit to write the dot representation \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 337 of file images.\+f90.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceimages_ae4b61fd9a69b8d23f1fc0ec82b184f8b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{namespaceimages_a353bc3744d0b9fcc0651e3e9b17ecf6e}} 
+\index{images@{images}!get\_dot@{get\_dot}}
+\index{get\_dot@{get\_dot}!images@{images}}
+\doxysubsubsection{get\_dot()}
+{\footnotesize\ttfamily subroutine images\+::get\+\_\+dot (\begin{DoxyParamCaption}\item[{class(\textbf{ image\+\_\+avl}), intent(in)}]{this,  }\item[{type(\textbf{ image}), intent(in), pointer}]{tmp,  }\item[{integer, intent(in)}]{unit }\end{DoxyParamCaption})}
+
+
+
+Method that generates the dot representation of the tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The \doxyref{image\+\_\+avl}{p.}{structimages_1_1image__avl} object \\
+\hline
+{\em tmp} & The current node \\
+\hline
+{\em unit} & The unit to write the dot representation \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 291 of file images.\+f90.
+
+\mbox{\label{namespaceimages_aed8e9e8d71902d89fef8d6823c7bfe5c}} 
+\index{images@{images}!get\_dot\_rec@{get\_dot\_rec}}
+\index{get\_dot\_rec@{get\_dot\_rec}!images@{images}}
+\doxysubsubsection{get\_dot\_rec()}
+{\footnotesize\ttfamily subroutine images\+::get\+\_\+dot\+\_\+rec (\begin{DoxyParamCaption}\item[{class(\textbf{ image\+\_\+avl}), intent(in)}]{this,  }\item[{type(\textbf{ image}), intent(in), pointer}]{tmp,  }\item[{integer, intent(in)}]{unit }\end{DoxyParamCaption})}
+
+
+
+Recursive method that generates the dot representation of the tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The \doxyref{image\+\_\+avl}{p.}{structimages_1_1image__avl} object \\
+\hline
+{\em tmp} & The current node \\
+\hline
+{\em unit} & The unit to write the dot representation \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 303 of file images.\+f90.
+
+\mbox{\label{namespaceimages_ae11400158ed51b8630ab12fbc4aac028}} 
+\index{images@{images}!get\_height@{get\_height}}
+\index{get\_height@{get\_height}!images@{images}}
+\doxysubsubsection{get\_height()}
+{\footnotesize\ttfamily integer function images\+::get\+\_\+height (\begin{DoxyParamCaption}\item[{class(\textbf{ image\+\_\+avl}), intent(in)}]{this,  }\item[{type(\textbf{ image}), intent(in), pointer}]{tmp }\end{DoxyParamCaption})}
+
+
+
+Method that returns the height of a node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The \doxyref{image\+\_\+avl}{p.}{structimages_1_1image__avl} object \\
+\hline
+{\em tmp} & The node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The height of the node 
+\end{DoxyReturn}
+
+
+Definition at line 277 of file images.\+f90.
+
+\mbox{\label{namespaceimages_a5f1f7db26934946493b5439cd3e0667f}} 
+\index{images@{images}!get\_max@{get\_max}}
+\index{get\_max@{get\_max}!images@{images}}
+\doxysubsubsection{get\_max()}
+{\footnotesize\ttfamily integer function images\+::get\+\_\+max (\begin{DoxyParamCaption}\item[{class(\textbf{ image\+\_\+avl}), intent(in)}]{this,  }\item[{integer, intent(in)}]{val1,  }\item[{integer, intent(in)}]{val2 }\end{DoxyParamCaption})}
+
+
+
+Method that returns the maximum value between two integers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The \doxyref{image\+\_\+avl}{p.}{structimages_1_1image__avl} object \\
+\hline
+{\em val1} & The first value \\
+\hline
+{\em val2} & The second value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The maximum value 
+\end{DoxyReturn}
+
+
+Definition at line 267 of file images.\+f90.
+
+\mbox{\label{namespaceimages_af9f609fd32d44dc175c082f168666ceb}} 
+\index{images@{images}!min\_child@{min\_child}}
+\index{min\_child@{min\_child}!images@{images}}
+\doxysubsubsection{min\_child()}
+{\footnotesize\ttfamily recursive type(\textbf{ image}) function, pointer images\+::min\+\_\+child (\begin{DoxyParamCaption}\item[{class(\textbf{ image\+\_\+avl}), intent(inout)}]{this,  }\item[{type(\textbf{ image}), intent(in), pointer}]{temp }\end{DoxyParamCaption})}
+
+
+
+Method that returns the node with the minimum value in the tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The \doxyref{image\+\_\+avl}{p.}{structimages_1_1image__avl} object \\
+\hline
+{\em temp} & The current node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The node with the minimum value 
+\end{DoxyReturn}
+
+
+Definition at line 124 of file images.\+f90.
+
+\mbox{\label{namespaceimages_a65ee8ff468125e5a4865ee5511b5d652}} 
+\index{images@{images}!print\_images@{print\_images}}
+\index{print\_images@{print\_images}!images@{images}}
+\doxysubsubsection{print\_images()}
+{\footnotesize\ttfamily subroutine images\+::print\+\_\+images (\begin{DoxyParamCaption}\item[{class(\textbf{ image\+\_\+avl}), intent(in)}]{this,  }\item[{type(\textbf{ image}), intent(in), pointer}]{temp }\end{DoxyParamCaption})}
+
+
+
+Method that prints the images in the tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The \doxyref{image\+\_\+avl}{p.}{structimages_1_1image__avl} object \\
+\hline
+{\em temp} & The current node \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 323 of file images.\+f90.
+
+\mbox{\label{namespaceimages_ab030121b96daea51001d91d9b97bda12}} 
+\index{images@{images}!search\_img@{search\_img}}
+\index{search\_img@{search\_img}!images@{images}}
+\doxysubsubsection{search\_img()}
+{\footnotesize\ttfamily recursive type(\textbf{ image}) function, pointer images\+::search\+\_\+img (\begin{DoxyParamCaption}\item[{class(\textbf{ image\+\_\+avl}), intent(in)}]{this,  }\item[{type(\textbf{ image}), intent(in), pointer}]{temp,  }\item[{integer, intent(in)}]{img\+\_\+ig }\end{DoxyParamCaption})}
+
+
+
+Method that searches for an image in the tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The \doxyref{image\+\_\+avl}{p.}{structimages_1_1image__avl} object \\
+\hline
+{\em img\+\_\+ig} & The id of the image to search \\
+\hline
+{\em temp} & The current node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The image with the id img\+\_\+ig 
+\end{DoxyReturn}
+
+
+Definition at line 195 of file images.\+f90.
+
+\mbox{\label{namespaceimages_a6e491ced3d56dff011eacdce9d9b3b22}} 
+\index{images@{images}!srl@{srl}}
+\index{srl@{srl}!images@{images}}
+\doxysubsubsection{srl()}
+{\footnotesize\ttfamily type(\textbf{ image}) function, pointer images\+::srl (\begin{DoxyParamCaption}\item[{class(\textbf{ image\+\_\+avl}), intent(in)}]{this,  }\item[{type(\textbf{ image}), intent(in), pointer}]{t1 }\end{DoxyParamCaption})}
+
+
+
+Method that performs a single right rotation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The \doxyref{image\+\_\+avl}{p.}{structimages_1_1image__avl} object \\
+\hline
+{\em t1} & The node to rotate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The new subtree 
+\end{DoxyReturn}
+
+
+Definition at line 216 of file images.\+f90.
+
+\mbox{\label{namespaceimages_a257bf0f51d93948c7d6ada09d46524bb}} 
+\index{images@{images}!srr@{srr}}
+\index{srr@{srr}!images@{images}}
+\doxysubsubsection{srr()}
+{\footnotesize\ttfamily type(\textbf{ image}) function, pointer images\+::srr (\begin{DoxyParamCaption}\item[{class(\textbf{ image\+\_\+avl}), intent(in)}]{this,  }\item[{type(\textbf{ image}), intent(in), pointer}]{t1 }\end{DoxyParamCaption})}
+
+
+
+Method that performs a single left rotation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & The \doxyref{image\+\_\+avl}{p.}{structimages_1_1image__avl} object \\
+\hline
+{\em t1} & The node to rotate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The new subtree 
+\end{DoxyReturn}
+
+
+Definition at line 230 of file images.\+f90.
+

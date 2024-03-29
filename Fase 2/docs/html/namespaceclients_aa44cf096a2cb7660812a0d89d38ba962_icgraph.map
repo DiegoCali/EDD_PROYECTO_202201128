@@ -1,0 +1,7 @@
+<map id="clients::insert_node" name="clients::insert_node">
+<area shape="rect" id="node1" title="Subroutine to insert a node." alt="" coords="609,56,759,83"/>
+<area shape="rect" id="node2" href="$namespaceclients.html#aaddc330226dc5edb325631eaf57434ed" title="Recursive subroutine to delete a client from the tree." alt="" coords="377,5,561,32"/>
+<area shape="rect" id="node3" href="$namespaceclients.html#af25c1268d66c531c2dbeea18f0fdd870" title="Recursive function to set the value of the tree." alt="" coords="193,81,329,108"/>
+<area shape="rect" id="node5" href="$namespaceclients.html#a987160082804c4f6978ef2a39b844eef" title="Subroutine to split a node." alt="" coords="399,107,539,133"/>
+<area shape="rect" id="node4" href="$namespaceclients.html#a055cd07c771b226546e795d13346acce" title="Subroutine to add a client to the tree." alt="" coords="5,81,145,108"/>
+</map>

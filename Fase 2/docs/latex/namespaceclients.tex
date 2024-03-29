@@ -1,0 +1,484 @@
+\doxysection{clients Module Reference}
+\label{namespaceclients}\index{clients@{clients}}
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+type \textbf{ client}
+\begin{DoxyCompactList}\small\item\em Type to represent a client. \end{DoxyCompactList}\item 
+type \textbf{ nodeptr}
+\begin{DoxyCompactList}\small\item\em Type to represent a node pointer. \end{DoxyCompactList}\item 
+type \textbf{ btreenode}
+\begin{DoxyCompactList}\small\item\em Type to represent a B-\/tree node. \end{DoxyCompactList}\item 
+type \textbf{ btree\+\_\+clients}
+\begin{DoxyCompactList}\small\item\em Type to represent a B-\/tree. \end{DoxyCompactList}\item 
+type \textbf{ q\+\_\+node}
+\begin{DoxyCompactList}\small\item\em Type to represent a queue node. \end{DoxyCompactList}\item 
+type \textbf{ client\+\_\+queue}
+\begin{DoxyCompactList}\small\item\em Type to represent a client queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \textbf{ amplitude\+\_\+traversal} (this)
+\begin{DoxyCompactList}\small\item\em Subroutine to traverse the tree in amplitude. \end{DoxyCompactList}\item 
+logical function \textbf{ is\+\_\+empty} (this)
+\begin{DoxyCompactList}\small\item\em Function to check if the queue is empty. \end{DoxyCompactList}\item 
+type(\textbf{ btreenode}) function, pointer \textbf{ dequeue} (this)
+\begin{DoxyCompactList}\small\item\em Function to dequeue a node from the queue. \end{DoxyCompactList}\item 
+subroutine \textbf{ enqueue} (this, tree\+\_\+node)
+\begin{DoxyCompactList}\small\item\em Subroutine to enqueue a node in the queue. \end{DoxyCompactList}\item 
+subroutine \textbf{ add\+\_\+client} (this, new\+\_\+client)
+\begin{DoxyCompactList}\small\item\em Subroutine to add a client to the tree. \end{DoxyCompactList}\item 
+recursive logical function \textbf{ set\+\_\+value} (new\+\_\+client, pclient, node, child)
+\begin{DoxyCompactList}\small\item\em Recursive function to set the value of the tree. \end{DoxyCompactList}\item 
+type(\textbf{ btreenode}) function, pointer \textbf{ create\+\_\+node} (this, new\+\_\+client, child)
+\begin{DoxyCompactList}\small\item\em Function to create a node. \end{DoxyCompactList}\item 
+subroutine \textbf{ insert\+\_\+node} (pclient, pos, node, child)
+\begin{DoxyCompactList}\small\item\em Subroutine to insert a node. \end{DoxyCompactList}\item 
+subroutine \textbf{ split\+\_\+node} (new\+\_\+client, pclient, pos, node, child, new\+\_\+node)
+\begin{DoxyCompactList}\small\item\em Subroutine to split a node. \end{DoxyCompactList}\item 
+subroutine \textbf{ traversal} (this, node)
+\begin{DoxyCompactList}\small\item\em Subroutine to traverse the tree. \end{DoxyCompactList}\item 
+subroutine \textbf{ clients\+\_\+dot} (this, node, unit)
+\begin{DoxyCompactList}\small\item\em Subroutine to print the tree in dot format. \end{DoxyCompactList}\item 
+recursive type(\textbf{ client}) function, pointer \textbf{ search\+\_\+client} (this, node, client\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Function to search a client in the tree. \end{DoxyCompactList}\item 
+subroutine \textbf{ delete\+\_\+client} (this, client\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Subroutine to delete a client from the tree. \end{DoxyCompactList}\item 
+subroutine \textbf{ delete\+\_\+client\+\_\+rec} (this, father, temp, client\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Recursive subroutine to delete a client from the tree. \end{DoxyCompactList}\item 
+logical function \textbf{ find} (this, client\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Function to find a client in the node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+integer \textbf{ g\+\_\+id} = 1
+\begin{DoxyCompactList}\small\item\em Global variable to assign the id of the nodes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\label{namespaceclients_a055cd07c771b226546e795d13346acce}} 
+\index{clients@{clients}!add\_client@{add\_client}}
+\index{add\_client@{add\_client}!clients@{clients}}
+\doxysubsubsection{add\_client()}
+{\footnotesize\ttfamily subroutine clients\+::add\+\_\+client (\begin{DoxyParamCaption}\item[{class(\textbf{ btree\+\_\+clients}), intent(inout)}]{this,  }\item[{type(\textbf{ client}), intent(in)}]{new\+\_\+client }\end{DoxyParamCaption})}
+
+
+
+Subroutine to add a client to the tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & B-\/tree to add the client \\
+\hline
+{\em new\+\_\+client} & Client to add \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 133 of file clients.\+f90.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceclients_a055cd07c771b226546e795d13346acce_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{namespaceclients_a9d6d1c448586304034f0c9dc5f953bb3}} 
+\index{clients@{clients}!amplitude\_traversal@{amplitude\_traversal}}
+\index{amplitude\_traversal@{amplitude\_traversal}!clients@{clients}}
+\doxysubsubsection{amplitude\_traversal()}
+{\footnotesize\ttfamily subroutine clients\+::amplitude\+\_\+traversal (\begin{DoxyParamCaption}\item[{class(\textbf{ btree\+\_\+clients}), intent(inout)}]{this }\end{DoxyParamCaption})}
+
+
+
+Subroutine to traverse the tree in amplitude. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & B-\/tree to traverse \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 65 of file clients.\+f90.
+
+\mbox{\label{namespaceclients_aefc8bdbca2df7b11d0c6b79ec742e879}} 
+\index{clients@{clients}!clients\_dot@{clients\_dot}}
+\index{clients\_dot@{clients\_dot}!clients@{clients}}
+\doxysubsubsection{clients\_dot()}
+{\footnotesize\ttfamily subroutine clients\+::clients\+\_\+dot (\begin{DoxyParamCaption}\item[{class(\textbf{ btree\+\_\+clients}), intent(inout)}]{this,  }\item[{type(\textbf{ btreenode}), intent(in), pointer}]{node,  }\item[{integer, intent(in)}]{unit }\end{DoxyParamCaption})}
+
+
+
+Subroutine to print the tree in dot format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & B-\/tree to print \\
+\hline
+{\em node} & Node to print \\
+\hline
+{\em unit} & Unit to print \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 303 of file clients.\+f90.
+
+\mbox{\label{namespaceclients_a64af5f8d56807a670e2533474f998526}} 
+\index{clients@{clients}!create\_node@{create\_node}}
+\index{create\_node@{create\_node}!clients@{clients}}
+\doxysubsubsection{create\_node()}
+{\footnotesize\ttfamily type(\textbf{ btreenode}) function, pointer clients\+::create\+\_\+node (\begin{DoxyParamCaption}\item[{class(\textbf{ btree\+\_\+clients}), intent(inout)}]{this,  }\item[{type(\textbf{ client}), intent(in)}]{new\+\_\+client,  }\item[{type(\textbf{ btreenode}), intent(in), pointer}]{child }\end{DoxyParamCaption})}
+
+
+
+Function to create a node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & B-\/tree to create the node \\
+\hline
+{\em new\+\_\+client} & Client to add \\
+\hline
+{\em child} & Child node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New node created 
+\end{DoxyReturn}
+
+
+Definition at line 198 of file clients.\+f90.
+
+\mbox{\label{namespaceclients_a7466da5b7337fb37c4caaed5d0840f52}} 
+\index{clients@{clients}!delete\_client@{delete\_client}}
+\index{delete\_client@{delete\_client}!clients@{clients}}
+\doxysubsubsection{delete\_client()}
+{\footnotesize\ttfamily subroutine clients\+::delete\+\_\+client (\begin{DoxyParamCaption}\item[{class(\textbf{ btree\+\_\+clients}), intent(inout)}]{this,  }\item[{integer(kind=8), intent(in)}]{client\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Subroutine to delete a client from the tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & B-\/tree to delete the client \\
+\hline
+{\em client\+\_\+id} & Id of the client to delete \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 358 of file clients.\+f90.
+
+\mbox{\label{namespaceclients_aaddc330226dc5edb325631eaf57434ed}} 
+\index{clients@{clients}!delete\_client\_rec@{delete\_client\_rec}}
+\index{delete\_client\_rec@{delete\_client\_rec}!clients@{clients}}
+\doxysubsubsection{delete\_client\_rec()}
+{\footnotesize\ttfamily subroutine clients\+::delete\+\_\+client\+\_\+rec (\begin{DoxyParamCaption}\item[{class(\textbf{ btree\+\_\+clients}), intent(inout)}]{this,  }\item[{type(\textbf{ btreenode}), intent(inout), pointer}]{father,  }\item[{type(\textbf{ btreenode}), intent(inout), pointer}]{temp,  }\item[{integer(kind=8), intent(in)}]{client\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Recursive subroutine to delete a client from the tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & B-\/tree to delete the client \\
+\hline
+{\em father} & Father node \\
+\hline
+{\em temp} & Node to delete the client \\
+\hline
+{\em client\+\_\+id} & Id of the client to delete \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 372 of file clients.\+f90.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceclients_aaddc330226dc5edb325631eaf57434ed_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{namespaceclients_a1a7fece66e992a6f845ac2b912c7f5cf}} 
+\index{clients@{clients}!dequeue@{dequeue}}
+\index{dequeue@{dequeue}!clients@{clients}}
+\doxysubsubsection{dequeue()}
+{\footnotesize\ttfamily type(\textbf{ btreenode}) function, pointer clients\+::dequeue (\begin{DoxyParamCaption}\item[{class(\textbf{ client\+\_\+queue}), intent(inout)}]{this }\end{DoxyParamCaption})}
+
+
+
+Function to dequeue a node from the queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Queue to dequeue \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Node dequeued 
+\end{DoxyReturn}
+
+
+Definition at line 97 of file clients.\+f90.
+
+\mbox{\label{namespaceclients_a1e9f4bdd12f3eba9cd93b6a4444e7d98}} 
+\index{clients@{clients}!enqueue@{enqueue}}
+\index{enqueue@{enqueue}!clients@{clients}}
+\doxysubsubsection{enqueue()}
+{\footnotesize\ttfamily subroutine clients\+::enqueue (\begin{DoxyParamCaption}\item[{class(\textbf{ client\+\_\+queue}), intent(inout)}]{this,  }\item[{type(\textbf{ btreenode}), intent(in), pointer}]{tree\+\_\+node }\end{DoxyParamCaption})}
+
+
+
+Subroutine to enqueue a node in the queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Queue to enqueue \\
+\hline
+{\em tree\+\_\+node} & Node to enqueue \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 112 of file clients.\+f90.
+
+\mbox{\label{namespaceclients_a49266ea8ed56e42af7c1e0419a87c427}} 
+\index{clients@{clients}!find@{find}}
+\index{find@{find}!clients@{clients}}
+\doxysubsubsection{find()}
+{\footnotesize\ttfamily logical function clients\+::find (\begin{DoxyParamCaption}\item[{class(\textbf{ btreenode}), intent(in)}]{this,  }\item[{integer(kind=8), intent(in)}]{client\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Function to find a client in the node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Node to search \\
+\hline
+{\em client\+\_\+id} & Id of the client to search \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the client was found, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 428 of file clients.\+f90.
+
+\mbox{\label{namespaceclients_aa44cf096a2cb7660812a0d89d38ba962}} 
+\index{clients@{clients}!insert\_node@{insert\_node}}
+\index{insert\_node@{insert\_node}!clients@{clients}}
+\doxysubsubsection{insert\_node()}
+{\footnotesize\ttfamily subroutine clients\+::insert\+\_\+node (\begin{DoxyParamCaption}\item[{type(\textbf{ client}), intent(in)}]{pclient,  }\item[{integer, intent(in)}]{pos,  }\item[{type(\textbf{ btreenode}), intent(inout), pointer}]{node,  }\item[{type(\textbf{ btreenode}), intent(in), pointer}]{child }\end{DoxyParamCaption})}
+
+
+
+Subroutine to insert a node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pclient} & Client to add \\
+\hline
+{\em pos} & Position to add the client \\
+\hline
+{\em node} & Node to add the client \\
+\hline
+{\em child} & Child node \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 220 of file clients.\+f90.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceclients_aa44cf096a2cb7660812a0d89d38ba962_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{namespaceclients_aeb3cbc2579866895c57c1dcc4c896055}} 
+\index{clients@{clients}!is\_empty@{is\_empty}}
+\index{is\_empty@{is\_empty}!clients@{clients}}
+\doxysubsubsection{is\_empty()}
+{\footnotesize\ttfamily logical function clients\+::is\+\_\+empty (\begin{DoxyParamCaption}\item[{class(\textbf{ client\+\_\+queue}), intent(in)}]{this }\end{DoxyParamCaption})}
+
+
+
+Function to check if the queue is empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & Queue to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the queue is empty, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 89 of file clients.\+f90.
+
+\mbox{\label{namespaceclients_a21366d81ec050b2e122842e7a3542510}} 
+\index{clients@{clients}!search\_client@{search\_client}}
+\index{search\_client@{search\_client}!clients@{clients}}
+\doxysubsubsection{search\_client()}
+{\footnotesize\ttfamily recursive type(\textbf{ client}) function, pointer clients\+::search\+\_\+client (\begin{DoxyParamCaption}\item[{class(\textbf{ btree\+\_\+clients}), intent(inout)}]{this,  }\item[{type(\textbf{ btreenode}), intent(in), pointer}]{node,  }\item[{integer(kind=8), intent(in)}]{client\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Function to search a client in the tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & B-\/tree to search \\
+\hline
+{\em node} & Node to search \\
+\hline
+{\em client\+\_\+id} & Id of the client to search \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Client found 
+\end{DoxyReturn}
+
+
+Definition at line 331 of file clients.\+f90.
+
+\mbox{\label{namespaceclients_af25c1268d66c531c2dbeea18f0fdd870}} 
+\index{clients@{clients}!set\_value@{set\_value}}
+\index{set\_value@{set\_value}!clients@{clients}}
+\doxysubsubsection{set\_value()}
+{\footnotesize\ttfamily recursive logical function clients\+::set\+\_\+value (\begin{DoxyParamCaption}\item[{type(\textbf{ client}), intent(in)}]{new\+\_\+client,  }\item[{type(\textbf{ client}), intent(inout)}]{pclient,  }\item[{type(\textbf{ btreenode}), intent(inout), pointer}]{node,  }\item[{type(\textbf{ btreenode}), intent(inout), pointer}]{child }\end{DoxyParamCaption})}
+
+
+
+Recursive function to set the value of the tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+client} & Client to add \\
+\hline
+{\em pclient} & Client to add \\
+\hline
+{\em node} & Node to add the client \\
+\hline
+{\em child} & Child node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the client was added, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 151 of file clients.\+f90.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceclients_af25c1268d66c531c2dbeea18f0fdd870_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=323pt]{namespaceclients_af25c1268d66c531c2dbeea18f0fdd870_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{namespaceclients_a987160082804c4f6978ef2a39b844eef}} 
+\index{clients@{clients}!split\_node@{split\_node}}
+\index{split\_node@{split\_node}!clients@{clients}}
+\doxysubsubsection{split\_node()}
+{\footnotesize\ttfamily subroutine clients\+::split\+\_\+node (\begin{DoxyParamCaption}\item[{type(\textbf{ client}), intent(in)}]{new\+\_\+client,  }\item[{type(\textbf{ client}), intent(inout)}]{pclient,  }\item[{integer, intent(in)}]{pos,  }\item[{type(\textbf{ btreenode}), intent(inout), pointer}]{node,  }\item[{type(\textbf{ btreenode}), intent(in), pointer}]{child,  }\item[{type(\textbf{ btreenode}), intent(inout), pointer}]{new\+\_\+node }\end{DoxyParamCaption})}
+
+
+
+Subroutine to split a node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+client} & Client to add \\
+\hline
+{\em pclient} & Client to add \\
+\hline
+{\em pos} & Position to add the client \\
+\hline
+{\em node} & Node to split \\
+\hline
+{\em child} & Child node \\
+\hline
+{\em new\+\_\+node} & New node \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 243 of file clients.\+f90.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{namespaceclients_a987160082804c4f6978ef2a39b844eef_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceclients_a987160082804c4f6978ef2a39b844eef_icgraph}
+\end{center}
+\end{figure}
+\mbox{\label{namespaceclients_ac2237e9b2930d1c37f46be5ba7fd088b}} 
+\index{clients@{clients}!traversal@{traversal}}
+\index{traversal@{traversal}!clients@{clients}}
+\doxysubsubsection{traversal()}
+{\footnotesize\ttfamily subroutine clients\+::traversal (\begin{DoxyParamCaption}\item[{class(\textbf{ btree\+\_\+clients}), intent(inout)}]{this,  }\item[{type(\textbf{ btreenode}), intent(in), pointer}]{node }\end{DoxyParamCaption})}
+
+
+
+Subroutine to traverse the tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this} & B-\/tree to traverse \\
+\hline
+{\em node} & Node to traverse \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 281 of file clients.\+f90.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\label{namespaceclients_aedc33217218a7a1642994c7c673660d5}} 
+\index{clients@{clients}!g\_id@{g\_id}}
+\index{g\_id@{g\_id}!clients@{clients}}
+\doxysubsubsection{g\_id}
+{\footnotesize\ttfamily integer clients\+::g\+\_\+id = 1}
+
+
+
+Global variable to assign the id of the nodes. 
+
+
+
+Definition at line 13 of file clients.\+f90.
+

@@ -1,0 +1,49 @@
+\doxysection{/home/diego/\+Documents/\+EDD/\+Fase 2 Documentation/src/filehandler.f90 File Reference}
+\label{filehandler_8f90}\index{/home/diego/Documents/EDD/Fase 2 Documentation/src/filehandler.f90@{/home/diego/Documents/EDD/Fase 2 Documentation/src/filehandler.f90}}
+
+
+Module that handles the reading of the json files and the initialization of the data structures.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+type \textbf{ filehandler\+::fhandler}
+\begin{DoxyCompactList}\small\item\em Type that handles the reading of the json files and the initialization of the data structures. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+module \textbf{ filehandler}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \textbf{ filehandler\+::initialize\+\_\+admin} (this)
+\begin{DoxyCompactList}\small\item\em Initializes the data structures for the admin user. \end{DoxyCompactList}\item 
+subroutine \textbf{ filehandler\+::initialize\+\_\+user} (this)
+\begin{DoxyCompactList}\small\item\em Initializes the data structures for the user. \end{DoxyCompactList}\item 
+subroutine \textbf{ filehandler\+::set\+\_\+user} (this, user)
+\begin{DoxyCompactList}\small\item\em Sets the user data structures to the fhandler object. \end{DoxyCompactList}\item 
+subroutine \textbf{ filehandler\+::read\+\_\+imgs} (this)
+\begin{DoxyCompactList}\small\item\em Reads the images from the json file. \end{DoxyCompactList}\item 
+subroutine \textbf{ filehandler\+::read\+\_\+layers} (this)
+\begin{DoxyCompactList}\small\item\em Reads the layers from the json file. \end{DoxyCompactList}\item 
+subroutine \textbf{ filehandler\+::read\+\_\+clients} (this)
+\begin{DoxyCompactList}\small\item\em Reads the clients from the json file. \end{DoxyCompactList}\item 
+subroutine \textbf{ filehandler\+::read\+\_\+albums} (this)
+\begin{DoxyCompactList}\small\item\em Reads the albums from the json file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Module that handles the reading of the json files and the initialization of the data structures. 
+
+\begin{DoxyAuthor}{Author}
+Diego Cali 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2024 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+This module is in charge of reading the json files and initializing the data structures that will be used in the program 

@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_ba0ab2d3f01a2332781e658ae6db8995" xml:lang="en-US">
+<title>/home/diego/Documents/EDD/Fase 2 Documentation/src Directory Reference</title>
+<indexterm><primary>/home/diego/Documents/EDD/Fase 2 Documentation/src Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_albums_8f90">albums.f90</link></para>
+
+<para>Module for albums and images management. </para>
+</listitem>
+            <listitem><para>file <link linkend="_clients_8f90">clients.f90</link></para>
+
+<para>Module to manage clients in a B-tree. </para>
+</listitem>
+            <listitem><para>file <link linkend="_filehandler_8f90">filehandler.f90</link></para>
+
+<para>Module that handles the reading of the json files and the initialization of the data structures. </para>
+</listitem>
+            <listitem><para>file <link linkend="_images_8f90">images.f90</link></para>
+
+<para>Module that contains the image and image_avl types and their methods. </para>
+</listitem>
+            <listitem><para>file <link linkend="_layers_8f90">layers.f90</link></para>
+
+<para>Module to handle layers of a neural network. </para>
+</listitem>
+            <listitem><para>file <link linkend="_pixels_8f90">pixels.f90</link></para>
+
+<para>Module to handle pixels in a matrix. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

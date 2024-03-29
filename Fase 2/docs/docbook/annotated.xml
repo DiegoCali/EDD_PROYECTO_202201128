@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_annotated" xml:lang="en-US">
+<title>Data Types List</title>
+Here are the data types with brief descriptions:<link linkend="_structalbums_1_1album">albums::album</link>
+<para>Type to store the album </para>
+<link linkend="_structalbums_1_1album__list">albums::album_list</link>
+<para>Type to store the album list </para>
+<link linkend="_structclients_1_1btree__clients">clients::btree_clients</link>
+<para>Type to represent a B-tree </para>
+<link linkend="_structclients_1_1btreenode">clients::btreenode</link>
+<para>Type to represent a B-tree node </para>
+<link linkend="_structclients_1_1client">clients::client</link>
+<para>Type to represent a client </para>
+<link linkend="_structclients_1_1client__queue">clients::client_queue</link>
+<para>Type to represent a client queue </para>
+<link linkend="_structfilehandler_1_1fhandler">filehandler::fhandler</link>
+<para>Type that handles the reading of the json files and the initialization of the data structures </para>
+<link linkend="_structimages_1_1image">images::image</link>
+<para>Type that represents a node in the AVL tree </para>
+<link linkend="_structimages_1_1image__avl">images::image_avl</link>
+<para>Type that represents an AVL tree of images </para>
+<link linkend="_structalbums_1_1img__node">albums::img_node</link>
+<para>Type to store the image node </para>
+<link linkend="_structlayers_1_1layer">layers::layer</link>
+<para>Type to represent a pixel matrix 
+<literallayout>&#160;&#xa;</literallayout>
+ </para>
+<link linkend="_structlayers_1_1layers__tree">layers::layers_tree</link>
+<para>Type to represent a binary tree of layers </para>
+<link linkend="_structlayers_1_1node__layer">layers::node_layer</link>
+<para>Type to represent a node of a linked list of layers </para>
+<link linkend="_structclients_1_1nodeptr">clients::nodeptr</link>
+<para>Type to represent a node pointer </para>
+<link linkend="_structpixels_1_1pixel">pixels::pixel</link>
+<para>Type to represent a pixel </para>
+<link linkend="_structpixels_1_1pixel__matrix">pixels::pixel_matrix</link>
+<para>Type to represent a matrix of pixels </para>
+<link linkend="_structclients_1_1q__node">clients::q_node</link>
+<para>Type to represent a queue node </para>
+<link linkend="_structlayers_1_1queue">layers::queue</link>
+<para>Type to represent a queue of layers </para>
+</section>

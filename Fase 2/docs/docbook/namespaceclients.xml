@@ -1,0 +1,858 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespaceclients" xml:lang="en-US">
+<title>clients Module Reference</title>
+<indexterm><primary>clients</primary></indexterm>
+<simplesect>
+    <title>Data Types    </title>
+        <itemizedlist>
+            <listitem><para>type <link linkend="_structclients_1_1client">client</link></para>
+
+<para>Type to represent a client. </para>
+</listitem>
+            <listitem><para>type <link linkend="_structclients_1_1nodeptr">nodeptr</link></para>
+
+<para>Type to represent a node pointer. </para>
+</listitem>
+            <listitem><para>type <link linkend="_structclients_1_1btreenode">btreenode</link></para>
+
+<para>Type to represent a B-tree node. </para>
+</listitem>
+            <listitem><para>type <link linkend="_structclients_1_1btree__clients">btree_clients</link></para>
+
+<para>Type to represent a B-tree. </para>
+</listitem>
+            <listitem><para>type <link linkend="_structclients_1_1q__node">q_node</link></para>
+
+<para>Type to represent a queue node. </para>
+</listitem>
+            <listitem><para>type <link linkend="_structclients_1_1client__queue">client_queue</link></para>
+
+<para>Type to represent a client queue. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions/Subroutines    </title>
+        <itemizedlist>
+            <listitem><para>subroutine <link linkend="_namespaceclients_1a9d6d1c448586304034f0c9dc5f953bb3">amplitude_traversal</link> (this)</para>
+
+<para>Subroutine to traverse the tree in amplitude. </para>
+</listitem>
+            <listitem><para>logical function <link linkend="_namespaceclients_1aeb3cbc2579866895c57c1dcc4c896055">is_empty</link> (this)</para>
+
+<para>Function to check if the queue is empty. </para>
+</listitem>
+            <listitem><para>type(<link linkend="_structclients_1_1btreenode">btreenode</link>) function, pointer <link linkend="_namespaceclients_1a1a7fece66e992a6f845ac2b912c7f5cf">dequeue</link> (this)</para>
+
+<para>Function to dequeue a node from the queue. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespaceclients_1a1e9f4bdd12f3eba9cd93b6a4444e7d98">enqueue</link> (this, tree_node)</para>
+
+<para>Subroutine to enqueue a node in the queue. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespaceclients_1a055cd07c771b226546e795d13346acce">add_client</link> (this, new_client)</para>
+
+<para>Subroutine to add a client to the tree. </para>
+</listitem>
+            <listitem><para>recursive logical function <link linkend="_namespaceclients_1af25c1268d66c531c2dbeea18f0fdd870">set_value</link> (new_client, pclient, node, child)</para>
+
+<para>Recursive function to set the value of the tree. </para>
+</listitem>
+            <listitem><para>type(<link linkend="_structclients_1_1btreenode">btreenode</link>) function, pointer <link linkend="_namespaceclients_1a64af5f8d56807a670e2533474f998526">create_node</link> (this, new_client, child)</para>
+
+<para>Function to create a node. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespaceclients_1aa44cf096a2cb7660812a0d89d38ba962">insert_node</link> (pclient, pos, node, child)</para>
+
+<para>Subroutine to insert a node. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespaceclients_1a987160082804c4f6978ef2a39b844eef">split_node</link> (new_client, pclient, pos, node, child, new_node)</para>
+
+<para>Subroutine to split a node. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespaceclients_1ac2237e9b2930d1c37f46be5ba7fd088b">traversal</link> (this, node)</para>
+
+<para>Subroutine to traverse the tree. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespaceclients_1aefc8bdbca2df7b11d0c6b79ec742e879">clients_dot</link> (this, node, unit)</para>
+
+<para>Subroutine to print the tree in dot format. </para>
+</listitem>
+            <listitem><para>recursive type(<link linkend="_structclients_1_1client">client</link>) function, pointer <link linkend="_namespaceclients_1a21366d81ec050b2e122842e7a3542510">search_client</link> (this, node, client_id)</para>
+
+<para>Function to search a client in the tree. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespaceclients_1a7466da5b7337fb37c4caaed5d0840f52">delete_client</link> (this, client_id)</para>
+
+<para>Subroutine to delete a client from the tree. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespaceclients_1aaddc330226dc5edb325631eaf57434ed">delete_client_rec</link> (this, father, temp, client_id)</para>
+
+<para>Recursive subroutine to delete a client from the tree. </para>
+</listitem>
+            <listitem><para>logical function <link linkend="_namespaceclients_1a49266ea8ed56e42af7c1e0419a87c427">find</link> (this, client_id)</para>
+
+<para>Function to find a client in the node. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>integer <link linkend="_namespaceclients_1aedc33217218a7a1642994c7c673660d5">g_id</link> = 1</para>
+
+<para>Global variable to assign the id of the nodes. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function/Subroutine Documentation</title>
+<anchor xml:id="_namespaceclients_1a055cd07c771b226546e795d13346acce"/>    <section>
+    <title>add_client()</title>
+<indexterm><primary>add_client</primary><secondary>clients</secondary></indexterm>
+<indexterm><primary>clients</primary><secondary>add_client</secondary></indexterm>
+<para><computeroutput>subroutine clients::add_client (class(<link linkend="_structclients_1_1btree__clients">btree_clients</link>), intent(inout) this, type(<link linkend="_structclients_1_1client">client</link>), intent(in) new_client)</computeroutput></para><para>
+
+<para>Subroutine to add a client to the tree. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>B-tree to add the client </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>new_client</entry>
+                                <entry>
+<para>Client to add </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line 133 of file clients.f90.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="namespaceclients_a055cd07c771b226546e795d13346acce_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+    </section><anchor xml:id="_namespaceclients_1a9d6d1c448586304034f0c9dc5f953bb3"/>    <section>
+    <title>amplitude_traversal()</title>
+<indexterm><primary>amplitude_traversal</primary><secondary>clients</secondary></indexterm>
+<indexterm><primary>clients</primary><secondary>amplitude_traversal</secondary></indexterm>
+<para><computeroutput>subroutine clients::amplitude_traversal (class(<link linkend="_structclients_1_1btree__clients">btree_clients</link>), intent(inout) this)</computeroutput></para><para>
+
+<para>Subroutine to traverse the tree in amplitude. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>B-tree to traverse </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line 65 of file clients.f90.</para>
+    </section><anchor xml:id="_namespaceclients_1aefc8bdbca2df7b11d0c6b79ec742e879"/>    <section>
+    <title>clients_dot()</title>
+<indexterm><primary>clients_dot</primary><secondary>clients</secondary></indexterm>
+<indexterm><primary>clients</primary><secondary>clients_dot</secondary></indexterm>
+<para><computeroutput>subroutine clients::clients_dot (class(<link linkend="_structclients_1_1btree__clients">btree_clients</link>), intent(inout) this, type(<link linkend="_structclients_1_1btreenode">btreenode</link>), intent(in), pointer node, integer, intent(in) unit)</computeroutput></para><para>
+
+<para>Subroutine to print the tree in dot format. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>B-tree to print </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>node</entry>
+                                <entry>
+<para>Node to print </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>unit</entry>
+                                <entry>
+<para>Unit to print </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line 303 of file clients.f90.</para>
+    </section><anchor xml:id="_namespaceclients_1a64af5f8d56807a670e2533474f998526"/>    <section>
+    <title>create_node()</title>
+<indexterm><primary>create_node</primary><secondary>clients</secondary></indexterm>
+<indexterm><primary>clients</primary><secondary>create_node</secondary></indexterm>
+<para><computeroutput>type(<link linkend="_structclients_1_1btreenode">btreenode</link>) function, pointer clients::create_node (class(<link linkend="_structclients_1_1btree__clients">btree_clients</link>), intent(inout) this, type(<link linkend="_structclients_1_1client">client</link>), intent(in) new_client, type(<link linkend="_structclients_1_1btreenode">btreenode</link>), intent(in), pointer child)</computeroutput></para><para>
+
+<para>Function to create a node. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>B-tree to create the node </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>new_client</entry>
+                                <entry>
+<para>Client to add </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>child</entry>
+                                <entry>
+<para>Child node </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>New node created </para>
+</formalpara>
+</para>
+<para>
+Definition at line 198 of file clients.f90.</para>
+    </section><anchor xml:id="_namespaceclients_1a7466da5b7337fb37c4caaed5d0840f52"/>    <section>
+    <title>delete_client()</title>
+<indexterm><primary>delete_client</primary><secondary>clients</secondary></indexterm>
+<indexterm><primary>clients</primary><secondary>delete_client</secondary></indexterm>
+<para><computeroutput>subroutine clients::delete_client (class(<link linkend="_structclients_1_1btree__clients">btree_clients</link>), intent(inout) this, integer(kind=8), intent(in) client_id)</computeroutput></para><para>
+
+<para>Subroutine to delete a client from the tree. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>B-tree to delete the client </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>client_id</entry>
+                                <entry>
+<para>Id of the client to delete </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line 358 of file clients.f90.</para>
+    </section><anchor xml:id="_namespaceclients_1aaddc330226dc5edb325631eaf57434ed"/>    <section>
+    <title>delete_client_rec()</title>
+<indexterm><primary>delete_client_rec</primary><secondary>clients</secondary></indexterm>
+<indexterm><primary>clients</primary><secondary>delete_client_rec</secondary></indexterm>
+<para><computeroutput>subroutine clients::delete_client_rec (class(<link linkend="_structclients_1_1btree__clients">btree_clients</link>), intent(inout) this, type(<link linkend="_structclients_1_1btreenode">btreenode</link>), intent(inout), pointer father, type(<link linkend="_structclients_1_1btreenode">btreenode</link>), intent(inout), pointer temp, integer(kind=8), intent(in) client_id)</computeroutput></para><para>
+
+<para>Recursive subroutine to delete a client from the tree. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>B-tree to delete the client </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>father</entry>
+                                <entry>
+<para>Father node </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>temp</entry>
+                                <entry>
+<para>Node to delete the client </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>client_id</entry>
+                                <entry>
+<para>Id of the client to delete </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line 372 of file clients.f90.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="namespaceclients_aaddc330226dc5edb325631eaf57434ed_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+    </section><anchor xml:id="_namespaceclients_1a1a7fece66e992a6f845ac2b912c7f5cf"/>    <section>
+    <title>dequeue()</title>
+<indexterm><primary>dequeue</primary><secondary>clients</secondary></indexterm>
+<indexterm><primary>clients</primary><secondary>dequeue</secondary></indexterm>
+<para><computeroutput>type(<link linkend="_structclients_1_1btreenode">btreenode</link>) function, pointer clients::dequeue (class(<link linkend="_structclients_1_1client__queue">client_queue</link>), intent(inout) this)</computeroutput></para><para>
+
+<para>Function to dequeue a node from the queue. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>Queue to dequeue </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>Node dequeued </para>
+</formalpara>
+</para>
+<para>
+Definition at line 97 of file clients.f90.</para>
+    </section><anchor xml:id="_namespaceclients_1a1e9f4bdd12f3eba9cd93b6a4444e7d98"/>    <section>
+    <title>enqueue()</title>
+<indexterm><primary>enqueue</primary><secondary>clients</secondary></indexterm>
+<indexterm><primary>clients</primary><secondary>enqueue</secondary></indexterm>
+<para><computeroutput>subroutine clients::enqueue (class(<link linkend="_structclients_1_1client__queue">client_queue</link>), intent(inout) this, type(<link linkend="_structclients_1_1btreenode">btreenode</link>), intent(in), pointer tree_node)</computeroutput></para><para>
+
+<para>Subroutine to enqueue a node in the queue. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>Queue to enqueue </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>tree_node</entry>
+                                <entry>
+<para>Node to enqueue </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line 112 of file clients.f90.</para>
+    </section><anchor xml:id="_namespaceclients_1a49266ea8ed56e42af7c1e0419a87c427"/>    <section>
+    <title>find()</title>
+<indexterm><primary>find</primary><secondary>clients</secondary></indexterm>
+<indexterm><primary>clients</primary><secondary>find</secondary></indexterm>
+<para><computeroutput>logical function clients::find (class(<link linkend="_structclients_1_1btreenode">btreenode</link>), intent(in) this, integer(kind=8), intent(in) client_id)</computeroutput></para><para>
+
+<para>Function to find a client in the node. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>Node to search </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>client_id</entry>
+                                <entry>
+<para>Id of the client to search </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>True if the client was found, false otherwise </para>
+</formalpara>
+</para>
+<para>
+Definition at line 428 of file clients.f90.</para>
+    </section><anchor xml:id="_namespaceclients_1aa44cf096a2cb7660812a0d89d38ba962"/>    <section>
+    <title>insert_node()</title>
+<indexterm><primary>insert_node</primary><secondary>clients</secondary></indexterm>
+<indexterm><primary>clients</primary><secondary>insert_node</secondary></indexterm>
+<para><computeroutput>subroutine clients::insert_node (type(<link linkend="_structclients_1_1client">client</link>), intent(in) pclient, integer, intent(in) pos, type(<link linkend="_structclients_1_1btreenode">btreenode</link>), intent(inout), pointer node, type(<link linkend="_structclients_1_1btreenode">btreenode</link>), intent(in), pointer child)</computeroutput></para><para>
+
+<para>Subroutine to insert a node. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>pclient</entry>
+                                <entry>
+<para>Client to add </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>pos</entry>
+                                <entry>
+<para>Position to add the client </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>node</entry>
+                                <entry>
+<para>Node to add the client </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>child</entry>
+                                <entry>
+<para>Child node </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line 220 of file clients.f90.</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="namespaceclients_aa44cf096a2cb7660812a0d89d38ba962_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+    </section><anchor xml:id="_namespaceclients_1aeb3cbc2579866895c57c1dcc4c896055"/>    <section>
+    <title>is_empty()</title>
+<indexterm><primary>is_empty</primary><secondary>clients</secondary></indexterm>
+<indexterm><primary>clients</primary><secondary>is_empty</secondary></indexterm>
+<para><computeroutput>logical function clients::is_empty (class(<link linkend="_structclients_1_1client__queue">client_queue</link>), intent(in) this)</computeroutput></para><para>
+
+<para>Function to check if the queue is empty. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>Queue to check </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>True if the queue is empty, false otherwise </para>
+</formalpara>
+</para>
+<para>
+Definition at line 89 of file clients.f90.</para>
+    </section><anchor xml:id="_namespaceclients_1a21366d81ec050b2e122842e7a3542510"/>    <section>
+    <title>search_client()</title>
+<indexterm><primary>search_client</primary><secondary>clients</secondary></indexterm>
+<indexterm><primary>clients</primary><secondary>search_client</secondary></indexterm>
+<para><computeroutput>recursive type(<link linkend="_structclients_1_1client">client</link>) function, pointer clients::search_client (class(<link linkend="_structclients_1_1btree__clients">btree_clients</link>), intent(inout) this, type(<link linkend="_structclients_1_1btreenode">btreenode</link>), intent(in), pointer node, integer(kind=8), intent(in) client_id)</computeroutput></para><para>
+
+<para>Function to search a client in the tree. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>B-tree to search </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>node</entry>
+                                <entry>
+<para>Node to search </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>client_id</entry>
+                                <entry>
+<para>Id of the client to search </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>Client found </para>
+</formalpara>
+</para>
+<para>
+Definition at line 331 of file clients.f90.</para>
+    </section><anchor xml:id="_namespaceclients_1af25c1268d66c531c2dbeea18f0fdd870"/>    <section>
+    <title>set_value()</title>
+<indexterm><primary>set_value</primary><secondary>clients</secondary></indexterm>
+<indexterm><primary>clients</primary><secondary>set_value</secondary></indexterm>
+<para><computeroutput>recursive logical function clients::set_value (type(<link linkend="_structclients_1_1client">client</link>), intent(in) new_client, type(<link linkend="_structclients_1_1client">client</link>), intent(inout) pclient, type(<link linkend="_structclients_1_1btreenode">btreenode</link>), intent(inout), pointer node, type(<link linkend="_structclients_1_1btreenode">btreenode</link>), intent(inout), pointer child)</computeroutput></para><para>
+
+<para>Recursive function to set the value of the tree. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>new_client</entry>
+                                <entry>
+<para>Client to add </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>pclient</entry>
+                                <entry>
+<para>Client to add </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>node</entry>
+                                <entry>
+<para>Node to add the client </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>child</entry>
+                                <entry>
+<para>Child node </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>True if the client was added, false otherwise </para>
+</formalpara>
+</para>
+<para>
+Definition at line 151 of file clients.f90.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="namespaceclients_af25c1268d66c531c2dbeea18f0fdd870_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="namespaceclients_af25c1268d66c531c2dbeea18f0fdd870_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+    </section><anchor xml:id="_namespaceclients_1a987160082804c4f6978ef2a39b844eef"/>    <section>
+    <title>split_node()</title>
+<indexterm><primary>split_node</primary><secondary>clients</secondary></indexterm>
+<indexterm><primary>clients</primary><secondary>split_node</secondary></indexterm>
+<para><computeroutput>subroutine clients::split_node (type(<link linkend="_structclients_1_1client">client</link>), intent(in) new_client, type(<link linkend="_structclients_1_1client">client</link>), intent(inout) pclient, integer, intent(in) pos, type(<link linkend="_structclients_1_1btreenode">btreenode</link>), intent(inout), pointer node, type(<link linkend="_structclients_1_1btreenode">btreenode</link>), intent(in), pointer child, type(<link linkend="_structclients_1_1btreenode">btreenode</link>), intent(inout), pointer new_node)</computeroutput></para><para>
+
+<para>Subroutine to split a node. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>new_client</entry>
+                                <entry>
+<para>Client to add </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>pclient</entry>
+                                <entry>
+<para>Client to add </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>pos</entry>
+                                <entry>
+<para>Position to add the client </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>node</entry>
+                                <entry>
+<para>Node to split </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>child</entry>
+                                <entry>
+<para>Child node </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>new_node</entry>
+                                <entry>
+<para>New node </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line 243 of file clients.f90.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="namespaceclients_a987160082804c4f6978ef2a39b844eef_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Here is the caller graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="namespaceclients_a987160082804c4f6978ef2a39b844eef_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+    </section><anchor xml:id="_namespaceclients_1ac2237e9b2930d1c37f46be5ba7fd088b"/>    <section>
+    <title>traversal()</title>
+<indexterm><primary>traversal</primary><secondary>clients</secondary></indexterm>
+<indexterm><primary>clients</primary><secondary>traversal</secondary></indexterm>
+<para><computeroutput>subroutine clients::traversal (class(<link linkend="_structclients_1_1btree__clients">btree_clients</link>), intent(inout) this, type(<link linkend="_structclients_1_1btreenode">btreenode</link>), intent(in), pointer node)</computeroutput></para><para>
+
+<para>Subroutine to traverse the tree. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters                    </title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>this</entry>
+                                <entry>
+<para>B-tree to traverse </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>node</entry>
+                                <entry>
+<para>Node to traverse </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line 281 of file clients.f90.</para>
+</section>
+</section>
+<section>
+<title>Variable Documentation</title>
+<anchor xml:id="_namespaceclients_1aedc33217218a7a1642994c7c673660d5"/>    <section>
+    <title>g_id</title>
+<indexterm><primary>g_id</primary><secondary>clients</secondary></indexterm>
+<indexterm><primary>clients</primary><secondary>g_id</secondary></indexterm>
+<para><computeroutput>integer clients::g_id = 1</computeroutput></para><para>
+
+<para>Global variable to assign the id of the nodes. </para>
+</para>
+<para>
+Definition at line 13 of file clients.f90.</para>
+</section>
+</section>
+</section>

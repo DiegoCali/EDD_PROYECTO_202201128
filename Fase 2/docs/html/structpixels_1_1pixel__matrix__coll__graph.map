@@ -1,0 +1,4 @@
+<map id="pixels::pixel_matrix" name="pixels::pixel_matrix">
+<area shape="rect" id="node1" title="Type to represent a matrix of pixels." alt="" coords="5,127,155,153"/>
+<area shape="rect" id="node2" href="$structpixels_1_1pixel.html" title="Type to represent a pixel." alt="" coords="31,21,129,48"/>
+</map>

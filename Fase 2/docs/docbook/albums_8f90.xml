@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_albums_8f90" xml:lang="en-US">
+<title>/home/diego/Documents/EDD/Fase 2 Documentation/src/albums.f90 File Reference</title>
+<indexterm><primary>/home/diego/Documents/EDD/Fase 2 Documentation/src/albums.f90</primary></indexterm>
+<para>
+
+<para>Module for albums and images management. </para>
+ 
+</para>
+<simplesect>
+    <title>Data Types    </title>
+        <itemizedlist>
+            <listitem><para>type <link linkend="_structalbums_1_1img__node">albums::img_node</link></para>
+
+<para>Type to store the image node. </para>
+</listitem>
+            <listitem><para>type <link linkend="_structalbums_1_1album">albums::album</link></para>
+
+<para>Type to store the album. </para>
+</listitem>
+            <listitem><para>type <link linkend="_structalbums_1_1album__list">albums::album_list</link></para>
+
+<para>Type to store the album list. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Modules    </title>
+        <itemizedlist>
+            <listitem><para>module <link linkend="_namespacealbums">albums</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions/Subroutines    </title>
+        <itemizedlist>
+            <listitem><para>subroutine <link linkend="_namespacealbums_1a321df20835781023f84bfc9f7bccb7b8">albums::gen_album_graph</link> (this, unit)</para>
+
+<para>Generates the graph of the albums. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacealbums_1a67b4483c72b43fd096192da72e8ce4e2">albums::show_album_images</link> (this, id_album)</para>
+
+<para>Shows the images of an album. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacealbums_1aefa5528532916bea57faf698d973a416">albums::show_albums</link> (this)</para>
+
+<para>Shows the albums. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacealbums_1ae37b75f22101ecd232fa7c8c5753cc3d">albums::remove_image_from_album</link> (this, ralbum_id, image_id)</para>
+
+<para>Removes an image from an album. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacealbums_1af736e105b5ab7500a7882097e140a3aa">albums::add_image_to_album</link> (this, ialbum_id, image_node)</para>
+
+<para>Adds an image to an album. </para>
+</listitem>
+            <listitem><para>type(image) function, pointer <link linkend="_namespacealbums_1aa9e6a10c8dc96214fb2b828458ae50bb">albums::search_in_album</link> (this, salbum_id, image_id)</para>
+
+<para>Searches an image in an album. </para>
+</listitem>
+            <listitem><para>type(album) function, pointer <link linkend="_namespacealbums_1a52008f5f5aac784da1135e539e66b3e5">albums::get_album</link> (this, id)</para>
+
+<para>Gets an album. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacealbums_1a7883a8e94a4515dbd6e79518b54a92b8">albums::remove_album</link> (this, id)</para>
+
+<para>Removes an album. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacealbums_1a01030794eb983b8507a30ed9249619e8">albums::new_album</link> (this, album_name)</para>
+
+<para>Creates a new album. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacealbums_1a4a114fd0c53aec782f6133d817c41257">albums::add_image</link> (this, image_node)</para>
+
+<para>Adds an image to an album. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacealbums_1ad0772de54e3a8ef6fd175f6ddd080e76">albums::remove_image</link> (this, id)</para>
+
+<para>Removes an image from an album. </para>
+</listitem>
+            <listitem><para>type(image) function, pointer <link linkend="_namespacealbums_1a3350d1b18e2160cf9c608f4235a1ece3">albums::get_image</link> (this, id)</para>
+
+<para>Gets an image. </para>
+</listitem>
+            <listitem><para>subroutine <link linkend="_namespacealbums_1a0f58c6ac4007cd8858916175f2502acd">albums::show_images</link> (this)</para>
+
+<para>Shows the images of an album. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Variables    </title>
+        <itemizedlist>
+            <listitem><para>integer <link linkend="_namespacealbums_1abe80dc9f3a78c4452aca4c866c9c575d">albums::album_id</link> = 0</para>
+
+<para>Global variable to store the album id. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Module for albums and images management. </para>
+
+<para><formalpara><title>Author</title>
+
+<para>Diego Cali </para>
+</formalpara>
+<formalpara><title>Date</title>
+
+<para>2024 </para>
+</formalpara>
+<formalpara><title>Version</title>
+
+<para>1.0</para>
+</formalpara>
+This module contains the definition of the albums and images management </para>
+</section>
+</section>

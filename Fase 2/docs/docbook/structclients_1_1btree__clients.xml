@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structclients_1_1btree__clients" xml:lang="en-US">
+<title>clients::btree_clients Type Reference</title>
+<indexterm><primary>clients::btree_clients</primary></indexterm>
+<para>
+
+<para>Type to represent a B-tree. </para>
+ 
+</para>
+Collaboration diagram for clients::btree_clients:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="structclients_1_1btree__clients__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>procedure <link linkend="_structclients_1_1btree__clients_1a470f54088ec1345576fd18e1a48a7128">add_client</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structclients_1_1btree__clients_1adacb30d04b0f183a43d26bb06797c1d7">search_client</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structclients_1_1btree__clients_1a098fedf29657a2547eb82313148406f5">delete_client</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structclients_1_1btree__clients_1a1c7773923a89fe58e13dc8e827525a4a">delete_client_rec</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structclients_1_1btree__clients_1a2454d44117726200eb9065408854e185">create_node</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structclients_1_1btree__clients_1a11993327ca4da0a157fdb89c8d156d01">traversal</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structclients_1_1btree__clients_1a83391d98ebfcc651d64fcdf17bdeea37">clients_dot</link></para>
+</listitem>
+            <listitem><para>procedure <link linkend="_structclients_1_1btree__clients_1afb9de5d927fde9474890500590db2980">amplitude_traversal</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para>type(<link linkend="_structclients_1_1btreenode">btreenode</link>), pointer <link linkend="_structclients_1_1btree__clients_1ae47ac63b707ebc4597bc986e48458616">root</link> =&gt; null()</para>
+
+<para>Pointer to the root of the tree. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Type to represent a B-tree. </para>
+<para>
+Definition at line 37 of file clients.f90.</para>
+</section>
+<section>
+<title>Member Function/Subroutine Documentation</title>
+<anchor xml:id="_structclients_1_1btree__clients_1a470f54088ec1345576fd18e1a48a7128"/>    <section>
+    <title>add_client()</title>
+<indexterm><primary>add_client</primary><secondary>clients::btree_clients</secondary></indexterm>
+<indexterm><primary>clients::btree_clients</primary><secondary>add_client</secondary></indexterm>
+<para><computeroutput>procedure clients::btree_clients::add_client</computeroutput></para><para>
+Definition at line 40 of file clients.f90.</para>
+    </section><anchor xml:id="_structclients_1_1btree__clients_1afb9de5d927fde9474890500590db2980"/>    <section>
+    <title>amplitude_traversal()</title>
+<indexterm><primary>amplitude_traversal</primary><secondary>clients::btree_clients</secondary></indexterm>
+<indexterm><primary>clients::btree_clients</primary><secondary>amplitude_traversal</secondary></indexterm>
+<para><computeroutput>procedure clients::btree_clients::amplitude_traversal</computeroutput></para><para>
+Definition at line 47 of file clients.f90.</para>
+    </section><anchor xml:id="_structclients_1_1btree__clients_1a83391d98ebfcc651d64fcdf17bdeea37"/>    <section>
+    <title>clients_dot()</title>
+<indexterm><primary>clients_dot</primary><secondary>clients::btree_clients</secondary></indexterm>
+<indexterm><primary>clients::btree_clients</primary><secondary>clients_dot</secondary></indexterm>
+<para><computeroutput>procedure clients::btree_clients::clients_dot</computeroutput></para><para>
+Definition at line 46 of file clients.f90.</para>
+    </section><anchor xml:id="_structclients_1_1btree__clients_1a2454d44117726200eb9065408854e185"/>    <section>
+    <title>create_node()</title>
+<indexterm><primary>create_node</primary><secondary>clients::btree_clients</secondary></indexterm>
+<indexterm><primary>clients::btree_clients</primary><secondary>create_node</secondary></indexterm>
+<para><computeroutput>procedure clients::btree_clients::create_node</computeroutput></para><para>
+Definition at line 44 of file clients.f90.</para>
+    </section><anchor xml:id="_structclients_1_1btree__clients_1a098fedf29657a2547eb82313148406f5"/>    <section>
+    <title>delete_client()</title>
+<indexterm><primary>delete_client</primary><secondary>clients::btree_clients</secondary></indexterm>
+<indexterm><primary>clients::btree_clients</primary><secondary>delete_client</secondary></indexterm>
+<para><computeroutput>procedure clients::btree_clients::delete_client</computeroutput></para><para>
+Definition at line 42 of file clients.f90.</para>
+    </section><anchor xml:id="_structclients_1_1btree__clients_1a1c7773923a89fe58e13dc8e827525a4a"/>    <section>
+    <title>delete_client_rec()</title>
+<indexterm><primary>delete_client_rec</primary><secondary>clients::btree_clients</secondary></indexterm>
+<indexterm><primary>clients::btree_clients</primary><secondary>delete_client_rec</secondary></indexterm>
+<para><computeroutput>procedure clients::btree_clients::delete_client_rec</computeroutput></para><para>
+Definition at line 43 of file clients.f90.</para>
+    </section><anchor xml:id="_structclients_1_1btree__clients_1adacb30d04b0f183a43d26bb06797c1d7"/>    <section>
+    <title>search_client()</title>
+<indexterm><primary>search_client</primary><secondary>clients::btree_clients</secondary></indexterm>
+<indexterm><primary>clients::btree_clients</primary><secondary>search_client</secondary></indexterm>
+<para><computeroutput>procedure clients::btree_clients::search_client</computeroutput></para><para>
+Definition at line 41 of file clients.f90.</para>
+    </section><anchor xml:id="_structclients_1_1btree__clients_1a11993327ca4da0a157fdb89c8d156d01"/>    <section>
+    <title>traversal()</title>
+<indexterm><primary>traversal</primary><secondary>clients::btree_clients</secondary></indexterm>
+<indexterm><primary>clients::btree_clients</primary><secondary>traversal</secondary></indexterm>
+<para><computeroutput>procedure clients::btree_clients::traversal</computeroutput></para><para>
+Definition at line 45 of file clients.f90.</para>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structclients_1_1btree__clients_1ae47ac63b707ebc4597bc986e48458616"/>    <section>
+    <title>root</title>
+<indexterm><primary>root</primary><secondary>clients::btree_clients</secondary></indexterm>
+<indexterm><primary>clients::btree_clients</primary><secondary>root</secondary></indexterm>
+<para><computeroutput>type(<link linkend="_structclients_1_1btreenode">btreenode</link>), pointer clients::btree_clients::root =&gt; null()</computeroutput></para><para>
+
+<para>Pointer to the root of the tree. </para>
+</para>
+<para>
+Definition at line 38 of file clients.f90.</para>
+</section>
+<para>
+The documentation for this type was generated from the following file:</para>
+/home/diego/Documents/EDD/Fase 2 Documentation/src/<link linkend="_clients_8f90">clients.f90</link></section>
+</section>

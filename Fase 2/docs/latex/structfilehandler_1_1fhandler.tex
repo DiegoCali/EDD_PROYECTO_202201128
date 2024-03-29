@@ -1,0 +1,189 @@
+\doxysection{filehandler\+::fhandler Type Reference}
+\label{structfilehandler_1_1fhandler}\index{filehandler::fhandler@{filehandler::fhandler}}
+
+
+Type that handles the reading of the json files and the initialization of the data structures.  
+
+
+
+
+Collaboration diagram for filehandler\+::fhandler\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{structfilehandler_1_1fhandler__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+procedure \textbf{ initialize\+\_\+admin}
+\item 
+procedure \textbf{ initialize\+\_\+user}
+\item 
+procedure \textbf{ set\+\_\+user}
+\item 
+procedure \textbf{ read\+\_\+imgs}
+\item 
+procedure \textbf{ read\+\_\+layers}
+\item 
+procedure \textbf{ read\+\_\+albums}
+\item 
+procedure \textbf{ read\+\_\+clients}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+type(\textbf{ album\+\_\+list}), pointer \textbf{ albums\+\_\+db} =$>$ null()
+\begin{DoxyCompactList}\small\item\em Pointer to the albums database. \end{DoxyCompactList}\item 
+type(\textbf{ image\+\_\+avl}), pointer \textbf{ images\+\_\+db} =$>$ null()
+\begin{DoxyCompactList}\small\item\em Pointer to the images database. \end{DoxyCompactList}\item 
+type(\textbf{ btree\+\_\+clients}), pointer \textbf{ clients\+\_\+db} =$>$ null()
+\begin{DoxyCompactList}\small\item\em Pointer to the clients database. \end{DoxyCompactList}\item 
+type(\textbf{ layers\+\_\+tree}), pointer \textbf{ layers\+\_\+db} =$>$ null()
+\begin{DoxyCompactList}\small\item\em Pointer to the layers database. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Type that handles the reading of the json files and the initialization of the data structures. 
+
+Definition at line 17 of file filehandler.\+f90.
+
+
+
+\doxysubsection{Member Function/\+Subroutine Documentation}
+\mbox{\label{structfilehandler_1_1fhandler_ab7c3b56deec929db01ea88bfc64b7b40}} 
+\index{filehandler::fhandler@{filehandler::fhandler}!initialize\_admin@{initialize\_admin}}
+\index{initialize\_admin@{initialize\_admin}!filehandler::fhandler@{filehandler::fhandler}}
+\doxysubsubsection{initialize\_admin()}
+{\footnotesize\ttfamily procedure filehandler\+::fhandler\+::initialize\+\_\+admin}
+
+
+
+Definition at line 23 of file filehandler.\+f90.
+
+\mbox{\label{structfilehandler_1_1fhandler_aceb58221380ccfbd6f32fbc03085d30c}} 
+\index{filehandler::fhandler@{filehandler::fhandler}!initialize\_user@{initialize\_user}}
+\index{initialize\_user@{initialize\_user}!filehandler::fhandler@{filehandler::fhandler}}
+\doxysubsubsection{initialize\_user()}
+{\footnotesize\ttfamily procedure filehandler\+::fhandler\+::initialize\+\_\+user}
+
+
+
+Definition at line 24 of file filehandler.\+f90.
+
+\mbox{\label{structfilehandler_1_1fhandler_a081d71b857ef69d500adb9cd815a4a4e}} 
+\index{filehandler::fhandler@{filehandler::fhandler}!read\_albums@{read\_albums}}
+\index{read\_albums@{read\_albums}!filehandler::fhandler@{filehandler::fhandler}}
+\doxysubsubsection{read\_albums()}
+{\footnotesize\ttfamily procedure filehandler\+::fhandler\+::read\+\_\+albums}
+
+
+
+Definition at line 28 of file filehandler.\+f90.
+
+\mbox{\label{structfilehandler_1_1fhandler_a42692d1ff1ea5a44cb32d2c6a2ce1dfb}} 
+\index{filehandler::fhandler@{filehandler::fhandler}!read\_clients@{read\_clients}}
+\index{read\_clients@{read\_clients}!filehandler::fhandler@{filehandler::fhandler}}
+\doxysubsubsection{read\_clients()}
+{\footnotesize\ttfamily procedure filehandler\+::fhandler\+::read\+\_\+clients}
+
+
+
+Definition at line 29 of file filehandler.\+f90.
+
+\mbox{\label{structfilehandler_1_1fhandler_addddb1cc6b524a3b874017f9130b39f6}} 
+\index{filehandler::fhandler@{filehandler::fhandler}!read\_imgs@{read\_imgs}}
+\index{read\_imgs@{read\_imgs}!filehandler::fhandler@{filehandler::fhandler}}
+\doxysubsubsection{read\_imgs()}
+{\footnotesize\ttfamily procedure filehandler\+::fhandler\+::read\+\_\+imgs}
+
+
+
+Definition at line 26 of file filehandler.\+f90.
+
+\mbox{\label{structfilehandler_1_1fhandler_ad1dea0c0046ff406e7267e5f8b468f5e}} 
+\index{filehandler::fhandler@{filehandler::fhandler}!read\_layers@{read\_layers}}
+\index{read\_layers@{read\_layers}!filehandler::fhandler@{filehandler::fhandler}}
+\doxysubsubsection{read\_layers()}
+{\footnotesize\ttfamily procedure filehandler\+::fhandler\+::read\+\_\+layers}
+
+
+
+Definition at line 27 of file filehandler.\+f90.
+
+\mbox{\label{structfilehandler_1_1fhandler_ae1abb90521a8183b0cb1b65eb518d201}} 
+\index{filehandler::fhandler@{filehandler::fhandler}!set\_user@{set\_user}}
+\index{set\_user@{set\_user}!filehandler::fhandler@{filehandler::fhandler}}
+\doxysubsubsection{set\_user()}
+{\footnotesize\ttfamily procedure filehandler\+::fhandler\+::set\+\_\+user}
+
+
+
+Definition at line 25 of file filehandler.\+f90.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{structfilehandler_1_1fhandler_a8f589be0fa36b9ac0c53c82f04668308}} 
+\index{filehandler::fhandler@{filehandler::fhandler}!albums\_db@{albums\_db}}
+\index{albums\_db@{albums\_db}!filehandler::fhandler@{filehandler::fhandler}}
+\doxysubsubsection{albums\_db}
+{\footnotesize\ttfamily type(\textbf{ album\+\_\+list}), pointer filehandler\+::fhandler\+::albums\+\_\+db =$>$ null()}
+
+
+
+Pointer to the albums database. 
+
+
+
+Definition at line 18 of file filehandler.\+f90.
+
+\mbox{\label{structfilehandler_1_1fhandler_aff6e16b2d5eb7ed30f85ac37ea39f756}} 
+\index{filehandler::fhandler@{filehandler::fhandler}!clients\_db@{clients\_db}}
+\index{clients\_db@{clients\_db}!filehandler::fhandler@{filehandler::fhandler}}
+\doxysubsubsection{clients\_db}
+{\footnotesize\ttfamily type(\textbf{ btree\+\_\+clients}), pointer filehandler\+::fhandler\+::clients\+\_\+db =$>$ null()}
+
+
+
+Pointer to the clients database. 
+
+
+
+Definition at line 20 of file filehandler.\+f90.
+
+\mbox{\label{structfilehandler_1_1fhandler_ad2ff2a7d4a8609382854c30f01037dc2}} 
+\index{filehandler::fhandler@{filehandler::fhandler}!images\_db@{images\_db}}
+\index{images\_db@{images\_db}!filehandler::fhandler@{filehandler::fhandler}}
+\doxysubsubsection{images\_db}
+{\footnotesize\ttfamily type(\textbf{ image\+\_\+avl}), pointer filehandler\+::fhandler\+::images\+\_\+db =$>$ null()}
+
+
+
+Pointer to the images database. 
+
+
+
+Definition at line 19 of file filehandler.\+f90.
+
+\mbox{\label{structfilehandler_1_1fhandler_a673c479e606ff608b1483f4a83954a9b}} 
+\index{filehandler::fhandler@{filehandler::fhandler}!layers\_db@{layers\_db}}
+\index{layers\_db@{layers\_db}!filehandler::fhandler@{filehandler::fhandler}}
+\doxysubsubsection{layers\_db}
+{\footnotesize\ttfamily type(\textbf{ layers\+\_\+tree}), pointer filehandler\+::fhandler\+::layers\+\_\+db =$>$ null()}
+
+
+
+Pointer to the layers database. 
+
+
+
+Definition at line 21 of file filehandler.\+f90.
+
+
+
+The documentation for this type was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/diego/\+Documents/\+EDD/\+Fase 2 Documentation/src/\textbf{ filehandler.\+f90}\end{DoxyCompactItemize}
