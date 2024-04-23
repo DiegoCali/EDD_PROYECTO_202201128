@@ -101,6 +101,6 @@ contains
         do i = 1, this%m
             write(*, '(A, A)', advance='no') this%h(i)%name, " "
         end do      
-        write(*, '(A)', advance='no') ']'
+        write(*, '(A)') ']'
     end subroutine show
 end module tech_hash
