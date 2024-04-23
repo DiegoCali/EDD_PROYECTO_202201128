@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "departamento": "Chimaltenango",
+        "direccion": "4 calle 2-50 zona 1",
+        "password": "wqd_78$GOL"
+    },
+    {
+        "id": 2,
+        "departamento": "Quetzaltenango",
+        "direccion": "3 avenida 5-67 zona 2",
+        "password": "a1b2c3d4"
+    },
+    {
+        "id": 3,
+        "departamento": "Escuintla",
+        "direccion": "2 calle 3-45 zona 3",
+        "password": "e5f6g7h8"
+    },
+    {
+        "id": 4,
+        "departamento": "Peten",
+        "direccion": "1 avenida 2-34 zona 4",
+        "password": "i9j0k1l2"
+    }
+]

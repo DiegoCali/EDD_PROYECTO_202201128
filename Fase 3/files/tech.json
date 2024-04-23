@@ -1,0 +1,42 @@
+[
+    {
+        "dpi": "2897315340401",
+        "nombre": "Diego Felipe",
+        "apellido": "Cali Morales",
+        "genero": "Masculino",
+        "direccion": "8 calle 3-45 zona 1",
+        "telefono": "12345678"
+    },
+    {
+        "dpi": "1234567890123",
+        "nombre": "Juan Carlos",
+        "apellido": "Perez Lopez",
+        "genero": "Femenino",
+        "direccion": "5 calle 7-23 zona 2",
+        "telefono": "87654321"
+    },
+    {
+        "dpi": "2345678901234",
+        "nombre": "Maria",
+        "apellido": "Gonzalez",
+        "genero": "Masculino",
+        "direccion": "3 calle 2-34 zona 3",
+        "telefono": "23456789"
+    },
+    {
+        "dpi": "3456789012345",
+        "nombre": "Pedro",
+        "apellido": "Martinez Garcia",
+        "genero": "Femenino",
+        "direccion": "7 calle 5-67 zona 4",
+        "telefono": "34567890"
+    },
+    {
+        "dpi": "4567890123456",
+        "nombre": "Ana Sofia",
+        "apellido": "Rodriguez",
+        "genero": "Masculino",
+        "direccion": "9 calle 4-56 zona 5",
+        "telefono": "45678901"
+    }
+]
