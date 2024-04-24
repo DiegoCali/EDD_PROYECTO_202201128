@@ -1,4 +1,5 @@
 module branch_avl
+    use tech_hash
     implicit none
     type branch
         integer :: key
@@ -6,6 +7,7 @@ module branch_avl
         type(branch), pointer :: left => null()
         type(branch), pointer :: right => null()
         integer :: height
+        type(hash), pointer :: hash_table => null()
     end type branch
     type b_avl 
         type(branch), pointer :: root => null()
@@ -19,6 +21,10 @@ module branch_avl
         procedure :: drr 
         procedure :: get_height
         procedure :: get_max
+        procedure :: get_dot
+        procedure :: get_dot_rec
+        procedure :: print_self 
+        procedure :: print_self_rec       
     end type b_avl
 contains
     subroutine add_branch(this, new_branch)        
@@ -114,4 +120,45 @@ contains
             res = tmp%height
         end if   
     end function get_height
+    subroutine get_dot(this)
+        class(b_avl), intent(in) :: this   
+        open(6, file='outputs/branch_avl.dot', status='replace')     
+        write(6, '(A)') 'digraph branch_avl {'
+        call this%get_dot_rec(this%root, 6)
+        write(6, '(A)') '}'
+        close(6)
+        call execute_command_line('dot -Tsvg outputs/branch_avl.dot -o outputs/branch_avl.svg')
+    end subroutine get_dot
+    subroutine get_dot_rec(this, tmp, unit)
+        class(b_avl), intent(in) :: this
+        type(branch), pointer, intent(in) ::  tmp
+        integer, intent(in) ::  unit
+        if ( .NOT. associated(tmp) ) then
+            return
+        end if
+        write(unit, '(A, I0, A, I0, A)') 'node_', tmp%key, '[label="branch_', tmp%key, '"];'        
+        if ( associated(tmp%left) ) then
+            write(unit, '(A, I0, A, I0, A)') 'node_', tmp%key, ' -> node_', tmp%left%key, ';'
+        end if
+        if ( associated(tmp%right) ) then
+            write(unit, '(A, I0, A, I0, A)') 'node_', tmp%key, ' -> node_', tmp%right%key, ';'
+        end if
+        call this%get_dot_rec(tmp%left, unit)
+        call this%get_dot_rec(tmp%right, unit)
+    end subroutine get_dot_rec
+    subroutine print_self(this)
+        class(b_avl), intent(in) :: this
+        if ( associated(this%root) ) then
+            call this%print_self_rec(this%root)        
+        end if
+    end subroutine print_self
+    recursive subroutine print_self_rec(this, tmp)
+        class(b_avl), intent(in) :: this
+        type(branch), pointer, intent(in) :: tmp
+        if ( associated(tmp) ) then
+            call this%print_self_rec(tmp%left)
+            write(*, '(I0, A, A, A, A)') tmp%key, "  ", tmp%place, ";  ", tmp%address
+            call this%print_self_rec(tmp%right)
+        end if
+    end subroutine print_self_rec
 end module branch_avl

@@ -97,12 +97,12 @@ contains
     end subroutine search
     subroutine show(this)
         class(hash), intent(inout) :: this
-        integer :: i
-        write(*, '(A)', advance='no') '['
+        integer :: i        
         do i = 1, this%m
-            write(*, '(A, A)', advance='no') this%h(i)%name, " "
-        end do      
-        write(*, '(A)') ']'
+            if ( this%h(i)%dpi /= -1 ) then
+                write(*, '(I13, A, A)') this%h(i)%dpi, "  " ,this%h(i)%name
+            end if
+        end do              
     end subroutine show
     subroutine hash_dot(this)
         class(hash), intent(inout) :: this        
@@ -137,6 +137,8 @@ contains
 
         write(unit, '(A)') '}'  
         
+        close(unit)
+
         call execute_command_line('dot -Tsvg outputs/hash_table.dot -o outputs/hash_table.svg')
     end subroutine hash_dot
 end module tech_hash
