@@ -1,8 +1,9 @@
 module tech_hash
     implicit none
     type tech
-        integer*8 :: dpi 
-        character(:), allocatable :: name, last_name, address, gender, phone
+        integer*8 :: dpi ! key
+        character(:), allocatable :: name, last_name, address, gender, phone ! Data
+        integer :: works_done = 0
     end type tech
     type :: hash
         integer :: n ! Number of elements
@@ -17,6 +18,7 @@ module tech_hash
         procedure :: rehashing 
         procedure :: search
         procedure :: show 
+        procedure :: hash_dot
     end type hash
 contains
     subroutine init(this,  m, mini, maxi)
@@ -72,8 +74,7 @@ contains
             allocate(temp(this%m))
             temp = this%h
             mprev = this%m            
-            this%m = this%m * 2
-            print *, 'New size: ', this%m
+            this%m = this%m * 2            
             call this%init(this%m, this%mini, this%maxi)
             do i = 1, mprev
                 if ( temp(i)%dpi /= -1 ) then
@@ -103,4 +104,39 @@ contains
         end do      
         write(*, '(A)') ']'
     end subroutine show
+    subroutine hash_dot(this)
+        class(hash), intent(inout) :: this        
+        integer :: i, unit 
+        unit = 10
+        open(unit, file='outputs/hash_table.dot', status='replace')
+
+        write(unit, '(A)') 'digraph Hash_Table {'
+
+        write(unit, '(A)') 'rankdir=LR;'
+        write(unit, '(A)') 'node [shape=record];'
+
+        write(unit, '(A)') 'node0 [ ' 
+
+        write(unit, '(A)', advance='no') ' label="'
+
+        do i = 1, this%m
+            if ( i == this%m ) then
+                write(unit, '(A, I0, A, I0)', advance='no') '<f', i-1,'>', i
+            else 
+                write(unit, '(A, I0, A, I0, A)', advance='no') '<f', i-1,'>', i, '|'
+            end if
+        end do
+
+        write(unit, '(A)') '"];'
+
+        do i = 1, this%m
+            if ( this%h(i)%dpi /= -1 ) then                
+                write(unit, '(A, I0, A, A, A)') 'node0:f',i-1,' -> "', this%h(i)%name, '";'                   
+            end if        
+        end do
+
+        write(unit, '(A)') '}'  
+        
+        call execute_command_line('dot -Tsvg outputs/hash_table.dot -o outputs/hash_table.svg')
+    end subroutine hash_dot
 end module tech_hash

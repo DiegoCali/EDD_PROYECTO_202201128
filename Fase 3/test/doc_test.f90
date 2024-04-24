@@ -17,5 +17,7 @@ program doc_test
     call fh%read_techs(file_route)
 
     call table%show()
+
+    call table%hash_dot()
     
 end program doc_test

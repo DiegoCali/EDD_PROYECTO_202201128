@@ -13,7 +13,9 @@ contains
     subroutine connect(self,  tech_hash_table)
         class(fhandler), intent(inout) :: self
         type(hash), pointer :: tech_hash_table
+
         self%techs_table => tech_hash_table
+        
         print *, 'Connection successful!'        
     end subroutine connect
     subroutine read_techs(self, file_route)   
