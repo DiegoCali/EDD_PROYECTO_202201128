@@ -157,7 +157,7 @@ contains
         type(branch), pointer, intent(in) :: tmp
         if ( associated(tmp) ) then
             call this%print_self_rec(tmp%left)
-            write(*, '(I0, A, A, A, A)') tmp%key, "  ", tmp%place, ";  ", tmp%address
+            write(*, '(I0, A, A, A, A)') tmp%key, "  ", tmp%place, ",  ", tmp%address
             call this%print_self_rec(tmp%right)
         end if
     end subroutine print_self_rec
