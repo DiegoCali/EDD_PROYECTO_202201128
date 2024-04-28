@@ -15,6 +15,7 @@ module routes
         procedure :: pop
         procedure :: is_empty
         procedure :: merge
+        procedure :: add_weight
     end type edge_list
     type result
         integer :: id
@@ -25,6 +26,9 @@ module routes
         integer :: total_weight
         type(result), pointer :: head => null()
         type(result), pointer :: tail => null()
+    contains
+        procedure :: add_result
+        procedure :: print
     end type result_list
     type node
         integer :: id 
@@ -135,6 +139,42 @@ contains
         end do
         
     end subroutine merge
+    subroutine add_weight(this, weight)
+        class(edge_list), intent(inout) :: this
+        integer, intent(in) :: weight
+        type(edge), pointer :: current
+        current => this%head
+        do while (associated(current))
+            current%weight = current%weight + weight
+            current => current%next
+        end do        
+    end subroutine add_weight
+    ! Result list methods
+    subroutine add_result(this,  id, weight)
+        class(result_list), intent(inout) :: this
+        integer, intent(in) :: id, weight
+        type(result), pointer :: new_result
+        allocate(new_result)
+        new_result%id = id
+        new_result%weight = weight
+        if (.not. associated(this%head)) then
+            this%head => new_result
+            this%tail => new_result
+            return
+        end if
+        this%tail%next => new_result
+        this%tail => new_result  
+        this%total_weight = this%tail%weight  
+    end subroutine add_result
+    subroutine print(this)
+        class(result_list), intent(in) :: this
+        type(result), pointer :: current
+        current => this%head
+        do while (associated(current))
+            write(*,'(A, I0, A, I0)') 'Node: ', current%id, ", Acumulated Weight: ", current%weight
+            current => current%next
+        end do
+    end subroutine print
     ! Graph methods
     subroutine insert_data(this, id, neighbor_id, weight)
         class(graph), intent(inout) :: this
@@ -169,7 +209,11 @@ contains
         class(graph), intent(inout) :: this
         integer, intent(in) :: id, weight
         type(node), pointer :: parent
-
+        type(node), pointer :: edge_node 
+        edge_node => this%get_node(id)
+        if ( .NOT. associated(edge_node) ) then
+            call this%add_node(id)
+        end if
         call parent%neighbors%add_sorted(id, weight, parent%id, .TRUE.)
         this%n_nodes = this%n_nodes + 1
     end subroutine add_edge
@@ -213,24 +257,38 @@ contains
     function get_shortest_path(this, id_origin, id_destination) result(retval)
         class(analyzer), intent(in) :: this
         integer, intent(in) :: id_origin, id_destination
+        integer :: sub_total
         type(result_list), pointer :: retval
         type(edge_list), pointer :: queue
         type(node), pointer :: current_node
-
+        type(edge), pointer :: current_edge
+        print *, 'Getting shortest path from ', id_origin, ' to ', id_destination
+        sub_total = 0
         allocate(retval)
         retval%total_weight = 0
         allocate(queue)
         current_node => this%graph_data%get_node(id_origin)
         if ( associated(current_node) ) then
             call queue%merge(current_node%neighbors)
+            call retval%add_result(id_origin, 0)
         end if
         do while ( .NOT. queue%is_empty() )
-            if (current_node%id == id_destination) then
-                print *, 'Found destination'
+            current_edge => queue%pop()
+            sub_total = current_edge%weight
+            current_node => this%graph_data%get_node(current_edge%id)
+            if ( .NOT. associated(current_node) ) then
+                print *, 'Node not found'
                 exit
             end if
+            if (current_node%id == id_destination) then
+                print *, 'Found destination'
+                call retval%add_result(current_node%id, sub_total)
+                exit
+            end if
+            call current_node%neighbors%add_weight(sub_total)
+            call queue%merge(current_node%neighbors)
+            call retval%add_result(current_node%id, sub_total)
             current_node => current_node%next
         end do
-        
     end function get_shortest_path
 end module routes
