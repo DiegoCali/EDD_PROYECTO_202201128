@@ -17,7 +17,7 @@ program graph_test
     call g%insert_data(4, 6, 8, 4)
     call g%insert_data(5, 6, 2, 1)
     print *, "Graph created."
-    !call g%show()
+    call g%graph_dot()
     call a%set_graph(g)
     r => a%get_shortest_path(1, 6)
     call r%print()

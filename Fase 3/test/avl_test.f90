@@ -29,7 +29,7 @@ program avl_test
     b%address = "Zona 3"
     b%password = "das4648sdf"
     call tree%add_branch(b)
-    call tree%search_branch(2)
+    !call tree%search_branch(2)
     call tree%get_dot()
     
 end program avl_test
