@@ -1,0 +1,31 @@
+{
+  "INDEX": 0,
+  "TIMESTAMP": "29-4-2024::17:43:9",
+  "NONCE": 4560,
+  "DATA": [
+    {
+      "sucursal_o": 0,
+      "direccion_o": "San Pedro Sacatepequez, Zona 3",
+      "sucursal_d": 1,
+      "direccion_d": "Ciudad de Guatemala, Zona 1",
+      "costo": 1600
+    },
+    {
+      "sucursal_o": 1,
+      "direccion_o": "Ciudad de Guatemala, Zona 1",
+      "sucursal_d": 2,
+      "direccion_d": "Chimaltenango, Zona 2",
+      "costo": 2400
+    },
+    {
+      "sucursal_o": 2,
+      "direccion_o": "Chimaltenango, Zona 2",
+      "sucursal_d": 3,
+      "direccion_d": "San Pedro Sacatepequez, Zona 3",
+      "costo": 3200
+    }
+  ],
+  "PREVIOUS_HASH": "0000                                                                                                                                                                                                                                                            ",
+  "ROOT_MERKLE": "A40842F69CDE33FF758D0EC8BE1AB9A35207B71EA1BABD8CE501185431F4E6B5                                                                                                                                                                                                ",
+  "HASH": "69F8FB5A96DA43967732D12B7E326C6E6693DCCBB4D9D2BA896BB91411978184                                                                                                                                                                                                "
+}

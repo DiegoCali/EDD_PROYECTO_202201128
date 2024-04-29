@@ -28,12 +28,13 @@ module routes
         type(result), pointer :: next => null()
     end type result
     type result_list
-        integer :: total_weight
+        integer :: total_weight = 0
         type(result), pointer :: head => null()
         type(result), pointer :: tail => null()
     contains
         procedure :: add_result
         procedure :: print
+        procedure :: get_total_weight
     end type result_list
     type node
         integer :: id 
@@ -205,8 +206,9 @@ contains
         end if  
     end subroutine add_result
     subroutine print(this)
-        class(result_list), intent(in) :: this
+        class(result_list), intent(inout) :: this
         type(result), pointer :: current
+        call this%get_total_weight()
         current => this%head
         do while (associated(current))
             if ( associated(current%next) ) then
@@ -219,6 +221,15 @@ contains
             current => current%next
         end do
     end subroutine print
+    subroutine get_total_weight(this)
+        class(result_list), intent(inout) :: this
+        type(result), pointer :: current
+        current => this%head
+        do while (associated(current))
+            this%total_weight = this%total_weight + current%weight
+            current => current%next
+        end do
+    end subroutine get_total_weight
     ! Graph methods
     subroutine insert_data(this, id, neighbor_id, distance, printers)
         class(graph), intent(inout) :: this
