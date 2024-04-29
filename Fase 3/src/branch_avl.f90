@@ -21,6 +21,7 @@ module branch_avl
         procedure :: drr 
         procedure :: get_height
         procedure :: get_max
+        procedure :: search_branch
         procedure :: get_dot
         procedure :: get_dot_rec
         procedure :: print_self 
@@ -120,6 +121,22 @@ contains
             res = tmp%height
         end if   
     end function get_height
+    function search_branch(this, id) result(tmp)
+        class(b_avl), intent(in) :: this
+        integer, intent(in) :: id
+        type(branch), pointer :: tmp
+        tmp => this%root
+        do while ( associated(tmp) )
+            if ( id == tmp%key ) then
+                return
+            else if ( id < tmp%key ) then
+                tmp => tmp%left
+            else
+                tmp => tmp%right
+            end if
+        end do
+        tmp => null()
+    end function search_branch
     subroutine get_dot(this)
         class(b_avl), intent(in) :: this   
         open(6, file='outputs/branch_avl.dot', status='replace')     

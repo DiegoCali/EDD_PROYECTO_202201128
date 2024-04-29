@@ -2,6 +2,8 @@ module routes
     implicit none
     type edge
         integer :: id
+        integer :: distance
+        integer :: printers
         integer :: weight
         integer :: parent_id
         type(edge), pointer :: next => null()
@@ -19,6 +21,8 @@ module routes
     end type edge_list
     type result
         integer :: id
+        integer :: distance 
+        integer :: printers
         integer :: weight
         type(result), pointer :: next => null()
     end type result
@@ -53,15 +57,19 @@ module routes
     end type analyzer
 contains
     ! Edge list methods
-    subroutine add_sorted(this, id, weight, parent_id, sort_by_id)
+    subroutine add_sorted(this, id, distance, printers, parent_id, sort_by_id)
         class(edge_list), intent(inout) :: this
-        integer, intent(in) :: id, weight, parent_id
+        integer, intent(in) :: id, distance, printers, parent_id
         logical, intent(in) :: sort_by_id
         type(edge), pointer :: new_edge
         type(edge), pointer :: current
         type(edge), pointer :: previous
+        integer :: weight
         allocate(new_edge)
         new_edge%id = id
+        new_edge%distance = distance
+        new_edge%printers = printers
+        weight = distance - printers
         new_edge%weight = weight
         new_edge%parent_id = parent_id
 
@@ -134,7 +142,7 @@ contains
 
         current => to_merge%head
         do while (associated(current))
-            call this%add_sorted(current%id, current%weight, current%parent_id, .FALSE.)
+            call this%add_sorted(current%id, current%distance, current%printers, current%parent_id, .FALSE.)
             current => current%next
         end do
         
@@ -150,12 +158,14 @@ contains
         end do        
     end subroutine add_weight
     ! Result list methods
-    subroutine add_result(this,  id, weight)
+    subroutine add_result(this,  id, distance, printers, weight)
         class(result_list), intent(inout) :: this
-        integer, intent(in) :: id, weight
+        integer, intent(in) :: id, weight, distance, printers
         type(result), pointer :: new_result
         allocate(new_result)
         new_result%id = id
+        new_result%distance = distance
+        new_result%printers = printers
         new_result%weight = weight
         if (.not. associated(this%head)) then
             this%head => new_result
@@ -164,29 +174,35 @@ contains
         end if
         this%tail%next => new_result
         this%tail => new_result  
-        this%total_weight = this%tail%weight  
+        this%total_weight = this%total_weight + weight
     end subroutine add_result
     subroutine print(this)
         class(result_list), intent(in) :: this
         type(result), pointer :: current
         current => this%head
         do while (associated(current))
-            write(*,'(A, I0, A, I0)') 'Node: ', current%id, ", Acumulated Weight: ", current%weight
+            if ( associated(current%next) ) then
+                write(*,'(A, I0, A, I0)', advance='no') 'Node: ', current%id, " -> Node: ", current%next%id
+                write(*, '(A, I0)') ", Weight: ", current%next%weight
+            else 
+                write(*,'(A, I0)', advance='no') 'Origin Node: ', this%head%id
+                write(*,'(A, I0, A, I0)') ', Final Node: ', current%id, ", Acumulated Weight: ", this%total_weight
+            end if
             current => current%next
         end do
     end subroutine print
     ! Graph methods
-    subroutine insert_data(this, id, neighbor_id, weight)
+    subroutine insert_data(this, id, neighbor_id, distance, printers)
         class(graph), intent(inout) :: this
-        integer, intent(in) :: id, neighbor_id, weight    
+        integer, intent(in) :: id, neighbor_id, distance, printers
         type(node), pointer :: current
 
         current => this%get_node(id)
         if ( .NOT. associated(current) ) then
             call this%add_node(id)
-            call this%add_edge(neighbor_id, weight, this%head)
+            call this%add_edge(neighbor_id, distance, printers, this%head)
         else
-            call this%add_edge(neighbor_id, weight, current)
+            call this%add_edge(neighbor_id, distance, printers, current)
         end if
     end subroutine insert_data
     subroutine add_node(this,  id)
@@ -205,16 +221,16 @@ contains
         new_node%next => this%head
         this%head => new_node
     end subroutine add_node
-    subroutine add_edge(this, id, weight, parent)
+    subroutine add_edge(this, id, distance, printers, parent)
         class(graph), intent(inout) :: this
-        integer, intent(in) :: id, weight
+        integer, intent(in) :: id, distance, printers
         type(node), pointer :: parent
         type(node), pointer :: edge_node 
         edge_node => this%get_node(id)
         if ( .NOT. associated(edge_node) ) then
             call this%add_node(id)
         end if
-        call parent%neighbors%add_sorted(id, weight, parent%id, .TRUE.)
+        call parent%neighbors%add_sorted(id, distance, printers, parent%id, .TRUE.)
         this%n_nodes = this%n_nodes + 1
     end subroutine add_edge
     function get_node(this, id) result(retval)
@@ -270,7 +286,7 @@ contains
         current_node => this%graph_data%get_node(id_origin)
         if ( associated(current_node) ) then
             call queue%merge(current_node%neighbors)
-            call retval%add_result(id_origin, 0)
+            call retval%add_result(id_origin, 0, 0, 0)
         end if
         do while ( .NOT. queue%is_empty() )
             current_edge => queue%pop()
@@ -282,12 +298,12 @@ contains
             end if
             if (current_node%id == id_destination) then
                 print *, 'Found destination'
-                call retval%add_result(current_node%id, sub_total)
+                call retval%add_result(current_node%id, current_edge%distance, current_edge%printers, current_edge%weight)
                 exit
             end if
             call current_node%neighbors%add_weight(sub_total)
             call queue%merge(current_node%neighbors)
-            call retval%add_result(current_node%id, sub_total)
+            call retval%add_result(current_node%id, current_edge%distance, current_edge%printers, current_edge%weight)
             current_node => current_node%next
         end do
     end function get_shortest_path

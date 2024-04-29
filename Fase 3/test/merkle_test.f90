@@ -11,6 +11,6 @@ program merkle_test
 
     call tree%generate()
 
-    call tree%merkle_dot()
+    call tree%merkle_dot() 
 
 end program merkle_test

@@ -30,6 +30,7 @@ module merkle_tree
         procedure :: generate
         procedure :: merkle_dot 
         procedure :: merkle_dot_rec
+        procedure :: get_head_hash
     end type merkle
 contains
     subroutine add_data(this, id_origin, address_origin, id_destination, address_destination, cost_between)
@@ -188,4 +189,9 @@ contains
             write(unit, '(I0, A, I0, A)') tmp%uid, ' -> ', tmp%dataref%uid, ';'
         end if
     end subroutine merkle_dot_rec
+    function get_head_hash(this) result(retval)
+        class(merkle), intent(inout) :: this
+        character(:), allocatable :: retval
+        retval = this%top_hash%hash
+    end function get_head_hash
 end module merkle_tree

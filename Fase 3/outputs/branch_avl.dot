@@ -1,9 +1,9 @@
 digraph branch_avl {
-node_2[label="branch_2"];
-node_2 -> node_1;
-node_2 -> node_3;
 node_1[label="branch_1"];
+node_1 -> node_0;
+node_1 -> node_2;
+node_0[label="branch_0"];
+node_2[label="branch_2"];
+node_2 -> node_3;
 node_3[label="branch_3"];
-node_3 -> node_4;
-node_4[label="branch_4"];
 }
