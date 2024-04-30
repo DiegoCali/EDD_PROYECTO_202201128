@@ -1,31 +1,31 @@
 {
   "INDEX": 0,
-  "TIMESTAMP": "29-4-2024::17:43:9",
+  "TIMESTAMP": "30-4-2024::15:16:26",
   "NONCE": 4560,
   "DATA": [
     {
-      "sucursal_o": 0,
-      "direccion_o": "San Pedro Sacatepequez, Zona 3",
-      "sucursal_d": 1,
-      "direccion_d": "Ciudad de Guatemala, Zona 1",
-      "costo": 1600
-    },
-    {
       "sucursal_o": 1,
-      "direccion_o": "Ciudad de Guatemala, Zona 1",
+      "direccion_o": "Chimaltenango, 4 calle 2-50 zona 1",
       "sucursal_d": 2,
-      "direccion_d": "Chimaltenango, Zona 2",
-      "costo": 2400
+      "direccion_d": "Quetzaltenango, 3 avenida 5-67 zona 2",
+      "costo": 240
     },
     {
       "sucursal_o": 2,
-      "direccion_o": "Chimaltenango, Zona 2",
+      "direccion_o": "Quetzaltenango, 3 avenida 5-67 zona 2",
       "sucursal_d": 3,
-      "direccion_d": "San Pedro Sacatepequez, Zona 3",
-      "costo": 3200
+      "direccion_d": "Escuintla, 2 calle 3-45 zona 3",
+      "costo": 320
+    },
+    {
+      "sucursal_o": 3,
+      "direccion_o": "Escuintla, 2 calle 3-45 zona 3",
+      "sucursal_d": 4,
+      "direccion_d": "Peten, 1 avenida 2-34 zona 4",
+      "costo": 160
     }
   ],
   "PREVIOUS_HASH": "0000                                                                                                                                                                                                                                                            ",
-  "ROOT_MERKLE": "A40842F69CDE33FF758D0EC8BE1AB9A35207B71EA1BABD8CE501185431F4E6B5                                                                                                                                                                                                ",
-  "HASH": "69F8FB5A96DA43967732D12B7E326C6E6693DCCBB4D9D2BA896BB91411978184                                                                                                                                                                                                "
+  "ROOT_MERKLE": "F28CD4867CEEF0E957C6D5B20F7F0EF21A58E82D12826FD2370CD504BB2A586D                                                                                                                                                                                                ",
+  "HASH": "9E11D2178AD7E5AC9265E0F45A6706494EFD117F61A860F0A00E7D526FD3A498                                                                                                                                                                                                "
 }

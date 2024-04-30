@@ -1,48 +1,48 @@
 digraph Merkle_tree {
 node [shape=record, fontname=Arial, fontsize=12];
-16 [label="A40842F69CDE33FF758D0EC8BE1AB9A35207B71EA1BABD8CE501185431F4E6B5"];
-16 -> 17;
-16 -> 20;
-17 [label="6EE4CBB160BA41CF15B8E2F2EAA2A50880F8EFE6113A68AA50E4C3E79AE87F19"];
-17 -> 18;
-17 -> 19;
-18 [label="A3EADD31E6768AB02B94ADD54ADA38A34777AF245AE34A358E970083B3958AD4"];
-12 [label=<<TABLE><TR>
-<TD>id_origin:          0</TD>
-<TD>address_origin: San Pedro Sacatepequez</TD></TR>
-<TR><TD>id_destination:          1</TD>
-<TD>address_destination: Ciudad de Guatemala</TD></TR>
-<TR><TD>cost_between:        800</TD></TR>
-</TABLE>>];
-18 -> 12;
-19 [label="CDD3042DF77D37D7A606A34C1AE753B8FEF7F3E57B42E85303F7D4E77326E5E7"];
-13 [label=<<TABLE><TR>
+5 [label="F28CD4867CEEF0E957C6D5B20F7F0EF21A58E82D12826FD2370CD504BB2A586D"];
+5 -> 6;
+5 -> 9;
+6 [label="8D53E946341FA05A7DF3B9EC7E112F84826E9D76086C9222C51287DF89D8C926"];
+6 -> 7;
+6 -> 8;
+7 [label="CDCED49A0041BB36FC6EB0F564B45225CEA2666825DAE0949242350C633C5857"];
+1 [label=<<TABLE><TR>
 <TD>id_origin:          1</TD>
-<TD>address_origin: Ciudad de Guatemala</TD></TR>
-<TR><TD>id_destination:          2</TD>
-<TD>address_destination: Chimaltenango</TD></TR>
-<TR><TD>cost_between:       1200</TD></TR>
-</TABLE>>];
-19 -> 13;
-20 [label="A88185009119800BEAC544D6F830C6B47B26A9169E41DC34B698F99ECACE17DC"];
-20 -> 21;
-20 -> 22;
-21 [label="C15B9BC81B08E5CFF7339DC31DD4A1187300AB4D92C5DF97454C600C16A9D0B3"];
-14 [label=<<TABLE><TR>
-<TD>id_origin:          2</TD>
 <TD>address_origin: Chimaltenango</TD></TR>
-<TR><TD>id_destination:          3</TD>
-<TD>address_destination: San Pedro Sacatepequez</TD></TR>
-<TR><TD>cost_between:       1600</TD></TR>
+<TR><TD>id_destination:          2</TD>
+<TD>address_destination: Quetzaltenango</TD></TR>
+<TR><TD>cost_between:        160</TD></TR>
 </TABLE>>];
-21 -> 14;
-22 [label="20A568617FE844C6EECB1B0CBB6F54E276BEA59FAF326831B98EFE00B9E136C5"];
-15 [label=<<TABLE><TR>
+7 -> 1;
+8 [label="BCFA4718263C927EC64911B10F1661A18776EEEFCBAE9001446FBBD086BCC2E6"];
+2 [label=<<TABLE><TR>
+<TD>id_origin:          2</TD>
+<TD>address_origin: Quetzaltenango</TD></TR>
+<TR><TD>id_destination:          3</TD>
+<TD>address_destination: Escuintla</TD></TR>
+<TR><TD>cost_between:        240</TD></TR>
+</TABLE>>];
+8 -> 2;
+9 [label="0D07E4DF49DC964031436B47D29F5551A4A7D0A847D321F305DF40DDAF5A3963"];
+9 -> 10;
+9 -> 11;
+10 [label="3348CCF06CFC033DBCF2CE395289E5B99D99B0C8C27670FF33B691C952486CCC"];
+3 [label=<<TABLE><TR>
+<TD>id_origin:          3</TD>
+<TD>address_origin: Escuintla</TD></TR>
+<TR><TD>id_destination:          4</TD>
+<TD>address_destination: Peten</TD></TR>
+<TR><TD>cost_between:        320</TD></TR>
+</TABLE>>];
+10 -> 3;
+11 [label="20A568617FE844C6EECB1B0CBB6F54E276BEA59FAF326831B98EFE00B9E136C5"];
+4 [label=<<TABLE><TR>
 <TD>id_origin:         -1</TD>
 <TD>address_origin: null</TD></TR>
 <TR><TD>id_destination:         -1</TD>
 <TD>address_destination: null</TD></TR>
 <TR><TD>cost_between:         -1</TD></TR>
 </TABLE>>];
-22 -> 15;
+11 -> 4;
 }

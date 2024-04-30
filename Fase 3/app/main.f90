@@ -46,7 +46,7 @@ contains
         go_out = .FALSE.
         do while (.NOT. go_out)
             print *, "||========== Choose an option: ==========||"
-            print *, "1. Load a files"
+            print *, "1. Load files"
             print *, "2. Branches"
             print *, "3. Reports"
             print *, "4. Exit"
