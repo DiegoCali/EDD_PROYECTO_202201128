@@ -93,7 +93,8 @@ contains
             d = collision(this, k, i)
             i = i + 1
         end do
-        print *, this%h(d)%name, this%h(d)%last_name, this%h(d)%address, this%h(d)%gender, this%h(d)%phone            
+        write(*, '(A, A, A)', advance='no') this%h(d)%name, "  ", this%h(d)%last_name, "  ", this%h(d)%phone
+        write(*, '(A, A, A)') this%h(d)%address, "  ", this%h(d)%gender, "  ", this%h(d)%works_done
     end subroutine search
     subroutine show(this)
         class(hash), intent(inout) :: this

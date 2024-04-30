@@ -83,7 +83,8 @@ contains
                     print *, "||========== Enter the file name: ==========||"
                     read (*,'(A)') file_name
                     call fhand_helper%read_branches(file_name)
-                    call branches%print_self()                                               
+                    call branches%print_self()    
+                    call branches%get_dot()                                           
                 case(2)
                     print *, "||========== Enter the file name: ==========||"
                     read (*,'(A)') file_name
@@ -91,6 +92,7 @@ contains
                     if (associated(general_graph)) then
                         print *, "||========== Graph loaded successfully ==========||"
                         call general_graph%show_graph()
+                        call general_graph%graph_dot()
                     else
                         print *, "||========== Error loading the graph ==========||"
                     end if                                        
@@ -143,6 +145,7 @@ contains
                     print *, "||========== Enter the file name: ==========||"
                     read (*,'(A)') file_name
                     call fhand_helper%read_techs(file_name, current_branch%key)
+                    call current_branch%hash_table%hash_dot()
                     print *, "||========== Technicians loaded successfully ==========||"
                 case(2)
                     if (associated(general_graph)) then

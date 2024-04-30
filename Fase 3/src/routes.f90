@@ -184,7 +184,7 @@ contains
         new_result%id = edge_node%id
         new_result%distance = edge_node%distance
         new_result%printers = edge_node%printers
-        new_result%weight = edge_node%weight
+        new_result%weight = edge_node%distance - edge_node%printers
         if (.not. associated(this%head)) then
             this%head => new_result
             this%tail => new_result
