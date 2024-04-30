@@ -73,7 +73,10 @@ contains
         new_edge%distance = distance
         new_edge%printers = printers
         if (sort_by_id) then
-            weight = distance - printers        
+            weight = distance - printers     
+            if (weight < 0) then
+                weight = 0
+            end if   
         end if
         new_edge%weight = weight
         new_edge%parent_id = parent_id
