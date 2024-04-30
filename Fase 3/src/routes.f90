@@ -49,7 +49,7 @@ module routes
         procedure :: add_node
         procedure :: add_edge
         procedure :: get_node
-        procedure :: show
+        procedure :: show_graph
         procedure :: graph_dot
     end type graph
     type analyzer
@@ -292,7 +292,7 @@ contains
         end do
         retval => null()  
     end function get_node
-    subroutine show(this)
+    subroutine show_graph(this)
         class(graph), intent(in) :: this
         type(node), pointer :: current
         type(edge), pointer :: current_edge
@@ -307,7 +307,7 @@ contains
             write(*,*) ''
             current => current%next
         end do
-    end subroutine show
+    end subroutine show_graph
     subroutine graph_dot(this)
         class(graph), intent(in) :: this
         type(node), pointer :: current

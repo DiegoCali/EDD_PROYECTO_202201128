@@ -1,4 +1,4 @@
-program name
+program main
     use tech_hash
     use routes
     use branch_avl
@@ -90,7 +90,7 @@ contains
                     general_graph => fhand_helper%read_graph(file_name)
                     if (associated(general_graph)) then
                         print *, "||========== Graph loaded successfully ==========||"
-                        call general_graph%show()
+                        call general_graph%show_graph()
                     else
                         print *, "||========== Error loading the graph ==========||"
                     end if                                        
@@ -114,6 +114,7 @@ contains
             password_branch = sha256(password_branch)
             if (trim(password_branch) == current_branch%password) then
                 print *, "||========== Branch found ==========||"
+                call branch_options()
             else
                 print *, "||========== Invalid password ==========||"
             end if
@@ -124,7 +125,8 @@ contains
     subroutine branch_options()
         implicit none
         character(len=100) :: file_name
-        integer :: option, node1, node2, tech_id
+        integer :: option, node1, node2
+        integer*8 :: tech_id
         logical :: go_out
         go_out = .FALSE.
         do while (.NOT. go_out)
@@ -175,4 +177,4 @@ contains
             end select
         end do        
     end subroutine branch_options
-end program name
+end program main

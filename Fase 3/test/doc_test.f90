@@ -40,6 +40,6 @@ program doc_test
 
     g => fh%read_graph(file_route3)
 
-    call g%show()
+    call g%show_graph()
 
 end program doc_test
