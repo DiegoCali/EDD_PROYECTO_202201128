@@ -7,11 +7,15 @@ module branch_avl
         type(branch), pointer :: left => null()
         type(branch), pointer :: right => null()
         integer :: height
+        integer :: total_costs = 0
+        integer :: total_revenue = 0
         type(hash), pointer :: hash_table => null()
     end type branch
     type b_avl 
         type(branch), pointer :: root => null()
         integer :: total = 0
+        integer :: total_costs = 0
+        integer :: total_revenue = 0
     contains
         procedure :: add_branch 
         procedure :: add_branch_rec
@@ -25,7 +29,9 @@ module branch_avl
         procedure :: get_dot
         procedure :: get_dot_rec
         procedure :: print_self 
-        procedure :: print_self_rec       
+        procedure :: print_self_rec   
+        procedure :: get_totals
+        procedure :: get_totals_rec    
     end type b_avl
 contains
     subroutine add_branch(this, new_branch)        
@@ -139,11 +145,12 @@ contains
     end function search_branch
     subroutine get_dot(this)
         class(b_avl), intent(in) :: this   
-        open(6, file='outputs/branch_avl.dot', status='replace')     
-        write(6, '(A)') 'digraph branch_avl {'
-        call this%get_dot_rec(this%root, 6)
-        write(6, '(A)') '}'
-        close(6)
+        open(78, file='outputs/branch_avl.dot', status='replace')             
+        write(78, '(A)') 'digraph branch_avl {'
+        call this%get_dot_rec(this%root, 78)
+        write(78, '(A)') '}'
+        close(78)
+        print *, 'Closing file...'
         call execute_command_line('dot -Tsvg outputs/branch_avl.dot -o outputs/branch_avl.svg')
     end subroutine get_dot
     subroutine get_dot_rec(this, tmp, unit)
@@ -178,4 +185,23 @@ contains
             call this%print_self_rec(tmp%right)
         end if
     end subroutine print_self_rec
+    subroutine get_totals(this)
+        class(b_avl), intent(inout) :: this
+        if ( associated(this%root) ) then
+            call this%get_totals_rec(this%root)
+        end if   
+        print *, 'Total costs: ', this%total_costs
+        print *, 'Total revenue: ', this%total_revenue
+        print *, 'Total profit: ', this%total_revenue - this%total_costs 
+    end subroutine get_totals
+    recursive subroutine get_totals_rec(this, tmp)
+        class(b_avl), intent(inout) :: this
+        type(branch), pointer, intent(in) :: tmp
+        if ( associated(tmp) ) then
+            call this%get_totals_rec(tmp%left)
+            this%total_costs = this%total_costs + tmp%total_costs
+            this%total_revenue = this%total_revenue + tmp%total_revenue
+            call this%get_totals_rec(tmp%right)
+        end if    
+    end subroutine get_totals_rec
 end module branch_avl

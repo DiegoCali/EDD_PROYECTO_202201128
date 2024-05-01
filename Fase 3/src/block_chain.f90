@@ -27,6 +27,7 @@ module block_chain
         procedure :: add_block
         procedure :: print_chain
         procedure :: generate_files
+        procedure :: chain_dot
     end type chainer
 contains
     subroutine generate_block(this, new_data, new_branches)
@@ -55,7 +56,7 @@ contains
                 b_destination => new_branches%search_branch(current%next%id)
                 if ( associated(b_destination) ) then
                     call new_merkle%add_data(b_origin%key, b_origin%place, b_destination%key,&
-                    b_destination%place, current%next%weight*80)
+                    b_destination%place, current%next%distance*80)
                 end if
             end if
         end if
@@ -147,9 +148,9 @@ contains
                 current_data => current_data%next
             end do
             call json%add(p, data_p)
-            call json%add(p, 'PREVIOUS_HASH', current%previous_hash)
-            call json%add(p, 'ROOT_MERKLE', current%root_merkle)
-            call json%add(p, 'HASH', current%hash)
+            call json%add(p, 'PREVIOUS_HASH', trim(current%previous_hash))
+            call json%add(p, 'ROOT_MERKLE', trim(current%root_merkle))
+            call json%add(p, 'HASH', trim(current%hash))
             nullify(data_p)
             nullify(path)  
             write(file_index, '(I0)') current%index
@@ -159,4 +160,37 @@ contains
         end do    
         call json%destroy(p)
     end subroutine generate_files
+    subroutine chain_dot(this)
+        class(chainer), intent(inout) :: this    
+        type(block), pointer :: current
+
+        current => this%head
+        open(99, file='outputs/chain.dot', status='replace')
+        write(99, '(A)') 'digraph G {'
+        write(99, '(A)') 'rankdir=LR;'
+        write(99, '(A)') 'node [shape=record];'
+        do while ( associated(current) )
+            write(99, '(A, I0, A)') 'block_', current%index, '[label=<<TABLE><TR>'
+            write(99, '(A, I0, A)') '<TD>Index: ', current%index, '</TD></TR>'
+            write(99, '(A, A, A)') '<TR><TD>Timestamp: ', current%timestamp, '</TD></TR>'
+            write(99, '(A, I0, A)') '<TR><TD>Nonce: ', current%nonce, '</TD></TR>'
+            write(99, '(A)') '<TR><TD>Previous Hash: '
+            write(99, '(A)') trim(current%previous_hash)
+            write(99, '(A)') '</TD></TR>'
+            write(99, '(A)') '<TR><TD>Root Merkle: '
+            write(99, '(A)') trim(current%root_merkle)
+            write(99, '(A)') '</TD></TR>'
+            write(99, '(A)') '<TR><TD>Hash: '
+            write(99, '(A)') trim(current%hash)
+            write(99, '(A)') '</TD>'
+            write(99, '(A)') '</TR></TABLE>>];'
+            if ( associated(current%next) ) then
+                write(99, '(A, I0, A, I0, A)') 'block_', current%index, ' -> block_', current%next%index, ';'
+            end if
+            current => current%next
+        end do
+        write(99, '(A)') '}'
+        close(99)
+        call execute_command_line('dot -Tsvg outputs/chain.dot -o outputs/chain.svg')
+    end subroutine chain_dot
 end module block_chain

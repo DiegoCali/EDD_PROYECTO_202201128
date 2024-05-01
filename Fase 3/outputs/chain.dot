@@ -1,0 +1,18 @@
+digraph G {
+rankdir=LR;
+node [shape=record];
+block_0[label=<<TABLE><TR>
+<TD>Index: 0</TD></TR>
+<TR><TD>Timestamp: 1-5-2024::8:14:50</TD></TR>
+<TR><TD>Nonce: 4560</TD></TR>
+<TR><TD>Previous Hash: 
+0000                                                                                                                                                                                                                                                            
+</TD></TR>
+<TR><TD>Root Merkle: 
+AF9D155FE433F539B13FB843B199704CC283054F1E60337D9F55CD59015A6FB2                                                                                                                                                                                                
+</TD></TR>
+<TR><TD>Hash: 
+FCEFCB8E7B1FA9FDD590C5D0CDB485C88280BED7E0238D55DB35C8484EE273DF                                                                                                                                                                                                
+</TD>
+</TR></TABLE>>];
+}

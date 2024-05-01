@@ -29,6 +29,8 @@ module routes
     end type result
     type result_list
         integer :: total_weight = 0
+        integer :: total_costs = 0
+        integer :: total_revenue = 0
         type(result), pointer :: head => null()
         type(result), pointer :: tail => null()
     contains
@@ -230,6 +232,8 @@ contains
         current => this%head
         do while (associated(current))
             this%total_weight = this%total_weight + current%weight
+            this%total_costs = this%total_costs + current%distance*80
+            this%total_revenue = this%total_revenue + current%printers*100
             current => current%next
         end do
     end subroutine get_total_weight

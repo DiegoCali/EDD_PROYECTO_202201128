@@ -19,6 +19,7 @@ module tech_hash
         procedure :: search
         procedure :: show 
         procedure :: hash_dot
+        procedure :: add_works
     end type hash
 contains
     subroutine init(this,  m, mini, maxi)
@@ -96,6 +97,20 @@ contains
         write(*, '(A, A, A)', advance='no') this%h(d)%name, "  ", this%h(d)%last_name, "  ", this%h(d)%phone
         write(*, '(A, A, A)') this%h(d)%address, "  ", this%h(d)%gender, "  ", this%h(d)%works_done
     end subroutine search
+    subroutine add_works(this, k, works)
+        class(hash), intent(inout) :: this
+        integer*8, intent(in) :: k
+        integer, intent(in) :: works
+        integer :: i, d
+        i = 0
+        d = dispersion(this, k)
+        do while (this%h(d)%dpi /= k)
+            d = collision(this, k, i)
+            i = i + 1
+        end do
+        this%h(d)%works_done = this%h(d)%works_done + works
+        call this%hash_dot()    
+    end subroutine add_works
     subroutine show(this)
         class(hash), intent(inout) :: this
         integer :: i        

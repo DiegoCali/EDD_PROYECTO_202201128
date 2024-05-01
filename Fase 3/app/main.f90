@@ -57,8 +57,7 @@ contains
                 case(2)
                     call view_branches()                    
                 case(3)
-                    !call reports()
-                    print *, "Not implemented yet..."                    
+                    call reports()                 
                 case(4)                    
                     go_out = .TRUE.
                 case default
@@ -66,9 +65,13 @@ contains
             end select
         end do
     end subroutine login
+    subroutine reports()
+        implicit none
+        call branches%get_totals()
+    end subroutine reports
     subroutine load_files()
         implicit none
-        character(len=100) :: file_name
+        character(len=100) :: file_name, response
         integer :: option
         logical :: go_out
         go_out = .FALSE.
@@ -84,7 +87,12 @@ contains
                     read (*,'(A)') file_name
                     call fhand_helper%read_branches(file_name)
                     call branches%print_self()    
-                    call branches%get_dot()                                           
+                    call branches%get_dot()   
+                    print *, "Do you want to see the AVL tree? (Y/N)"
+                    read (*,'(A)') response
+                    if (trim(response) == "Y" .or. trim(response) == "y") then
+                        call execute_command_line("eog outputs/branch_avl.svg")
+                    end if
                 case(2)
                     print *, "||========== Enter the file name: ==========||"
                     read (*,'(A)') file_name
@@ -93,6 +101,11 @@ contains
                         print *, "||========== Graph loaded successfully ==========||"
                         call general_graph%show_graph()
                         call general_graph%graph_dot()
+                        print *, "Do you want to see the graph? (Y/N)"
+                        read (*,'(A)') response
+                        if (trim(response) == "Y" .or. trim(response) == "y") then
+                            call execute_command_line("eog outputs/graph.svg")
+                        end if
                     else
                         print *, "||========== Error loading the graph ==========||"
                     end if                                        
@@ -126,7 +139,7 @@ contains
     end subroutine view_branches
     subroutine branch_options()
         implicit none
-        character(len=100) :: file_name
+        character(len=100) :: file_name, response
         integer :: option, node1, node2
         integer*8 :: tech_id
         logical :: go_out
@@ -146,6 +159,11 @@ contains
                     read (*,'(A)') file_name
                     call fhand_helper%read_techs(file_name, current_branch%key)
                     call current_branch%hash_table%hash_dot()
+                    print *, "Do you want to see the hash table? (Y/N)"
+                    read (*,'(A)') response
+                    if (trim(response) == "Y" .or. trim(response) == "y") then
+                        call execute_command_line("eog outputs/hash_table.svg")
+                    end if
                     print *, "||========== Technicians loaded successfully ==========||"
                 case(2)
                     if (associated(general_graph)) then
@@ -154,12 +172,29 @@ contains
                         read (*,*) node1
                         print *, "||========== Enter the node 2: ==========||"
                         read (*,*) node2
+                        print *, "||========== Select Technician ==========||"
+                        call current_branch%hash_table%show()
+                        read (*,*) tech_id
+                        call current_branch%hash_table%add_works(tech_id, 1)
                         results => graph_analyzer%get_shortest_path(node1, node2)
                         call results%print()
+                        current_branch%total_costs = current_branch%total_costs + results%total_costs
+                        current_branch%total_revenue = current_branch%total_revenue + results%total_revenue
                         allocate(new_block)
                         call new_block%generate_block(results, branches)
                         call block_chain_gen%add_block(new_block)
                         call block_chain_gen%generate_files()
+                        call block_chain_gen%chain_dot()
+                        print *, "Do you want to see the block chain? (Y/N)"
+                        read (*,'(A)') response
+                        if (trim(response) == "Y" .or. trim(response) == "y") then
+                            call execute_command_line("eog outputs/chain.svg")
+                        end if
+                        print *, "Do you want to see the Merkle Tree? (Y/N)"
+                        read (*,'(A)') response
+                        if (trim(response) == "Y" .or. trim(response) == "y") then
+                            call execute_command_line("eog outputs/merkle.svg")
+                        end if
                     else
                         print *, "||========== Graph not loaded ==========||"
                     end if
@@ -171,8 +206,10 @@ contains
                 case(4)
                     call current_branch%hash_table%show()
                 case(5)
-                    !call reports()
-                    print *, "Not implemented yet..."
+                    print *, "||========== Branch Information ==========||"
+                    print *, "Branch id: ", current_branch%key
+                    print *, "Total costs: ", current_branch%total_costs
+                    print *, "Total revenue: ", current_branch%total_revenue
                 case(6)
                     go_out = .TRUE.
                 case default
